@@ -1,5 +1,7 @@
-#include <stdlib.h>
-#include <iostream>
+#include "Globals.h"
+#include "MemLeaks.h"
+#include "Application.h"
+
 
 #include "SDL/include/SDL.h"
 #include "SDL_image/include/SDL_image.h"
@@ -11,9 +13,6 @@
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
 
-#include "Globals.h"
-#include "MemLeaks.h"
-#include "Application.h"
 
 
 //Main states for the loop
@@ -25,9 +24,13 @@ enum class main_states {
 	MAIN_EXIT
 };
 
+//Creation of the App (the game)
+Application* App = nullptr;
+
 
 //Main Function
-int main(int argc, char** argv) {
+int main(int argc, char** argv)
+{
 
 	//Calls to see if there are any memory leaks
 	ReportMemoryLeaks();
@@ -38,42 +41,48 @@ int main(int argc, char** argv) {
 	//Variable to know the current Main state
 	main_states state = main_states::MAIN_CREATION;
 
-	//Creation of the App (the game)
-	Application* App = nullptr;
-
 
 	//Main loop
-	while (state != main_states::MAIN_EXIT) {
-		switch (state) {
+	while (state != main_states::MAIN_EXIT)
+	{
+		switch (state)
+		{
 
 		//Creation of the Dynamic Memory for the App
-		case main_states::MAIN_CREATION: {
-			LOG("Application Creation --------------\n");
+		case main_states::MAIN_CREATION:
+		{
+			LOG("Application Creation--------------\n");
 			App = new Application();
 			state = main_states::MAIN_START;
 		}	break;
 
 		//Initialitzation of the game systems
-		case main_states::MAIN_START: {
-			LOG("Application Start --------------\n");
-			if (App->Init() == false) {
-				LOG("Application Init exits with error -----\n");
+		case main_states::MAIN_START:
+		{
+			LOG("Application Start--------------\n");
+			if (App->Init() == false)
+			{
+				LOG("----- Application Init exits with error\n");
 				state = main_states::MAIN_EXIT;
 			}
-			else {
+			else
+			{
 				state = main_states::MAIN_UPDATE;
 			}
 		}	break;
 
 		//Game loop
-		case main_states::MAIN_UPDATE: {
+		case main_states::MAIN_UPDATE:
+		{
 			update_status status = App->Update();
 
-			if (status == update_status::UPDATE_ERROR){
-				LOG("Application Update exits with error -----\n");
+			if (status == update_status::UPDATE_ERROR)
+			{
+				LOG("----- Application Update exits with error\n");
 				state = main_states::MAIN_EXIT;
 			}
-			else if (status == update_status::UPDATE_STOP) {
+			else if (status == update_status::UPDATE_STOP)
+			{
 				state = main_states::MAIN_FINISH;
 			}
 		}	break;
@@ -88,7 +97,7 @@ int main(int argc, char** argv) {
 			}
 			else
 			{
-				LOG("Application CleanUp exits with error -----\n");
+				LOG("----- Application CleanUp exits with error\n");
 			}
 			state = main_states::MAIN_EXIT;
 		}

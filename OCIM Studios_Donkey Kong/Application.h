@@ -9,6 +9,10 @@
 
 class Module;
 
+class ModuleWindow;
+class ModuleRender;
+
+//App Class
 class Application
 {
 
@@ -16,6 +20,9 @@ public:
 
 	//Constructor. Creates all necessary modules for the application
 	Application();
+
+	//Destructor. Removes all module objects
+	~Application();
 
 
 
@@ -30,11 +37,21 @@ public:
 	//Releases all the application data
 	bool CleanUp();
 
+
 public:
 
 	//Modules Array, to execute the modules in order
 	Module* modules[NUM_MODULES];
 
+
+	//Declaration of each module
+
+	ModuleWindow* window = nullptr;
+	ModuleRender* render = nullptr;
+
 };
+
+// Global var made extern for Application
+extern Application* App;
 
 #endif // __APPLICATION_H__

@@ -1,15 +1,26 @@
 #include "Application.h"
 
 #include "Module.h"
-#include "Dummy.h"
-#include "DummyEsc.h"
-
+#include "ModuleWindow.h"
+#include "ModuleRender.h"
 
 //Allocates memory for each module in the Modules Array
 Application::Application()
 {
-	modules[0] = new ModuleDummy();
-	modules[1] = new ModuleDummyESC();
+	modules[0] = window = new ModuleWindow();
+	modules[1] = render = new ModuleRender();
+}
+
+//Destructor, frees dynamic memory
+Application::~Application()
+{
+	for (int i = 0; i < NUM_MODULES; ++i)
+	{
+		//Important: when deleting a pointer, set it to nullptr afterwards
+		//It allows us for null check in other parts of the code
+		delete modules[i];
+		modules[i] = nullptr;
+	}
 }
 
 // Initialize all modules
@@ -23,7 +34,6 @@ bool Application::Init()
 
 	return true;
 }
-
 
 //Update each module in the Modules Array and returns if there's an error
 update_status Application::Update()
@@ -50,7 +60,6 @@ update_status Application::Update()
 //Deletes dynamic memory of each module in the Module Array
 bool Application::CleanUp()
 {
-	// TODO 3: Make sure all modules have a chance to cleanup
 	bool ret = true;
 
 	//Calls the Clean Ups in the Module Array and stops if there's an error
@@ -58,9 +67,6 @@ bool Application::CleanUp()
 	{
 		//Error control
 		ret = modules[i]->CleanUp();
-
-		delete modules[i];
-		modules[i] = nullptr;
 	}
 
 	//Returns de clean up status
