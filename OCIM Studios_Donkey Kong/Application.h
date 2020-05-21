@@ -11,6 +11,9 @@ class Module;
 
 class ModuleWindow;
 class ModuleRender;
+class ModuleInput;
+class ModuleTextures;
+
 
 //App Class
 class Application
@@ -48,6 +51,8 @@ public:
 
 	ModuleWindow* window = nullptr;
 	ModuleRender* render = nullptr;
+	ModuleInput* input = nullptr;
+	ModuleTextures* textures = nullptr;
 
 };
 

@@ -6,7 +6,8 @@
 
 //Defines the Log
 
-#define LOG(txt) OutputDebugString(txt)
+#define LOG(format, ...) log(__FILE__, __LINE__, format, __VA_ARGS__);
+void log(const char file[], int line, const char* format, ...);
 
 
 #define EXIT_FAILURE 1
@@ -21,6 +22,9 @@ enum class update_status
 };
 
 
+// Useful typedefs
+typedef unsigned int uint;
+
 
 // Global Configuration
 
@@ -31,7 +35,7 @@ enum class update_status
 #define WIN_FULLSCREEN_DESKTOP 0
 #define WIN_BORDERLESS 0
 #define WIN_RESIZABLE 0
-#define REN_VSYNC 1
+#define VSYNC 1
 
 
 #endif // __GLOBALS_H__

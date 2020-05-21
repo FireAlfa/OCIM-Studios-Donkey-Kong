@@ -11,6 +11,9 @@
     <Filter Include="Source Files\Modules">
       <UniqueIdentifier>{c7645112-16d6-465d-b8e5-7fd77c71388f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Modules\Core">
+      <UniqueIdentifier>{c2fb74f7-6da9-4299-a28f-e14fc6746e27}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -20,13 +23,22 @@
       <Filter>Source Files\Applications</Filter>
     </ClCompile>
     <ClCompile Include="Module.cpp">
-      <Filter>Source Files\Modules</Filter>
+      <Filter>Source Files\Modules\Core</Filter>
     </ClCompile>
     <ClCompile Include="ModuleRender.cpp">
-      <Filter>Source Files\Modules</Filter>
+      <Filter>Source Files\Modules\Core</Filter>
     </ClCompile>
     <ClCompile Include="ModuleWindow.cpp">
-      <Filter>Source Files\Modules</Filter>
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Globals.cpp">
+      <Filter>Source Files\Applications</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleInput.cpp">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleTextures.cpp">
+      <Filter>Source Files\Modules\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -40,13 +52,19 @@
       <Filter>Source Files\Applications</Filter>
     </ClInclude>
     <ClInclude Include="Module.h">
-      <Filter>Source Files\Modules</Filter>
+      <Filter>Source Files\Modules\Core</Filter>
     </ClInclude>
     <ClInclude Include="ModuleRender.h">
-      <Filter>Source Files\Modules</Filter>
+      <Filter>Source Files\Modules\Core</Filter>
     </ClInclude>
     <ClInclude Include="ModuleWindow.h">
-      <Filter>Source Files\Modules</Filter>
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleInput.h">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleTextures.h">
+      <Filter>Source Files\Modules\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
