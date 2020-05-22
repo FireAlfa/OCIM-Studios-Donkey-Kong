@@ -76,7 +76,7 @@ bool ModuleWindow::Init()
 //Destroy Window subsystem
 bool ModuleWindow::CleanUp()
 {
-	LOG("Destroying SDL window and quitting all SDL systems");
+	LOG("Destroying SDL window and quitting all SDL systems--------\n");
 
 	//Destroy window
 	if (window != NULL)

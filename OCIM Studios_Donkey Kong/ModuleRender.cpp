@@ -1,10 +1,15 @@
 #include "ModuleRender.h"
 
 #include "Application.h"
+
 #include "ModuleWindow.h"
 #include "ModuleTextures.h"
+#include "ModuleInput.h"
 
-#include "SDL/include/SDL.h"
+#include "SDL/include/SDL_render.h"
+#include "SDL/include/SDL_scancode.h"
+
+
 
 //Constructor
 ModuleRender::ModuleRender()
@@ -50,18 +55,45 @@ bool ModuleRender::Init()
 	return ret;
 }
 
+// Called every draw update
+update_status ModuleRender::PreUpdate()
+{
+	//Set the color used for drawing operations
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+
+	//Clear rendering target
+	SDL_RenderClear(renderer);
+
+	return update_status::UPDATE_CONTINUE;
+}
+
+update_status ModuleRender::Update()
+{
+	//Handle positive vertical movement
+	if (App->input->keys[SDL_SCANCODE_UP] == KEY_REPEAT)
+		camera.y -= cameraSpeed;
+
+	//Handle negative vertical movement
+	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_REPEAT)
+		camera.y += cameraSpeed;
+
+	// TODO 1: Handle horizontal movement of the camera
+	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT)
+		camera.x -= cameraSpeed;
+	if (camera.x < 0) camera.x = 0;
+
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT)
+		camera.x += cameraSpeed;
+	if (camera.x > 1536) camera.x = 1536;
+
+
+	return update_status::UPDATE_CONTINUE;
+}
+
 //Paints the render on screen
 update_status ModuleRender::PostUpdate()
 {
-	//Square with the Screen Size
-	SDL_Rect screenRect{ 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
-
-	//Select the color to use in the next render
-	SDL_SetRenderDrawColor(renderer, 190, 0, 0, 255);
-	//Render a rectangle in the screen
-	SDL_RenderFillRect(renderer, &screenRect);
-
-	//Update screen with renderer content
+	//Update the screen
 	SDL_RenderPresent(renderer);
 
 	return update_status::UPDATE_CONTINUE;
@@ -70,7 +102,7 @@ update_status ModuleRender::PostUpdate()
 //Destroys the render subsystem
 bool ModuleRender::CleanUp()
 {
-	LOG("Destroying renderer");
+	LOG("Destroying renderer--------\n");
 
 	//Destroy the rendering context
 	if (renderer != nullptr)
@@ -81,10 +113,14 @@ bool ModuleRender::CleanUp()
 
 
 // Blit to screen
-bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
+bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed)
 {
 	bool ret = true;
-	SDL_Rect rect{ x, y, 0, 0 };
+
+	SDL_Rect rect{
+		(int)(-camera.x * speed) + x * SCREEN_SIZE,
+		(int)(-camera.y * speed) + y * SCREEN_SIZE,
+		0, 0 };
 
 	if (section != nullptr)
 	{
@@ -96,6 +132,9 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
 		//Collect the texture size into rect.w and rect.h variables
 		SDL_QueryTexture(texture, nullptr, nullptr, &rect.w, &rect.h);
 	}
+
+	rect.w *= SCREEN_SIZE;
+	rect.h *= SCREEN_SIZE;
 
 	if (SDL_RenderCopy(renderer, texture, section, &rect) != 0)
 	{

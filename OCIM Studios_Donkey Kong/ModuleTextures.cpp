@@ -19,7 +19,7 @@ ModuleTextures::~ModuleTextures()
 
 bool ModuleTextures::Init()
 {
-	LOG("Init Image library");
+	LOG("Init Image library--------\n");
 	bool ret = true;
 
 	// Load support for the PNG image format
@@ -38,7 +38,7 @@ bool ModuleTextures::Init()
 
 bool ModuleTextures::CleanUp()
 {
-	LOG("Freeing textures and Image library");
+	LOG("Freeing textures and Image library--------\n");
 
 	// TODO 6: Free all textures
 	for (uint i = 0; i < MAX_TEXTURES; ++i)
@@ -56,8 +56,7 @@ bool ModuleTextures::CleanUp()
 
 SDL_Texture* const ModuleTextures::Load(const char* path)
 {
-	// TODO 2: Load an SDL_Surface from a path (must be a png)
-	// and check for errors
+
 	SDL_Texture* texture = nullptr;
 	SDL_Surface* surface = IMG_Load(path);
 

@@ -4,15 +4,20 @@
 #include "Globals.h"
 
 //Total ammount of Modules
-#define NUM_MODULES 2
+#define NUM_MODULES 6
 
 
 class Module;
 
+
 class ModuleWindow;
-class ModuleRender;
 class ModuleInput;
 class ModuleTextures;
+
+class ModulePlayer;
+class SceneLevel4;
+
+class ModuleRender;
 
 
 //App Class
@@ -50,9 +55,13 @@ public:
 	//Declaration of each module
 
 	ModuleWindow* window = nullptr;
-	ModuleRender* render = nullptr;
 	ModuleInput* input = nullptr;
 	ModuleTextures* textures = nullptr;
+
+	ModulePlayer* player = nullptr;
+	SceneLevel4* lvl4 = nullptr;
+
+	ModuleRender* render = nullptr;
 
 };
 

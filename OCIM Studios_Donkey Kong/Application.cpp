@@ -5,6 +5,8 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
+#include "ModulePlayer.h"
+#include "SceneLevel4.h"
 
 //Allocates memory for each module in the Modules Array
 Application::Application()
@@ -15,7 +17,11 @@ Application::Application()
 	modules[0] = window = new ModuleWindow();
 	modules[1] = input = new ModuleInput();
 	modules[2] = textures = new ModuleTextures();
-	modules[1] = render = new ModuleRender();
+
+	modules[3] = lvl4 = new SceneLevel4();
+	modules[4] = player = new ModulePlayer();
+
+	modules[5] = render = new ModuleRender();
 }
 
 //Destructor, frees dynamic memory
@@ -33,11 +39,15 @@ Application::~Application()
 // Initialize all modules
 bool Application::Init()
 {
-	//Init() every module in the Modules Array
-	for (int i = 0; i < NUM_MODULES; ++i)
-	{
-		modules[i]->Init();
-	}
+	bool ret = true;
+
+	//Init all the modules in the Module Array
+	for (int i = 0; i < NUM_MODULES && ret; ++i)
+		ret = modules[i]->Init();
+
+	//By now we will consider that all modules are always active
+	for (int i = 0; i < NUM_MODULES && ret; ++i)
+		ret = modules[i]->Start();
 
 	return true;
 }

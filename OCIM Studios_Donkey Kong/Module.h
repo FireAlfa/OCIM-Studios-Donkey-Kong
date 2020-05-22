@@ -10,6 +10,10 @@ public:
 	//Called at the beginning of the application execution
 	virtual bool Init();
 
+	//Called when the module is activated
+	//By now we will consider all modules to be permanently active
+	virtual bool Start();
+
 
 	//Called at the beginning of each application loop
 	virtual update_status PreUpdate();

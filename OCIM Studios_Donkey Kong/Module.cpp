@@ -6,6 +6,12 @@ bool Module::Init()
 	return true;
 }
 
+//Start the Module (make it "visible/work")
+bool Module::Start()
+{
+	return true;
+}
+
 
 //Does the Pre Update routines of the Module
 update_status Module::PreUpdate()
