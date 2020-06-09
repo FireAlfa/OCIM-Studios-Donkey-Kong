@@ -4,7 +4,7 @@
 #include "Globals.h"
 
 //Total ammount of Modules
-#define NUM_MODULES 12
+#define NUM_MODULES 13
 
 
 class Module;
@@ -23,6 +23,7 @@ class ModuleEnemies;
 
 class ModuleCollisions;
 class ModuleFadeToBlack;
+class ModuleFonts;
 
 class ModuleRender;
 
@@ -76,6 +77,7 @@ public:
 
 	ModuleCollisions* collisions = nullptr;
 	ModuleFadeToBlack* fade = nullptr;
+	ModuleFonts* fonts = nullptr;
 
 	ModuleRender* render = nullptr;
 

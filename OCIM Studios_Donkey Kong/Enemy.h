@@ -32,6 +32,9 @@ public:
 	// Triggers an animation and a sound fx
 	virtual void OnCollision(Collider* collider);
 
+	// Sets flag for deletion and for the collider aswell
+	virtual void SetToDelete();
+
 public:
 	// The current position in the world
 	iPoint position;
@@ -41,6 +44,9 @@ public:
 
 	// Sound fx when destroyed
 	int destroyedFx = 0;
+
+	// A flag for the enemy removal. Important! We do not delete objects instantly
+	bool pendingToDelete = false;
 
 protected:
 	// A ptr to the current animation

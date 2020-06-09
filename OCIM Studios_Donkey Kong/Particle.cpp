@@ -57,3 +57,11 @@ bool Particle::Update()
 
 	return ret;
 }
+
+//Put particle in delete queue
+void Particle::SetToDelete()
+{
+	pendingToDelete = true;
+	if (collider != nullptr)
+		collider->pendingToDelete = true;
+}

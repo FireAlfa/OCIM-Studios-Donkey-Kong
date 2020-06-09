@@ -47,10 +47,10 @@ public:
 	// Param texture	- A valid SDL Texture, validation checks are not performed
 	// Param x,y		- Position x,y in the screen (upper left axis)
 	// Param section	- The portion of the texture we want to copy. nullptr for the entire texture
-	bool Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section = nullptr, float speed = 1.0f);
+	bool Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section = nullptr, float speed = 1.0f, bool useCamera = true);
 
 	//Draws a square
-	bool DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, float speed = 1.0f);
+	bool DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, float speed = 1.0f, bool useCamera = true);
 
 
 public:

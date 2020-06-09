@@ -66,6 +66,11 @@ bool SceneLevel4::Start()
 	//
 	//
 
+
+	//Enable modules
+	App->player->Enable();
+	App->enemies->Enable();
+
 	return ret;
 }
 

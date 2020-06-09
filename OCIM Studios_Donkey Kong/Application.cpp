@@ -15,6 +15,7 @@
 
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleFonts.h"
 #include "ModuleRender.h"
 
 
@@ -37,8 +38,9 @@ Application::Application()
 
 	modules[9] =	collisions =	new ModuleCollisions(true);
 	modules[10] =	fade =			new ModuleFadeToBlack(true);
+	modules[11] =	fonts =			new ModuleFonts(true);
 
-	modules[11] =	render =		new ModuleRender(true);
+	modules[12] =	render =		new ModuleRender(true);
 }
 
 //Destructor, frees dynamic memory
