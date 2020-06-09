@@ -7,7 +7,7 @@
 #pragma comment( lib, "SDL/libx86/SDL2.lib")
 
 
-ModuleWindow::ModuleWindow() : Module()
+ModuleWindow::ModuleWindow(bool startEnabled) : Module(startEnabled)
 {
 
 }
@@ -48,7 +48,7 @@ bool ModuleWindow::Init()
 			flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
 
 		//Creates the Window
-		window = SDL_CreateWindow("", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, flags);
+		window = SDL_CreateWindow("", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH * SCREEN_SIZE, SCREEN_HEIGHT * SCREEN_SIZE, flags);
 
 		//Window Error control
 		LOG("Window created successfully--------\n");

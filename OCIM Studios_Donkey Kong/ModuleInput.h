@@ -3,12 +3,13 @@
 
 #include "Module.h"
 #include "Globals.h"
+#include "SDL/include/SDL_scancode.h"
 
 //Max ammount of key presses the game registers
 #define MAX_KEYS 256
 
 //Controls the Key State
-enum KEY_STATE
+enum Key_State
 {
 	KEY_IDLE,
 	KEY_DOWN,
@@ -22,7 +23,7 @@ class ModuleInput : public Module
 {
 public:
 	// Constructor
-	ModuleInput();
+	ModuleInput(bool startEnabled);
 
 	// Destructor
 	~ModuleInput();
@@ -34,7 +35,7 @@ public:
 
 	// Called at the beginning of the application loop
 	// Updates all input data received from SDL
-	update_status PreUpdate() override;
+	Update_Status PreUpdate() override;
 
 	// Called on application exit.
 	// Uninitializes the SDL system for input detection
@@ -43,7 +44,7 @@ public:
 
 public:
 	// An array to fill in the state of all the keyboard keys
-	KEY_STATE keys[MAX_KEYS];
+	Key_State keys[MAX_KEYS] = { KEY_IDLE };
 };
 
 #endif // __ModuleInput_H__

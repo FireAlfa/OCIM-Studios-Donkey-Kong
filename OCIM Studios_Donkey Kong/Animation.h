@@ -39,7 +39,7 @@ public:
 	//Controls whether a loop has finished or not
 	bool HasFinished()
 	{
-		return !loop && loopCount > 0;
+		return !loop && !pingpong && loopCount > 0;
 	}
 
 	//Update the animation to change sprite

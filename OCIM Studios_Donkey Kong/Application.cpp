@@ -8,11 +8,13 @@
 #include "ModuleAudio.h"
 
 #include "ModulePlayer.h"
+#include "SceneIntro.h"
 #include "SceneLevel4.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 
 #include "ModuleCollisions.h"
+#include "ModuleFadeToBlack.h"
 #include "ModuleRender.h"
 
 
@@ -22,19 +24,21 @@ Application::Application()
 	// The order in which the modules are added is very important.
 	// It will define the order in which Pre/Update/Post will be called
 	// Render should always be last, as our last action should be updating the screen
-	modules[0] = window = new ModuleWindow();
-	modules[1] = input = new ModuleInput();
-	modules[2] = textures = new ModuleTextures();
-	modules[3] = audio = new ModuleAudio();
+	modules[0] =	window =		new ModuleWindow(true);
+	modules[1] =	input =			new ModuleInput(true);
+	modules[2] =	textures =		new ModuleTextures(true);
+	modules[3] =	audio =			new ModuleAudio(true);
 
-	modules[4] = lvl4 = new SceneLevel4();
-	modules[5] = player = new ModulePlayer();
-	modules[6] = particles = new ModuleParticles();
-	modules[7] = enemies = new ModuleEnemies();
+	modules[4] =	sceneIntro =	new SceneIntro(true);
+	modules[5] =	sceneLevel4 =	new SceneLevel4(false);
+	modules[6] =	player =		new ModulePlayer(false);
+	modules[7] =	particles =		new ModuleParticles(true);
+	modules[8] =	enemies =		new ModuleEnemies(false);
 
-	modules[8] = collisions = new ModuleCollisions();
+	modules[9] =	collisions =	new ModuleCollisions(true);
+	modules[10] =	fade =			new ModuleFadeToBlack(true);
 
-	modules[9] = render = new ModuleRender();
+	modules[11] =	render =		new ModuleRender(true);
 }
 
 //Destructor, frees dynamic memory
@@ -58,29 +62,29 @@ bool Application::Init()
 	for (int i = 0; i < NUM_MODULES && ret; ++i)
 		ret = modules[i]->Init();
 
-	//By now we will consider that all modules are always active
+	// Only active modules will be 'started'
 	for (int i = 0; i < NUM_MODULES && ret; ++i)
-		ret = modules[i]->Start();
+		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
 
 	return true;
 }
 
 //Update each module in the Modules Array and returns if there's an error
-update_status Application::Update()
+Update_Status Application::Update()
 {
 	//Error control
-	update_status ret = update_status::UPDATE_CONTINUE;
+	Update_Status ret = Update_Status::UPDATE_CONTINUE;
 
 	//Calls the PreUpdates in the Module Array and stops if there's an error
-	for (int i = 0; i < NUM_MODULES && ret == update_status::UPDATE_CONTINUE; ++i)
+	for (int i = 0; i < NUM_MODULES && ret == Update_Status::UPDATE_CONTINUE; ++i)
 		ret = modules[i]->PreUpdate();
 
 	//Calls the Updates in the Module Array and stops if there's an error
-	for (int i = 0; i < NUM_MODULES && ret == update_status::UPDATE_CONTINUE; ++i)
+	for (int i = 0; i < NUM_MODULES && ret == Update_Status::UPDATE_CONTINUE; ++i)
 		ret = modules[i]->Update();
 
 	//Calls the PostUpdates in the Module Array and stops if there's an error
-	for (int i = 0; i < NUM_MODULES && ret == update_status::UPDATE_CONTINUE; ++i)
+	for (int i = 0; i < NUM_MODULES && ret == Update_Status::UPDATE_CONTINUE; ++i)
 		ret = modules[i]->PostUpdate();
 
 	//Returns the update status

@@ -45,5 +45,6 @@ void Enemy::Draw()
 //Control the collisions between the enemy and other colliders
 void Enemy::OnCollision(Collider* collider)
 {
-
+	/*App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+	App->audio->PlayFx(destroyedFx);*/
 }

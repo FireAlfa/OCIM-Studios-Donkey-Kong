@@ -16,6 +16,10 @@ public:
 	// Copy constructor
 	Particle(const Particle& p);
 
+	//Destructor
+	~Particle();
+
+
 	// Called in ModuleParticles' Update
 	// Handles the logic of the particle
 	// Returns false when the particle reaches its lifetime

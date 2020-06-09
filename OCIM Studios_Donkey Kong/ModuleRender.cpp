@@ -12,7 +12,7 @@
 
 
 //Constructor
-ModuleRender::ModuleRender()
+ModuleRender::ModuleRender(bool startEnabled) : Module(startEnabled)
 {
 
 }
@@ -56,7 +56,7 @@ bool ModuleRender::Init()
 }
 
 // Called every draw update
-update_status ModuleRender::PreUpdate()
+Update_Status ModuleRender::PreUpdate()
 {
 	//Set the color used for drawing operations
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -64,10 +64,10 @@ update_status ModuleRender::PreUpdate()
 	//Clear rendering target
 	SDL_RenderClear(renderer);
 
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
-update_status ModuleRender::Update()
+Update_Status ModuleRender::Update()
 {
 	//Handle positive vertical movement
 	if (App->input->keys[SDL_SCANCODE_UP] == KEY_REPEAT)
@@ -88,16 +88,16 @@ update_status ModuleRender::Update()
 	if (camera.x > 1536) camera.x = 1536;
 
 
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 //Paints the render on screen
-update_status ModuleRender::PostUpdate()
+Update_Status ModuleRender::PostUpdate()
 {
 	//Update the screen
 	SDL_RenderPresent(renderer);
 
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 //Destroys the render subsystem

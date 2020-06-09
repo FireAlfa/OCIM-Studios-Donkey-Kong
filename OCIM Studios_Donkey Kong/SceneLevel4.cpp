@@ -3,12 +3,14 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
+#include "ModuleAudio.h"
+#include "ModuleCollisions.h"
 
-
+#include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 
 
-SceneLevel4::SceneLevel4()
+SceneLevel4::SceneLevel4(bool startEnabled) : Module(startEnabled)
 {
 	//
 	//
@@ -68,7 +70,7 @@ bool SceneLevel4::Start()
 }
 
 //Draw the animations
-update_status SceneLevel4::Update()
+Update_Status SceneLevel4::Update()
 {
 	//
 	//
@@ -78,12 +80,12 @@ update_status SceneLevel4::Update()
 	//
 	//
 
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 
 // Update: draw background
-update_status SceneLevel4::PostUpdate()
+Update_Status SceneLevel4::PostUpdate()
 {
 	// Draw everything --------------------------------------
 
@@ -95,13 +97,19 @@ update_status SceneLevel4::PostUpdate()
 	//
 	//
 
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 //Disable modules related to the Scene
 bool SceneLevel4::CleanUp()
 {
-	//App->player->Disable();
+	//Disable modules
+	App->player->Disable();
+	App->enemies->Disable();
+
+	//Remove memory leaks
+	App->textures->CleanUp();
+	App->collisions->CleanUp();
 
 	return true;
 }

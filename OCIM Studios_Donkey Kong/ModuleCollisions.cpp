@@ -7,7 +7,7 @@
 #include "SDL/include/SDL_Scancode.h"
 
 //Collisions constructor
-ModuleCollisions::ModuleCollisions()
+ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 {
 	//Init colliders array to nullptr
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
@@ -29,7 +29,7 @@ ModuleCollisions::~ModuleCollisions()
 }
 
 //PreUpdate the collisions
-update_status ModuleCollisions::PreUpdate()
+Update_Status ModuleCollisions::PreUpdate()
 {
 	// Remove all colliders scheduled for deletion
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
@@ -72,25 +72,25 @@ update_status ModuleCollisions::PreUpdate()
 		}
 	}
 
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 //Check if you want to Debug
-update_status ModuleCollisions::Update()
+Update_Status ModuleCollisions::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN)
 		debug = !debug;
 
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 //Draw the Debug squares
-update_status ModuleCollisions::PostUpdate()
+Update_Status ModuleCollisions::PostUpdate()
 {
 	if (debug)
 		DebugDraw();
 
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 //Draw the squares for each collider

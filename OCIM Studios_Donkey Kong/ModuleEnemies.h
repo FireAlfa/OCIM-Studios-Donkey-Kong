@@ -7,7 +7,7 @@
 #define MAX_ENEMIES 10
 
 
-enum class ENEMY_TYPE
+enum class Enemy_Type
 {
 	NO_TYPE,
 
@@ -23,7 +23,7 @@ enum class ENEMY_TYPE
 //struct that controls enemy spawn point
 struct EnemySpawnpoint
 {
-	ENEMY_TYPE type = ENEMY_TYPE::NO_TYPE;
+	Enemy_Type type = Enemy_Type::NO_TYPE;
 	int x, y;
 };
 
@@ -35,7 +35,7 @@ class ModuleEnemies : public Module
 {
 public:
 	// Constructor
-	ModuleEnemies();
+	ModuleEnemies(bool startEnabled);
 
 	// Destructor
 	~ModuleEnemies();
@@ -47,11 +47,11 @@ public:
 
 	// Called at the middle of the application loop
 	// Handles all enemies logic and spawning/despawning
-	update_status Update() override;
+	Update_Status Update() override;
 
 	// Called at the end of the application loop
 	// Iterates all the enemies and draws them
-	update_status PostUpdate() override;
+	Update_Status PostUpdate() override;
 
 	// Called on application exit
 	// Destroys all active enemies left in the array
@@ -64,7 +64,7 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 	// Add an enemy into the queue to be spawned later
-	bool AddEnemy(ENEMY_TYPE type, int x, int y);
+	bool AddEnemy(Enemy_Type type, int x, int y);
 
 	// Iterates the queue and checks for camera position
 	void HandleEnemiesSpawn();

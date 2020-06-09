@@ -16,7 +16,7 @@
 
 
 //Main states for the loop
-enum class main_states {
+enum class Main_States {
 	MAIN_CREATION,
 	MAIN_START,
 	MAIN_UPDATE,
@@ -39,56 +39,56 @@ int main(int argc, char** argv)
 	int main_return = EXIT_FAILURE;
 
 	//Variable to know the current Main state
-	main_states state = main_states::MAIN_CREATION;
+	Main_States state = Main_States::MAIN_CREATION;
 
 
 	//Main loop
-	while (state != main_states::MAIN_EXIT)
+	while (state != Main_States::MAIN_EXIT)
 	{
 		switch (state)
 		{
 
 		//Creation of the Dynamic Memory for the App
-		case main_states::MAIN_CREATION:
+		case Main_States::MAIN_CREATION:
 		{
 			LOG("Application Creation--------------\n");
 			App = new Application();
-			state = main_states::MAIN_START;
+			state = Main_States::MAIN_START;
 		}	break;
 
 		//Initialitzation of the game systems
-		case main_states::MAIN_START:
+		case Main_States::MAIN_START:
 		{
 			LOG("Application Start--------------\n");
 			if (App->Init() == false)
 			{
 				LOG("----- Application Init exits with error\n");
-				state = main_states::MAIN_EXIT;
+				state = Main_States::MAIN_EXIT;
 			}
 			else
 			{
-				state = main_states::MAIN_UPDATE;
+				state = Main_States::MAIN_UPDATE;
 			}
 		}	break;
 
 		//Game loop
-		case main_states::MAIN_UPDATE:
+		case Main_States::MAIN_UPDATE:
 		{
-			update_status status = App->Update();
+			Update_Status status = App->Update();
 
-			if (status == update_status::UPDATE_ERROR)
+			if (status == Update_Status::UPDATE_ERROR)
 			{
 				LOG("----- Application Update exits with error\n");
-				state = main_states::MAIN_EXIT;
+				state = Main_States::MAIN_EXIT;
 			}
-			else if (status == update_status::UPDATE_STOP)
+			else if (status == Update_Status::UPDATE_STOP)
 			{
-				state = main_states::MAIN_FINISH;
+				state = Main_States::MAIN_FINISH;
 			}
 		}	break;
 
 		//Clean up all the game systems
-		case main_states::MAIN_FINISH:
+		case Main_States::MAIN_FINISH:
 		{
 			LOG("Application Finish--------------\n");
 			if (App->CleanUp() == true)
@@ -99,7 +99,7 @@ int main(int argc, char** argv)
 			{
 				LOG("----- Application CleanUp exits with error\n");
 			}
-			state = main_states::MAIN_EXIT;
+			state = Main_States::MAIN_EXIT;
 		}
 		}
 	}

@@ -1,5 +1,11 @@
 #include "Module.h"
 
+//Constructors looks if the Module is enabled
+Module::Module(bool startEnabled) : isEnabled(startEnabled)
+{
+
+}
+
 //Initialize the Module
 bool Module::Init()
 {
@@ -14,21 +20,21 @@ bool Module::Start()
 
 
 //Does the Pre Update routines of the Module
-update_status Module::PreUpdate()
+Update_Status Module::PreUpdate()
 {
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 //Does the Update routines of the Module
-update_status Module::Update()
+Update_Status Module::Update()
 {
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 //Does the Post Update routines of the Module
-update_status Module::PostUpdate()
+Update_Status Module::PostUpdate()
 {
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 
@@ -42,4 +48,25 @@ bool Module::CleanUp()
 void Module::OnCollision(Collider* c1, Collider* c2)
 {
 
+}
+
+//Enables the Module
+void Module::Enable()
+{
+	if (!isEnabled)
+	{
+		isEnabled = true;
+		Start();
+	}
+}
+
+//Disables the Module
+void Module::Disable()
+{
+	// TODO 0: Call CleanUp() for disabling a module
+	if (isEnabled)
+	{
+		isEnabled = false;
+		CleanUp();
+	}
 }

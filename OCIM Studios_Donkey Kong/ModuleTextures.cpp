@@ -7,7 +7,7 @@
 #include "SDL_image/include/SDL_image.h"
 #pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
 
-ModuleTextures::ModuleTextures() : Module()
+ModuleTextures::ModuleTextures(bool startEnabled) : Module(startEnabled)
 {
 	// TODO 5: Initialize all texture pointers to nullptr
 	for (uint i = 0; i < MAX_TEXTURES; ++i)
@@ -54,6 +54,7 @@ bool ModuleTextures::CleanUp()
 	return true;
 }
 
+//Load a texture
 SDL_Texture* const ModuleTextures::Load(const char* path)
 {
 
@@ -91,4 +92,26 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 	}
 
 	return texture;
+}
+
+//Unload a texture
+bool ModuleTextures::Unload(SDL_Texture* texture)
+{
+	bool ret = false;
+
+	if (texture != nullptr)
+	{
+		for (int i = 0; i < MAX_TEXTURES; ++i)
+		{
+			if (textures[i] == texture)
+			{
+				textures[i] = nullptr;
+				ret = true;
+				break;
+			}
+		}
+		SDL_DestroyTexture(texture);
+	}
+
+	return ret;
 }

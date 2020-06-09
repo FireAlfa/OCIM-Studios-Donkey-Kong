@@ -4,11 +4,12 @@
 
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
+#include "ModuleCollisions.h"
 
 #include "SDL/include/SDL_timer.h"
 
 //Constructor initializes the array of particles to nullptr
-ModuleParticles::ModuleParticles()
+ModuleParticles::ModuleParticles(bool startEnabled) : Module(startEnabled)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		particles[i] = nullptr;
@@ -78,7 +79,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 }
 
 //Update the particle
-update_status ModuleParticles::Update()
+Update_Status ModuleParticles::Update()
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -94,11 +95,11 @@ update_status ModuleParticles::Update()
 		}
 	}
 
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 //Draws active particles
-update_status ModuleParticles::PostUpdate()
+Update_Status ModuleParticles::PostUpdate()
 {
 	//Iterating all particle array and drawing any active particles
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -111,18 +112,29 @@ update_status ModuleParticles::PostUpdate()
 		}
 	}
 
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 //Adds a new particle
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, uint delay)
+void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
 {
-	Particle* p = new Particle(particle);
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		//Finding an empty slot for a new particle
+		if (particles[i] == nullptr)
+		{
+			Particle* p = new Particle(particle);
 
-	p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
-	p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
-	p->position.y = y;
+			p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
+			p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
+			p->position.y = y;
 
-	particles[lastParticle++] = p;
-	lastParticle %= MAX_ACTIVE_PARTICLES;
+			//Adding the particle's collider
+			if (colliderType != Collider::Type::NONE)
+				p->collider = App->collisions->AddCollider(p->anim.GetCurrentFrame(), colliderType, this);
+
+			particles[i] = p;
+			break;
+		}
+	}
 }

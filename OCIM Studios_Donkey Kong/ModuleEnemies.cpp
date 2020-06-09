@@ -19,7 +19,7 @@
 
 
 //Constructor inits enemy array to nullptr
-ModuleEnemies::ModuleEnemies()
+ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled)
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
@@ -54,7 +54,7 @@ bool ModuleEnemies::Start()
 }
 
 //Control spawn, update enemy, control despawn
-update_status ModuleEnemies::Update()
+Update_Status ModuleEnemies::Update()
 {
 	HandleEnemiesSpawn();
 
@@ -66,11 +66,11 @@ update_status ModuleEnemies::Update()
 
 	HandleEnemiesDespawn();
 
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 //Draw the enemies
-update_status ModuleEnemies::PostUpdate()
+Update_Status ModuleEnemies::PostUpdate()
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
@@ -78,7 +78,7 @@ update_status ModuleEnemies::PostUpdate()
 			enemies[i]->Draw();
 	}
 
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 // Called before quitting
@@ -99,13 +99,13 @@ bool ModuleEnemies::CleanUp()
 }
 
 //Add an enemy to the queue
-bool ModuleEnemies::AddEnemy(ENEMY_TYPE type, int x, int y)
+bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
 {
 	bool ret = false;
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (spawnQueue[i].type == ENEMY_TYPE::NO_TYPE)
+		if (spawnQueue[i].type == Enemy_Type::NO_TYPE)
 		{
 			spawnQueue[i].type = type;
 			spawnQueue[i].x = x;
@@ -124,7 +124,7 @@ void ModuleEnemies::HandleEnemiesSpawn()
 	// Iterate all the enemies queue
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (spawnQueue[i].type != ENEMY_TYPE::NO_TYPE)
+		if (spawnQueue[i].type != Enemy_Type::NO_TYPE)
 		{
 			// Spawn a new enemy if the screen has reached a spawn position
 			if (spawnQueue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
@@ -132,7 +132,7 @@ void ModuleEnemies::HandleEnemiesSpawn()
 				LOG("Spawning enemy at %d", spawnQueue[i].x * SCREEN_SIZE);
 
 				SpawnEnemy(spawnQueue[i]);
-				spawnQueue[i].type = ENEMY_TYPE::NO_TYPE; // Removing the newly spawned enemy from the queue
+				spawnQueue[i].type = Enemy_Type::NO_TYPE; // Removing the newly spawned enemy from the queue
 			}
 		}
 	}
@@ -168,7 +168,7 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 		{
 			switch (info.type)
 			{
-			/*case ENEMY_TYPE::REDBIRD:
+			/*case Enemy_Type::REDBIRD:
 				enemies[i] = new Enemy_RedBird(info.x, info.y);
 				break;*/
 				

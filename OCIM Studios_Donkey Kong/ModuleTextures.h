@@ -12,7 +12,7 @@ class ModuleTextures : public Module
 {
 public:
 	//Constructor
-	ModuleTextures();
+	ModuleTextures(bool startEnabled);
 	//Destructor
 	~ModuleTextures();
 
@@ -33,9 +33,13 @@ public:
 	// Returns nullptr if the texture could not be created
 	SDL_Texture* const Load(const char* path);
 
+	// Removes the memory from SDL_Texture and removes it from the array
+	bool Unload(SDL_Texture* texture);
 
 public:
-	SDL_Texture* textures[MAX_TEXTURES];
+	// An array of all the loaded textures
+	// Allows us to keep track of all textures and free them on application exit
+	SDL_Texture* textures[MAX_TEXTURES] = { nullptr };
 };
 
 #endif // __ModuleTextures_H__

@@ -15,7 +15,7 @@
 
 
 
-ModulePlayer::ModulePlayer()
+ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
 	//
 	//
@@ -66,7 +66,7 @@ bool ModulePlayer::Start()
 }
 
 //Main player Update
-update_status ModulePlayer::Update()
+Update_Status ModulePlayer::Update()
 {
 	//
 	//
@@ -76,11 +76,11 @@ update_status ModulePlayer::Update()
 	//
 	//
 
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 //Post Update
-update_status ModulePlayer::PostUpdate()
+Update_Status ModulePlayer::PostUpdate()
 {
 	if (!destroyed)
 	{
@@ -89,7 +89,7 @@ update_status ModulePlayer::PostUpdate()
 		App->render->Blit(playerTexture, position.x, position.y, &rect);
 	}
 
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 //Controls what the player does when it collides with another collider

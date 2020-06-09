@@ -4,7 +4,7 @@
 #include "Globals.h"
 
 //Total ammount of Modules
-#define NUM_MODULES 10
+#define NUM_MODULES 12
 
 
 class Module;
@@ -16,11 +16,13 @@ class ModuleTextures;
 class ModuleAudio;
 
 class ModulePlayer;
+class SceneIntro;
 class SceneLevel4;
 class ModuleParticles;
 class ModuleEnemies;
 
 class ModuleCollisions;
+class ModuleFadeToBlack;
 
 class ModuleRender;
 
@@ -44,7 +46,7 @@ public:
 
 
 	//Updates all modules (PreUpdate, Update and PostUpdate)
-	update_status Update();
+	Update_Status Update();
 
 
 	//Releases all the application data
@@ -65,11 +67,15 @@ public:
 	ModuleAudio* audio = nullptr;
 
 	ModulePlayer* player = nullptr;
-	SceneLevel4* lvl4 = nullptr;
-	ModuleParticles* particles = nullptr;
+
+	SceneIntro* sceneIntro = nullptr;
+	SceneLevel4* sceneLevel4 = nullptr;
+
 	ModuleEnemies* enemies = nullptr;
+	ModuleParticles* particles = nullptr;
 
 	ModuleCollisions* collisions = nullptr;
+	ModuleFadeToBlack* fade = nullptr;
 
 	ModuleRender* render = nullptr;
 

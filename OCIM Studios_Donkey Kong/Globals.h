@@ -14,7 +14,7 @@ void log(const char file[], int line, const char* format, ...);
 #define EXIT_SUCCESS 0
 
 
-enum class update_status
+enum class Update_Status
 {
 	UPDATE_CONTINUE = 1,
 	UPDATE_STOP,
