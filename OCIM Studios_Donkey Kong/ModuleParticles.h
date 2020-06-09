@@ -5,10 +5,12 @@
 
 #include "Globals.h"
 #include "Particle.h"
+#include "Collider.h"
 
 #define MAX_ACTIVE_PARTICLES 100
 
 struct SDL_Texture;
+struct SDL_Collider;
 
 class ModuleParticles : public Module
 {
@@ -19,6 +21,7 @@ public:
 
 	//Destructor
 	~ModuleParticles();
+
 
 	// Called when the module is activated
 	// Loads the necessary textures for the particles
@@ -36,6 +39,10 @@ public:
 	// Called on application exit
 	// Destroys all active particles left in the array
 	bool CleanUp() override;
+
+
+	// Called when a particle collider hits another collider
+	void OnCollision(Collider* c1, Collider* c2) override;
 
 	// Creates a new particle and adds it to the array
 	// Param particle	- A template particle from which the new particle will be created

@@ -3,6 +3,9 @@
 
 #include "Globals.h"
 
+
+struct Collider;
+
 //Father class for each module with all the virtual 
 class Module
 {
@@ -27,6 +30,10 @@ public:
 
 	//Called at the end of the application
 	virtual bool CleanUp();
+
+	//Called when two colliders are intersecting
+	//and the module is registered as the listener
+	virtual void OnCollision(Collider* c1, Collider* c2);
 };
 
 #endif // __MODULE_H__

@@ -1,13 +1,19 @@
 #include "Application.h"
 
 #include "Module.h"
+
 #include "ModuleWindow.h"
-#include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
+#include "ModuleAudio.h"
+
 #include "ModulePlayer.h"
-#include "ModuleParticles.h"
 #include "SceneLevel4.h"
+
+#include "ModuleParticles.h"
+#include "ModuleCollisions.h"
+#include "ModuleRender.h"
+
 
 //Allocates memory for each module in the Modules Array
 Application::Application()
@@ -18,12 +24,15 @@ Application::Application()
 	modules[0] = window = new ModuleWindow();
 	modules[1] = input = new ModuleInput();
 	modules[2] = textures = new ModuleTextures();
+	modules[3] = audio = new ModuleAudio();
 
-	modules[3] = lvl4 = new SceneLevel4();
-	modules[4] = player = new ModulePlayer();
+	modules[4] = lvl4 = new SceneLevel4();
+	modules[5] = player = new ModulePlayer();
 
-	modules[5] = particles = new ModuleParticles();
-	modules[6] = render = new ModuleRender();
+	modules[6] = particles = new ModuleParticles();
+	modules[7] = collisions = new ModuleCollisions();
+
+	modules[8] = render = new ModuleRender();
 }
 
 //Destructor, frees dynamic memory

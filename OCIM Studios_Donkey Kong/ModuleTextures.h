@@ -26,6 +26,8 @@ public:
 	// Uninitializes the SDL_Image library
 	bool CleanUp() override;
 
+
+
 	// Loads a new SDL_Texture from a file path
 	// First creates an SDL_Surface, then converts it into SDL_Texture
 	// Returns nullptr if the texture could not be created

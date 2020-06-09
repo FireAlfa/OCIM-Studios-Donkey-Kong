@@ -37,3 +37,9 @@ bool Module::CleanUp()
 {
 	return true;
 }
+
+//Controls the collisions of a Module
+void Module::OnCollision(Collider* c1, Collider* c2)
+{
+
+}

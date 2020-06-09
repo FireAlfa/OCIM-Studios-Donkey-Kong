@@ -24,6 +24,8 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles--------\n");
 
+	texture = App->textures->Load("Assets/Sprites/particles.png");
+
 	//
 	//
 	//
@@ -50,6 +52,21 @@ bool ModuleParticles::CleanUp()
 	}
 
 	return true;
+}
+
+//Controls the collision between particles
+void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
+{
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		// Always destroy particles that collide
+		if (particles[i] != nullptr && particles[i]->collider == c1)
+		{
+			delete particles[i];
+			particles[i] = nullptr;
+			break;
+		}
+	}
 }
 
 //Update the particle
@@ -82,7 +99,7 @@ update_status ModuleParticles::PostUpdate()
 
 		if (particle != nullptr && particle->isAlive)
 		{
-			App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			//App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 		}
 	}
 

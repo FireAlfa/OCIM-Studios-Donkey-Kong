@@ -1,13 +1,19 @@
 #include "ModulePlayer.h"
 
 #include "Application.h"
+
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
+#include "ModuleParticles.h"
+#include "ModuleAudio.h"
+#include "ModuleCollisions.h"
+
 #include "ModuleRender.h"
+
 
 #include "SDL/include/SDL_scancode.h"
 
-// Street Fighter reference at https://www.youtube.com/watch?v=OEhmUuehGOA
+
 
 ModulePlayer::ModulePlayer()
 {
@@ -51,6 +57,7 @@ bool ModulePlayer::Start()
 	return ret;
 }
 
+//Main player Update
 update_status ModulePlayer::Update()
 {
 	//
@@ -64,13 +71,27 @@ update_status ModulePlayer::Update()
 	return update_status::UPDATE_CONTINUE;
 }
 
+//Post Update
 update_status ModulePlayer::PostUpdate()
 {
 	if (!destroyed)
 	{
-		SDL_Rect rect = currentAnimation->GetCurrentFrame();
+		//SDL_Rect rect = currentAnimation->GetCurrentFrame();
+		SDL_Rect rect = { 0, 0, 32, 32 };
 		App->render->Blit(playerTexture, position.x, position.y, &rect);
 	}
 
 	return update_status::UPDATE_CONTINUE;
+}
+
+//Controls what the player does when it collides with another collider
+void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
+{
+	//
+	//
+	//
+	//Collision control
+	//
+	//
+	//
 }

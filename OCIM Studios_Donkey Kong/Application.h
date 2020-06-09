@@ -13,11 +13,14 @@ class Module;
 class ModuleWindow;
 class ModuleInput;
 class ModuleTextures;
+class ModuleAudio;
 
 class ModulePlayer;
 class SceneLevel4;
 
 class ModuleParticles;
+class ModuleCollisions;
+
 class ModuleRender;
 
 
@@ -58,11 +61,14 @@ public:
 	ModuleWindow* window = nullptr;
 	ModuleInput* input = nullptr;
 	ModuleTextures* textures = nullptr;
+	ModuleAudio* audio = nullptr;
 
 	ModulePlayer* player = nullptr;
 	SceneLevel4* lvl4 = nullptr;
 
 	ModuleParticles* particles = nullptr;
+	ModuleCollisions* collisions = nullptr;
+
 	ModuleRender* render = nullptr;
 
 };

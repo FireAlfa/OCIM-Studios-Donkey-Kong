@@ -90,7 +90,7 @@ int main(int argc, char** argv)
 		//Clean up all the game systems
 		case main_states::MAIN_FINISH:
 		{
-			LOG("Application Finish --------------\n");
+			LOG("Application Finish--------------\n");
 			if (App->CleanUp() == true)
 			{
 				main_return = EXIT_SUCCESS;

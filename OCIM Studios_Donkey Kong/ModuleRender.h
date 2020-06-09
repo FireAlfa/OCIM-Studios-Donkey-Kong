@@ -24,7 +24,6 @@ public:
 	// Creates the rendering context using the program's window.
 	bool Init() override;
 
-
 	// Called at the beginning of the application loop
 	// Clears the rendering context to a background color
 	update_status PreUpdate() override;
@@ -42,11 +41,16 @@ public:
 	// Destroys the rendering context
 	bool CleanUp() override;
 
+
+
 	// Prints a texture to the rendering context.
 	// Param texture	- A valid SDL Texture, validation checks are not performed
 	// Param x,y		- Position x,y in the screen (upper left axis)
 	// Param section	- The portion of the texture we want to copy. nullptr for the entire texture
 	bool Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section = nullptr, float speed = 1.0f);
+
+	//Draws a square
+	bool DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, float speed = 1.0f);
 
 
 public:

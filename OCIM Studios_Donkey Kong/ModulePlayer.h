@@ -6,6 +6,7 @@
 #include "p2Point.h"
 
 struct SDL_Texture;
+struct Collider;
 
 //Player Class
 class ModulePlayer : public Module
@@ -16,6 +17,7 @@ public:
 
 	// Destructor
 	~ModulePlayer();
+
 
 	// Called when the module is activated
 	// Loads the necessary textures for the player
@@ -29,6 +31,9 @@ public:
 	// Performs the render call of the player sprite
 	update_status PostUpdate() override;
 
+
+	// Collision callback, called when the player intersects with another collider
+	void OnCollision(Collider* c1, Collider* c2) override;
 
 public:
 	// Position of the player in the map
