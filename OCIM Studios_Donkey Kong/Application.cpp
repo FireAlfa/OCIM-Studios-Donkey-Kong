@@ -9,8 +9,9 @@
 
 #include "ModulePlayer.h"
 #include "SceneLevel4.h"
-
 #include "ModuleParticles.h"
+#include "ModuleEnemies.h"
+
 #include "ModuleCollisions.h"
 #include "ModuleRender.h"
 
@@ -28,11 +29,12 @@ Application::Application()
 
 	modules[4] = lvl4 = new SceneLevel4();
 	modules[5] = player = new ModulePlayer();
-
 	modules[6] = particles = new ModuleParticles();
-	modules[7] = collisions = new ModuleCollisions();
+	modules[7] = enemies = new ModuleEnemies();
 
-	modules[8] = render = new ModuleRender();
+	modules[8] = collisions = new ModuleCollisions();
+
+	modules[9] = render = new ModuleRender();
 }
 
 //Destructor, frees dynamic memory

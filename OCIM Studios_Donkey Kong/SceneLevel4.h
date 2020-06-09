@@ -39,6 +39,8 @@ public:
 	//
 	//
 	//
+
+	/*SDL_Texture* bgTexture = nullptr; <--Example*/
 };
 
 #endif

@@ -13,10 +13,14 @@ public:
 	float speed = 1.0f;
 	SDL_Rect frames[MAX_FRAMES];
 
+	// Allows the animation to keep going back and forth
+	bool pingpong = false;
+
 private:
 	float currentFrame = 0.0f;
 	int totalFrames = 0;
 	int loopCount = 0;
+	int pingpongDirection = 1;
 
 public:
 
@@ -46,13 +50,20 @@ public:
 		{
 			currentFrame = (loop) ? 0.0f : totalFrames - 1;
 			++loopCount;
+
+			if (pingpong)
+				pingpongDirection = -pingpongDirection;
 		}
 	}
 
 	//Returns the square of the current frame
 	SDL_Rect& GetCurrentFrame()
 	{
-		return frames[(int)currentFrame];
+		int actualFrame = currentFrame;
+		if (pingpongDirection == -1)
+			actualFrame = totalFrames - currentFrame;
+
+		return frames[actualFrame];
 	}
 };
 

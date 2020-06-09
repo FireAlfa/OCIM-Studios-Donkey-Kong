@@ -14,7 +14,14 @@ SceneLevel4::SceneLevel4()
 	//
 	//
 	//Set position for textures
-	//Animation texture pushbacks
+	//
+	//
+	//
+
+	//
+	//
+	//
+	//Scene 4 Animation pushbacks
 	//
 	//
 	//
@@ -41,7 +48,6 @@ bool SceneLevel4::Start()
 	//
 	//
 
-
 	//
 	//
 	//
@@ -50,6 +56,13 @@ bool SceneLevel4::Start()
 	//
 	//
 
+	//
+	//
+	//
+	//Add enemies
+	//
+	//
+	//
 
 	return ret;
 }
