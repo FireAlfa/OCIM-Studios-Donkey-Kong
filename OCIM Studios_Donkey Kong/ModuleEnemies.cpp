@@ -53,6 +53,22 @@ bool ModuleEnemies::Start()
 	return true;
 }
 
+//Removes enemies scheduled for deletion
+Update_Status ModuleEnemies::PreUpdate()
+{
+	// Remove all enemies scheduled for deletion
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr && enemies[i]->pendingToDelete)
+		{
+			delete enemies[i];
+			enemies[i] = nullptr;
+		}
+	}
+
+	return Update_Status::UPDATE_CONTINUE;
+}
+
 //Control spawn, update enemy, control despawn
 Update_Status ModuleEnemies::Update()
 {
@@ -196,8 +212,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		{
 			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
 
-			delete enemies[i];
-			enemies[i] = nullptr;
+			/*delete enemies[i];
+			enemies[i] = nullptr;*/
 			break;
 		}
 	}

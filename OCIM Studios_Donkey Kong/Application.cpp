@@ -79,15 +79,15 @@ Update_Status Application::Update()
 
 	//Calls the PreUpdates in the Module Array and stops if there's an error
 	for (int i = 0; i < NUM_MODULES && ret == Update_Status::UPDATE_CONTINUE; ++i)
-		ret = modules[i]->PreUpdate();
+		ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate() : Update_Status::UPDATE_CONTINUE;
 
 	//Calls the Updates in the Module Array and stops if there's an error
 	for (int i = 0; i < NUM_MODULES && ret == Update_Status::UPDATE_CONTINUE; ++i)
-		ret = modules[i]->Update();
+		ret = modules[i]->IsEnabled() ? modules[i]->Update() : Update_Status::UPDATE_CONTINUE;
 
 	//Calls the PostUpdates in the Module Array and stops if there's an error
 	for (int i = 0; i < NUM_MODULES && ret == Update_Status::UPDATE_CONTINUE; ++i)
-		ret = modules[i]->PostUpdate();
+		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : Update_Status::UPDATE_CONTINUE;
 
 	//Returns the update status
 	return ret;
@@ -98,12 +98,9 @@ bool Application::CleanUp()
 {
 	bool ret = true;
 
-	//Calls the Clean Ups in the Module Array and stops if there's an error
+	//Calls the Clean Ups in the Module Array
 	for (int i = NUM_MODULES - 1; i >= 0 && ret; --i)
-	{
-		//Error control
-		ret = modules[i]->CleanUp();
-	}
+		ret = modules[i]->IsEnabled() ? modules[i]->CleanUp() : true;
 
 	//Returns de clean up status
 	return ret;

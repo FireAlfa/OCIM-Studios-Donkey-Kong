@@ -46,6 +46,21 @@ bool ModuleParticles::Start()
 	return true;
 }
 
+Update_Status ModuleParticles::PreUpdate()
+{
+	// Remove all particles scheduled for deletion
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		if (particles[i] != nullptr && particles[i]->pendingToDelete)
+		{
+			delete particles[i];
+			particles[i] = nullptr;
+		}
+	}
+
+	return Update_Status::UPDATE_CONTINUE;
+}
+
 bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles--------\n");
@@ -108,7 +123,7 @@ Update_Status ModuleParticles::PostUpdate()
 
 		if (particle != nullptr && particle->isAlive)
 		{
-			//App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 		}
 	}
 
