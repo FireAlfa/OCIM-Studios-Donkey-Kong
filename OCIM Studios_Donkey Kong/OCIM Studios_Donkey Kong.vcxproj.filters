@@ -20,6 +20,9 @@
     <Filter Include="Source Files\Modules\Gameplay">
       <UniqueIdentifier>{47fb0870-732e-4dc6-ab62-ef1a21dad8f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entities">
+      <UniqueIdentifier>{191a7084-d3f0-45ca-8d49-328c726e3843}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -27,9 +30,6 @@
     </ClCompile>
     <ClCompile Include="Application.cpp">
       <Filter>Source Files\Applications</Filter>
-    </ClCompile>
-    <ClCompile Include="Module.cpp">
-      <Filter>Source Files\Modules\Core</Filter>
     </ClCompile>
     <ClCompile Include="ModuleRender.cpp">
       <Filter>Source Files\Modules\Core</Filter>
@@ -52,6 +52,15 @@
     <ClCompile Include="SceneLevel4.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="Module.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleParticles.cpp">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MemLeaks.h">
@@ -62,9 +71,6 @@
     </ClInclude>
     <ClInclude Include="Application.h">
       <Filter>Source Files\Applications</Filter>
-    </ClInclude>
-    <ClInclude Include="Module.h">
-      <Filter>Source Files\Modules\Core</Filter>
     </ClInclude>
     <ClInclude Include="ModuleRender.h">
       <Filter>Source Files\Modules\Core</Filter>
@@ -89,6 +95,15 @@
     </ClInclude>
     <ClInclude Include="SceneLevel4.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Source Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleParticles.h">
+      <Filter>Source Files\Modules\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

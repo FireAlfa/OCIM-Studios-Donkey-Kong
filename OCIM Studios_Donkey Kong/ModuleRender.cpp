@@ -77,11 +77,12 @@ update_status ModuleRender::Update()
 	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_REPEAT)
 		camera.y += cameraSpeed;
 
-	// TODO 1: Handle horizontal movement of the camera
+	// Handle negative horizontal movement of the camera
 	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT)
 		camera.x -= cameraSpeed;
 	if (camera.x < 0) camera.x = 0;
 
+	// Handle positive horizontal movement of the camera
 	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT)
 		camera.x += cameraSpeed;
 	if (camera.x > 1536) camera.x = 1536;
@@ -138,7 +139,7 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, f
 
 	if (SDL_RenderCopy(renderer, texture, section, &rect) != 0)
 	{
-		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
+		LOG("----- Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
 		ret = false;
 	}
 

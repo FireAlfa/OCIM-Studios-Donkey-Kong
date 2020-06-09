@@ -4,7 +4,7 @@
 #include "Globals.h"
 
 //Total ammount of Modules
-#define NUM_MODULES 6
+#define NUM_MODULES 7
 
 
 class Module;
@@ -17,6 +17,7 @@ class ModuleTextures;
 class ModulePlayer;
 class SceneLevel4;
 
+class ModuleParticles;
 class ModuleRender;
 
 
@@ -61,6 +62,7 @@ public:
 	ModulePlayer* player = nullptr;
 	SceneLevel4* lvl4 = nullptr;
 
+	ModuleParticles* particles = nullptr;
 	ModuleRender* render = nullptr;
 
 };

@@ -6,6 +6,7 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModulePlayer.h"
+#include "ModuleParticles.h"
 #include "SceneLevel4.h"
 
 //Allocates memory for each module in the Modules Array
@@ -21,7 +22,8 @@ Application::Application()
 	modules[3] = lvl4 = new SceneLevel4();
 	modules[4] = player = new ModulePlayer();
 
-	modules[5] = render = new ModuleRender();
+	modules[5] = particles = new ModuleParticles();
+	modules[6] = render = new ModuleRender();
 }
 
 //Destructor, frees dynamic memory
