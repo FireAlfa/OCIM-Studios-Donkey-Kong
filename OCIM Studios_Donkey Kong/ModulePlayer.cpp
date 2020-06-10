@@ -240,7 +240,7 @@ void ModulePlayer::UpdateLogic()
 	}
 
 	// Simply updating the collider position to match our current position
-	collider->SetPos(position.x + 2, position.y + 14);
+	//collider->SetPos(position.x + 2, position.y + 14);
 }
 
 //Change the State
