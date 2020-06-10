@@ -27,7 +27,7 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles--------\n");
 
-	texture = App->textures->Load("Assets/Sprites/particles.png");
+	texture = App->textures->Load("Assets/GUI/Particles.png");
 
 	//
 	//
