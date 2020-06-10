@@ -30,6 +30,9 @@ public:
 	// Disables the player and the enemies
 	bool CleanUp();
 
+	// Check if the player can climb
+	bool CanPlayerClimb() const;
+
 public:
 
 	//
@@ -39,8 +42,18 @@ public:
 	//
 	//
 	//
-
 	/*SDL_Texture* bgTexture = nullptr; <--Example*/
+
+	//
+	//
+	//
+	//Collider arrays
+	//
+	//
+	//
+	Collider* ladderColliders[4];
+
+	
 };
 
 #endif

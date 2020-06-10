@@ -10,6 +10,8 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 
+#include "SceneLevel4.h"
+
 #include "ModuleRender.h"
 
 
@@ -56,7 +58,7 @@ bool ModulePlayer::Start()
 	//
 	//
 	//
-	//Load Player textures files & set current Animation
+	//Load Player textures files & set currentAnimation
 	//
 	//
 	//
@@ -68,6 +70,7 @@ bool ModulePlayer::Start()
 	//
 	//
 	//
+	jumpFx = App->audio->LoadFx("Assets/Fx/jump.ogg");
 
 	//
 	//
@@ -89,15 +92,219 @@ Update_Status ModulePlayer::Update()
 {
 	//GamePad& pad = App->input->pads[0];
 
-	//
-	//
-	//
-	//Call the updates
-	//
-	//
-	//
+	UpdateState();
+	UpdateLogic();
 
 	return Update_Status::UPDATE_CONTINUE;
+}
+
+//Control input and states
+void ModulePlayer::UpdateState()
+{
+	switch (state)
+	{
+	case IDLE:
+	{
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN)
+			ChangeState(state, RUNNING);
+
+		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+			ChangeState(state, JUMPING);
+
+		// TODO 5: Fill in the transition condition to start climbing
+
+		// TODO 0: Notice how we are changing into HAMMER_IDLE state when pressing H
+		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
+			ChangeState(state, HAMMER_IDLE);
+
+		break;
+	}
+
+	case RUNNING:
+	{
+		if (App->input->keys[SDL_SCANCODE_A] != Key_State::KEY_REPEAT &&
+			App->input->keys[SDL_SCANCODE_D] != Key_State::KEY_REPEAT)
+		{
+			ChangeState(state, IDLE);
+		}
+
+		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+			ChangeState(state, JUMPING);
+
+		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
+			ChangeState(state, HAMMER_RUNNING);
+
+		/*if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN && canClimb)
+			ChangeState(state, CLIMBING);
+		*/
+		break;
+	}
+
+	case JUMPING:
+	{
+		if (jumpCountdown <= 0)
+		{
+			jumpCountdown = 30;
+			if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT ||
+				App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+				ChangeState(state, RUNNING);
+			else
+				ChangeState(state, IDLE);
+		}
+		break;
+	}
+
+	case HAMMER_IDLE:
+	{
+		// TODO 2: Check the condition to go back to IDLE state. If fulfilled, change the state.
+		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
+			ChangeState(state, IDLE);
+
+		// TODO 3: Add all the logic behind HAMMER_RUN state
+
+		// TODO 3.1: Check the condition. If fulfilled, change the state to HAMMER_RUN
+/*		if (App->input->keys[SDL_SCANCODE_A] != Key_State::KEY_REPEAT &&
+			App->input->keys[SDL_SCANCODE_D] != Key_State::KEY_REPEAT)
+		{
+			ChangeState(state, HAMMER_RUNNING);
+		}*/
+
+
+		break;
+	}
+	case HAMMER_RUNNING:
+		// TODO 3: Add all the logic behind HAMMER_RUN state
+		// TODO 3.4: Lastly, go back to HAMMER_IDLE when the condition is fulfilled
+
+		break;
+
+	default:
+		break;
+	}
+}
+
+//Control what each state does
+void ModulePlayer::UpdateLogic()
+{
+	switch (state)
+	{
+	case(IDLE):
+	{
+		// Nothing to do here :)
+		break;
+	}
+	case(RUNNING):
+	{
+		position.x += speed * facingDirection;
+		currentAnimation->Update();
+		break;
+	}
+	case(JUMPING):
+	{
+		--jumpCountdown;
+		if (jumpCountdown >= 0 && jumpCountdown < 15)
+		{
+			++position.y;
+		}
+		else if (jumpCountdown < 30)
+		{
+			--position.y;
+		}
+		position.x += speed * jumpDirection;
+		currentAnimation->Update();
+		break;
+	}
+
+	case(HAMMER_IDLE):
+	{
+		currentAnimation->Update();
+		break;
+	}
+
+	case(HAMMER_RUNNING):
+	{
+		// TODO 3: Add all the logic behind HAMMER_RUN state
+		// TODO 3.3: Update HAMMER_RUN state logic
+
+		break;
+	}
+
+	case(CLIMBING):
+	{
+		// TODO 5: Update climbing logic - Only move when the player is pressing "W"
+
+
+		break;
+	}
+	}
+
+	// Warning: dirty workaround for this class for fast checking
+	// This should be avoided!!
+	canClimb = App->sceneLevel4->CanPlayerClimb();
+
+	// Simply updating the collider position to match our current position
+	collider->SetPos(position.x + 2, position.y + 14);
+}
+
+//Change the State
+void ModulePlayer::ChangeState(Player_State previousState, Player_State newState)
+{
+	switch (newState)
+	{
+	case(IDLE):
+	{
+		currentAnimation = &(facingDirection == -1 ? idleAnim_Left : idleAnim_Right);
+		break;
+	}
+	case(RUNNING):
+	{
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+			facingDirection = -1;
+		else
+			facingDirection = 1;
+		currentAnimation = &(facingDirection == -1 ? runningAnim_Left : runningAnim_Right);
+		break;
+	}
+	case(JUMPING):
+	{
+		App->audio->PlayFx(jumpFx);
+
+		if (previousState == IDLE)
+			jumpDirection = 0;
+		else
+			jumpDirection = facingDirection;
+
+		currentAnimation = &(facingDirection == -1 ? jumpAnim_Left : jumpAnim_Right);
+		break;
+	}
+	case(HAMMER_IDLE):
+	{
+		// TODO 1: Change the current animation to match the new state (very similar to IDLE case)
+		currentAnimation = &(facingDirection == -1 ? hammerIdleAnim_Left : hammerIdleAnim_Right);
+		break;
+	}
+	case(HAMMER_RUNNING):
+	{
+		// TODO 3: Add all the logic behind HAMMER_RUN state
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+			facingDirection = -1;
+		else
+			facingDirection = 1;
+		// TODO 3.2: When changing the state, change to the proper animation
+		currentAnimation = &(facingDirection == -1 ? hammerRunAnim_Left : hammerRunAnim_Right);
+		break;
+	}
+	case (CLIMBING):
+	{
+		// TODO 5: Change climbing animation when changing the state
+
+	}
+	}
+
+	state = newState;
 }
 
 //Post Update
@@ -130,6 +337,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	//
 	//
 	//
+
+	/*if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LADDER)
+	{
+		canClimb = true;
+	}
+
+	if (c2->type == Collider::Type::TOP_LADDER)
+	{
+		// TODO 5: The player has reached the top of the ladder, stop climbing
+
+
+	}*/
 }
 
 //Draw GamePad Debug
