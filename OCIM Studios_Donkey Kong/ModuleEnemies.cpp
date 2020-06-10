@@ -21,6 +21,8 @@
 //Constructor inits enemy array to nullptr
 ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled)
 {
+	name = "enemies";
+
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
 }

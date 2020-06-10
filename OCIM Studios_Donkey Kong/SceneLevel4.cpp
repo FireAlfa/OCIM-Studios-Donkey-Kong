@@ -12,6 +12,8 @@
 
 SceneLevel4::SceneLevel4(bool startEnabled) : Module(startEnabled)
 {
+	name = "level_4";
+
 	//
 	//
 	//

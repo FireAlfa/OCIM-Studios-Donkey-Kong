@@ -20,6 +20,8 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
+	name = "player";
+	
 	//
 	//
 	//

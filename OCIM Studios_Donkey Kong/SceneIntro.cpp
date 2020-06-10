@@ -9,7 +9,7 @@
 
 SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 {
-
+	name = "s_intro";
 }
 
 SceneIntro::~SceneIntro()
