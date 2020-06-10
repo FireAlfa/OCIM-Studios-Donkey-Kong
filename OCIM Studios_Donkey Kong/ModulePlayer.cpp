@@ -239,10 +239,6 @@ void ModulePlayer::UpdateLogic()
 	}
 	}
 
-	// Warning: dirty workaround for this class for fast checking
-	// This should be avoided!!
-	canClimb = App->sceneLevel4->CanPlayerClimb();
-
 	// Simply updating the collider position to match our current position
 	collider->SetPos(position.x + 2, position.y + 14);
 }

@@ -30,9 +30,6 @@ public:
 	// Disables the player and the enemies
 	bool CleanUp();
 
-	// Check if the player can climb
-	bool CanPlayerClimb() const;
-
 public:
 
 	//

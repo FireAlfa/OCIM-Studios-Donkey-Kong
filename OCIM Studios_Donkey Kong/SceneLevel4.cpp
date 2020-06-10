@@ -120,14 +120,3 @@ bool SceneLevel4::CleanUp()
 
 	return true;
 }
-
-//??? COMPROVAR
-bool SceneLevel4::CanPlayerClimb() const
-{
-	for (uint i = 0; i < 4; ++i)
-	{
-		if (App->player->collider->Intersects(ladderColliders[i]->rect))
-			return true;
-	}
-	return false;
-}
