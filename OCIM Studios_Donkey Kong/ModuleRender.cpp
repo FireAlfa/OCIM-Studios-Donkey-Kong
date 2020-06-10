@@ -14,7 +14,7 @@
 //Constructor
 ModuleRender::ModuleRender(bool startEnabled) : Module(startEnabled)
 {
-
+	name = "render";
 }
 
 //Destructor
@@ -51,6 +51,8 @@ bool ModuleRender::Init()
 	{
 		LOG("Renderer created succesfully--------------\n");
 	}
+
+	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	return ret;
 }

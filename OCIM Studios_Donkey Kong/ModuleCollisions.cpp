@@ -9,6 +9,8 @@
 //Collisions constructor
 ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 {
+	name = "collisions";
+
 	//Init colliders array to nullptr
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 		colliders[i] = nullptr;
@@ -38,6 +40,7 @@ Update_Status ModuleCollisions::PreUpdate()
 		{
 			delete colliders[i];
 			colliders[i] = nullptr;
+			--colliderCount;
 		}
 	}
 
@@ -135,6 +138,7 @@ bool ModuleCollisions::CleanUp()
 		{
 			delete colliders[i];
 			colliders[i] = nullptr;
+			--colliderCount;
 		}
 	}
 
@@ -151,6 +155,7 @@ Collider* ModuleCollisions::AddCollider(SDL_Rect rect, Collider::Type type, Modu
 		if (colliders[i] == nullptr)
 		{
 			ret = colliders[i] = new Collider(rect, type, listener);
+			++colliderCount;
 			break;
 		}
 	}
@@ -167,6 +172,7 @@ void ModuleCollisions::RemoveCollider(Collider* collider)
 		{
 			delete colliders[i];
 			colliders[i] = nullptr;
+			--colliderCount;
 		}
 	}
 }

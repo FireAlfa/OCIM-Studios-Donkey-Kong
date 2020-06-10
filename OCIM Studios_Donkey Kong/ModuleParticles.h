@@ -52,7 +52,9 @@ public:
 	// Param particle	- A template particle from which the new particle will be created
 	// Param x, y		- Position x,y in the screen (upper left axis)
 	// Param delay		- Delay time from the moment the function is called until the particle is displayed in screen
-	void AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType = Collider::Type::NONE, uint delay = 0);
+	Particle* AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType = Collider::Type::NONE, uint delay = 0);
+
+	inline uint GetParticlesCount() const { return particlesCount; };
 
 private:
 	// Particles spritesheet loaded into an SDL Texture
@@ -60,6 +62,9 @@ private:
 
 	// An array to store and handle all the particles
 	Particle* particles[MAX_ACTIVE_PARTICLES] = { nullptr };
+
+	// Total amount of particles laoded into the array
+	uint particlesCount = 0;
 
 public:
 

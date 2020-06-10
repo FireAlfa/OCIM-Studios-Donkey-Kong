@@ -5,8 +5,7 @@
 
 ModuleInput::ModuleInput(bool startEnabled) : Module(startEnabled)
 {
-	for (uint i = 0; i < MAX_KEYS; ++i)
-		keys[i] = KEY_IDLE;
+	name = "input";
 
 	memset(&pads[0], 0, sizeof(GamePad) * MAX_PADS);
 }

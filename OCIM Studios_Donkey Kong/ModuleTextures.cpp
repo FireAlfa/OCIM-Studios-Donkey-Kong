@@ -9,6 +9,8 @@
 
 ModuleTextures::ModuleTextures(bool startEnabled) : Module(startEnabled)
 {
+	name = "textures";
+
 	//Initialize all texture pointers to nullptr
 	for (uint i = 0; i < MAX_TEXTURES; ++i)
 		textures[i] = nullptr;
@@ -47,6 +49,7 @@ bool ModuleTextures::CleanUp()
 		{
 			SDL_DestroyTexture(textures[i]);
 			textures[i] = nullptr;
+			--texturesCount;
 		}
 	}
 
@@ -83,6 +86,7 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 				if (textures[i] == nullptr)
 				{
 					textures[i] = texture;
+					++texturesCount;
 					break;
 				}
 			}
@@ -106,6 +110,8 @@ bool ModuleTextures::Unload(SDL_Texture* texture)
 			if (textures[i] == texture)
 			{
 				textures[i] = nullptr;
+				--texturesCount;
+
 				ret = true;
 				break;
 			}

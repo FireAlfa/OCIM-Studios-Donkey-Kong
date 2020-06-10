@@ -45,6 +45,8 @@ public:
 	// Draws all existing colliders with some transparency
 	void DebugDraw();
 
+	inline uint GetColliderCount() const { return colliderCount; };
+
 private:
 	// All existing colliders in the scene
 	Collider* colliders[MAX_COLLIDERS] = { nullptr };
@@ -52,6 +54,9 @@ private:
 	// The collision matrix. Defines the interaction for two collider types
 	// If set two false, collider 1 will ignore collider 2
 	bool matrix[Collider::Type::MAX][Collider::Type::MAX];
+
+	// The amount of colliders loaded into the array
+	uint colliderCount = 0;
 
 	// Simple debugging flag to draw all colliders
 	bool debug = true;

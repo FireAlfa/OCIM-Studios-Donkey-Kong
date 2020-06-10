@@ -11,6 +11,8 @@
 //Constructor initializes the array of particles to nullptr
 ModuleParticles::ModuleParticles(bool startEnabled) : Module(startEnabled)
 {
+	name = "particles";
+
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		particles[i] = nullptr;
 }
@@ -55,6 +57,7 @@ Update_Status ModuleParticles::PreUpdate()
 		{
 			delete particles[i];
 			particles[i] = nullptr;
+			--particlesCount;
 		}
 	}
 
@@ -72,6 +75,7 @@ bool ModuleParticles::CleanUp()
 		{
 			delete particles[i];
 			particles[i] = nullptr;
+			--particlesCount;
 		}
 	}
 
@@ -86,9 +90,9 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (particles[i] != nullptr && particles[i]->collider == c1)
 		{
-			delete particles[i];
-			particles[i] = nullptr;
-			break;
+			particles[i]->pendingToDelete = true;
+			particles[i]->collider->pendingToDelete = true;
+			break;;
 		}
 	}
 }
@@ -105,8 +109,7 @@ Update_Status ModuleParticles::Update()
 		// Call particle Update. If it has reached its lifetime, destroy it
 		if (particle->Update() == false)
 		{
-			delete particle;
-			particles[i] = nullptr;
+			particles[i]->SetToDelete();
 		}
 	}
 
@@ -131,25 +134,28 @@ Update_Status ModuleParticles::PostUpdate()
 }
 
 //Adds a new particle
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
+Particle* ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
 {
+	Particle* newParticle = nullptr;
+
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		//Finding an empty slot for a new particle
 		if (particles[i] == nullptr)
 		{
-			Particle* p = new Particle(particle);
-
-			p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
-			p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
-			p->position.y = y;
+			newParticle = new Particle(particle);
+			newParticle->frameCount = -(int)delay;			// We start the frameCount as the negative delay
+			newParticle->position.x = x;						// so when frameCount reaches 0 the particle will be activated
+			newParticle->position.y = y;
 
 			//Adding the particle's collider
 			if (colliderType != Collider::Type::NONE)
-				p->collider = App->collisions->AddCollider(p->anim.GetCurrentFrame(), colliderType, this);
+				newParticle->collider = App->collisions->AddCollider(newParticle->anim.GetCurrentFrame(), colliderType, this);
 
-			particles[i] = p;
+			particles[i] = newParticle;
 			break;
 		}
 	}
+
+	return newParticle;
 }
