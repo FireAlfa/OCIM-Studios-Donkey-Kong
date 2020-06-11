@@ -1,5 +1,5 @@
-#ifndef __MODULE_SCENE_H__
-#define __MODULE_SCENE_H__
+#ifndef __SCENE_LVL4_H__
+#define __SCENE_LVL4_H__
 
 #include "Module.h"
 #include "Animation.h"
