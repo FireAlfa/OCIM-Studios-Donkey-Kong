@@ -123,7 +123,7 @@ bool ModulePlayer::Start()
 	//
 	//Load Player textures files & set currentAnimation
 	//
-	playerTexture = App->textures->Load("Assets/Sprites/Mario_Sprites.png");
+	playerTexture = App->textures->Load("Assets/Sprites/Player.png");
 	currentAnimation = &idleAnim_Right;
 
 
