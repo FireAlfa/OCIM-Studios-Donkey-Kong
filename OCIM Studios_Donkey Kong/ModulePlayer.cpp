@@ -24,6 +24,30 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
 	name = "player";
 	
+	//IdleAnims
+	idleAnim_Left.PushBack({ 122,10,12,16 });
+	idleAnim_Right.PushBack({ 162, 10, 12, 16 });
+
+	//Running Anims
+
+	//   Left
+	runningAnim_Left.PushBack({ 335,86,15,15 });
+	runningAnim_Left.PushBack({ 311,85,15,16 });
+	//	Right
+	runningAnim_Right.PushBack({ 355,86,15,15});
+	runningAnim_Right.PushBack({ 379,85,15,16});
+
+	//	Jumping
+
+	//	Jumping Left
+	jumpAnim_Left.PushBack({ 81,10,15,16 });
+	jumpAnim_Left.PushBack({ 40,10,16,15 });
+	//	Jumping Right
+	jumpAnim_Right.PushBack({ 200,10,15,16 });
+	jumpAnim_Right.PushBack({ 240,10,16,15 });
+
+
+
 	//
 	//
 	//
@@ -63,6 +87,7 @@ bool ModulePlayer::Start()
 	//
 	//
 	//
+
 
 	//
 	//
