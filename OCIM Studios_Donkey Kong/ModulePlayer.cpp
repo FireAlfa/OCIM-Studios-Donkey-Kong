@@ -31,28 +31,28 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	//Animation pushbacks
 	//
 	//IdleAnims
-	idleAnim_Left.PushBack({ 122,10,12,16 });
-	idleAnim_Right.PushBack({ 162, 10, 12, 16 });
+	idleAnim_Left.PushBack({ 51, 17, 12, 16 });
+	idleAnim_Right.PushBack({ 68, 17, 12, 16 });
 
 	//Running Anims
 
 	//   Left
-	runningAnim_Left.PushBack({ 335,86,15,15 });
-	runningAnim_Left.PushBack({ 311,85,15,16 });
+	runningAnim_Left.PushBack({ 0, 0, 15, 16 });
+	runningAnim_Left.PushBack({ 24, 0, 15, 16 });
 	//	Right
-	runningAnim_Right.PushBack({ 355,86,15,15});
-	runningAnim_Right.PushBack({ 379,85,15,16});
+	runningAnim_Right.PushBack({ 68, 0, 15, 16});
+	runningAnim_Right.PushBack({ 44, 0, 15, 16});
 
 	runningAnim_Left.speed = runningAnim_Right.speed = 0.1f;
 
 	//	Jumping
 
 	//	Jumping Left
-	jumpAnim_Left.PushBack({ 81,10,15,16 });
-	jumpAnim_Left.PushBack({ 40,10,16,15 });
+	jumpAnim_Left.PushBack({ 34, 17, 15, 16 });
+	jumpAnim_Left.PushBack({ 17, 17, 16, 15 });
 	//	Jumping Right
-	jumpAnim_Right.PushBack({ 200,10,15,16 });
-	jumpAnim_Right.PushBack({ 240,10,16,15 });
+	jumpAnim_Right.PushBack({ 85, 17, 15, 16 });
+	jumpAnim_Right.PushBack({ 102, 17, 16, 15 });
 
 	jumpAnim_Left.speed = jumpAnim_Right.speed = 0.1f;
 	jumpAnim_Left.loop = jumpAnim_Right.loop = false;
@@ -60,17 +60,17 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	//Climbing
 
 	//	ClimbUp
-	climb_Up.PushBack({ 161,40,13,16 });
-	climb_Up.PushBack({ 201,40,14,15 }); 
-	climb_Up.PushBack({ 240,42,16,12 });
-	climb_Up.PushBack({ 280,40,16,15 });
+	climb_Up.PushBack({ 0, 34,13,16 });
+	climb_Up.PushBack({ 201, 34,14,15 }); 
+	climb_Up.PushBack({ 240, 34,16,12 });
+	climb_Up.PushBack({ 280, 34,16,15 });
 
 	climb_Up.speed = 0.1f;
 	//	ClimbDown
-	climb_Down.PushBack({ 0,40,16,15 });
-	climb_Down.PushBack({ 40,42,16,12 });
-	climb_Down.PushBack({ 81,40,14,15 });
-	climb_Down.PushBack({ 122,40,13,16 });
+	climb_Down.PushBack({ 0, 34,16,15 });
+	climb_Down.PushBack({ 40, 34,16,12 });
+	climb_Down.PushBack({ 81, 34,14,15 });
+	climb_Down.PushBack({ 122, 34,13,16 });
 
 	climb_Down.speed = 0.1f;
 
@@ -123,7 +123,7 @@ bool ModulePlayer::Start()
 	//
 	//Load Player textures files & set currentAnimation
 	//
-	playerTexture = App->textures->Load("Assets/Sprites/Player.png");
+	playerTexture = App->textures->Load("Assets/Sprites/Mario_Sprites.png");
 	currentAnimation = &idleAnim_Right;
 
 
