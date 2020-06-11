@@ -37,6 +37,8 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	runningAnim_Right.PushBack({ 355,86,15,15});
 	runningAnim_Right.PushBack({ 379,85,15,16});
 
+	runningAnim_Left.speed = runningAnim_Right.speed = 0.1f;
+
 	//	Jumping
 
 	//	Jumping Left
@@ -46,6 +48,49 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	jumpAnim_Right.PushBack({ 200,10,15,16 });
 	jumpAnim_Right.PushBack({ 240,10,16,15 });
 
+	jumpAnim_Left.speed = jumpAnim_Right.speed = 0.1f;
+	jumpAnim_Left.loop = jumpAnim_Right.loop = false;
+
+	//Climbing
+
+	//	ClimbUp
+	climb_Up.PushBack({ 161,40,13,16 });
+	climb_Up.PushBack({ 201,40,14,15 }); 
+	climb_Up.PushBack({ 240,42,16,12 });
+	climb_Up.PushBack({ 280,40,16,15 });
+
+	climb_Up.speed = 0.1f;
+	//	ClimbDown
+	climb_Down.PushBack({ 0,40,16,15 });
+	climb_Down.PushBack({ 40,42,16,12 });
+	climb_Down.PushBack({ 81,40,14,15 });
+	climb_Down.PushBack({ 122,40,13,16 });
+
+	climb_Down.speed = 0.1f;
+
+	//Hammer
+	//	Hammer Idle
+	//		Left
+	hammerIdleAnim_Left.PushBack({ 116,80,25,16 });
+	hammerIdleAnim_Left.PushBack({ 164,157,12,26 });
+	//		Right
+	hammerIdleAnim_Right.PushBack({ 155,80,25,16 });
+	hammerIdleAnim_Right.PushBack({ 335,192,12,26 });
+	//	HammerRunning
+	//		Left
+	hammerRunAnim_Left.PushBack({ 238,157,13,26 });
+	hammerRunAnim_Left.PushBack({ 260,167,31,16 });
+	hammerRunAnim_Left.PushBack({ 311,157,15,26 });     
+	hammerRunAnim_Left.PushBack({ 334,168,32,15 });
+
+	hammerIdleAnim_Left.speed = hammerIdleAnim_Right.speed = 0.1f;
+	//		Right
+	hammerRunAnim_Right.PushBack({ 270,192,13,26 });
+	hammerRunAnim_Right.PushBack({ 230,202,31,16 });
+	hammerRunAnim_Right.PushBack({ 205,191,15,27 });
+	hammerRunAnim_Right.PushBack({ 165,203,32,15 });
+
+	hammerRunAnim_Left.speed = hammerRunAnim_Right.speed = 0.1f;
 
 
 	//
