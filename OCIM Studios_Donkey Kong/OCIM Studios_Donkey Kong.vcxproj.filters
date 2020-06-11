@@ -94,6 +94,9 @@
     <ClCompile Include="ModuleDebugInfo.cpp">
       <Filter>Source Files\Modules\Core</Filter>
     </ClCompile>
+    <ClCompile Include="SceneLevel1.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MemLeaks.h">
@@ -167,6 +170,9 @@
     </ClInclude>
     <ClInclude Include="ModuleDebugInfo.h">
       <Filter>Source Files\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneLevel1.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
