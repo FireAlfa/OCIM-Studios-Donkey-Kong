@@ -23,12 +23,9 @@ SceneLevel4::SceneLevel4(bool startEnabled) : Module(startEnabled)
 
 
 	//
-	//
-	//
 	//Scene 4 Animation pushbacks
 	//
-	//
-	//
+
 }
 
 SceneLevel4::~SceneLevel4()
