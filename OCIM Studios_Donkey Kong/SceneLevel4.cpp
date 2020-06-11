@@ -26,15 +26,47 @@ SceneLevel4::SceneLevel4(bool startEnabled) : Module(startEnabled)
 	//
 	//Scene 4 Animation pushbacks
 	//
-	DonkeyKong.PushBack({ 0, 0, 39, 32 });
-	DonkeyKong.PushBack({ 0, 0, 39, 32 });
-	DonkeyKong.PushBack({ 0, 0, 39, 32 });
-	DonkeyKong.PushBack({ 0, 0, 39, 32 });
-	DonkeyKong.PushBack({ 0, 0, 39, 32 });
-	DonkeyKong.PushBack({ 217, 0, 46, 32 });
-	DonkeyKong.PushBack({ 170, 0, 46, 32 });
-	DonkeyKong.pingpong = true;
-	DonkeyKong.loop = true;
+	Princess.PushBack({ 0, 0, 15, 22 });
+	Princess.PushBack({ 0, 0, 15, 22 });
+	Princess.PushBack({ 0, 0, 15, 22 });
+	Princess.PushBack({ 0, 0, 15, 22 });
+	Princess.PushBack({ 0, 0, 15, 22 });
+	Princess.PushBack({ 0, 0, 15, 22 });
+	Princess.PushBack({ 0, 0, 15, 22 });
+	Princess.PushBack({ 0, 0, 15, 22 });
+	Princess.PushBack({ 0, 0, 15, 22 });
+	Princess.PushBack({ 0, 0, 15, 22 });
+	Princess.PushBack({ 0, 0, 15, 22 });
+	Princess.PushBack({ 0, 0, 15, 22 });
+	Princess.PushBack({ 16, 0, 15, 22 });
+	Princess.PushBack({ 0, 0, 15, 22 });
+	Princess.PushBack({ 16, 0, 15, 22 });
+	Princess.PushBack({ 0, 0, 15, 22 });
+	Princess.PushBack({ 16, 0, 15, 22 });
+	Princess.PushBack({ 0, 0, 15, 22 });
+	Princess.PushBack({ 16, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 66, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 66, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 66, 0, 15, 22 });
+	Princess.PushBack({ 82, 0, 15, 22 });
+	Princess.PushBack({ 66, 0, 15, 22 });
+	Princess.speed = 0.2f;
 }
 
 SceneLevel4::~SceneLevel4()
@@ -61,7 +93,6 @@ bool SceneLevel4::Start()
 	lvl4Texture = App->textures->Load("Assets/Maps/level4.png");
 	buttonTexture = App->textures->Load("Assets/GUI/Button.png");
 
-	donkeyKongTexture = App->textures->Load("Assets/Sprites/DonkeyKong_Sprites.png");
 	princessTexture = App->textures->Load("Assets/Sprites/Peach_Sprites.png");
 
 
@@ -187,7 +218,7 @@ Update_Status SceneLevel4::Update()
 	//
 	//Update animations
 	//
-
+	Princess.Update();
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -205,8 +236,10 @@ Update_Status SceneLevel4::PostUpdate()
 
 
 	//
-	//Draw DK
-	// 
+	//Draw Princess animation
+	//
+	App->render->Blit(princessTexture, 105, 26, &(Princess.GetCurrentFrame()), 0.1f);
+
 
 	//
 	//Draw the buttons
@@ -235,7 +268,7 @@ Update_Status SceneLevel4::PostUpdate()
 		}
 		if (buttonDrawingArray[5] == true)
 		{
-			App->render->Blit(buttonTexture, 56, 127, &buttonRect, NULL, false);
+			App->render->Blit(buttonTexture, 160, 127, &buttonRect, NULL, false);
 		}
 		if (buttonDrawingArray[6] == true)
 		{

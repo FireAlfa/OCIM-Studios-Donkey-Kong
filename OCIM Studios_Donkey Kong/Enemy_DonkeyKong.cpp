@@ -13,6 +13,11 @@ Enemy_DonkeyKong::Enemy_DonkeyKong(int x, int y) : Enemy(x, y)
 	DonkeyKong.PushBack({ 0, 0, 39, 32 });
 	DonkeyKong.PushBack({ 0, 0, 39, 32 });
 	DonkeyKong.PushBack({ 0, 0, 39, 32 });
+	DonkeyKong.PushBack({ 0, 0, 39, 32 });
+	DonkeyKong.PushBack({ 0, 0, 39, 32 });
+	DonkeyKong.PushBack({ 0, 0, 39, 32 });
+	DonkeyKong.PushBack({ 0, 0, 39, 32 });
+	DonkeyKong.PushBack({ 0, 0, 39, 32 });
 	DonkeyKong.PushBack({ 217, 0, 46, 32 });
 	DonkeyKong.PushBack({ 170, 0, 46, 32 });
 	DonkeyKong.PushBack({ 217, 0, 46, 32 });
@@ -21,10 +26,6 @@ Enemy_DonkeyKong::Enemy_DonkeyKong(int x, int y) : Enemy(x, y)
 	currentAnim = &DonkeyKong;
 
 	collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::ENEMY, (Module*)App->enemies);
-}
-
-Enemy_DonkeyKong::~Enemy_DonkeyKong() {
-	collider->pendingToDelete = true;
 }
 
 void Enemy_DonkeyKong::Update()

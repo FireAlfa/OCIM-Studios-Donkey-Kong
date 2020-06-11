@@ -37,7 +37,6 @@ public:
 	//
 	SDL_Texture* lvl4Texture = nullptr;
 	SDL_Texture* buttonTexture = nullptr;
-	SDL_Texture* donkeyKongTexture = nullptr;
 	SDL_Texture* princessTexture = nullptr;
 
 	//
@@ -54,7 +53,6 @@ public:
 	//
 	//Animations
 	//
-	Animation DonkeyKong;
 	Animation Princess;
 	
 
