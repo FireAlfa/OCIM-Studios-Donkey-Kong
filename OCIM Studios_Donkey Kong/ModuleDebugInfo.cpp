@@ -26,7 +26,7 @@ ModuleDebugInfo::~ModuleDebugInfo()
 bool ModuleDebugInfo::Start()
 {
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
-	debugFont = App->fonts->Load("Fonts/rtype_font3.png", lookupTable, 2);
+	debugFont = App->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 2);
 
 	return true;
 }
@@ -34,7 +34,7 @@ bool ModuleDebugInfo::Start()
 bool ModuleDebugInfo::CleanUp()
 {
 	//TODO: Unload debug font!
-	//App->fonts->UnLoad();
+	App->fonts->UnLoad(debugFont);
 
 	return true;
 }

@@ -24,7 +24,7 @@ bool SceneIntro::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Maps/startScreen.png");
+	bgTexture = App->textures->Load("Assets/Maps/startScreen.png");
 	
 	//
 	//

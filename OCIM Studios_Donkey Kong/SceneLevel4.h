@@ -33,13 +33,10 @@ public:
 public:
 
 	//
-	//
-	//
 	//Texture variables
 	//
-	//
-	//
-	/*SDL_Texture* bgTexture = nullptr; <--Example*/
+	SDL_Texture* lvl4Texture = nullptr;
+	SDL_Texture* buttonTexture = nullptr;
 
 	//
 	//
@@ -49,8 +46,17 @@ public:
 	//
 	//
 	Collider* ladderColliders[4];
+	Collider* buttonColliders[8];
 
+	//
+	//Srite rectangles
+	//
+	SDL_Rect lvl4Rect;
+	SDL_Rect buttonRect;
 	
+
+	//Button array
+	bool buttonDrawingArray[8] = { true, true, true, true, true, true, true, true };
 };
 
 #endif
