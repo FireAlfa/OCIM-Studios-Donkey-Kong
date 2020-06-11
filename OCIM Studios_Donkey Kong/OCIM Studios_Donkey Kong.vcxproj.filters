@@ -100,6 +100,9 @@
     <ClCompile Include="Enemy_DonkeyKong.cpp">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="SceneLevel2.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MemLeaks.h">
@@ -179,6 +182,9 @@
     </ClInclude>
     <ClInclude Include="Enemy_DonkeyKong.h">
       <Filter>Source Files\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneLevel2.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
