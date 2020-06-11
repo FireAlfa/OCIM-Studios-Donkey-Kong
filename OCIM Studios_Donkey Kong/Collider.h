@@ -10,21 +10,33 @@ class Module;
 //Collider struct
 struct Collider
 {
-	//List of collider types
+	//
+	//List of Colliders
+	//
 	enum Type
 	{
 		NONE = -1,
 
-		WALL,
-		PLAYER,
 
-		//
-		//
-		//
-		//List of Colliders
-		//
-		//
-		//
+		WALL,
+
+		PLAYER,
+		PLAYER_CENTER,
+
+		ENEMY,
+
+		STAIR,
+		BUTTON,
+
+		TOPWALL,
+		LEFTWALL,
+		RIGHTWALL,
+		GRAVITYWALLS,
+
+		PEACH,
+		DK,
+
+
 
 		MAX
 	};

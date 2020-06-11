@@ -108,7 +108,7 @@ bool ModulePlayer::Start()
 
 	//Font
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
-	scoreFont = App->fonts->Load("Fonts/rtype_font3.png", lookupTable, 2); //change file
+	scoreFont = App->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 2); //change file
 
 	return ret;
 }

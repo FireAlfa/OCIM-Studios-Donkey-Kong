@@ -15,13 +15,170 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 		colliders[i] = nullptr;
 
-	//
-	//
+
 	//
 	//Colliders matrix
 	//
-	//
-	//
+
+	matrix[Collider::Type::WALL][Collider::Type::WALL] = false;
+	matrix[Collider::Type::WALL][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::WALL][Collider::Type::PLAYER_CENTER] = true;
+	matrix[Collider::Type::WALL][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::WALL][Collider::Type::STAIR] = false;
+	matrix[Collider::Type::WALL][Collider::Type::BUTTON] = false;
+	matrix[Collider::Type::WALL][Collider::Type::TOPWALL] = false;
+	matrix[Collider::Type::WALL][Collider::Type::LEFTWALL] = false;
+	matrix[Collider::Type::WALL][Collider::Type::RIGHTWALL] = false;
+	matrix[Collider::Type::WALL][Collider::Type::GRAVITYWALLS] = false;
+	matrix[Collider::Type::WALL][Collider::Type::PEACH] = false;
+	matrix[Collider::Type::WALL][Collider::Type::DK] = false;
+
+	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_CENTER] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::STAIR] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::BUTTON] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::TOPWALL] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::LEFTWALL] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::RIGHTWALL] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::GRAVITYWALLS] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::PEACH] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::DK] = false;
+
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::WALL] = true;
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::PLAYER_CENTER] = false;
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::STAIR] = true;
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::BUTTON] = true;
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::TOPWALL] = false;
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::LEFTWALL] = false;
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::RIGHTWALL] = false;
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::GRAVITYWALLS] = true;
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::PEACH] = false;
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::DK] = false;
+
+	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = true;
+	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER_CENTER] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::STAIR] = false; //They should be able to move up and down stairs
+	matrix[Collider::Type::ENEMY][Collider::Type::BUTTON] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::TOPWALL] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::LEFTWALL] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::RIGHTWALL] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::GRAVITYWALLS] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::PEACH] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::DK] = false;
+
+	matrix[Collider::Type::STAIR][Collider::Type::WALL] = false;
+	matrix[Collider::Type::STAIR][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::STAIR][Collider::Type::PLAYER_CENTER] = true;
+	matrix[Collider::Type::STAIR][Collider::Type::ENEMY] = false; //They should be able to move up and down stairs
+	matrix[Collider::Type::STAIR][Collider::Type::STAIR] = false;
+	matrix[Collider::Type::STAIR][Collider::Type::BUTTON] = false;
+	matrix[Collider::Type::STAIR][Collider::Type::TOPWALL] = false;
+	matrix[Collider::Type::STAIR][Collider::Type::LEFTWALL] = false;
+	matrix[Collider::Type::STAIR][Collider::Type::RIGHTWALL] = false;
+	matrix[Collider::Type::STAIR][Collider::Type::GRAVITYWALLS] = false;
+	matrix[Collider::Type::STAIR][Collider::Type::PEACH] = false;
+	matrix[Collider::Type::STAIR][Collider::Type::DK] = false;
+
+	matrix[Collider::Type::BUTTON][Collider::Type::WALL] = false;
+	matrix[Collider::Type::BUTTON][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::BUTTON][Collider::Type::PLAYER_CENTER] = true;
+	matrix[Collider::Type::BUTTON][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::BUTTON][Collider::Type::STAIR] = false;
+	matrix[Collider::Type::BUTTON][Collider::Type::BUTTON] = false;
+	matrix[Collider::Type::BUTTON][Collider::Type::TOPWALL] = false;
+	matrix[Collider::Type::BUTTON][Collider::Type::LEFTWALL] = false;
+	matrix[Collider::Type::BUTTON][Collider::Type::RIGHTWALL] = false;
+	matrix[Collider::Type::BUTTON][Collider::Type::GRAVITYWALLS] = false;
+	matrix[Collider::Type::BUTTON][Collider::Type::PEACH] = false;
+	matrix[Collider::Type::BUTTON][Collider::Type::DK] = false;
+
+	//Top limit
+	matrix[Collider::Type::TOPWALL][Collider::Type::WALL] = false;
+	matrix[Collider::Type::TOPWALL][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::TOPWALL][Collider::Type::PLAYER_CENTER] = false;
+	matrix[Collider::Type::TOPWALL][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::TOPWALL][Collider::Type::STAIR] = false;
+	matrix[Collider::Type::TOPWALL][Collider::Type::BUTTON] = false;
+	matrix[Collider::Type::TOPWALL][Collider::Type::TOPWALL] = false;
+	matrix[Collider::Type::TOPWALL][Collider::Type::LEFTWALL] = false;
+	matrix[Collider::Type::TOPWALL][Collider::Type::RIGHTWALL] = false;
+	matrix[Collider::Type::TOPWALL][Collider::Type::GRAVITYWALLS] = false;
+	matrix[Collider::Type::TOPWALL][Collider::Type::PEACH] = false;
+	matrix[Collider::Type::TOPWALL][Collider::Type::DK] = false;
+
+	//Left limit
+	matrix[Collider::Type::LEFTWALL][Collider::Type::WALL] = false;
+	matrix[Collider::Type::LEFTWALL][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::LEFTWALL][Collider::Type::PLAYER_CENTER] = false;
+	matrix[Collider::Type::LEFTWALL][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::LEFTWALL][Collider::Type::STAIR] = false;
+	matrix[Collider::Type::LEFTWALL][Collider::Type::BUTTON] = false;
+	matrix[Collider::Type::LEFTWALL][Collider::Type::TOPWALL] = false;
+	matrix[Collider::Type::LEFTWALL][Collider::Type::LEFTWALL] = false;
+	matrix[Collider::Type::LEFTWALL][Collider::Type::RIGHTWALL] = false;
+	matrix[Collider::Type::LEFTWALL][Collider::Type::GRAVITYWALLS] = false;
+	matrix[Collider::Type::LEFTWALL][Collider::Type::PEACH] = false;
+	matrix[Collider::Type::LEFTWALL][Collider::Type::DK] = false;
+
+	//Right limit
+	matrix[Collider::Type::RIGHTWALL][Collider::Type::WALL] = false;
+	matrix[Collider::Type::RIGHTWALL][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::RIGHTWALL][Collider::Type::PLAYER_CENTER] = false;
+	matrix[Collider::Type::RIGHTWALL][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::RIGHTWALL][Collider::Type::STAIR] = false;
+	matrix[Collider::Type::RIGHTWALL][Collider::Type::BUTTON] = false;
+	matrix[Collider::Type::RIGHTWALL][Collider::Type::TOPWALL] = false;
+	matrix[Collider::Type::RIGHTWALL][Collider::Type::LEFTWALL] = false;
+	matrix[Collider::Type::RIGHTWALL][Collider::Type::RIGHTWALL] = false;
+	matrix[Collider::Type::RIGHTWALL][Collider::Type::GRAVITYWALLS] = false;
+	matrix[Collider::Type::RIGHTWALL][Collider::Type::PEACH] = false;
+	matrix[Collider::Type::RIGHTWALL][Collider::Type::DK] = false;
+
+	//Gravity walls
+	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::WALL] = false;
+	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::PLAYER_CENTER] = true;
+	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::STAIR] = false;
+	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::BUTTON] = false;
+	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::TOPWALL] = false;
+	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::LEFTWALL] = false;
+	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::RIGHTWALL] = false;
+	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::GRAVITYWALLS] = false;
+	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::PEACH] = false;
+	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::DK] = false;
+
+	matrix[Collider::Type::PEACH][Collider::Type::WALL] = true;
+	matrix[Collider::Type::PEACH][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::PEACH][Collider::Type::PLAYER_CENTER] = false;
+	matrix[Collider::Type::PEACH][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::PEACH][Collider::Type::STAIR] = false;
+	matrix[Collider::Type::PEACH][Collider::Type::BUTTON] = false;
+	matrix[Collider::Type::PEACH][Collider::Type::TOPWALL] = false;
+	matrix[Collider::Type::PEACH][Collider::Type::LEFTWALL] = false;
+	matrix[Collider::Type::PEACH][Collider::Type::RIGHTWALL] = false;
+	matrix[Collider::Type::PEACH][Collider::Type::GRAVITYWALLS] = false;
+	matrix[Collider::Type::PEACH][Collider::Type::PEACH] = false;
+	matrix[Collider::Type::PEACH][Collider::Type::DK] = false;
+
+	matrix[Collider::Type::DK][Collider::Type::WALL] = true;
+	matrix[Collider::Type::DK][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::DK][Collider::Type::PLAYER_CENTER] = false;
+	matrix[Collider::Type::DK][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::DK][Collider::Type::STAIR] = false;
+	matrix[Collider::Type::DK][Collider::Type::BUTTON] = false;
+	matrix[Collider::Type::DK][Collider::Type::TOPWALL] = false;
+	matrix[Collider::Type::DK][Collider::Type::LEFTWALL] = false;
+	matrix[Collider::Type::DK][Collider::Type::RIGHTWALL] = false;
+	matrix[Collider::Type::DK][Collider::Type::GRAVITYWALLS] = false;
+	matrix[Collider::Type::DK][Collider::Type::PEACH] = false;
+	matrix[Collider::Type::DK][Collider::Type::DK] = false;
 }
 
 // Destructor
