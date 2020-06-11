@@ -373,17 +373,20 @@ Update_Status SceneLevel4::Update()
 	//
 	if (App->input->keys[SDL_SCANCODE_0] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 10);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_1] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel1, 90);
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel1, 10);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_2] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel2, 90);
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel2, 10);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -457,9 +460,6 @@ bool SceneLevel4::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 
-	//Remove memory leaks
-	App->textures->CleanUp();
-	App->collisions->CleanUp();
 
 	return true;
 }

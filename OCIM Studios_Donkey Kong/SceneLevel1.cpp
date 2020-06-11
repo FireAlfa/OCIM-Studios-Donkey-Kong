@@ -46,6 +46,12 @@ bool SceneLevel1::Start()
 	bool ret = true;
 
 
+
+	//Enable modules
+	App->player->Enable();
+	App->enemies->Enable();
+
+
 	//
 	//Load the files of each texture & audio
 	//
@@ -267,9 +273,7 @@ bool SceneLevel1::Start()
 	//Add enemies
 	//
 
-	//Enable modules
-	App->player->Enable();
-	App->enemies->Enable();
+	
 
 	return ret;
 }
@@ -291,16 +295,19 @@ Update_Status SceneLevel1::Update()
 	//
 	if (App->input->keys[SDL_SCANCODE_0] == Key_State::KEY_DOWN)
 	{
+		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_2] == Key_State::KEY_DOWN)
 	{
+		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel2, 90);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_4] == Key_State::KEY_DOWN)
 	{
+		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel4, 90);
 	}
 
@@ -329,9 +336,6 @@ bool SceneLevel1::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 
-	//Remove memory leaks
-	App->textures->CleanUp();
-	App->collisions->CleanUp();
 
 	return true;
 }

@@ -7,6 +7,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleFonts.h"
 
 #include "ModuleEnemies.h"
 #include "Enemy_DonkeyKong.h"
@@ -112,16 +113,19 @@ Update_Status SceneLevel2::Update()
 	//
 	if (App->input->keys[SDL_SCANCODE_0] == Key_State::KEY_DOWN)
 	{
+		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_1] == Key_State::KEY_DOWN)
 	{
+		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel1, 90);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_4] == Key_State::KEY_DOWN)
 	{
+		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel4, 90);
 	}
 
@@ -151,10 +155,6 @@ bool SceneLevel2::CleanUp()
 	//Disable modules
 	App->player->Disable();
 	App->enemies->Disable();
-
-	//Remove memory leaks
-	App->textures->CleanUp();
-	App->collisions->CleanUp();
 
 	return true;
 }
