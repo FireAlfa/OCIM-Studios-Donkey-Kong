@@ -81,9 +81,6 @@ bool SceneLevel4::Start()
 	App->collisions->AddCollider({ 72, 88, 80, 4 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 168, 88, 16, 4 }, Collider::Type::WALL);
 
-	//Top floor, no collider needed
-	//App->collisions->AddCollider({ 56, 48, 112, 8 }, Collider::Type::WALL);
-
 
 
 	//Stairs Set 1
@@ -200,16 +197,15 @@ Update_Status SceneLevel4::PostUpdate()
 	//
 	//Draw the buttons
 	//
-
 	for (int i = 0; i < 8; ++i)
 	{
 		if (buttonDrawingArray[0] == true)
 		{
-			App->render->Blit(buttonTexture, 56, 208, &buttonRect, NULL, false);
+			App->render->Blit(buttonTexture, 56, 207, &buttonRect, NULL, false);
 		}
 		if (buttonDrawingArray[1] == true)
 		{
-			App->render->Blit(buttonTexture, 160, 208, &buttonRect, NULL, false);
+			App->render->Blit(buttonTexture, 160, 207, &buttonRect, NULL, false);
 		}
 		if (buttonDrawingArray[2] == true)
 		{

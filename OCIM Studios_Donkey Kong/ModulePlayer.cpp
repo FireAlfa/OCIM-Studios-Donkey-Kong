@@ -46,8 +46,6 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	jumpAnim_Right.PushBack({ 200,10,15,16 });
 	jumpAnim_Right.PushBack({ 240,10,16,15 });
 
-
-
 	//
 	//
 	//
@@ -55,6 +53,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	//
 	//
 	//
+
 }
 
 ModulePlayer::~ModulePlayer()
