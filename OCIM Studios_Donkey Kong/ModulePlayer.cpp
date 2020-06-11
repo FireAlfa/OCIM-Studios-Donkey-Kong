@@ -179,6 +179,11 @@ void ModulePlayer::UpdateState()
 		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 			ChangeState(state, JUMPING);
 
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
+			ChangeState(state, CLIMBING);
+
+
 		// TODO 5: Fill in the transition condition to start climbing
 
 		// TODO 0: Notice how we are changing into HAMMER_IDLE state when pressing H
@@ -198,6 +203,10 @@ void ModulePlayer::UpdateState()
 
 		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 			ChangeState(state, JUMPING);
+
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN && canClimb)
+			ChangeState(state, CLIMBING);
 
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
 			ChangeState(state, HAMMER_RUNNING);
@@ -302,11 +311,13 @@ void ModulePlayer::UpdateLogic()
 	{
 		// TODO 5: Update climbing logic - Only move when the player is pressing "W"
 
-		position.y += speed * upDownDirection;
+	
+			position.y += speed * upDownDirection;
 		currentAnimation->Update();
+		
 		break;
 	}
-	}
+}
 
 	// Simply updating the collider position to match our current position
 	playerCollider->SetPos(position.x, position.y);
@@ -367,9 +378,9 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 	{
 		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
-			upDownDirection = 1;
-		else
 			upDownDirection = -1;
+		else
+			upDownDirection = 1;
 		currentAnimation = &(upDownDirection == 1 ? climb_Up : climb_Down);
 		break;
 		// TODO 5: Change climbing animation when changing the state
@@ -411,17 +422,23 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	//
 	//
 
-	/*if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LADDER)
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::STAIR)
 	{
 		canClimb = true;
 	}
+	else
+	{
+		canClimb = false;
+	}
 
-	if (c2->type == Collider::Type::TOP_LADDER)
+	/*
+	if (c2->type == Collider::Type::STAIR)
 	{
 		// TODO 5: The player has reached the top of the ladder, stop climbing
 
 
-	}*/
+	}
+	*/
 }
 
 //Draw GamePad Debug
