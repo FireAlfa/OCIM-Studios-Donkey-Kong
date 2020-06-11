@@ -89,6 +89,9 @@ public:
 	// The direction where the player is facing -> -1 for Left // 1 for Right
 	int facingDirection = 1;
 
+	//If player is climbing up or down -> -1 for Down // 1 for Up
+	int upDownDirection = 1;
+
 	// Jump handlers
 	uint jumpCountdown = 30;
 	int jumpDirection = 1;
@@ -104,7 +107,9 @@ public:
 	Animation jumpAnim_Left;
 	Animation jumpAnim_Right;
 
-	Animation climbAnim;
+	//Animation climbAnim;
+	Animation climb_Up;
+	Animation climb_Down;
 
 	Animation hammerIdleAnim_Left;
 	Animation hammerIdleAnim_Right;

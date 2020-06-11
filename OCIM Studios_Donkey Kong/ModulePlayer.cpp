@@ -46,6 +46,7 @@ bool ModulePlayer::Start()
 	bool ret = true;
 	
 	destroyed = false;
+	canClimb = false;
 
 	//
 	//
@@ -182,6 +183,7 @@ void ModulePlayer::UpdateState()
 	default:
 		break;
 	}
+	
 }
 
 //Control what each state does
@@ -234,7 +236,8 @@ void ModulePlayer::UpdateLogic()
 	{
 		// TODO 5: Update climbing logic - Only move when the player is pressing "W"
 
-
+		position.y += speed * upDownDirection;
+		currentAnimation->Update();
 		break;
 	}
 	}
@@ -295,6 +298,13 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 	}
 	case (CLIMBING):
 	{
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+			upDownDirection = 1;
+		else
+			upDownDirection = -1;
+		currentAnimation = &(upDownDirection == 1 ? climb_Up : climb_Down);
+		break;
 		// TODO 5: Change climbing animation when changing the state
 
 	}
