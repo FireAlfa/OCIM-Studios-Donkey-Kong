@@ -426,6 +426,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		canClimb = true;
 	}
+	else
+	{
+		canClimb = false;
+	}
 
 	/*
 	if (c2->type == Collider::Type::STAIR)
