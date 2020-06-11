@@ -431,7 +431,17 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
     if (c1 == playerCollider && c2->type == Collider::Type::TOPWALL)
 	{
-		position.y -= speed;
+		position.y += speed;
+	}
+
+	if (c1 == playerCollider && c2->type == Collider::Type::LEFTWALL)
+	{
+		position.x += speed;
+	}
+
+	if (c1 == playerCollider && c2->type == Collider::Type::RIGHTWALL)
+	{
+		position.x -= speed;
 	}
 
 	/*
