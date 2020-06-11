@@ -10,6 +10,7 @@
 #include "ModulePlayer.h"
 #include "SceneIntro.h"
 #include "SceneLevel4.h"
+#include "SceneLevel1.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 
@@ -33,16 +34,18 @@ Application::Application()
 
 	modules[4] =	sceneIntro =	new SceneIntro(true);
 	modules[5] =	sceneLevel4 =	new SceneLevel4(false);
-	modules[6] =	player =		new ModulePlayer(false);
-	modules[7] =	particles =		new ModuleParticles(true);
-	modules[8] =	enemies =		new ModuleEnemies(false);
+	modules[6] =	sceneLevel1 =	new SceneLevel1(false);
 
-	modules[9] =	collisions =	new ModuleCollisions(true);
-	modules[10] =	fade =			new ModuleFadeToBlack(true);
-	modules[11] =	fonts =			new ModuleFonts(true);
-	modules[12] =	debugInfo =		new ModuleDebugInfo(true);
+	modules[7] =	player =		new ModulePlayer(false);
+	modules[8] =	particles =		new ModuleParticles(true);
+	modules[9] =	enemies =		new ModuleEnemies(false);
 
-	modules[13] =	render =		new ModuleRender(true);
+	modules[10] =	collisions =	new ModuleCollisions(true);
+	modules[11] =	fade =			new ModuleFadeToBlack(true);
+	modules[12] =	fonts =			new ModuleFonts(true);
+	modules[13] =	debugInfo =		new ModuleDebugInfo(true);
+
+	modules[14] =	render =		new ModuleRender(true);
 }
 
 //Destructor, frees dynamic memory

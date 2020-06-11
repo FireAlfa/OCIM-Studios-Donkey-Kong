@@ -55,6 +55,9 @@ Update_Status ModuleDebugInfo::Update()
 		inspectedModule = (Module*)App->sceneLevel4;
 
 	if (App->input->keys[SDL_SCANCODE_F6] == KEY_DOWN)
+		inspectedModule = (Module*)App->sceneLevel1;
+
+	if (App->input->keys[SDL_SCANCODE_F7] == KEY_DOWN)
 		inspectedModule = nullptr;
 
 
