@@ -417,11 +417,7 @@ Update_Status ModulePlayer::PostUpdate()
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	//
-	//
-	//
 	//Collision control
-	//
-	//
 	//
 
 	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::STAIR)
@@ -431,6 +427,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	else
 	{
 		canClimb = false;
+	}
+
+    if (c1 == playerCollider && c2->type == Collider::Type::TOPWALL)
+	{
+		position.y -= speed;
 	}
 
 	/*
@@ -448,10 +449,10 @@ void ModulePlayer::DebugDrawGamepadInfo()
 {
 	GamePad& pad = App->input->pads[0];
 
-	sprintf_s(scoreText, 150, "pad 0 %s, press 1/2/3 for rumble", (pad.enabled) ? "plugged" : "not detected");
+	sprintf_s(scoreText, 100, "pad 0 %s, press 1/2/3 for rumble", (pad.enabled) ? "plugged" : "not detected");
 	App->fonts->BlitText(5, 10, scoreFont, scoreText);
 
-	sprintf_s(scoreText, 150, "buttons %s %s %s %s %s %s %s %s %s %s %s",
+	sprintf_s(scoreText, 100, "buttons %s %s %s %s %s %s %s %s %s %s %s",
 		(pad.a) ? "a" : "",
 		(pad.b) ? "b" : "",
 		(pad.x) ? "x" : "",
@@ -466,7 +467,7 @@ void ModulePlayer::DebugDrawGamepadInfo()
 	);
 	App->fonts->BlitText(5, 20, scoreFont, scoreText);
 
-	sprintf_s(scoreText, 150, "dpad %s %s %s %s",
+	sprintf_s(scoreText, 100, "dpad %s %s %s %s",
 		(pad.up) ? "up" : "",
 		(pad.down) ? "down" : "",
 		(pad.left) ? "left" : "",

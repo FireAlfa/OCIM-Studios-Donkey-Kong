@@ -7,6 +7,7 @@
 #include "ModuleCollisions.h"
 
 #include "ModuleEnemies.h"
+#include "Enemy_DonkeyKong.h"
 #include "ModulePlayer.h"
 
 
@@ -25,7 +26,15 @@ SceneLevel4::SceneLevel4(bool startEnabled) : Module(startEnabled)
 	//
 	//Scene 4 Animation pushbacks
 	//
-
+	/*DonkeyKong.PushBack({ 0, 0, 39, 32 });
+	DonkeyKong.PushBack({ 0, 0, 39, 32 });
+	DonkeyKong.PushBack({ 0, 0, 39, 32 });
+	DonkeyKong.PushBack({ 0, 0, 39, 32 });
+	DonkeyKong.PushBack({ 0, 0, 39, 32 });
+	DonkeyKong.PushBack({ 217, 0, 46, 32 });
+	DonkeyKong.PushBack({ 170, 0, 46, 32 });
+	DonkeyKong.pingpong = true;
+	DonkeyKong.loop = true;*/
 }
 
 SceneLevel4::~SceneLevel4()
@@ -41,11 +50,19 @@ bool SceneLevel4::Start()
 	bool ret = true;
 
 
+	//Enable modules
+	App->player->Enable();
+	App->enemies->Enable();
+
+
 	//
 	//Load the files of each texture & audio
 	//
 	lvl4Texture = App->textures->Load("Assets/Maps/level4.png");
 	buttonTexture = App->textures->Load("Assets/GUI/Button.png");
+
+	donkeyKongTexture = App->textures->Load("Assets/Sprites/DonkeyKong_Sprites.png");
+	princessTexture = App->textures->Load("Assets/Sprites/Peach_Sprites.png");
 
 
 	//
@@ -154,14 +171,12 @@ bool SceneLevel4::Start()
 	//
 	//Add enemies
 	//
+	App->enemies->AddEnemy(Enemy_Type::DONKEYKONG, 92, 56);
+
+
+
+
 	
-
-
-
-
-	//Enable modules
-	App->player->Enable();
-	App->enemies->Enable();
 
 	return ret;
 }

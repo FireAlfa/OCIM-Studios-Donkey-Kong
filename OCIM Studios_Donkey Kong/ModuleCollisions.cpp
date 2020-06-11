@@ -44,7 +44,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::RIGHTWALL] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::GRAVITYWALLS] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PEACH] = false;
-	matrix[Collider::Type::PLAYER][Collider::Type::DK] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::DK] = true;
 
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::PLAYER] = false;
@@ -168,7 +168,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PEACH][Collider::Type::DK] = false;
 
 	matrix[Collider::Type::DK][Collider::Type::WALL] = true;
-	matrix[Collider::Type::DK][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::DK][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::DK][Collider::Type::PLAYER_CENTER] = false;
 	matrix[Collider::Type::DK][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::DK][Collider::Type::STAIR] = false;
@@ -197,7 +197,6 @@ Update_Status ModuleCollisions::PreUpdate()
 		{
 			delete colliders[i];
 			colliders[i] = nullptr;
-			--colliderCount;
 		}
 	}
 

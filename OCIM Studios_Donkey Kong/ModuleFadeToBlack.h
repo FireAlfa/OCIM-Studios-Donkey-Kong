@@ -1,5 +1,5 @@
-#ifndef __MODULEFADETOBLACK_H__
-#define __MODULEFADETOBLACK_H__
+#ifndef __MODULE_FADETOBLACK_H__
+#define __MODULE_FADETOBLACK_H__
 
 #include "Module.h"
 #include "SDL\include\SDL_rect.h"
@@ -52,4 +52,4 @@ private:
 	Module* moduleToDisable = nullptr;
 };
 
-#endif //__MODULEFADETOBLACK_H__
+#endif //__MODULE_FADETOBLACK_H__

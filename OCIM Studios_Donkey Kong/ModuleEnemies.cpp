@@ -6,14 +6,13 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 
-#include "Enemy.h"
-//
-//
 //
 //Include enemy files
 //
-//
-//
+#include "Enemy.h"
+#include "Enemy_DonkeyKong.h"
+
+
 
 #define SPAWN_MARGIN 50
 
@@ -186,9 +185,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 		{
 			switch (info.type)
 			{
-			/*case Enemy_Type::REDBIRD:
-				enemies[i] = new Enemy_RedBird(info.x, info.y);
-				break;*/
+			 case Enemy_Type::DONKEYKONG:
+				enemies[i] = new Enemy_DonkeyKong(info.x, info.y);
+				break;
 				
 				//
 				//

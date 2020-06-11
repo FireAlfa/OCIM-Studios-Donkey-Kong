@@ -1,5 +1,5 @@
-#ifndef __MODULERENDERER_H__
-#define __MODULERENDERER_H__
+#ifndef __MODULE_RENDERER_H__
+#define __MODULE_RENDERER_H__
 
 #include "Module.h"
 #include "SDL/include/SDL_Rect.h"
@@ -66,4 +66,4 @@ public:
 
 };
 
-#endif //__ModuleRenderer_H__
+#endif //__Module_Renderer_H__

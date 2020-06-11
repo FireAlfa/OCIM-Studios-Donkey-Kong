@@ -37,15 +37,12 @@ public:
 	//
 	SDL_Texture* lvl4Texture = nullptr;
 	SDL_Texture* buttonTexture = nullptr;
+	SDL_Texture* donkeyKongTexture = nullptr;
+	SDL_Texture* princessTexture = nullptr;
 
-	//
-	//
 	//
 	//Collider arrays
 	//
-	//
-	//
-	Collider* ladderColliders[4];
 	Collider* buttonColliders[8];
 
 	//
@@ -53,6 +50,12 @@ public:
 	//
 	SDL_Rect lvl4Rect;
 	SDL_Rect buttonRect;
+
+	//
+	//Animations
+	//
+	Animation DonkeyKong;
+	Animation Princess;
 	
 
 	//Button array

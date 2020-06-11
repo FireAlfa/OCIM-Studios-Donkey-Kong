@@ -11,6 +11,7 @@ enum class Enemy_Type
 {
 	NO_TYPE,
 
+	DONKEYKONG,
 	//
 	//
 	//
@@ -86,6 +87,9 @@ private:
 
 	// All spawned enemies in the scene
 	Enemy* enemies[MAX_ENEMIES] = { nullptr };
+
+	Enemy* DonkeyKong = nullptr;
+
 
 	// The enemies sprite sheet
 	SDL_Texture* texture = nullptr;
