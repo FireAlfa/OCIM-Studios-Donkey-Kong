@@ -26,7 +26,7 @@ SceneLevel4::SceneLevel4(bool startEnabled) : Module(startEnabled)
 	//
 	//Scene 4 Animation pushbacks
 	//
-	/*DonkeyKong.PushBack({ 0, 0, 39, 32 });
+	DonkeyKong.PushBack({ 0, 0, 39, 32 });
 	DonkeyKong.PushBack({ 0, 0, 39, 32 });
 	DonkeyKong.PushBack({ 0, 0, 39, 32 });
 	DonkeyKong.PushBack({ 0, 0, 39, 32 });
@@ -34,7 +34,7 @@ SceneLevel4::SceneLevel4(bool startEnabled) : Module(startEnabled)
 	DonkeyKong.PushBack({ 217, 0, 46, 32 });
 	DonkeyKong.PushBack({ 170, 0, 46, 32 });
 	DonkeyKong.pingpong = true;
-	DonkeyKong.loop = true;*/
+	DonkeyKong.loop = true;
 }
 
 SceneLevel4::~SceneLevel4()
@@ -185,12 +185,9 @@ bool SceneLevel4::Start()
 Update_Status SceneLevel4::Update()
 {
 	//
-	//
-	//
 	//Update animations
 	//
-	//
-	//
+
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -205,6 +202,11 @@ Update_Status SceneLevel4::PostUpdate()
 	//Draw the background
 	//
 	App->render->Blit(lvl4Texture, 0, 0, &lvl4Rect, NULL, false);
+
+
+	//
+	//Draw DK
+	// 
 
 	//
 	//Draw the buttons

@@ -35,12 +35,9 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	//
-	//
-	//
 	//Load texture files
 	//
-	//
-	//
+	texture = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
 
 	//
 	//

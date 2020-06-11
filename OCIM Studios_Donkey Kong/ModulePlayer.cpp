@@ -119,7 +119,7 @@ bool ModulePlayer::Start()
 	//Set initial position
 	//
 	position.x = 1;
-	position.y = 230;
+	position.y = 232;
 
 
 	//
@@ -442,6 +442,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1 == playerCollider && c2->type == Collider::Type::RIGHTWALL)
 	{
 		position.x -= speed;
+	}
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::WALL)
+	{
+		position.y += speed;
 	}
 
 	/*
