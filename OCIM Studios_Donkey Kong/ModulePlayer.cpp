@@ -205,7 +205,7 @@ void ModulePlayer::UpdateState()
 			ChangeState(state, JUMPING);
 
 		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN && canClimb)
 			ChangeState(state, CLIMBING);
 
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
@@ -311,12 +311,13 @@ void ModulePlayer::UpdateLogic()
 	{
 		// TODO 5: Update climbing logic - Only move when the player is pressing "W"
 
-		position.y += speed * upDownDirection;
+	
+			position.y += speed * upDownDirection;
 		currentAnimation->Update();
+		
 		break;
 	}
-
-	}
+}
 
 	// Simply updating the collider position to match our current position
 	playerCollider->SetPos(position.x, position.y);
@@ -421,17 +422,19 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	//
 	//
 
-	/*if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::LADDER)
+	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::STAIR)
 	{
 		canClimb = true;
 	}
 
-	if (c2->type == Collider::Type::TOP_LADDER)
+	/*
+	if (c2->type == Collider::Type::STAIR)
 	{
 		// TODO 5: The player has reached the top of the ladder, stop climbing
 
 
-	}*/
+	}
+	*/
 }
 
 //Draw GamePad Debug
