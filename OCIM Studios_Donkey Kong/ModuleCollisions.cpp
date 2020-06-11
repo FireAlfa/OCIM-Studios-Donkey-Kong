@@ -264,6 +264,9 @@ void ModuleCollisions::DebugDraw()
 
 		switch (colliders[i]->type)
 		{
+			//
+			//Color of each collider
+			//
 		case Collider::Type::NONE: // white
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
 			break;
@@ -294,13 +297,7 @@ void ModuleCollisions::DebugDraw()
 		case Collider::Type::RIGHTWALL: // magenta
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
 			break;
-			//
-			//
-			//
-			//Color of each collider
-			//
-			//
-			//
+			
 		}
 	}
 }

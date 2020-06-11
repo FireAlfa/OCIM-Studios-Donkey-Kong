@@ -59,7 +59,7 @@ private:
 	uint colliderCount = 0;
 
 	// Simple debugging flag to draw all colliders
-	bool debug = true;
+	bool debug = false;
 };
 
 #endif // __MODULE_COLLISIONS_H__

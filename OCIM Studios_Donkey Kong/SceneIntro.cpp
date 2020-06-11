@@ -10,6 +10,8 @@
 SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 {
 	name = "s_intro";
+
+	spaceToStartRect = { 43, 146, 142, 52 };
 }
 
 SceneIntro::~SceneIntro()
@@ -24,7 +26,8 @@ bool SceneIntro::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Maps/startScreen.png");
+	bgTexture = App->textures->Load("Assets/Maps/startScreen_text.png");
+	spaceToStartTexture = App->textures->Load("Assets/GUI/SpaceToStart.png");
 	
 	//
 	//
@@ -55,6 +58,16 @@ Update_Status SceneIntro::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
+
+	++cont;
+
+	if (cont >= SPACE_BLINK) {
+		App->render->Blit(spaceToStartTexture, 43, 146, NULL);
+
+		if (cont == (2*SPACE_BLINK)) {
+			cont = 0;
+		}
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }

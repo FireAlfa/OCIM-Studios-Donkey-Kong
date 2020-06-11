@@ -4,6 +4,10 @@
 #include "Module.h"
 #include "Animation.h"
 
+
+
+#define SPACE_BLINK 40
+
 struct SDL_Texture;
 
 //Class for the First screen of the game
@@ -31,6 +35,14 @@ public:
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* spaceToStartTexture = nullptr;
+
+	//Square for texture
+	SDL_Rect spaceToStartRect;
+
+	//Counter to know when to print the Space to Start text
+	int cont = 0;
+
 };
 
 #endif
