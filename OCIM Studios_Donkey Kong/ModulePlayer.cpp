@@ -35,6 +35,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	idleAnim_Right.PushBack({ 68, 17, 12, 16 });
 
 
+
 	//Running Anims
 	//   Left
 	runningAnim_Left.PushBack({ 0, 0, 15, 16 });
@@ -77,12 +78,12 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 	//	Hammer Idle
 	//		Left
-	hammerIdleAnim_Left.PushBack({ 136, 0, 12, 26 });
-	hammerIdleAnim_Left.PushBack({ 57, 68, 25, 16 });
+	hammerIdleAnim_Left.PushBack({ 138, 0, 25, 26 });
+	hammerIdleAnim_Left.PushBack({ 57, 68, 25, 26 });
 
 	//		Right
-	hammerIdleAnim_Right.PushBack({ 136, 34, 12, 26 });
-	hammerIdleAnim_Right.PushBack({ 83, 68, 25, 16 });
+	hammerIdleAnim_Right.PushBack({ 137, 34, 25, 26 });
+	hammerIdleAnim_Right.PushBack({ 83, 68, 25, 26 });
 
 
 	//	HammerRunning
@@ -188,7 +189,7 @@ void ModulePlayer::UpdateState()
 
 		// TODO 5: Fill in the transition condition to start climbing
 
-		// TODO 0: Notice how we are changing into HAMMER_IDLE state when pressing H
+
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
 			ChangeState(state, HAMMER_IDLE);
 
@@ -314,7 +315,7 @@ void ModulePlayer::UpdateLogic()
 		// TODO 5: Update climbing logic - Only move when the player is pressing "W"
 
 	
-			position.y += speed * upDownDirection;
+		position.y += speed * upDownDirection;
 		currentAnimation->Update();
 		
 		break;
@@ -360,7 +361,6 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 	}
 	case(HAMMER_IDLE):
 	{
-		// TODO 1: Change the current animation to match the new state (very similar to IDLE case)
 		currentAnimation = &(facingDirection == -1 ? hammerIdleAnim_Left : hammerIdleAnim_Right);
 		break;
 	}
@@ -396,10 +396,26 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 //Post Update
 Update_Status ModulePlayer::PostUpdate()
 {
+	//
+	//Draw Player
+	//
 	if (!destroyed)
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
-		App->render->Blit(playerTexture, position.x, position.y, &rect);
+		if (state == HAMMER_IDLE)
+		{
+			if (facingDirection == -1)
+			{
+				App->render->Blit(playerTexture, position.x - 13, position.y - 10, &rect);
+			}
+			else {
+				App->render->Blit(playerTexture, position.x, position.y - 10, &rect);
+			}
+		}
+		else
+		{
+			App->render->Blit(playerTexture, position.x, position.y, &rect);
+		}
 	}
 
 
