@@ -80,7 +80,8 @@ public:
 	Animation* currentAnimation = nullptr;
 
 	//The Player's collider
-	Collider* collider = nullptr;
+	Collider* playerCollider = nullptr;
+	Collider* playerCenterCollider = nullptr;
 
 
 	// The speed in which we move the player (pixels per frame)

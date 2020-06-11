@@ -24,6 +24,11 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
 	name = "player";
 	
+
+
+	//
+	//Animation pushbacks
+	//
 	//IdleAnims
 	idleAnim_Left.PushBack({ 122,10,12,16 });
 	idleAnim_Right.PushBack({ 162, 10, 12, 16 });
@@ -92,14 +97,6 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 	hammerRunAnim_Left.speed = hammerRunAnim_Right.speed = 0.1f;
 
-
-	//
-	//
-	//
-	//Animation pushbacks
-	//
-	//
-	//
 }
 
 ModulePlayer::~ModulePlayer()
@@ -113,43 +110,41 @@ bool ModulePlayer::Start()
 	LOG("Loading player textures");
 
 	bool ret = true;
-	
-	destroyed = false;
-	canClimb = false;
 
-	//
-	//
+
 	//
 	//Set initial position
 	//
-	//
-	//
+	position.x = 1;
+	position.y = 230;
 
-	//
-	//
+
 	//
 	//Load Player textures files & set currentAnimation
 	//
-	//
-	//
+	playerTexture = App->textures->Load("Assets/Sprites/Mario_Sprites.png");
+	currentAnimation = &idleAnim_Right;
 
 
-	//
-	//
 	//
 	//Load Player FX files
 	//
-	//
-	//
 	jumpFx = App->audio->LoadFx("Assets/Fx/jump.ogg");
 
-	//
-	//
+
 	//
 	//Create Player collider
 	//
+	playerCollider = App->collisions->AddCollider({ position.x, position.y, 12, 16 }, Collider::Type::PLAYER, this);
+	playerCenterCollider = App->collisions->AddCollider({ position.x + 5, position.y, 3, 16 }, Collider::Type::PLAYER_CENTER, this);
+
+
 	//
+	//Player flags
 	//
+	destroyed = false;
+	canClimb = false;
+
 
 	//Font
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
@@ -161,7 +156,7 @@ bool ModulePlayer::Start()
 //Main player Update
 Update_Status ModulePlayer::Update()
 {
-	//GamePad& pad = App->input->pads[0];
+	GamePad& pad = App->input->pads[0];
 
 	UpdateState();
 	UpdateLogic();
@@ -313,7 +308,8 @@ void ModulePlayer::UpdateLogic()
 	}
 
 	// Simply updating the collider position to match our current position
-	//collider->SetPos(position.x + 2, position.y + 14);
+	playerCollider->SetPos(position.x, position.y);
+	playerCenterCollider->SetPos(position.x + 5, position.y);
 }
 
 //Change the State
@@ -388,8 +384,8 @@ Update_Status ModulePlayer::PostUpdate()
 {
 	if (!destroyed)
 	{
-		/*SDL_Rect rect = currentAnimation->GetCurrentFrame();
-		App->render->Blit(playerTexture, position.x, position.y, &rect);*/
+		SDL_Rect rect = currentAnimation->GetCurrentFrame();
+		App->render->Blit(playerTexture, position.x, position.y, &rect);
 	}
 
 
