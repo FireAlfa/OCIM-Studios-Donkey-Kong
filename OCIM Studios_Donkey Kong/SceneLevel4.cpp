@@ -5,6 +5,8 @@
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModuleInput.h"
+#include "ModuleFadeToBlack.h"
 
 #include "ModuleEnemies.h"
 #include "Enemy_DonkeyKong.h"
@@ -26,189 +28,192 @@ SceneLevel4::SceneLevel4(bool startEnabled) : Module(startEnabled)
 	//
 	//Scene 4 Animation pushbacks
 	//
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 16, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 16, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 16, 0, 15, 22 }); //Face right + wiggle 1
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 16, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 16, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 16, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 16, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 16, 0, 15, 22 }); // Face right + wiggle 2
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 0, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 66, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 66, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 66, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 66, 0, 15, 22 }); // Turn left + wiggle 1
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 66, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 66, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 66, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 66, 0, 15, 22 }); //Face left + wiggle 2
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });
-	Princess.PushBack({ 82, 0, 15, 22 });// Wait
+	//Princess Animation pushbacks
+	{
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 16, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 16, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 16, 0, 15, 22 }); //Face right + wiggle 1
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 16, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 16, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 16, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 16, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 16, 0, 15, 22 }); // Face right + wiggle 2
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });
+		Princess.PushBack({ 0, 0, 15, 22 });  //Wait before turning left
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 66, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 66, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 66, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 66, 0, 15, 22 }); // Turn left + wiggle 1
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 66, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 66, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 66, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 66, 0, 15, 22 }); //Face left + wiggle 2
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });
+		Princess.PushBack({ 82, 0, 15, 22 });// Wait
+	}
 	Princess.speed = 0.2f;
 }
 
@@ -362,6 +367,24 @@ Update_Status SceneLevel4::Update()
 	//Update animations
 	//
 	Princess.Update();
+
+	//
+	//Change Level
+	//
+	if (App->input->keys[SDL_SCANCODE_0] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
+	}
+
+	if (App->input->keys[SDL_SCANCODE_1] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel1, 90);
+	}
+
+	if (App->input->keys[SDL_SCANCODE_2] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel2, 90);
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }

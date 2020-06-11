@@ -5,6 +5,8 @@
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModuleInput.h"
+#include "ModuleFadeToBlack.h"
 
 #include "ModuleEnemies.h"
 #include "Enemy_DonkeyKong.h"
@@ -104,6 +106,24 @@ Update_Status SceneLevel2::Update()
 	//
 	//
 	//
+
+	//
+	//Change Level
+	//
+	if (App->input->keys[SDL_SCANCODE_0] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
+	}
+
+	if (App->input->keys[SDL_SCANCODE_1] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel1, 90);
+	}
+
+	if (App->input->keys[SDL_SCANCODE_4] == Key_State::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel4, 90);
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
