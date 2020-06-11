@@ -19,14 +19,13 @@ SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 	//Set position for textures
 	//
 	lvl1Rect = { 0, 0, 224, 256 };
-	//buttonRect = { 0, 0, 8, 9 };
 
 
 
 	//
 	//
 	//
-	//Scene 4 Animation pushbacks
+	//Scene 1 Animation pushbacks
 	//
 	//
 	//
@@ -49,7 +48,6 @@ bool SceneLevel1::Start()
 	//Load the files of each texture & audio
 	//
 	lvl1Texture = App->textures->Load("Assets/Maps/level1.png");
-	//buttonTexture = App->textures->Load("Assets/GUI/Button.png");
 
 
 
