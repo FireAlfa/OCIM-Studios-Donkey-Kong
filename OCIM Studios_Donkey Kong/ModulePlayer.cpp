@@ -467,12 +467,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL)
 	{
 		position.y -= speed;
-		if (facingDirection == -1)
-		{
-			position.y += speed;
-		}
 	}
-
+	if (facingDirection == -1 && c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL  )
+	{
+		position.y -= speed;
+	}
 }
 
 //Draw GamePad Debug
