@@ -16,7 +16,6 @@ enum Player_State
 	JUMPING,
 	HAMMER_IDLE,
 	HAMMER_RUNNING,
-	HAMMER_JUMPING,
 	CLIMBING,
 };
 
@@ -121,6 +120,10 @@ public:
 	//////////////////////////////////////
 
 
+
+	//
+	//Player flags
+	//
 	//A flag to detect when the player has been destroyed
 	bool destroyed = false;
 
