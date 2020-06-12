@@ -62,22 +62,22 @@ The members of the group are:
   <tr>
     <td> <a href="(https://github.com/Osvak">Òscar Canales</a></td>
     <td>Code</td> 
-    <td><img src="https://raw.githubusercontent.com/juanha2/HollowFaith/master/docs/aaronPortrait.png" alt="Oscar" class="inline"></td>
+    <td><img src="https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/tree/master/docs/OscarPortrait.png" alt="Oscar" class="inline"></td>
   </tr>
     <tr>
     <td> <a href="https://github.com/IsaaColomer">Isaac Colomer</a></td>
     <td>Code</td> 
-    <td><img src="https://raw.githubusercontent.com/juanha2/HollowFaith/master/docs/aaronPortrait.png" alt="Isaac" class="inline"></td>
+    <td><img src="https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/tree/master/docs/IsaacPortrait.png" alt="Isaac" class="inline"></td>
   </tr>
     <tr>
     <td> <a href="https://github.com/maikgarcia">Maik Garcia</a></td>
     <td>Code</td> 
-    <td><img src="https://raw.githubusercontent.com/juanha2/HollowFaith/master/docs/aaronPortrait.png" alt="Maik" class="inline"></td>
+    <td><img src="https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/tree/master/docs/MaikPortrait.png" alt="Maik" class="inline"></td>
   </tr>
   <tr>
     <td><a href="https://github.com/FireAlfa">Carles Garriga</a></td>
     <td>Code</td> 
-    <td><img src="https://raw.githubusercontent.com/juanha2/HollowFaith/master/docs/juanPortrait.png" alt="Carles" class="inline"></td>
+    <td><img src="https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/tree/master/docs/CarlesPortrait.png" alt="Carles" class="inline"></td>
   </tr>
 </table>
 </center>
