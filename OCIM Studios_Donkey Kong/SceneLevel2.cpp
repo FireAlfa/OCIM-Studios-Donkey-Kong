@@ -56,7 +56,7 @@ bool SceneLevel2::Start()
 	//Enable modules
 	App->player->Enable();
 	App->enemies->Enable();
-
+	App->collisions->Enable();
 
 	//
 	//Load the files of each texture & audio
@@ -70,8 +70,66 @@ bool SceneLevel2::Start()
 	//
 	//Place colliders
 	//
+	//Floor 0 colliders
+	App->collisions->AddCollider({ 0, 248, 227, 4 }, Collider::Type::WALL);
+
+	//Floor 1 colliders
+	App->collisions->AddCollider({ 8, 208, 208, 8 }, Collider::Type::WALL);
+
+	//Floor 2 colliders
+	App->collisions->AddCollider({ 8, 168, 40, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 64, 168, 88, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 168, 168, 48, 8 }, Collider::Type::WALL);
+
+	//Floor 3 colliders
+	App->collisions->AddCollider({ 0, 128, 96, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 128, 128, 96, 8 }, Collider::Type::WALL);
+
+	//Floor 4 colliders
+	App->collisions->AddCollider({ 8, 88, 208, 8 }, Collider::Type::WALL);
+
+	//Flor 5 colliders (WIN)
+	App->collisions->AddCollider({ 88, 56, 48, 8 }, Collider::Type::WALL);
 
 
+
+	//Stairs Set 1
+	App->collisions->AddCollider({ 27, 208, 2, 26 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 83, 208, 2, 26 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 139, 208, 2, 26 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 195, 208, 2, 26 }, Collider::Type::STAIR);
+
+	//Stairs Set 2
+	App->collisions->AddCollider({ 67, 168, 2, 26 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 147, 168, 2, 26 }, Collider::Type::STAIR);
+
+	//Stairs Set 3
+	App->collisions->AddCollider({ 27, 128, 2, 26 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 83, 128, 2, 26 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 139, 128, 2, 26 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 195, 128, 2, 26 }, Collider::Type::STAIR);
+
+	//Stairs Set 4
+	App->collisions->AddCollider({ 19, 88, 2, 26 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 203, 88, 2, 26 }, Collider::Type::STAIR);
+
+
+
+	//Gravity Walls 1
+	App->collisions->AddCollider({ 0, 207, 5, 5 }, Collider::Type::GRAVITYWALLS);
+	App->collisions->AddCollider({ 219, 207, 5, 5 }, Collider::Type::GRAVITYWALLS);
+
+	//Gravity Walls 2
+	App->collisions->AddCollider({ 0, 128, 13, 40 }, Collider::Type::GRAVITYWALLS);
+	App->collisions->AddCollider({ 210, 128, 13, 40 }, Collider::Type::GRAVITYWALLS);
+
+	//Gravity Walls 3
+	App->collisions->AddCollider({ 0, 88, 21, 40 }, Collider::Type::GRAVITYWALLS);
+	App->collisions->AddCollider({ 203, 88, 21, 40 }, Collider::Type::GRAVITYWALLS);
+
+	//Gravity Walls 4
+	App->collisions->AddCollider({ 0, 48, 29, 40 }, Collider::Type::GRAVITYWALLS);
+	App->collisions->AddCollider({ 195, 48, 29, 40 }, Collider::Type::GRAVITYWALLS);
 
 
 	//Top Wall
@@ -155,6 +213,7 @@ bool SceneLevel2::CleanUp()
 	//Disable modules
 	App->player->Disable();
 	App->enemies->Disable();
+	App->collisions->Disable();
 
 	return true;
 }
