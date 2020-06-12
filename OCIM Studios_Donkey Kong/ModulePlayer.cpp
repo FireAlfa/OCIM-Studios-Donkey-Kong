@@ -78,27 +78,28 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 	//	Hammer Idle
 	//		Left
-	hammerIdleAnim_Left.PushBack({ 138, 0, 25, 26 });
-	hammerIdleAnim_Left.PushBack({ 57, 68, 25, 26 });
+	hammerIdleAnim_Left.PushBack({ 142, 0, 25, 26 });
+	hammerIdleAnim_Left.PushBack({ 116, 68, 25, 26 });
 
 	//		Right
-	hammerIdleAnim_Right.PushBack({ 137, 34, 25, 26 });
-	hammerIdleAnim_Right.PushBack({ 83, 68, 25, 26 });
+	hammerIdleAnim_Right.PushBack({ 142, 34, 25, 26 });
+	hammerIdleAnim_Right.PushBack({ 142, 68, 25, 26 });
+
+	hammerIdleAnim_Left.speed = hammerIdleAnim_Right.speed = 0.1f;
 
 
 	//	HammerRunning
 	//		Left
-	hammerRunAnim_Left.PushBack({ 0, 68, 13, 29 });
-	hammerRunAnim_Left.PushBack({ 14, 68, 26, 16 });
-	hammerRunAnim_Left.PushBack({ 41, 68, 15, 29 });     
-	hammerRunAnim_Left.PushBack({ 14, 68, 26, 16 });
-	hammerIdleAnim_Left.speed = hammerIdleAnim_Right.speed = 0.1f;
+	hammerRunAnim_Left.PushBack({ 0, 68, 29, 26 });
+	hammerRunAnim_Left.PushBack({ 29, 68, 29, 26 });
+	hammerRunAnim_Left.PushBack({ 58, 68, 29, 26 });     
+	hammerRunAnim_Left.PushBack({ 87, 68, 29, 26 });
 
 	//		Right
-	hammerRunAnim_Right.PushBack({ 150, 68, 13, 29 });
-	hammerRunAnim_Right.PushBack({ 124, 68, 26, 16 });
-	hammerRunAnim_Right.PushBack({ 108, 68, 15, 29 });
-	hammerRunAnim_Right.PushBack({ 124, 68, 26, 16 });
+	hammerRunAnim_Right.PushBack({ 87, 94, 29, 26 });
+	hammerRunAnim_Right.PushBack({ 58, 94, 29, 26 });
+	hammerRunAnim_Right.PushBack({ 29, 94, 29, 26 });
+	hammerRunAnim_Right.PushBack({ 0, 94, 29, 26 });
 	hammerRunAnim_Left.speed = hammerRunAnim_Right.speed = 0.1f;
 
 }
@@ -182,13 +183,10 @@ void ModulePlayer::UpdateState()
 		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 			ChangeState(state, JUMPING);
 
-		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
+		if (canClimb == true &&
+			(App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN))
 			ChangeState(state, CLIMBING);
-
-
-		// TODO 5: Fill in the transition condition to start climbing
-
 
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
 			ChangeState(state, HAMMER_IDLE);
@@ -207,16 +205,14 @@ void ModulePlayer::UpdateState()
 		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 			ChangeState(state, JUMPING);
 
-		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN && canClimb)
+		if (canClimb == true &&
+			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
 			ChangeState(state, CLIMBING);
 
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
 			ChangeState(state, HAMMER_RUNNING);
 
-		/*if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN && canClimb)
-			ChangeState(state, CLIMBING);
-		*/
 		break;
 	}
 
@@ -234,6 +230,15 @@ void ModulePlayer::UpdateState()
 		break;
 	}
 
+	case CLIMBING:
+	{
+		if (canClimb == false)
+			ChangeState(state, IDLE);
+			
+
+		break;
+	}
+
 	case HAMMER_IDLE:
 	{
 		// TODO 2: Check the condition to go back to IDLE state. If fulfilled, change the state.
@@ -243,11 +248,11 @@ void ModulePlayer::UpdateState()
 		// TODO 3: Add all the logic behind HAMMER_RUN state
 
 		// TODO 3.1: Check the condition. If fulfilled, change the state to HAMMER_RUN
-/*		if (App->input->keys[SDL_SCANCODE_A] != Key_State::KEY_REPEAT &&
-			App->input->keys[SDL_SCANCODE_D] != Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN)
 		{
 			ChangeState(state, HAMMER_RUNNING);
-		}*/
+		}
 
 
 		break;
@@ -255,6 +260,14 @@ void ModulePlayer::UpdateState()
 	case HAMMER_RUNNING:
 		// TODO 3: Add all the logic behind HAMMER_RUN state
 		// TODO 3.4: Lastly, go back to HAMMER_IDLE when the condition is fulfilled
+		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
+			ChangeState(state, RUNNING);
+
+		if (App->input->keys[SDL_SCANCODE_A] != Key_State::KEY_REPEAT &&
+			App->input->keys[SDL_SCANCODE_D] != Key_State::KEY_REPEAT)
+		{
+			ChangeState(state, HAMMER_IDLE);
+		}
 
 		break;
 
@@ -306,6 +319,8 @@ void ModulePlayer::UpdateLogic()
 	{
 		// TODO 3: Add all the logic behind HAMMER_RUN state
 		// TODO 3.3: Update HAMMER_RUN state logic
+		position.x += speed * facingDirection;
+		currentAnimation->Update();
 
 		break;
 	}
@@ -313,10 +328,12 @@ void ModulePlayer::UpdateLogic()
 	case(CLIMBING):
 	{
 		// TODO 5: Update climbing logic - Only move when the player is pressing "W"
-
-	
-		position.y += speed * upDownDirection;
-		currentAnimation->Update();
+		if (canClimb == true)
+		{
+			position.y += speed * upDownDirection;
+			currentAnimation->Update();
+		}
+		
 		
 		break;
 	}
@@ -372,6 +389,7 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 			facingDirection = -1;
 		else
 			facingDirection = 1;
+
 		// TODO 3.2: When changing the state, change to the proper animation
 		currentAnimation = &(facingDirection == -1 ? hammerRunAnim_Left : hammerRunAnim_Right);
 		break;
@@ -402,7 +420,7 @@ Update_Status ModulePlayer::PostUpdate()
 	if (!destroyed)
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
-		if (state == HAMMER_IDLE)
+		if (state == HAMMER_IDLE || state == HAMMER_RUNNING)
 		{
 			if (facingDirection == -1)
 			{
@@ -436,7 +454,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	//Collision control
 	//
 
-	if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::STAIR)
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::STAIR)
 	{
 		canClimb = true;
 	}
@@ -462,7 +480,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 	if (c1 == playerCenterCollider && c2->type == Collider::Type::WALL)
 	{
-		position.y += speed;
+		position.y -= speed;
+		canClimb = false;
 	}
 	if (c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL)
 	{
