@@ -20,6 +20,7 @@ struct Collider
 
 		WALL,
 		GOUPWALL,
+		GODOWNWALL,
 
 		PLAYER,
 		PLAYER_CENTER,
