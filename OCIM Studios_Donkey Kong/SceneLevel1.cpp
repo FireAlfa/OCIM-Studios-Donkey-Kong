@@ -21,7 +21,7 @@ SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 	//Set position for textures
 	//
 	lvl1Rect = { 0, 0, 224, 256 };
-
+	Barrels.PushBack({})
 
 
 	//
@@ -56,14 +56,14 @@ bool SceneLevel1::Start()
 	//Load the files of each texture & audio
 	//
 	lvl1Texture = App->textures->Load("Assets/Maps/level1.png");
-
+	lvl1Barrels = App->textures->Load("Assets/Sprites/Barrells_Sprites");
 
 
 // ===================== WALLS ==================== //
 
 		//Floor 1 colliders
 	App->collisions->AddCollider({ 0, 248, 112, 8 }, Collider::Type::WALL);
-		App->collisions->AddCollider({ 112, 247, 16, 8 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 112, 247, 16, 8 }, Collider::Type::GOUPWALL);
 	App->collisions->AddCollider({ 128, 246, 16, 8 }, Collider::Type::GOUPWALL);
 	App->collisions->AddCollider({ 144, 245, 16, 8 }, Collider::Type::GOUPWALL);
 	App->collisions->AddCollider({ 160, 244, 16, 8 }, Collider::Type::GOUPWALL);
