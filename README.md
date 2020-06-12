@@ -1,6 +1,5 @@
 <h1  align="center" id="donkey-kong">Donkey Kong</h1>
 
-<h1> Esto es el readme.md</h1>
 
 <p><p>Welcome to the webpage of <a href="https://github.com/FireAlfa/OCIM-Studios">Donkey Kong by OCIM Studios</a></p>
 
