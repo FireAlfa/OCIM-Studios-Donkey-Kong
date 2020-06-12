@@ -23,7 +23,7 @@ Copyright (c) [2020] [Òscar Canales Villar, Isaac Colomer Casas, Maik Garcia Al
   
   
   <br>
-  <h2 align="center"id="donkey-kong-trailer"Donkey Kong Trailer</h2>
+  <h2 align="center" id="donkey-kong-trailer">Donkey Kong Trailer</h2>
   
 <iframe width="510" height="412"
 src="https://www.youtube.com/watch?v=ScMzIvxBSi4" frameborder="0" allowfullscreen>
@@ -39,7 +39,7 @@ src="https://www.youtube.com/watch?v=ScMzIvxBSi4" frameborder="0" allowfullscree
 <h2 align="center"id="donkey-kong-build"Donkey Kong Build"</h2>
 <font size="3"><a href="https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/releases/download/v1.00/Donkey_Kong.zip">Click here to download the game</a></font>
                         
-<h2> align= "center"id="ocim-studios-team">OCIM Studios Team</h2>
+<h2 align="center" id="ocim-studios-team">OCIM Studios Team</h2>
 <img src="https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/tree/master/docs/teamphoto.png>
 
 
