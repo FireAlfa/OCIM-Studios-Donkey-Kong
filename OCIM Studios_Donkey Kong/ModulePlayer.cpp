@@ -60,8 +60,12 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 
 
-	//ClimbUp
+	//Climb
+	climb.PushBack({51, 34, 13, 16});
 	climb_Up.PushBack({ 68, 34, 13, 16 });
+	climb_Up.speed = 0.1f;
+
+	//ClimbUp
 	climb_Up.PushBack({ 85, 34, 14, 15 }); 
 	climb_Up.PushBack({ 102, 34, 16, 12 });
 	climb_Up.PushBack({ 119, 34, 16, 15 });
@@ -71,7 +75,6 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	climb_Down.PushBack({ 0, 34, 16, 15 });
 	climb_Down.PushBack({ 17, 34, 16, 12 });
 	climb_Down.PushBack({ 34, 34, 14, 15 });
-	climb_Down.PushBack({ 51, 34, 13, 16 });
 	climb_Down.speed = 0.1f;
 
 
@@ -149,6 +152,7 @@ bool ModulePlayer::Start()
 	//
 	destroyed = false;
 	canClimb = false;
+	canGoDownStairs = false;
 
 
 	//Font
@@ -244,7 +248,9 @@ void ModulePlayer::UpdateState()
 	case CLIMBING_IDLE:
 	{
 		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 			ChangeState(state, CLIMBING_RUNNING);
 
 

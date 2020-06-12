@@ -33,6 +33,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::WALL][Collider::Type::GRAVITYWALLS] = false;
 	matrix[Collider::Type::WALL][Collider::Type::PEACH] = false;
 	matrix[Collider::Type::WALL][Collider::Type::DK] = false;
+	matrix[Collider::Type::WALL][Collider::Type::GOUPWALL] = false;
 	matrix[Collider::Type::WALL][Collider::Type::GODOWNWALL] = false;
 
 
@@ -41,7 +42,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_CENTER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::STAIR] = false;
-	matrix[Collider::Type::WALL][Collider::Type::TOP_STAIR] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::TOP_STAIR] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::BUTTON] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::TOPWALL] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::LEFTWALL] = true;
@@ -49,14 +50,15 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::GRAVITYWALLS] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PEACH] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::DK] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::GODOWNWALL] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::GOUPWALL] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::GODOWNWALL] = false;
 
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::PLAYER_CENTER] = false;
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::STAIR] = true;
-	matrix[Collider::Type::WALL][Collider::Type::TOP_STAIR] = false;
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::TOP_STAIR] = true;
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::BUTTON] = true;
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::TOPWALL] = false;
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::LEFTWALL] = false;
@@ -72,7 +74,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER_CENTER] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::STAIR] = false; //They should be able to move up and down stairs
-	matrix[Collider::Type::WALL][Collider::Type::TOP_STAIR] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::TOP_STAIR] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::BUTTON] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::TOPWALL] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::LEFTWALL] = false;
@@ -80,13 +82,15 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ENEMY][Collider::Type::GRAVITYWALLS] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::PEACH] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::DK] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::GOUPWALL] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::GODOWNWALL] = false;
 
 
 	matrix[Collider::Type::STAIR][Collider::Type::WALL] = false;
 	matrix[Collider::Type::STAIR][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::STAIR][Collider::Type::PLAYER_CENTER] = true;
 	matrix[Collider::Type::STAIR][Collider::Type::ENEMY] = false; //They should be able to move up and down stairs
-	matrix[Collider::Type::WALL][Collider::Type::TOP_STAIR] = false;
+	matrix[Collider::Type::STAIR][Collider::Type::TOP_STAIR] = false;
 	matrix[Collider::Type::STAIR][Collider::Type::STAIR] = false;
 	matrix[Collider::Type::STAIR][Collider::Type::BUTTON] = false;
 	matrix[Collider::Type::STAIR][Collider::Type::TOPWALL] = false;
@@ -95,13 +99,33 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::STAIR][Collider::Type::GRAVITYWALLS] = false;
 	matrix[Collider::Type::STAIR][Collider::Type::PEACH] = false;
 	matrix[Collider::Type::STAIR][Collider::Type::DK] = false;
+	matrix[Collider::Type::STAIR][Collider::Type::GOUPWALL] = false;
+	matrix[Collider::Type::STAIR][Collider::Type::GODOWNWALL] = false;
+
+
+	matrix[Collider::Type::TOP_STAIR][Collider::Type::WALL] = false;
+	matrix[Collider::Type::TOP_STAIR][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::TOP_STAIR][Collider::Type::PLAYER_CENTER] = true;
+	matrix[Collider::Type::TOP_STAIR][Collider::Type::ENEMY] = false; //They should be able to move up and down stairs
+	matrix[Collider::Type::TOP_STAIR][Collider::Type::TOP_STAIR] = false;
+	matrix[Collider::Type::TOP_STAIR][Collider::Type::STAIR] = false;
+	matrix[Collider::Type::TOP_STAIR][Collider::Type::BUTTON] = false;
+	matrix[Collider::Type::TOP_STAIR][Collider::Type::TOPWALL] = false;
+	matrix[Collider::Type::TOP_STAIR][Collider::Type::LEFTWALL] = false;
+	matrix[Collider::Type::TOP_STAIR][Collider::Type::RIGHTWALL] = false;
+	matrix[Collider::Type::TOP_STAIR][Collider::Type::GRAVITYWALLS] = false;
+	matrix[Collider::Type::TOP_STAIR][Collider::Type::PEACH] = false;
+	matrix[Collider::Type::TOP_STAIR][Collider::Type::DK] = false;
+	matrix[Collider::Type::TOP_STAIR][Collider::Type::GOUPWALL] = false;
+	matrix[Collider::Type::TOP_STAIR][Collider::Type::GODOWNWALL] = false;
+
 
 	matrix[Collider::Type::BUTTON][Collider::Type::WALL] = false;
 	matrix[Collider::Type::BUTTON][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::BUTTON][Collider::Type::PLAYER_CENTER] = true;
 	matrix[Collider::Type::BUTTON][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::BUTTON][Collider::Type::STAIR] = false;
-	matrix[Collider::Type::WALL][Collider::Type::TOP_STAIR] = false;
+	matrix[Collider::Type::BUTTON][Collider::Type::TOP_STAIR] = false;
 	matrix[Collider::Type::BUTTON][Collider::Type::BUTTON] = false;
 	matrix[Collider::Type::BUTTON][Collider::Type::TOPWALL] = false;
 	matrix[Collider::Type::BUTTON][Collider::Type::LEFTWALL] = false;
@@ -109,6 +133,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::BUTTON][Collider::Type::GRAVITYWALLS] = false;
 	matrix[Collider::Type::BUTTON][Collider::Type::PEACH] = false;
 	matrix[Collider::Type::BUTTON][Collider::Type::DK] = false;
+	matrix[Collider::Type::BUTTON][Collider::Type::GOUPWALL] = false;
+	matrix[Collider::Type::BUTTON][Collider::Type::GODOWNWALL] = false;
 
 
 	//Top limit
@@ -117,7 +143,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::TOPWALL][Collider::Type::PLAYER_CENTER] = false;
 	matrix[Collider::Type::TOPWALL][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::TOPWALL][Collider::Type::STAIR] = false;
-	matrix[Collider::Type::WALL][Collider::Type::TOP_STAIR] = false;
+	matrix[Collider::Type::TOPWALL][Collider::Type::TOP_STAIR] = false;
 	matrix[Collider::Type::TOPWALL][Collider::Type::BUTTON] = false;
 	matrix[Collider::Type::TOPWALL][Collider::Type::TOPWALL] = false;
 	matrix[Collider::Type::TOPWALL][Collider::Type::LEFTWALL] = false;
@@ -125,6 +151,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::TOPWALL][Collider::Type::GRAVITYWALLS] = false;
 	matrix[Collider::Type::TOPWALL][Collider::Type::PEACH] = false;
 	matrix[Collider::Type::TOPWALL][Collider::Type::DK] = false;
+	matrix[Collider::Type::TOPWALL][Collider::Type::GOUPWALL] = false;
+	matrix[Collider::Type::TOPWALL][Collider::Type::GODOWNWALL] = false;
 
 
 	//Left limit
@@ -133,7 +161,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::LEFTWALL][Collider::Type::PLAYER_CENTER] = false;
 	matrix[Collider::Type::LEFTWALL][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::LEFTWALL][Collider::Type::STAIR] = false;
-	matrix[Collider::Type::WALL][Collider::Type::TOP_STAIR] = false;
+	matrix[Collider::Type::LEFTWALL][Collider::Type::TOP_STAIR] = false;
 	matrix[Collider::Type::LEFTWALL][Collider::Type::BUTTON] = false;
 	matrix[Collider::Type::LEFTWALL][Collider::Type::TOPWALL] = false;
 	matrix[Collider::Type::LEFTWALL][Collider::Type::LEFTWALL] = false;
@@ -141,6 +169,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::LEFTWALL][Collider::Type::GRAVITYWALLS] = false;
 	matrix[Collider::Type::LEFTWALL][Collider::Type::PEACH] = false;
 	matrix[Collider::Type::LEFTWALL][Collider::Type::DK] = false;
+	matrix[Collider::Type::LEFTWALL][Collider::Type::GOUPWALL] = false;
+	matrix[Collider::Type::LEFTWALL][Collider::Type::GODOWNWALL] = false;
 
 
 	//Right limit
@@ -149,7 +179,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::RIGHTWALL][Collider::Type::PLAYER_CENTER] = false;
 	matrix[Collider::Type::RIGHTWALL][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::RIGHTWALL][Collider::Type::STAIR] = false;
-	matrix[Collider::Type::WALL][Collider::Type::TOP_STAIR] = false;
+	matrix[Collider::Type::RIGHTWALL][Collider::Type::TOP_STAIR] = false;
 	matrix[Collider::Type::RIGHTWALL][Collider::Type::BUTTON] = false;
 	matrix[Collider::Type::RIGHTWALL][Collider::Type::TOPWALL] = false;
 	matrix[Collider::Type::RIGHTWALL][Collider::Type::LEFTWALL] = false;
@@ -157,6 +187,9 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::RIGHTWALL][Collider::Type::GRAVITYWALLS] = false;
 	matrix[Collider::Type::RIGHTWALL][Collider::Type::PEACH] = false;
 	matrix[Collider::Type::RIGHTWALL][Collider::Type::DK] = false;
+	matrix[Collider::Type::RIGHTWALL][Collider::Type::GOUPWALL] = false;
+	matrix[Collider::Type::RIGHTWALL][Collider::Type::GODOWNWALL] = false;
+
 
 	//Gravity walls
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::WALL] = false;
@@ -164,7 +197,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::PLAYER_CENTER] = true;
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::STAIR] = false;
-	matrix[Collider::Type::WALL][Collider::Type::TOP_STAIR] = false;
+	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::TOP_STAIR] = false;
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::BUTTON] = false;
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::TOPWALL] = false;
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::LEFTWALL] = false;
@@ -173,6 +206,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::PEACH] = false;
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::DK] = false;
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::GOUPWALL] = false;
+	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::GODOWNWALL] = false;
 
 
 	matrix[Collider::Type::PEACH][Collider::Type::WALL] = true;
@@ -180,7 +214,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PEACH][Collider::Type::PLAYER_CENTER] = false;
 	matrix[Collider::Type::PEACH][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::PEACH][Collider::Type::STAIR] = false;
-	matrix[Collider::Type::WALL][Collider::Type::TOP_STAIR] = false;
+	matrix[Collider::Type::PEACH][Collider::Type::TOP_STAIR] = false;
 	matrix[Collider::Type::PEACH][Collider::Type::BUTTON] = false;
 	matrix[Collider::Type::PEACH][Collider::Type::TOPWALL] = false;
 	matrix[Collider::Type::PEACH][Collider::Type::LEFTWALL] = false;
@@ -188,13 +222,16 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PEACH][Collider::Type::GRAVITYWALLS] = false;
 	matrix[Collider::Type::PEACH][Collider::Type::PEACH] = false;
 	matrix[Collider::Type::PEACH][Collider::Type::DK] = false;
+	matrix[Collider::Type::PEACH][Collider::Type::GOUPWALL] = false;
+	matrix[Collider::Type::PEACH][Collider::Type::GODOWNWALL] = false;
+
 
 	matrix[Collider::Type::DK][Collider::Type::WALL] = true;
 	matrix[Collider::Type::DK][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::DK][Collider::Type::PLAYER_CENTER] = false;
 	matrix[Collider::Type::DK][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::DK][Collider::Type::STAIR] = false;
-	matrix[Collider::Type::WALL][Collider::Type::TOP_STAIR] = false;
+	matrix[Collider::Type::DK][Collider::Type::TOP_STAIR] = false;
 	matrix[Collider::Type::DK][Collider::Type::BUTTON] = false;
 	matrix[Collider::Type::DK][Collider::Type::TOPWALL] = false;
 	matrix[Collider::Type::DK][Collider::Type::LEFTWALL] = false;
@@ -202,13 +239,16 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::DK][Collider::Type::GRAVITYWALLS] = false;
 	matrix[Collider::Type::DK][Collider::Type::PEACH] = false;
 	matrix[Collider::Type::DK][Collider::Type::DK] = false;
+	matrix[Collider::Type::DK][Collider::Type::GOUPWALL] = false;
+	matrix[Collider::Type::DK][Collider::Type::GODOWNWALL] = false;
+
 
 	matrix[Collider::Type::GOUPWALL][Collider::Type::WALL] = false;
 	matrix[Collider::Type::GOUPWALL][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::GOUPWALL][Collider::Type::PLAYER_CENTER] = true;
 	matrix[Collider::Type::GOUPWALL][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::GOUPWALL][Collider::Type::STAIR] = false; //They should be able to move up and down stairs
-	matrix[Collider::Type::WALL][Collider::Type::TOP_STAIR] = false;
+	matrix[Collider::Type::GOUPWALL][Collider::Type::TOP_STAIR] = false;
 	matrix[Collider::Type::GOUPWALL][Collider::Type::BUTTON] = false;
 	matrix[Collider::Type::GOUPWALL][Collider::Type::TOPWALL] = false;
 	matrix[Collider::Type::GOUPWALL][Collider::Type::LEFTWALL] = false;
@@ -216,13 +256,16 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::GOUPWALL][Collider::Type::GRAVITYWALLS] = false;
 	matrix[Collider::Type::GOUPWALL][Collider::Type::PEACH] = false;
 	matrix[Collider::Type::GOUPWALL][Collider::Type::DK] = false;
+	matrix[Collider::Type::GOUPWALL][Collider::Type::GOUPWALL] = false;
 	matrix[Collider::Type::GOUPWALL][Collider::Type::GODOWNWALL] = false;
+
 
 	matrix[Collider::Type::GODOWNWALL][Collider::Type::WALL] = false;
 	matrix[Collider::Type::GODOWNWALL][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::GODOWNWALL][Collider::Type::PLAYER_CENTER] = true;
 	matrix[Collider::Type::GODOWNWALL][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::GODOWNWALL][Collider::Type::STAIR] = false; //They should be able to move up and down stairs
+	matrix[Collider::Type::GODOWNWALL][Collider::Type::TOP_STAIR] = false;
 	matrix[Collider::Type::GODOWNWALL][Collider::Type::BUTTON] = false;
 	matrix[Collider::Type::GODOWNWALL][Collider::Type::TOPWALL] = false;
 	matrix[Collider::Type::GODOWNWALL][Collider::Type::LEFTWALL] = false;
@@ -230,6 +273,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::GODOWNWALL][Collider::Type::GRAVITYWALLS] = false;
 	matrix[Collider::Type::GODOWNWALL][Collider::Type::PEACH] = false;
 	matrix[Collider::Type::GODOWNWALL][Collider::Type::DK] = false;
+	matrix[Collider::Type::GODOWNWALL][Collider::Type::GOUPWALL] = false;
 	matrix[Collider::Type::GODOWNWALL][Collider::Type::GODOWNWALL] = false;
 }
 // Destructor
