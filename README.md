@@ -1,6 +1,5 @@
 # Donkey Kong Arcade: OCIM Studios edition
 
-[GitHub link to our project](https://github.com/FireAlfa/OCIM-Studios)
 
 ## List of team members
 [Òscar Canales](https://github.com/Osvak)
