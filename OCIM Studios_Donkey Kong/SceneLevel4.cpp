@@ -459,7 +459,6 @@ bool SceneLevel4::CleanUp()
 	//Disable modules
 	App->player->Disable();
 	App->enemies->Disable();
-
-
+	
 	return true;
 }

@@ -59,166 +59,122 @@ bool SceneLevel1::Start()
 	lvl1Barrels = App->textures->Load("Assets/Sprites/Barrells_Sprites");
 
 
+	// ===================== GODOWNWALLS ==================== //
+
+	App->collisions->AddCollider({ 192, 224, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 176, 223, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 160, 222, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 144, 221, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 128, 220, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 112, 219, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 80, 218, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 64, 217, 16, 4 }, Collider::Type::GODOWNWALL);
+
+	App->collisions->AddCollider({ 16, 191, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 32, 190, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 48, 189, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 64, 188, 16, 4 }, Collider::Type::GODOWNWALL);
+
+	App->collisions->AddCollider({ 192, 158, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 176, 157, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 160, 156, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 144, 155, 16, 4 }, Collider::Type::GODOWNWALL);
+
+	App->collisions->AddCollider({ 16, 125, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 32, 124, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 48, 123, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 64, 122, 16, 4 }, Collider::Type::GODOWNWALL);
+
+	App->collisions->AddCollider({ 192, 92, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 176, 91, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 160, 90, 16, 4 }, Collider::Type::GODOWNWALL);
+	App->collisions->AddCollider({ 144, 89, 16, 4 }, Collider::Type::GODOWNWALL);
+
 // ===================== WALLS ==================== //
 
 		//Floor 1 colliders
-	App->collisions->AddCollider({ 0, 248, 112, 8 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 112, 247, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 128, 246, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 144, 245, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 160, 244, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 176, 243, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 192, 242, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 208, 241, 16, 8 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 0, 248, 112, 4 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 112, 247, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 128, 246, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 144, 245, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 160, 244, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 176, 243, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 192, 242, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 208, 241, 16, 4 }, Collider::Type::GOUPWALL);
 
 	//Floor 2 colliders
-	App->collisions->AddCollider({ 192, 220, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 176, 219, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 160, 218, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 144, 217, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 128, 216, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 112, 215, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 96, 214, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 80, 213, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 64, 212, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 48, 211, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 32, 210, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 16, 209, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 0, 208, 16, 8 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 192, 220, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 176, 219, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 160, 218, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 144, 217, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 128, 216, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 112, 215, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 96, 214, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 80, 213, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 64, 212, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 48, 211, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 32, 210, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 16, 209, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 0, 208, 16, 2}, Collider::Type::GOUPWALL);
 
 	//Floor 3 colliders
-	App->collisions->AddCollider({ 16, 187, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 32, 186, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 48, 185, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 64, 184, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 80, 183, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 96, 182, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 112, 181, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 128, 180, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 144, 179, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 160, 178, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 176, 177, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 192, 176, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 208, 175, 16, 8 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 16, 187, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 32, 186, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 48, 185, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 64, 184, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 80, 183, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 96, 182, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 112, 181, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 128, 180, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 144, 179, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 160, 178, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 176, 177, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 192, 176, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 208, 175, 16, 4 }, Collider::Type::GOUPWALL);
 
 	//Floor 4 colliders
-	App->collisions->AddCollider({ 192, 154, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 176, 153, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 160, 152, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 144, 151, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 128, 150, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 112, 149, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 96, 148, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 80, 147, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 64, 146, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 48, 145, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 32, 144, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 16, 143, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 0, 142, 16, 8 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 192, 154, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 176, 153, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 160, 152, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 144, 151, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 128, 150, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 112, 149, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 96, 148, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 80, 147, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 64, 146, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 48, 145, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 32, 144, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 16, 143, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 0, 142, 16, 4 }, Collider::Type::GOUPWALL);
 
 	//Floor 5 colliders
-	App->collisions->AddCollider({ 16, 121, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 32, 120, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 48, 119, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 64, 118, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 80, 117, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 96, 116, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 112, 115, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 128, 114, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 144, 113, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 160, 112, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 176, 111, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 192, 110, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 208, 109, 16, 8 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 16, 121, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 32, 120, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 48, 119, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 64, 118, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 80, 117, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 96, 116, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 112, 115, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 128, 114, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 144, 113, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 160, 112, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 176, 111, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 192, 110, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 208, 109, 16, 4 }, Collider::Type::GOUPWALL);
 
 	//Floor 6 colliders
-	App->collisions->AddCollider({ 192, 88, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 176, 87, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 160, 86, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 144, 85, 16, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 0, 84, 144, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 192, 88, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 176, 87, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 160, 86, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 144, 85, 16, 4 }, Collider::Type::GOUPWALL);
+	App->collisions->AddCollider({ 0, 84, 144, 4 }, Collider::Type::WALL);
 
 	//Floor 7 colliders
 	App->collisions->AddCollider({ 88, 56, 48, 8 }, Collider::Type::WALL);
 
-	// ===================== GOUPWALLS =========================== //
-
-	//	FLOOR		1
-
 	/*
-	App->collisions->AddCollider({ 111, 248, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 127, 247, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 143, 246, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 159, 245, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 175, 244, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 191, 243, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 207, 242, 1, 8 }, Collider::Type::GOUPWALL);
-
-	//	FLOOR		2
-	App->collisions->AddCollider({ 192, 220, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 176, 219, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 160, 218, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 144, 217,1, 8  }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 128, 216, 1, 8}, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 112, 215, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 96, 214, 1, 8}, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 80, 213, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 64, 212, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 48, 211, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 32, 210, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 16, 209, 1, 8 }, Collider::Type::GOUPWALL);
-
-	//Floor 3 colliders
-	App->collisions->AddCollider({ 31, 187, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 47, 186, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 63, 185, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 79, 184, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 95, 183, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 111, 182, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 127, 181, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 143, 180, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 159, 179, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 175, 178, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 191, 1177, 1, 8 }, Collider::Type::GOUPWALL);
-
-	//Floor 4 colliders
-	App->collisions->AddCollider({ 192, 154,1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 176, 153, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 160, 152, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 144, 151, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 128, 150, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 112, 149, 11, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 96, 148, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 80, 147, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 64, 146, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 48, 145, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 32, 144, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 16, 143, 1, 8 }, Collider::Type::GOUPWALL);
-
-	//Floor 5 colliders
-	App->collisions->AddCollider({ 31, 121,1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 47, 120, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 63, 119, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 79, 118, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 95, 117, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 111, 116, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 127, 115, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 143, 114, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 159, 113, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 175, 112, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 191, 111, 1, 8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 207, 110, 1, 8 }, Collider::Type::GOUPWALL);
-
-	//Floor 6 colliders
-	App->collisions->AddCollider({ 192, 88, 1,8}, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 176, 87, 1,8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 160, 86, 1,8 }, Collider::Type::GOUPWALL);
-	App->collisions->AddCollider({ 144, 85, 1,8 }, Collider::Type::GOUPWALL);
-	*/
-
-
 	// ================== STAIR ================= //
-	/*
+	
 		// Stairs set 1
 	App->collisions->AddCollider({ 187, 219, 2, 19 }, Collider::Type::STAIR);
 

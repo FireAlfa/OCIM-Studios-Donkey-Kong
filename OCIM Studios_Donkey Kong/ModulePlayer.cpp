@@ -494,7 +494,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		canClimb = false;
 	}
 
-
     if (c1 == playerCollider && c2->type == Collider::Type::TOPWALL)
 	{
 		position.y += speed;
@@ -518,10 +517,15 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		position.y -= speed;
 	}
-	/*if (facingDirection == -1 && c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL  )
+
+	if (facingDirection == -1 && c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL  )
 	{
-		position.y -= speed;
-	}*/
+		position.y += speed;
+	}
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::GODOWNWALL)
+	{
+		position.y += 10;
+	}
 }
 
 //Draw GamePad Debug
