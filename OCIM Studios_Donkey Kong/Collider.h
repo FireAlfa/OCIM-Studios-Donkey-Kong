@@ -28,6 +28,8 @@ struct Collider
 		ENEMY,
 
 		STAIR,
+		TOP_STAIR,
+
 		BUTTON,
 
 		TOPWALL,
