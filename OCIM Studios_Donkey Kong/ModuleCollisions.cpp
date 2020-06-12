@@ -382,6 +382,9 @@ void ModuleCollisions::DebugDraw()
 		case Collider::Type::STAIR: // magenta
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
 			break;
+		case Collider::Type::TOP_STAIR:
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
+			break;
 		case Collider::Type::TOPWALL:
 			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
 			break;

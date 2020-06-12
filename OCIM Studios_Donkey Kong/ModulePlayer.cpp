@@ -175,6 +175,7 @@ Update_Status ModulePlayer::Update()
 	UpdateLogic();
 
 	canClimb = false;
+	canGoDownStairs = false;
 
 	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN)
 		debugGamepadInfo = !debugGamepadInfo;
@@ -201,6 +202,10 @@ void ModulePlayer::UpdateState()
 			(App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN))
 			ChangeState(state, CLIMBING_IDLE);
+
+		if (canGoDownStairs == true &&
+			(App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN))
+			ChangeState(state, CLIMBING_DOWN);
 
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
 			ChangeState(state, HAMMER_IDLE);
@@ -244,6 +249,30 @@ void ModulePlayer::UpdateState()
 
 		break;
 	}
+
+	case CLIMBING_DOWN:
+	{
+		if (canGoDownStairs == false)
+			ChangeState(state, CLIMBING_IDLE);
+
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN)
+			ChangeState(state, CLIMBING_UP);
+
+		break;
+	}
+
+	case CLIMBING_UP:
+	{
+		if (canGoDownStairs == false)
+			position.y -= speed;
+			ChangeState(state, IDLE);
+
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
+			ChangeState(state, CLIMBING_DOWN);
+
+		break;
+	}
+
 
 	case CLIMBING_IDLE:
 	{
@@ -358,6 +387,28 @@ void ModulePlayer::UpdateLogic()
 		break;
 	}
 
+	case(CLIMBING_DOWN):
+	{
+		if (canClimb == true)
+		{
+			position.y += speed * upDownDirection;
+			currentAnimation->Update();
+		}
+
+		break;
+	}
+
+	case(CLIMBING_UP):
+	{
+		if (canClimb == true)
+		{
+			position.y += speed * upDownDirection;
+			currentAnimation->Update();
+		}
+
+		break;
+	}
+
 	case(CLIMBING_IDLE):
 	{
 		currentAnimation->Update();
@@ -429,9 +480,17 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 		currentAnimation = &(facingDirection == -1 ? hammerRunAnim_Left : hammerRunAnim_Right);
 		break;
 	}
+
+	case(CLIMBING_DOWN):
+	{
+		currentAnimation = &climb_Down;
+		break;
+	}
+
 	case(CLIMBING_IDLE):
 	{
-
+		currentAnimation = &climb_Up;
+		break;
 	}
 	case (CLIMBING_RUNNING):
 	{
@@ -494,12 +553,16 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	//Collision control
 	//
 
-	if (c1 == playerCenterCollider && c2->type == Collider::Type::STAIR)
+	if ((c1 == playerCenterCollider && c2->type == Collider::Type::STAIR) || (c1 == playerCenterCollider && c2->type == Collider::Type::TOP_STAIR))
 	{
 		canClimb = true;
 	}
 	else {
 		canClimb = false;
+	}
+
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::TOP_STAIR) {
+		canGoDownStairs = true;
 	}
 
     if (c1 == playerCollider && c2->type == Collider::Type::TOPWALL)

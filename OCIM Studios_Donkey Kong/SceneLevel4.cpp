@@ -277,7 +277,9 @@ bool SceneLevel4::Start()
 
 
 	//Stairs Set 1
-	App->collisions->AddCollider({ 11, 208, 2, 26 }, Collider::Type::STAIR);
+	//App->collisions->AddCollider({ 11, 208, 2, 26 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 11, 223, 2, 15 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 11, 207, 2, 2 }, Collider::Type::TOP_STAIR);
 	App->collisions->AddCollider({ 107, 208, 2, 26 }, Collider::Type::STAIR);
 	App->collisions->AddCollider({ 211, 208, 2, 26 }, Collider::Type::STAIR);
 
