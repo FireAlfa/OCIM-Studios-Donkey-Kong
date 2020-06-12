@@ -518,9 +518,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		position.y -= speed;
 	}
 
-	if (facingDirection == -1 && c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL  )
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL && facingDirection == -1)
 	{
-		position.y += speed;
+		position.y -= speed;
 	}
 	if (c1 == playerCenterCollider && c2->type == Collider::Type::GODOWNWALL)
 	{

@@ -61,13 +61,9 @@ bool SceneLevel1::Start()
 
 	// ===================== GODOWNWALLS ==================== //
 
-	App->collisions->AddCollider({ 176, 223, 16, 4 }, Collider::Type::GODOWNWALL);
+
 	App->collisions->AddCollider({ 160, 222, 16, 4 }, Collider::Type::GODOWNWALL);
 	App->collisions->AddCollider({ 144, 221, 16, 4 }, Collider::Type::GODOWNWALL);
-	App->collisions->AddCollider({ 128, 220, 16, 4 }, Collider::Type::GODOWNWALL);
-	App->collisions->AddCollider({ 112, 219, 16, 4 }, Collider::Type::GODOWNWALL);
-	App->collisions->AddCollider({ 80, 218, 16, 4 }, Collider::Type::GODOWNWALL);
-	App->collisions->AddCollider({ 64, 217, 16, 4 }, Collider::Type::GODOWNWALL);
 
 	App->collisions->AddCollider({ 32, 190, 16, 4 }, Collider::Type::GODOWNWALL);
 	App->collisions->AddCollider({ 48, 189, 16, 4 }, Collider::Type::GODOWNWALL);
@@ -219,7 +215,7 @@ bool SceneLevel1::Start()
 		//TOP WALL
 	App->collisions->AddCollider({ 0, 0, 224, 5 }, Collider::Type::TOPWALL);
 	//LEFT WALL
-	App->collisions->AddCollider({ 0, 250, 1, 2 }, Collider::Type::LEFTWALL);
+	App->collisions->AddCollider({ 0, 0, 2, 256 }, Collider::Type::LEFTWALL);
 	//RIGHT WALL
 	App->collisions->AddCollider({ 223, 1, 1, 255 }, Collider::Type::RIGHTWALL);
 
