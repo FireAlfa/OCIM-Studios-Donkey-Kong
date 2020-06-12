@@ -463,6 +463,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		position.y += speed;
 	}
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::WALL)
+	{
+		position.y += speed;
+	}
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL)
+	{
+		
+	}
 
 	/*
 	if (c2->type == Collider::Type::STAIR)
