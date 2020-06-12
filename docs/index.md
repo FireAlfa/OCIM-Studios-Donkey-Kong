@@ -40,18 +40,12 @@ src="https://www.youtube.com/watch?v=ScMzIvxBSi4" frameborder="0" allowfullscree
 <font size="3"><a href="https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/releases/download/v1.00/Donkey_Kong.zip">Click here to download the game</a></font>
                         
 <h2> align= "center"id="ocim-studios-team">OCIM Studios Team</h2>
-<iframe width="1144" height"605" 
-src="https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/tree/master/docs/teamphoto.png">
-</iframe>
+<img src="https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/tree/master/docs/teamphoto.png>
+
 
 
 <br><br>
-<p>We are a group of 4 students from the CITM Game Design and Development degree</p>
-The members of the group are:
-* Òscar Canales  - [Osvak](https://github.com/Osvak)
-* Isaac Colomer  - [IsaaColomer](https://github.com/IsaaColomer)
-* Maik Garcia    - [maikgarcia](https://github.com/maikgarcia)
-* Carles Garriga - [FireAlfa](https://github.com/FireAlfa)                                    
+                          
 
 <table style="width:100%">
   <tr>
