@@ -18,6 +18,8 @@ enum Player_State
 	HAMMER_RUNNING,
 	CLIMBING_IDLE,
 	CLIMBING_RUNNING,
+	CLIMBING_UP,
+	CLIMBING_DOWN,
 };
 
 
@@ -110,6 +112,7 @@ public:
 	Animation jumpAnim_Right;
 
 	//Animation climbAnim;
+	Animation climb;
 	Animation climb_Up;
 	Animation climb_Down;
 
@@ -130,6 +133,7 @@ public:
 
 	// Flag set when the player is near a ladder
 	bool canClimb = false;
+	bool canGoDownStairs = false;
 
 
 

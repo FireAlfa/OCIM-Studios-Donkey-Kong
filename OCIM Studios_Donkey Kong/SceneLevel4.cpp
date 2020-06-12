@@ -233,6 +233,7 @@ bool SceneLevel4::Start()
 	//Enable modules
 	App->player->Enable();
 	App->enemies->Enable();
+	App->collisions->Enable();
 
 
 	//
@@ -277,7 +278,9 @@ bool SceneLevel4::Start()
 
 
 	//Stairs Set 1
-	App->collisions->AddCollider({ 11, 208, 2, 26 }, Collider::Type::STAIR);
+	//App->collisions->AddCollider({ 11, 208, 2, 26 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 11, 223, 2, 15 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 11, 207, 2, 2 }, Collider::Type::TOP_STAIR);
 	App->collisions->AddCollider({ 107, 208, 2, 26 }, Collider::Type::STAIR);
 	App->collisions->AddCollider({ 211, 208, 2, 26 }, Collider::Type::STAIR);
 
@@ -459,6 +462,7 @@ bool SceneLevel4::CleanUp()
 	//Disable modules
 	App->player->Disable();
 	App->enemies->Disable();
+	App->collisions->Disable();
 	
 	return true;
 }

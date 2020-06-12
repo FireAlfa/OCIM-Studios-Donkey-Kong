@@ -60,8 +60,12 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 
 
-	//ClimbUp
+	//Climb
+	climb.PushBack({51, 34, 13, 16});
 	climb_Up.PushBack({ 68, 34, 13, 16 });
+	climb_Up.speed = 0.1f;
+
+	//ClimbUp
 	climb_Up.PushBack({ 85, 34, 14, 15 }); 
 	climb_Up.PushBack({ 102, 34, 16, 12 });
 	climb_Up.PushBack({ 119, 34, 16, 15 });
@@ -71,7 +75,6 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	climb_Down.PushBack({ 0, 34, 16, 15 });
 	climb_Down.PushBack({ 17, 34, 16, 12 });
 	climb_Down.PushBack({ 34, 34, 14, 15 });
-	climb_Down.PushBack({ 51, 34, 13, 16 });
 	climb_Down.speed = 0.1f;
 
 
@@ -149,6 +152,7 @@ bool ModulePlayer::Start()
 	//
 	destroyed = false;
 	canClimb = false;
+	canGoDownStairs = false;
 
 
 	//Font
@@ -171,6 +175,7 @@ Update_Status ModulePlayer::Update()
 	UpdateLogic();
 
 	canClimb = false;
+	canGoDownStairs = false;
 
 	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN)
 		debugGamepadInfo = !debugGamepadInfo;
@@ -197,6 +202,10 @@ void ModulePlayer::UpdateState()
 			(App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN))
 			ChangeState(state, CLIMBING_IDLE);
+
+		if (canGoDownStairs == true &&
+			(App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN))
+			ChangeState(state, CLIMBING_DOWN);
 
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
 			ChangeState(state, HAMMER_IDLE);
@@ -241,10 +250,36 @@ void ModulePlayer::UpdateState()
 		break;
 	}
 
+	case CLIMBING_DOWN:
+	{
+		if (canGoDownStairs == false)
+			ChangeState(state, CLIMBING_IDLE);
+
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN)
+			ChangeState(state, CLIMBING_UP);
+
+		break;
+	}
+
+	case CLIMBING_UP:
+	{
+		if (canGoDownStairs == false)
+			position.y -= speed;
+			ChangeState(state, IDLE);
+
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
+			ChangeState(state, CLIMBING_DOWN);
+
+		break;
+	}
+
+
 	case CLIMBING_IDLE:
 	{
 		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 			ChangeState(state, CLIMBING_RUNNING);
 
 
@@ -352,6 +387,28 @@ void ModulePlayer::UpdateLogic()
 		break;
 	}
 
+	case(CLIMBING_DOWN):
+	{
+		if (canClimb == true)
+		{
+			position.y += speed * upDownDirection;
+			currentAnimation->Update();
+		}
+
+		break;
+	}
+
+	case(CLIMBING_UP):
+	{
+		if (canClimb == true)
+		{
+			position.y += speed * upDownDirection;
+			currentAnimation->Update();
+		}
+
+		break;
+	}
+
 	case(CLIMBING_IDLE):
 	{
 		currentAnimation->Update();
@@ -423,9 +480,17 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 		currentAnimation = &(facingDirection == -1 ? hammerRunAnim_Left : hammerRunAnim_Right);
 		break;
 	}
+
+	case(CLIMBING_DOWN):
+	{
+		currentAnimation = &climb_Down;
+		break;
+	}
+
 	case(CLIMBING_IDLE):
 	{
-
+		currentAnimation = &climb_Up;
+		break;
 	}
 	case (CLIMBING_RUNNING):
 	{
@@ -488,12 +553,16 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	//Collision control
 	//
 
-	if (c1 == playerCenterCollider && c2->type == Collider::Type::STAIR)
+	if ((c1 == playerCenterCollider && c2->type == Collider::Type::STAIR) || (c1 == playerCenterCollider && c2->type == Collider::Type::TOP_STAIR))
 	{
 		canClimb = true;
 	}
 	else {
 		canClimb = false;
+	}
+
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::TOP_STAIR) {
+		canGoDownStairs = true;
 	}
 
     if (c1 == playerCollider && c2->type == Collider::Type::TOPWALL)
