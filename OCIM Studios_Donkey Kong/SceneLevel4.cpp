@@ -233,6 +233,7 @@ bool SceneLevel4::Start()
 	//Enable modules
 	App->player->Enable();
 	App->enemies->Enable();
+	App->collisions->Enable();
 
 
 	//
@@ -461,6 +462,7 @@ bool SceneLevel4::CleanUp()
 	//Disable modules
 	App->player->Disable();
 	App->enemies->Disable();
+	App->collisions->Disable();
 	
 	return true;
 }
