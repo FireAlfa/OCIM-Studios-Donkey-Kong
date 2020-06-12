@@ -163,11 +163,16 @@ Update_Status ModulePlayer::Update()
 {
 	GamePad& pad = App->input->pads[0];
 
+
+	//
+	//State updates
+	//
 	UpdateState();
 	UpdateLogic();
 
 	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN)
 		debugGamepadInfo = !debugGamepadInfo;
+
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -230,6 +235,7 @@ void ModulePlayer::UpdateState()
 			else
 				ChangeState(state, IDLE);
 		}
+
 		break;
 	}
 
@@ -249,9 +255,14 @@ void ModulePlayer::UpdateState()
 
 	case CLIMBING_RUNNING:
 	{
-		if (App->input->keys[SDL_SCANCODE_W] != Key_State::KEY_REPEAT ||
+		if (App->input->keys[SDL_SCANCODE_W] != Key_State::KEY_REPEAT &&
 			App->input->keys[SDL_SCANCODE_S] != Key_State::KEY_REPEAT)
 			ChangeState(state, CLIMBING_IDLE);
+
+		if (canClimb == false)
+			ChangeState(state, IDLE);
+
+		break;
 	}
 
 	case HAMMER_IDLE:
@@ -419,7 +430,8 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 			upDownDirection = -1;
-		else
+		else if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 			upDownDirection = 1;
 
 		currentAnimation = &(upDownDirection == -1 ? climb_Up : climb_Down);
@@ -462,7 +474,7 @@ Update_Status ModulePlayer::PostUpdate()
 	if (debugGamepadInfo == true)
 		DebugDrawGamepadInfo();
 	else
-		App->fonts->BlitText(5, 10, scoreFont, "press f12 to display gamepad debug info");
+		App->fonts->BlitText(5, 10, scoreFont, "press g to display gamepad debug info");
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -478,8 +490,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		canClimb = true;
 	}
-	else
-	{
+	else {
 		canClimb = false;
 	}
 
@@ -507,10 +518,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		position.y -= speed;
 	}
-	if (facingDirection == -1 && c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL  )
+	/*if (facingDirection == -1 && c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL  )
 	{
 		position.y -= speed;
-	}
+	}*/
 }
 
 //Draw GamePad Debug
