@@ -170,6 +170,8 @@ Update_Status ModulePlayer::Update()
 	UpdateState();
 	UpdateLogic();
 
+	canClimb = false;
+
 	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN)
 		debugGamepadInfo = !debugGamepadInfo;
 
