@@ -21,7 +21,7 @@ SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 	//Set position for textures
 	//
 	lvl1Rect = { 0, 0, 224, 256 };
-	Barrels.PushBack({})
+	Barrels.PushBack({});
 
 
 	//

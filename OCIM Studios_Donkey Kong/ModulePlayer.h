@@ -16,7 +16,8 @@ enum Player_State
 	JUMPING,
 	HAMMER_IDLE,
 	HAMMER_RUNNING,
-	CLIMBING,
+	CLIMBING_IDLE,
+	CLIMBING_RUNNING,
 };
 
 
@@ -90,8 +91,8 @@ public:
 	// The direction where the player is facing -> -1 for Left // 1 for Right
 	int facingDirection = 1;
 
-	//If player is climbing up or down -> -1 for Down // 1 for Up
-	int upDownDirection = 1;
+	//If player is climbing up or down -> -1 for Up // 1 for Down
+	int upDownDirection = -1;
 
 	// Jump handlers
 	uint jumpCountdown = 30;
@@ -139,7 +140,7 @@ public:
 	// Font score index
 	uint score = 000;
 	int scoreFont = -1;
-	char scoreText[10] = { "\0" };
+	char scoreText[200] = { "\0" };
 
 	// Debug flag for gamepad data drawing
 	bool debugGamepadInfo = false;

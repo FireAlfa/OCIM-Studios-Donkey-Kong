@@ -166,6 +166,9 @@ Update_Status ModulePlayer::Update()
 	UpdateState();
 	UpdateLogic();
 
+	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN)
+		debugGamepadInfo = !debugGamepadInfo;
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -186,7 +189,7 @@ void ModulePlayer::UpdateState()
 		if (canClimb == true &&
 			(App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN))
-			ChangeState(state, CLIMBING);
+			ChangeState(state, CLIMBING_IDLE);
 
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
 			ChangeState(state, HAMMER_IDLE);
@@ -208,7 +211,7 @@ void ModulePlayer::UpdateState()
 		if (canClimb == true &&
 			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
-			ChangeState(state, CLIMBING);
+			ChangeState(state, CLIMBING_IDLE);
 
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
 			ChangeState(state, HAMMER_RUNNING);
@@ -230,8 +233,13 @@ void ModulePlayer::UpdateState()
 		break;
 	}
 
-	case CLIMBING:
+	case CLIMBING_IDLE:
 	{
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
+			ChangeState(state, CLIMBING_RUNNING);
+
+
 		if (canClimb == false)
 			ChangeState(state, IDLE);
 			
@@ -239,15 +247,19 @@ void ModulePlayer::UpdateState()
 		break;
 	}
 
+	case CLIMBING_RUNNING:
+	{
+		if (App->input->keys[SDL_SCANCODE_W] != Key_State::KEY_REPEAT ||
+			App->input->keys[SDL_SCANCODE_S] != Key_State::KEY_REPEAT)
+			ChangeState(state, CLIMBING_IDLE);
+	}
+
 	case HAMMER_IDLE:
 	{
-		// TODO 2: Check the condition to go back to IDLE state. If fulfilled, change the state.
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
 			ChangeState(state, IDLE);
 
-		// TODO 3: Add all the logic behind HAMMER_RUN state
 
-		// TODO 3.1: Check the condition. If fulfilled, change the state to HAMMER_RUN
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN)
 		{
@@ -258,10 +270,10 @@ void ModulePlayer::UpdateState()
 		break;
 	}
 	case HAMMER_RUNNING:
-		// TODO 3: Add all the logic behind HAMMER_RUN state
-		// TODO 3.4: Lastly, go back to HAMMER_IDLE when the condition is fulfilled
+	{
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
 			ChangeState(state, RUNNING);
+
 
 		if (App->input->keys[SDL_SCANCODE_A] != Key_State::KEY_REPEAT &&
 			App->input->keys[SDL_SCANCODE_D] != Key_State::KEY_REPEAT)
@@ -270,6 +282,7 @@ void ModulePlayer::UpdateState()
 		}
 
 		break;
+	}
 
 	default:
 		break;
@@ -291,6 +304,7 @@ void ModulePlayer::UpdateLogic()
 	{
 		position.x += speed * facingDirection;
 		currentAnimation->Update();
+
 		break;
 	}
 	case(JUMPING):
@@ -306,38 +320,42 @@ void ModulePlayer::UpdateLogic()
 		}
 		position.x += speed * jumpDirection;
 		currentAnimation->Update();
+
 		break;
 	}
 
 	case(HAMMER_IDLE):
 	{
 		currentAnimation->Update();
+
 		break;
 	}
 
 	case(HAMMER_RUNNING):
 	{
-		// TODO 3: Add all the logic behind HAMMER_RUN state
-		// TODO 3.3: Update HAMMER_RUN state logic
 		position.x += speed * facingDirection;
 		currentAnimation->Update();
 
 		break;
 	}
 
-	case(CLIMBING):
+	case(CLIMBING_IDLE):
 	{
-		// TODO 5: Update climbing logic - Only move when the player is pressing "W"
+		currentAnimation->Update();
+
+		break;
+	}
+
+	case(CLIMBING_RUNNING):
+	{
 		if (canClimb == true)
 		{
 			position.y += speed * upDownDirection;
 			currentAnimation->Update();
 		}
-		
-		
-		break;
 	}
-}
+
+	}
 
 	// Simply updating the collider position to match our current position
 	playerCollider->SetPos(position.x, position.y);
@@ -383,27 +401,29 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 	}
 	case(HAMMER_RUNNING):
 	{
-		// TODO 3: Add all the logic behind HAMMER_RUN state
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 			facingDirection = -1;
 		else
 			facingDirection = 1;
 
-		// TODO 3.2: When changing the state, change to the proper animation
 		currentAnimation = &(facingDirection == -1 ? hammerRunAnim_Left : hammerRunAnim_Right);
 		break;
 	}
-	case (CLIMBING):
+	case(CLIMBING_IDLE):
+	{
+
+	}
+	case (CLIMBING_RUNNING):
 	{
 		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 			upDownDirection = -1;
 		else
 			upDownDirection = 1;
-		currentAnimation = &(upDownDirection == 1 ? climb_Up : climb_Down);
+
+		currentAnimation = &(upDownDirection == -1 ? climb_Up : climb_Down);
 		break;
-		// TODO 5: Change climbing animation when changing the state
 
 	}
 	}
@@ -442,7 +462,7 @@ Update_Status ModulePlayer::PostUpdate()
 	if (debugGamepadInfo == true)
 		DebugDrawGamepadInfo();
 	else
-		App->fonts->BlitText(5, 10, scoreFont, "press f2 to display gamepad debug info");
+		App->fonts->BlitText(5, 10, scoreFont, "press f12 to display gamepad debug info");
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -498,10 +518,10 @@ void ModulePlayer::DebugDrawGamepadInfo()
 {
 	GamePad& pad = App->input->pads[0];
 
-	sprintf_s(scoreText, 100, "pad 0 %s, press 1/2/3 for rumble", (pad.enabled) ? "plugged" : "not detected");
+	sprintf_s(scoreText, 150, "pad 0 %s, press 1/2/3 for rumble", (pad.enabled) ? "plugged" : "not detected");
 	App->fonts->BlitText(5, 10, scoreFont, scoreText);
 
-	sprintf_s(scoreText, 100, "buttons %s %s %s %s %s %s %s %s %s %s %s",
+	sprintf_s(scoreText, 150, "buttons %s %s %s %s %s %s %s %s %s %s %s",
 		(pad.a) ? "a" : "",
 		(pad.b) ? "b" : "",
 		(pad.x) ? "x" : "",
@@ -516,7 +536,7 @@ void ModulePlayer::DebugDrawGamepadInfo()
 	);
 	App->fonts->BlitText(5, 20, scoreFont, scoreText);
 
-	sprintf_s(scoreText, 100, "dpad %s %s %s %s",
+	sprintf_s(scoreText, 150, "dpad %s %s %s %s",
 		(pad.up) ? "up" : "",
 		(pad.down) ? "down" : "",
 		(pad.left) ? "left" : "",
