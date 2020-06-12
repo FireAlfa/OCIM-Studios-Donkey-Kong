@@ -37,18 +37,13 @@ src="https://www.youtube.com/watch?v=ScMzIvxBSi4" frameborder="0" allowfullscree
 
 <!--Add Trailer video and release .zip -->
 
-
+<center>
 <h2 align="center"id="donkey-kong-build"Donkey Kong Build"</h2>
 <font size="3"><a href="https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/releases/download/v1.00/Donkey_Kong.zip">Click here to download the game</a></font>
                         
 <h2 align="center" id="ocim-studios-team">OCIM Studios Team</h2>
 <img src="https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/tree/master/docs/teamphoto.png>
-
-
-
-<br><br>
-                          
-
+                         
 <table style="width:100%">
   <tr>
     <th>Member</th>
