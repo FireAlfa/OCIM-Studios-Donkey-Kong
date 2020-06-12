@@ -445,6 +445,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		canClimb = false;
 	}
 
+
     if (c1 == playerCollider && c2->type == Collider::Type::TOPWALL)
 	{
 		position.y += speed;
@@ -463,23 +464,15 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		position.y += speed;
 	}
-	if (c1 == playerCenterCollider && c2->type == Collider::Type::WALL)
-	{
-		position.y += speed;
-	}
 	if (c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL)
 	{
-		
+		position.y -= speed;
+		if (facingDirection == -1)
+		{
+			position.y += speed;
+		}
 	}
 
-	/*
-	if (c2->type == Collider::Type::STAIR)
-	{
-		// TODO 5: The player has reached the top of the ladder, stop climbing
-
-
-	}
-	*/
 }
 
 //Draw GamePad Debug
