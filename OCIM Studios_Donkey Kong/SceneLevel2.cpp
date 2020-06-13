@@ -74,22 +74,32 @@ bool SceneLevel2::Start()
 	App->collisions->AddCollider({ 0, 248, 227, 1 }, Collider::Type::WALL);
 
 	//Floor 1 colliders
-	App->collisions->AddCollider({ 8, 208, 208, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 8, 208, 16, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 32, 208, 48, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 88, 208, 48, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 144, 208, 48, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 200, 208, 15, 1 }, Collider::Type::WALL);
 
 	//Floor 2 colliders
 	App->collisions->AddCollider({ 8, 168, 40, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 64, 168, 88, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 72, 168, 72, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 168, 168, 48, 1 }, Collider::Type::WALL);
 
 	//Floor 3 colliders
-	App->collisions->AddCollider({ 0, 128, 96, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 128, 128, 96, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 128, 24, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 32, 128, 48, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 88, 128, 8, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 128, 128, 8, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 144, 128, 48, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 200, 128, 24, 1 }, Collider::Type::WALL);
+
 
 	//Floor 4 colliders
-	App->collisions->AddCollider({ 8, 88, 208, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 8, 88, 8, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 24, 88, 176, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 208, 88, 8, 1 }, Collider::Type::WALL);
 
-	//Flor 5 colliders (WIN)
-	App->collisions->AddCollider({ 88, 56, 48, 1 }, Collider::Type::WALL);
+
 
 
 	//Stairs Set 1
@@ -139,7 +149,7 @@ bool SceneLevel2::Start()
 
 
 	//Gravity Walls 3
-	App->collisions->AddCollider({ 103, 113, 18, 18 }, Collider::Type::GRAVITYWALLS);
+	App->collisions->AddCollider({ 101, 113, 23, 18 }, Collider::Type::GRAVITYWALLS);
 
 
 	//Gravity Walls 4
