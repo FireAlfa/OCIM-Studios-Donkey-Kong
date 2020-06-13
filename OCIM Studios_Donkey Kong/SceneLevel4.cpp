@@ -235,8 +235,17 @@ bool SceneLevel4::Start()
 	App->enemies->Enable();
 	App->collisions->Enable();
 
+
+	//
+	//Flags reset
+	//
+	for (int i = 0; i < 8; ++i)
+	{
+		buttonDrawingArray[i] = true;
+	}
 	totalButtons = 8;
 	lvl4win = false;
+
 
 
 	//
@@ -246,6 +255,7 @@ bool SceneLevel4::Start()
 	buttonTexture = App->textures->Load("Assets/GUI/Button.png");
 
 	princessTexture = App->textures->Load("Assets/Sprites/Peach_Sprites.png");
+
 
 
 	//
