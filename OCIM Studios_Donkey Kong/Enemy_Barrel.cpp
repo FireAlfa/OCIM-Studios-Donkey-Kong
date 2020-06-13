@@ -63,7 +63,7 @@ void Enemy_Barrel::Update()
 	LeftbarrelPath.Update();
 	RightbarrelPath.Update();
 	DownbarrelPath.Update();
-	LeftbarrelPathposition = spawnPos +
+	//LeftbarrelPathposition = spawnPos +
 
 
 	Enemy::Update();
