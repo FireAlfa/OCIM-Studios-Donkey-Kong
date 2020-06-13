@@ -393,23 +393,27 @@ bool SceneLevel1::Start()
 
 	// ===================== GRAVITY WALLS ==================== //
 
-	/*
+	
 		//Gravity Walls 1
 	App->collisions->AddCollider({ 211, 202, 14, 18 }, Collider::Type::GRAVITYWALLS);
+	App->collisions->AddCollider({ 211, 224, 4, 5 }, Collider::Type::GRAVITYWALLS);
 
 	//Gravity Walls 2
 	App->collisions->AddCollider({ 0, 169, 14, 18 }, Collider::Type::GRAVITYWALLS);
-
+	App->collisions->AddCollider({ 9, 189, 4, 5 }, Collider::Type::GRAVITYWALLS);
 	//Gravity Walls 3
 	App->collisions->AddCollider({ 211, 136, 14, 18 }, Collider::Type::GRAVITYWALLS);
+	App->collisions->AddCollider({ 210, 154, 4, 5 }, Collider::Type::GRAVITYWALLS);
 
 	//Gravity Walls 4
 	App->collisions->AddCollider({ 0, 104, 13, 18 }, Collider::Type::GRAVITYWALLS);
+	App->collisions->AddCollider({ 9, 121, 4, 5 }, Collider::Type::GRAVITYWALLS);
 
 	//Gravity Walls 5
 	App->collisions->AddCollider({ 211, 70, 13, 18 }, Collider::Type::GRAVITYWALLS);
+	App->collisions->AddCollider({ 213, 89, 4, 5 }, Collider::Type::GRAVITYWALLS);
 
-	   */
+	   
 
 	// ================== Border Walls ================ //
 
