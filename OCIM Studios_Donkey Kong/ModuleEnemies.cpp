@@ -183,17 +183,26 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 		{
 			switch (info.type)
 			{
-			 case Enemy_Type::DONKEYKONG:
-				enemies[i] = new Enemy_DonkeyKong(info.x, info.y);
-				break;
-				
-				//
-				//
-				//
-				//A case for each enemy spawn
-				//
-				//
-				//
+				case Enemy_Type::DONKEYKONG:
+					enemies[i] = new Enemy_DonkeyKong(info.x, info.y);
+
+					break;
+			
+				//case Enemy_Type::BARREL:
+				//	enemies[i] = new Enemy_Barrel(info.x, info.y, info.direction);
+				//	break;
+
+				//case Enemy_Type::BLUEBARREL:
+				//	enemies[i] = new Enemy_BlueBarrel(info.x, info.y);
+				//	break;
+
+				//case Enemy_Type::FIRE:
+				//	enemies[i] = new Enemy_Fire(info.x, info.y);
+				//	break;
+
+				//case Enemy_Type::CEMENT:
+				//	enemies[i] = new Enemy_Cement(info.x, info.y);
+				//	break;
 			}
 			enemies[i]->texture = texture;
 			enemies[i]->destroyedFx = enemyDestroyedFx;

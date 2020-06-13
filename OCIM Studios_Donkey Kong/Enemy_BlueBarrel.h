@@ -22,7 +22,7 @@ private:
 	Path path;
 
 	// Enemy animations
-	Animation BlueBarrel, back;
+	Animation BlueBarrelAnim;
 };
 
 #endif // __ENEMY_DONKEYKONG_H__

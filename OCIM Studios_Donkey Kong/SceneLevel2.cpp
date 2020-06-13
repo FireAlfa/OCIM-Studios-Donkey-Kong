@@ -177,7 +177,7 @@ bool SceneLevel2::Start()
 	//
 	//Add enemies
 	//
-	App->enemies->AddEnemy(Enemy_Type::DONKEYKONG, 92, 56);
+	App->enemies->AddEnemy(Enemy_Type::DONKEYKONG, 92, 56, 0);
 
 
 

@@ -3,9 +3,11 @@
 
 #include "p2Point.h"
 #include "Animation.h"
+#include <time.h>
 
 struct SDL_Texture;
 struct Collider;
+
 
 //Enemy base class
 class Enemy
@@ -14,7 +16,6 @@ public:
 	// Constructor
 	// Saves the spawn position for later movement calculations
 	Enemy(int x, int y);
-
 	// Destructor
 	virtual ~Enemy();
 

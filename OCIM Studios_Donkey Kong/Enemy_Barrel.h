@@ -13,7 +13,7 @@ public:
 	void Update() override;
 
 private:
-	//Add animations
+	Animation BarrelAnim;
 };
 	
 #endif // !__ENEMY_BARREL_H__

@@ -8,7 +8,8 @@
 Enemy_Barrel::Enemy_Barrel(int x, int y, int direction) : Enemy(x, y)
 {
 
-//TODO: Pushbacks
+	
+	currentAnim = &BarrelAnim;
 
 	collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }

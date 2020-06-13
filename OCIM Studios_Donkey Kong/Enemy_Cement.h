@@ -22,7 +22,7 @@ private:
 	Path path;
 
 	// Enemy animations
-	Animation Cement, back;
+	Animation CementAnim;
 };
 
 #endif // __ENEMY_DONKEYKONG_H__
