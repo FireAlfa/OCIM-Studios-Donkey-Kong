@@ -58,11 +58,18 @@ bool SceneLevel2::Start()
 	App->enemies->Enable();
 	App->collisions->Enable();
 
+
+	//
+	//Flags reset
+	//
+	lvl2win = false;
+
+
+
 	//
 	//Load the files of each texture & audio
 	//
 	lvl2Texture = App->textures->Load("Assets/Maps/level2.png");
-
 
 	princessTexture = App->textures->Load("Assets/Sprites/Peach_Sprites.png");
 
@@ -215,6 +222,18 @@ Update_Status SceneLevel2::Update()
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, this, 10);
+	}
+	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN)
+	{
+		lvl2win = true;
+	}
+
+
+
+	if (lvl2win == true)
+	{
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel4, 60);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;

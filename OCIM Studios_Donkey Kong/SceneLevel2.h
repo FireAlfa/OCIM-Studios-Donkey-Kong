@@ -51,7 +51,7 @@ public:
 	//
 	//Collider arrays
 	//
-	Collider* buttonColliders[8];
+
 
 	//
 	//Srite rectangles
@@ -66,8 +66,13 @@ public:
 	Animation Princess;
 
 
-	//Button array
-	bool buttonDrawingArray[8] = { true, true, true, true, true, true, true, true };
+
+
+	//
+	//Win condition
+	//
+	bool lvl2win;
+
 };
 
 #endif

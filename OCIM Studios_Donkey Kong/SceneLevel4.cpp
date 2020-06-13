@@ -401,30 +401,41 @@ Update_Status SceneLevel4::Update()
 	//
 	//Change Level
 	//
+	//Intro screen
 	if (App->input->keys[SDL_SCANCODE_0] == Key_State::KEY_DOWN)
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 10);
 	}
-
+	//Level 1 screen
 	if (App->input->keys[SDL_SCANCODE_1] == Key_State::KEY_DOWN)
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel1, 10);
 	}
-
+	//Level 2 screen
 	if (App->input->keys[SDL_SCANCODE_2] == Key_State::KEY_DOWN)
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel2, 10);
 	}
+	//Reload Level 4
 	if (App->input->keys[SDL_SCANCODE_R] == Key_State::KEY_DOWN)
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, this, 10);
 	}
 
+	//Instant win
+	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN)
+	{
+		lvl4win = true;
+	}
 
+
+	//
+	//Win condition
+	//
 	if (lvl4win == true)
 	{
 		CleanUp();

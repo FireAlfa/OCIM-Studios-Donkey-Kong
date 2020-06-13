@@ -175,13 +175,6 @@ Update_Status ModulePlayer::Update()
 	UpdateState();
 	UpdateLogic();
 
-	canClimb = false;
-	canGoDownStairs = false;
-	rampRight = false;
-	rampLeft = false;
-
-	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN)
-		debugGamepadInfo = !debugGamepadInfo;
 
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -595,6 +588,15 @@ void ModulePlayer::UpdateLogic()
 	playerCollider->SetPos(position.x, position.y);
 	playerCenterCollider->SetPos(position.x + 5, position.y);
 	playerFeetCollider->SetPos(position.x + 5, position.y + 14);
+
+
+	canClimb = false;
+	canGoDownStairs = false;
+	rampRight = false;
+	rampLeft = false;
+
+	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN)
+		debugGamepadInfo = !debugGamepadInfo;
 }
 
 //Change the State
