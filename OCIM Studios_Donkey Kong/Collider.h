@@ -19,7 +19,6 @@ struct Collider
 
 
 		WALL,
-		GOUPWALL,
 		RAMP_RIGHT,
 		RAMP_LEFT,
 

@@ -554,7 +554,6 @@ void ModulePlayer::UpdateLogic()
 		position.y -= speed;
 		lastCollider = Collider::Type::NONE;
 		break;
-	case Collider::Type::GOUPWALL:
 	case Collider::Type::RAMP_RIGHT:
 	case Collider::Type::RAMP_LEFT:
 	case Collider::Type::PLAYER:
