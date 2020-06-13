@@ -145,7 +145,7 @@ bool ModulePlayer::Start()
 	//
 	playerCollider = App->collisions->AddCollider({ position.x, position.y, 12, 16 }, Collider::Type::PLAYER, this);
 	playerCenterCollider = App->collisions->AddCollider({ position.x + 5, position.y, 3, 16 }, Collider::Type::PLAYER_CENTER, this);
-	playerFeetCollider = App->collisions->AddCollider({ position.x + 5, position.y + 15, 3, 1 }, Collider::Type::PLAYER_FEET, this);
+	playerFeetCollider = App->collisions->AddCollider({ position.x + 5, position.y + 14, 3, 2 }, Collider::Type::PLAYER_FEET, this);
 
 
 	//
@@ -450,6 +450,37 @@ void ModulePlayer::UpdateLogic()
 
 	case(HAMMER_RUNNING):
 	{
+		if (changeHeight == true)
+		{
+			//Right
+			if (facingDirection == 1)
+			{
+				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x + 1 >= aux.x)
+				{
+					position.y -= speed;
+				}
+
+				if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x - 1 > aux.x)
+				{
+					position.y += speed;
+				}
+			}
+
+			//Left
+			if (facingDirection == -1)
+			{
+				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x - 1 >= aux.x)
+				{
+					position.y -= speed;
+				}
+
+				if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x + 1 > aux.x)
+				{
+					position.y += speed;
+				}
+			}
+		}
+
 		position.x += speed * facingDirection;
 		currentAnimation->Update();
 
@@ -500,7 +531,11 @@ void ModulePlayer::UpdateLogic()
 	switch (lastCollider)
 	{
 	case Collider::Type::NONE:
+		break;
 	case Collider::Type::WALL:
+		position.y -= speed;
+		lastCollider = Collider::Type::NONE;
+		break;
 	case Collider::Type::GOUPWALL:
 	case Collider::Type::RAMP:
 	case Collider::Type::PLAYER:
@@ -517,16 +552,16 @@ void ModulePlayer::UpdateLogic()
 	case Collider::Type::DK:
 		break;
 	default:
-		position.y += speed;
+			position.y += speed;
 		break;
 	}
 
-	lastCollider = Collider::Type::NONE;
+	
 
 	// Simply updating the collider position to match our current position
 	playerCollider->SetPos(position.x, position.y);
 	playerCenterCollider->SetPos(position.x + 5, position.y);
-	playerFeetCollider->SetPos(position.x + 5, position.y + 15);
+	playerFeetCollider->SetPos(position.x + 5, position.y + 14);
 }
 
 //Change the State
@@ -541,8 +576,6 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 	}
 	case(RUNNING):
 	{
-		lastCollider = Collider::Type::NONE;
-
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 			facingDirection = -1;
@@ -623,6 +656,8 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 	}
 	}
 
+	lastCollider = Collider::Type::NONE;
+
 	state = newState;
 }
 
@@ -701,7 +736,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 	if (c1 == playerFeetCollider && c2->type == Collider::Type::WALL)
 	{
-		position.y -= speed;
+ 		//position.y -= speed;
 		canClimb = false;
 		lastCollider = Collider::Type::WALL;
 	}
