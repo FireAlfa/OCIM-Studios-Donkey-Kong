@@ -267,7 +267,7 @@ void ModulePlayer::UpdateState()
 			ChangeState(state, CLIMBING_IDLE);
 
 		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN)
-			ChangeState(state, CLIMBING_DOWN);
+			ChangeState(state, CLIMBING_UP);
 
 		break;
 	}

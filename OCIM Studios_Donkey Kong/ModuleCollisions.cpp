@@ -21,10 +21,10 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	//
 
 	matrix[Collider::Type::WALL][Collider::Type::WALL] = false;
-	matrix[Collider::Type::WALL][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::WALL][Collider::Type::PLAYER] = true;				//Wall with player(?)
 	matrix[Collider::Type::WALL][Collider::Type::PLAYER_CENTER] = false;
-	matrix[Collider::Type::WALL][Collider::Type::PLAYER_FEET] = true;
-	matrix[Collider::Type::WALL][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::WALL][Collider::Type::PLAYER_FEET] = true;			//Wall with feet
+	matrix[Collider::Type::WALL][Collider::Type::ENEMY] = true;					//Wall with enemy
 	matrix[Collider::Type::WALL][Collider::Type::STAIR] = false;
 	matrix[Collider::Type::WALL][Collider::Type::TOP_STAIR] = false;
 	matrix[Collider::Type::WALL][Collider::Type::BUTTON] = false;
@@ -43,17 +43,17 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_CENTER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_FEET] = false;
-	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;				//Player with enemy
 	matrix[Collider::Type::PLAYER][Collider::Type::STAIR] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::TOP_STAIR] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::BUTTON] = false;
-	matrix[Collider::Type::PLAYER][Collider::Type::TOPWALL] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::LEFTWALL] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::RIGHTWALL] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::GRAVITYWALLS] = false; //Player_Center collides with gravity walls
+	matrix[Collider::Type::PLAYER][Collider::Type::TOPWALL] = true;				//Player with top limit
+	matrix[Collider::Type::PLAYER][Collider::Type::LEFTWALL] = true;			//Player with left limit
+	matrix[Collider::Type::PLAYER][Collider::Type::RIGHTWALL] = true;			//Player with right limit
+	matrix[Collider::Type::PLAYER][Collider::Type::GRAVITYWALLS] = false;		//Player_Center collides with gravity walls
 	matrix[Collider::Type::PLAYER][Collider::Type::PEACH] = false;
-	matrix[Collider::Type::PLAYER][Collider::Type::DK] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::GOUPWALL] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::DK] = true;					//Player with Donkey Kong
+	matrix[Collider::Type::PLAYER][Collider::Type::GOUPWALL] = true;			
 	matrix[Collider::Type::PLAYER][Collider::Type::RAMP_RIGHT] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::RAMP_LEFT] = false;
 
@@ -63,13 +63,13 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::PLAYER_CENTER] = false;
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::PLAYER_FEET] = false;
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::ENEMY] = false;
-	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::STAIR] = true;
-	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::TOP_STAIR] = true;
-	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::BUTTON] = true;
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::STAIR] = true;		//Player_Center with stair
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::TOP_STAIR] = true;	//Player_Center with top of stair
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::BUTTON] = true;		//Player_Center woth  button
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::TOPWALL] = false;
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::LEFTWALL] = false;
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::RIGHTWALL] = false;
-	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::GRAVITYWALLS] = true;
+	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::GRAVITYWALLS] = true;	//Player_Center with gravitywalls (death by falling)
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::PEACH] = false;
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::DK] = false;
 	matrix[Collider::Type::PLAYER_CENTER][Collider::Type::GOUPWALL] = true;
