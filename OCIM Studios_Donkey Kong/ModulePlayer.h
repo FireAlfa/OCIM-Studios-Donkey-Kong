@@ -154,6 +154,9 @@ public:
 	bool rampLeft = false;
 	bool eraseButton = false;
 
+	//Level finish flags
+	
+
 
 
 

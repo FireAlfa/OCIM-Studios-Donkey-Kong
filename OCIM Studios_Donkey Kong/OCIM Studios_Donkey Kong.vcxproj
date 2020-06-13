@@ -44,6 +44,7 @@
     <ClCompile Include="SceneLevel1.cpp" />
     <ClCompile Include="SceneLevel2.cpp" />
     <ClCompile Include="SceneLevel4.cpp" />
+    <ClCompile Include="SceneVictory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -73,6 +74,7 @@
     <ClInclude Include="SceneLevel1.h" />
     <ClInclude Include="SceneLevel2.h" />
     <ClInclude Include="SceneLevel4.h" />
+    <ClInclude Include="SceneVictory.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

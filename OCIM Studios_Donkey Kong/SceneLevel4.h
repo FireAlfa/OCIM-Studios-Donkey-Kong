@@ -59,9 +59,15 @@ public:
 	//
 	Animation Princess;
 	
+	
 
+	//
+	//Level 4 win condition
+	//
 	//Button array
 	bool buttonDrawingArray[8] = { true, true, true, true, true, true, true, true };
+	uint totalButtons = 8;
+
 };
 
 #endif

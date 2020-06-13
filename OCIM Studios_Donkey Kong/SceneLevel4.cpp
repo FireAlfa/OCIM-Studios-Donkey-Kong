@@ -411,6 +411,13 @@ Update_Status SceneLevel4::Update()
 		App->fade->FadeToBlack(this, this, 10);
 	}
 
+
+	if (totalButtons == 0)
+	{
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->sceneVictory, 60);
+	}
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -505,5 +512,6 @@ void SceneLevel4::eraseButton(Collider* c)
 	{
 		App->collisions->RemoveCollider(buttonColliders[index]);
 		buttonDrawingArray[index] = false;
+		--totalButtons;
 	}
 }
