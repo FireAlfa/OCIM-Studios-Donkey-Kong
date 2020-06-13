@@ -10,20 +10,6 @@ This is our recreation of the classic 1981 Donkey Kong arcade videogame. The gam
 Donkey Kong is an arcade game from the platform genre released on July 9th, 1981 by Nintendo, later it was ported to the Famicom on July 15th, 1983 in Japan, and it didn't arrive in Europe and North America until 1986. The game introduces you to Jumpman, the main character, who will later become in Mario, the well known plumber. Jumpman has to reach the Lady, who will later be named as Pauline, while dodging objects that Donkey Kong throws at him. Jumpman has some power-ups that can help him in the rescue.
 
 
-<br>
-<details>
-  <summary>Game License </summary>
-  <br><br>
-  MIT License
- <br><br>
-Copyright (c) [2020] [Òscar Canales Villar, Isaac Colomer Casas, Maik Garcia Alvarez, Carles Garriga de la Mota]
- <br><br>
-<p align="justify">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-<p align="justify">The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p align="justify">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-  </details>
-  
-
 ## Gameplay
 
 <iframe width="740" height="590" src="https://www.youtube.com/embed/yBFzOEv0snY" frameborder="0" allowfullscreen></iframe>
@@ -75,7 +61,18 @@ Debugging controls:
 ### For more information see our wiki page [HERE](https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/wiki)
 ### Download the last version of the game [HERE](https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/releases/tag/v1.0)
 ### Check our Github repository [HERE](https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong)
-
+<br>
+<details>
+  <summary>Game License </summary>
+  <br><br>
+  MIT License
+ <br><br>
+Copyright (c) [2020] [Òscar Canales Villar, Isaac Colomer Casas, Maik Garcia Alvarez, Carles Garriga de la Mota]
+ <br><br>
+<p align="justify">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p align="justify">The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p align="justify">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+  </details>
 
 
 
