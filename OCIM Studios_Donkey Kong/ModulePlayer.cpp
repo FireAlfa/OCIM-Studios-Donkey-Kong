@@ -154,6 +154,7 @@ bool ModulePlayer::Start()
 	destroyed = false;
 	canClimb = false;
 	canGoDownStairs = false;
+	ChangeState(state, IDLE);
 
 
 	//Font
