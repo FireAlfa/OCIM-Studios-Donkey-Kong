@@ -237,12 +237,25 @@ bool SceneLevel4::Start()
 
 
 	//
+	//Flags reset
+	//
+	for (int i = 0; i < 8; ++i)
+	{
+		buttonDrawingArray[i] = true;
+	}
+	totalButtons = 8;
+	lvl4win = false;
+
+
+
+	//
 	//Load the files of each texture & audio
 	//
 	lvl4Texture = App->textures->Load("Assets/Maps/level4.png");
 	buttonTexture = App->textures->Load("Assets/GUI/Button.png");
 
 	princessTexture = App->textures->Load("Assets/Sprites/Peach_Sprites.png");
+
 
 
 	//
@@ -411,6 +424,13 @@ Update_Status SceneLevel4::Update()
 		App->fade->FadeToBlack(this, this, 10);
 	}
 
+
+	if (lvl4win == true)
+	{
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->sceneVictory, 60);
+	}
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -484,4 +504,32 @@ bool SceneLevel4::CleanUp()
 	App->collisions->Disable();
 	
 	return true;
+}
+
+
+//Erase button
+void SceneLevel4::eraseButton(Collider* c)
+{
+	int index = -1;
+
+	for (int i = 0; i < 8; ++i)
+	{
+		if (buttonColliders[i] == c)
+		{
+			index = i;
+			break;
+		}
+	}
+
+	if (index != -1)
+	{
+		App->collisions->RemoveCollider(buttonColliders[index]);
+		buttonDrawingArray[index] = false;
+		--totalButtons;
+	}
+
+	if (totalButtons == 0)
+	{
+		lvl4win = true;
+	}
 }

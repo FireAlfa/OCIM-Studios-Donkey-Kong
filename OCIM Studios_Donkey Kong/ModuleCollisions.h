@@ -2,7 +2,7 @@
 #ifndef __MODULE_COLLISIONS_H__
 #define __MODULE_COLLISIONS_H__
 
-#define MAX_COLLIDERS 200
+#define MAX_COLLIDERS 250
 
 #include "Module.h"
 #include "Collider.h"
@@ -46,8 +46,8 @@ public:
 	void DebugDraw();
 
 
-	//Rectangle getter
-	SDL_Rect GetColliderRect(Collider* c);
+	//Index getter
+	int GetColliderIndex(Collider* c);
 
 
 	inline uint GetColliderCount() const { return colliderCount; };

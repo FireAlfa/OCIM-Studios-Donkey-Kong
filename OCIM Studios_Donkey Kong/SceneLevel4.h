@@ -30,6 +30,10 @@ public:
 	// Disables the player and the enemies
 	bool CleanUp();
 
+
+	//Erase button
+	void eraseButton(Collider* c);
+
 public:
 
 	//
@@ -55,9 +59,16 @@ public:
 	//
 	Animation Princess;
 	
+	
 
+	//
+	//Level 4 win condition
+	//
 	//Button array
 	bool buttonDrawingArray[8] = { true, true, true, true, true, true, true, true };
+	uint totalButtons = 8;
+	bool lvl4win = false;
+
 };
 
 #endif
