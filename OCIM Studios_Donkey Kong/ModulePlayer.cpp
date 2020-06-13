@@ -222,6 +222,10 @@ void ModulePlayer::UpdateState()
 			ChangeState(state, IDLE);
 		}
 
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT ||
+			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+			ChangeState(state, RUNNING);
+
 		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 			ChangeState(state, JUMPING);
 
@@ -359,12 +363,30 @@ void ModulePlayer::UpdateState()
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
 			ChangeState(state, RUNNING);
 
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT ||
+			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+			ChangeState(state, HAMMER_RUNNING);
 
 		if (App->input->keys[SDL_SCANCODE_A] != Key_State::KEY_REPEAT &&
 			App->input->keys[SDL_SCANCODE_D] != Key_State::KEY_REPEAT)
 		{
 			ChangeState(state, HAMMER_IDLE);
 		}
+
+		break;
+	}
+
+	case FALLING:
+	{
+		if (lastCollider == Collider::Type::WALL && lastCollider == Collider::Type::RAMP_LEFT && lastCollider == Collider::Type::RAMP_RIGHT)
+		{
+			ChangeState(state, DYING);
+		}
+		break;
+	}
+
+	case DYING:
+	{
 
 		break;
 	}
@@ -552,10 +574,11 @@ void ModulePlayer::UpdateLogic()
 
 	case FALLING:
 	{
-		if (lastCollider != Collider::Type::WALL || lastCollider != Collider::Type::RAMP_LEFT || lastCollider != Collider::Type::RAMP_LEFT)
+		if (lastCollider != Collider::Type::WALL && lastCollider != Collider::Type::RAMP_LEFT && lastCollider != Collider::Type::RAMP_RIGHT)
 		{
 			position.y += speed;
 		}
+
 		break;
 	}
 
