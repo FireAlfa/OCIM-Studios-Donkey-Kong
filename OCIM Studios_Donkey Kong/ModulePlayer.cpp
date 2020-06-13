@@ -705,7 +705,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		changeHeight = true;
 		aux = c2->GetRect();
-		//position.y += 10;
 		lastCollider = Collider::Type::RAMP;
 	}
 }
