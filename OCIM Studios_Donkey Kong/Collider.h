@@ -23,6 +23,7 @@ struct Collider
 		RAMP_RIGHT,
 		RAMP_LEFT,
 
+
 		PLAYER,
 		PLAYER_CENTER,
 		PLAYER_FEET,
@@ -32,6 +33,7 @@ struct Collider
 		STAIR,
 		TOP_STAIR,
 
+		STAIRBARREL,
 		BUTTON,
 
 		TOPWALL,
