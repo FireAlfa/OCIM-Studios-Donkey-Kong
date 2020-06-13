@@ -36,7 +36,8 @@ public:
 	//Texture variables
 	//
 		SDL_Texture* lvl1Texture = nullptr;
-
+		SDL_Texture* lvl1Barrels = nullptr;
+		SDL_Texture* lvl1fireBarrels = nullptr;
 	//
 	//
 	//
@@ -48,12 +49,14 @@ public:
 
 	SDL_Texture* dkBarrels;
 	Animation DK;
+	Animation fireBarrel;
 	
 	//
 	//Srite rectangles
 	//
 	SDL_Rect lvl1Rect;
-	//SDL_Rect lvl1B;
+	SDL_Rect Barrels;
+	SDL_Rect lvl1B;
 
 	//SDL_Rect buttonRect;
 

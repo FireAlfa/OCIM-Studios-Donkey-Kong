@@ -21,7 +21,144 @@ SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 	//Set position for textures
 	//
 	lvl1Rect = { 0, 0, 224, 256 };
-	
+	Barrels = { 0,0, 21,32 };
+
+
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+	fireBarrel.PushBack({ 84,67,16,31 });
+
+	 
+
+
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+	fireBarrel.PushBack({ 103,67,16,31 });
+
+
+
+
+
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+	fireBarrel.PushBack({ 122,67,16,31 });
+
+	fireBarrel.PushBack({ 122,67,16,31 });
+
+
+
+
+
+
+
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+	fireBarrel.PushBack({ 141,67,16,31 });
+
+
 	DK.PushBack({ 0,0,40,32 });
 	DK.PushBack({ 0,0,40,32 });
 	DK.PushBack({ 0,0,40,32 });
@@ -240,6 +377,8 @@ bool SceneLevel1::Start()
 	//
 	lvl1Texture = App->textures->Load("Assets/Maps/level1.png");
 	dkBarrels = App->textures->Load("Assets/Sprites/DonkeyKong_Sprites.png");
+	lvl1Barrels = App->textures->Load("Assets/Sprites/Barrells_Sprites.png");
+	lvl1fireBarrels = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
 
 
 // ===================== WALLS ==================== //
@@ -485,6 +624,7 @@ Update_Status SceneLevel1::Update()
 	//
 
 	DK.Update();
+	fireBarrel.Update();
 	//
 	//Change Level
 	//
@@ -525,8 +665,9 @@ Update_Status SceneLevel1::PostUpdate()
 	//
 	//App->render->Blit(lvl1Barrels, 2, 55, &lvl1B, NULL, false);
 	App->render->Blit(lvl1Texture, 0, 0, &lvl1Rect, NULL, false);
-	App->render->Blit(dkBarrels, 21, 51, &(DK.GetCurrentFrame()), 0.1f);
-
+	App->render->Blit(dkBarrels, 21, 52, &(DK.GetCurrentFrame()), 0.1f);
+	App->render->Blit(lvl1Barrels, 1, 51, &Barrels,NULL,false);
+	App->render->Blit(lvl1fireBarrels, 10, 217, &(fireBarrel.GetCurrentFrame()), 0.1f);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
