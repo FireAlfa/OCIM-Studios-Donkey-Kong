@@ -83,6 +83,7 @@ Update_Status ModuleEnemies::Update()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
+
 //Draw the enemies
 Update_Status ModuleEnemies::PostUpdate()
 {
@@ -113,7 +114,7 @@ bool ModuleEnemies::CleanUp()
 }
 
 //Add an enemy to the queue
-bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
+bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y, int direction)
 {
 	bool ret = false;
 
@@ -124,6 +125,7 @@ bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
 			spawnQueue[i].type = type;
 			spawnQueue[i].x = x;
 			spawnQueue[i].y = y;
+			spawnQueue[i].direction = direction;
 			ret = true;
 			break;
 		}
@@ -182,17 +184,26 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 		{
 			switch (info.type)
 			{
-			 case Enemy_Type::DONKEYKONG:
-				enemies[i] = new Enemy_DonkeyKong(info.x, info.y);
-				break;
-				
-				//
-				//
-				//
-				//A case for each enemy spawn
-				//
-				//
-				//
+				case Enemy_Type::DONKEYKONG:
+					enemies[i] = new Enemy_DonkeyKong(info.x, info.y);
+
+					break;
+			
+				//case Enemy_Type::BARREL:
+				//	enemies[i] = new Enemy_Barrel(info.x, info.y, info.direction);
+				//	break;
+
+				//case Enemy_Type::BLUEBARREL:
+				//	enemies[i] = new Enemy_BlueBarrel(info.x, info.y);
+				//	break;
+
+				//case Enemy_Type::FIRE:
+				//	enemies[i] = new Enemy_Fire(info.x, info.y);
+				//	break;
+
+				//case Enemy_Type::CEMENT:
+				//	enemies[i] = new Enemy_Cement(info.x, info.y);
+				//	break;
 			}
 			enemies[i]->texture = texture;
 			enemies[i]->destroyedFx = enemyDestroyedFx;
