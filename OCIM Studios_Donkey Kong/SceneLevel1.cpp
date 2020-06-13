@@ -23,6 +23,244 @@ SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 	lvl1Rect = { 0, 0, 224, 256 };
 	Barrels = { 0,0, 21,32 };
 
+
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	fireBarrel.PushBack({ 10,10,7,13 });
+	 
+
+
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+	fireBarrel.PushBack({ 21,11,7,12 });
+
+
+
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+	fireBarrel.PushBack({ 32,9,8,14 });
+
+
+
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+	fireBarrel.PushBack({ 43,9,7,14 });
+
+	
+
+
 	DK.PushBack({ 0,0,40,32 });
 	DK.PushBack({ 0,0,40,32 });
 	DK.PushBack({ 0,0,40,32 });
@@ -242,6 +480,7 @@ bool SceneLevel1::Start()
 	lvl1Texture = App->textures->Load("Assets/Maps/level1.png");
 	dkBarrels = App->textures->Load("Assets/Sprites/DonkeyKong_Sprites.png");
 	lvl1Barrels = App->textures->Load("Assets/Sprites/Barrells_Sprites.png");
+	lvl1fireBarrels = App->textures->Load("Assets/Sprites/fire.png");
 
 
 // ===================== WALLS ==================== //
@@ -487,6 +726,7 @@ Update_Status SceneLevel1::Update()
 	//
 
 	DK.Update();
+	fireBarrel.Update();
 	//
 	//Change Level
 	//
@@ -529,6 +769,7 @@ Update_Status SceneLevel1::PostUpdate()
 	App->render->Blit(lvl1Texture, 0, 0, &lvl1Rect, NULL, false);
 	App->render->Blit(dkBarrels, 21, 52, &(DK.GetCurrentFrame()), 0.1f);
 	App->render->Blit(lvl1Barrels, 1, 51, &Barrels,NULL,false);
+	App->render->Blit(lvl1fireBarrels, 38, 234, &(fireBarrel.GetCurrentFrame()), 0.1f);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
