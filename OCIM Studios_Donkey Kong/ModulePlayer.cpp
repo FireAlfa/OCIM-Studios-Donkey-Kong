@@ -267,7 +267,7 @@ void ModulePlayer::UpdateState()
 			ChangeState(state, CLIMBING_IDLE);
 
 		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN)
-			ChangeState(state, CLIMBING_UP);
+			ChangeState(state, CLIMBING_DOWN);
 
 		break;
 	}
@@ -654,7 +654,7 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 			upDownDirection = 1;
 		else
-			facingDirection = -1;
+			upDownDirection = -1;
 
 		currentAnimation = &climb_Down;
 		break;
@@ -666,7 +666,7 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
 			upDownDirection = -1;
 		else
-			facingDirection = 1;
+			upDownDirection = 1;
 
 		currentAnimation = &climb_Up;
 		break;
