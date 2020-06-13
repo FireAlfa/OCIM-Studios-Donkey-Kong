@@ -235,6 +235,9 @@ bool SceneLevel4::Start()
 	App->enemies->Enable();
 	App->collisions->Enable();
 
+	totalButtons = 8;
+	lvl4win = false;
+
 
 	//
 	//Load the files of each texture & audio
@@ -412,7 +415,7 @@ Update_Status SceneLevel4::Update()
 	}
 
 
-	if (totalButtons == 0)
+	if (lvl4win == true)
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneVictory, 60);
@@ -513,5 +516,10 @@ void SceneLevel4::eraseButton(Collider* c)
 		App->collisions->RemoveCollider(buttonColliders[index]);
 		buttonDrawingArray[index] = false;
 		--totalButtons;
+	}
+
+	if (totalButtons == 0)
+	{
+		lvl4win = true;
 	}
 }

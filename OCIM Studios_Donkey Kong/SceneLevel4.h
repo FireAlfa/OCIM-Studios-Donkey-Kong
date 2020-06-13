@@ -67,6 +67,7 @@ public:
 	//Button array
 	bool buttonDrawingArray[8] = { true, true, true, true, true, true, true, true };
 	uint totalButtons = 8;
+	bool lvl4win = false;
 
 };
 
