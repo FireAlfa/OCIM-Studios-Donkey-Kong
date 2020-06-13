@@ -123,7 +123,7 @@ bool ModulePlayer::Start()
 	//
 	//Set initial position
 	//
-	position.x = 1;
+	position.x = 34;
 	position.y = 232;
 
 
@@ -151,6 +151,7 @@ bool ModulePlayer::Start()
 	//
 	//Player flags
 	//
+	facingDirection = 1;
 	destroyed = false;
 	canClimb = false;
 	canGoDownStairs = false;
