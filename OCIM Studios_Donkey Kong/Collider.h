@@ -32,7 +32,6 @@ struct Collider
 		STAIR,
 		TOP_STAIR,
 
-		STAIRBARREL,
 		BUTTON,
 
 		TOPWALL,
