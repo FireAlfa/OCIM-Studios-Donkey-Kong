@@ -36,7 +36,7 @@ public:
 	//Texture variables
 	//
 		SDL_Texture* lvl1Texture = nullptr;
-		SDL_Texture* lvl1Barrels = nullptr; 
+
 	//
 	//
 	//
@@ -46,12 +46,15 @@ public:
 	//
 	Collider* ladderColliders[4];
 
-
+	SDL_Texture* dkBarrels;
+	Animation DK;
+	
 	//
 	//Srite rectangles
 	//
 	SDL_Rect lvl1Rect;
-	Animation Barrels;
+	//SDL_Rect lvl1B;
+
 	//SDL_Rect buttonRect;
 
 

@@ -21,7 +21,189 @@ SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 	//Set position for textures
 	//
 	lvl1Rect = { 0, 0, 224, 256 };
-	Barrels.PushBack({});
+	
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+	DK.PushBack({ 0,0,40,32 });
+
+
+
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+	DK.PushBack({ 41,0,43,32 });
+
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+	DK.PushBack({ 85,0,40,32 });
+
+
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
+	DK.PushBack({ 126,0,43,32 });
 
 
 	//
@@ -57,7 +239,7 @@ bool SceneLevel1::Start()
 	//Load the files of each texture & audio
 	//
 	lvl1Texture = App->textures->Load("Assets/Maps/level1.png");
-	lvl1Barrels = App->textures->Load("Assets/Sprites/Barrells_Sprites");
+	dkBarrels = App->textures->Load("Assets/Sprites/DonkeyKong_Sprites.png");
 
 
 // ===================== WALLS ==================== //
@@ -166,8 +348,8 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 32, 142, 1, 1 }, Collider::Type::RAMP_LEFT);
 	App->collisions->AddCollider({ 16, 143, 13, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 16, 141, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 0, 1421, 13, 1 }, Collider::Type::WALL);
-
+	App->collisions->AddCollider({ 0, 142, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 210, 109, 14, 1 }, Collider::Type::WALL);
 
 	//Floor 5 colliders
 	App->collisions->AddCollider({ 31, 118, 1, 1 }, Collider::Type::RAMP_RIGHT);
@@ -302,7 +484,7 @@ Update_Status SceneLevel1::Update()
 	//
 	//
 
-
+	DK.Update();
 	//
 	//Change Level
 	//
@@ -341,7 +523,9 @@ Update_Status SceneLevel1::PostUpdate()
 	//
 	//Draw the background
 	//
+	//App->render->Blit(lvl1Barrels, 2, 55, &lvl1B, NULL, false);
 	App->render->Blit(lvl1Texture, 0, 0, &lvl1Rect, NULL, false);
+	App->render->Blit(dkBarrels, 21, 51, &(DK.GetCurrentFrame()), 0.1f);
 
 
 	return Update_Status::UPDATE_CONTINUE;
