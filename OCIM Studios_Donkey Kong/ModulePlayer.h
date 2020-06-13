@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Animation.h"
 #include "p2Point.h"
+#include "Collider.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -86,6 +87,13 @@ public:
 	Collider* playerCollider = nullptr;
 	Collider* playerCenterCollider = nullptr;
 
+	//
+	//Auxiliar variables
+	//
+	//Rectangle of the other collider
+	SDL_Rect aux;
+	//Last collider
+	int lastCollider = Collider::Type::WALL;
 
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
@@ -135,6 +143,7 @@ public:
 	bool canClimb = false;
 	bool canGoDownStairs = false;
 	bool canGoUpStairs = false;
+	bool changeHeight = false;
 
 
 

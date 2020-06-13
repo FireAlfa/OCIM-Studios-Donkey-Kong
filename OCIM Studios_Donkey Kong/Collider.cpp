@@ -37,3 +37,8 @@ void Collider::AddListener(Module* listener)
 			break;
 	}
 }
+
+SDL_Rect Collider::GetRect()
+{
+	return rect;
+}

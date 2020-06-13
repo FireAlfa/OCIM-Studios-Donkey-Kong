@@ -20,7 +20,7 @@ struct Collider
 
 		WALL,
 		GOUPWALL,
-		GODOWNWALL,
+		RAMP,
 
 		PLAYER,
 		PLAYER_CENTER,
@@ -53,6 +53,9 @@ struct Collider
 	bool Intersects(const SDL_Rect& r) const;
 
 	void AddListener(Module* listener);
+
+	//Rectangle getter
+	SDL_Rect GetRect();
 
 	//Variables
 	SDL_Rect rect;

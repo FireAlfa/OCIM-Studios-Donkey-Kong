@@ -176,6 +176,7 @@ Update_Status ModulePlayer::Update()
 
 	canClimb = false;
 	canGoDownStairs = false;
+	changeHeight = false;
 
 	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN)
 		debugGamepadInfo = !debugGamepadInfo;
@@ -244,6 +245,7 @@ void ModulePlayer::UpdateState()
 				App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
 				ChangeState(state, RUNNING);
 			else
+				lastCollider = -2;
 				ChangeState(state, IDLE);
 		}
 
@@ -380,6 +382,35 @@ void ModulePlayer::UpdateLogic()
 	}
 	case(RUNNING):
 	{
+		if (changeHeight == true)
+		{
+			if (facingDirection == 1)
+			{
+				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x + 1 >= aux.x)
+				{
+					position.y -= speed;
+				}
+
+				if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x - 1 > aux.x)
+				{
+					position.y += speed;
+				}
+			}
+
+			if (facingDirection == -1)
+			{
+				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x - 1 >= aux.x)
+				{
+					position.y -= speed;
+				}
+
+				if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x + 1 > aux.x)
+				{
+					position.y += speed;
+				}
+			}
+		}
+
 		position.x += speed * facingDirection;
 		currentAnimation->Update();
 
@@ -455,6 +486,30 @@ void ModulePlayer::UpdateLogic()
 		}
 	}
 
+	}
+
+
+	switch (lastCollider)
+	{
+	case Collider::Type::WALL:
+	case Collider::Type::GOUPWALL:
+	case Collider::Type::RAMP:
+	case Collider::Type::PLAYER:
+	case Collider::Type::PLAYER_CENTER:
+	case Collider::Type::ENEMY:
+	case Collider::Type::STAIR:
+	case Collider::Type::TOP_STAIR:
+	case Collider::Type::BUTTON:
+	case Collider::Type::TOPWALL:
+	case Collider::Type::LEFTWALL:
+	case Collider::Type::RIGHTWALL:
+	case Collider::Type::GRAVITYWALLS:
+	case Collider::Type::PEACH:
+	case Collider::Type::DK:
+		break;
+	default:
+		position.y += speed;
+		break;
 	}
 
 	// Simply updating the collider position to match our current position
@@ -600,47 +655,58 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	//Collision control
 	//
 
-	if ((c1 == playerCenterCollider && c2->type == Collider::Type::STAIR) || (c1 == playerCenterCollider && c2->type == Collider::Type::TOP_STAIR))
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::STAIR)
 	{
 		canClimb = true;
+		lastCollider = Collider::Type::STAIR;
 	}
 
 	if (c1 == playerCenterCollider && c2->type == Collider::Type::TOP_STAIR) {
+		canClimb = true;
 		canGoDownStairs = true;
 		canGoUpStairs = true;
+		lastCollider = Collider::Type::TOP_STAIR;
 	}
 
     if (c1 == playerCollider && c2->type == Collider::Type::TOPWALL)
 	{
 		position.y += speed;
+		lastCollider = Collider::Type::TOPWALL;
 	}
 
 	if (c1 == playerCollider && c2->type == Collider::Type::LEFTWALL)
 	{
 		position.x += speed;
+		lastCollider = Collider::Type::LEFTWALL;
 	}
 
 	if (c1 == playerCollider && c2->type == Collider::Type::RIGHTWALL)
 	{
 		position.x -= speed;
+		lastCollider = Collider::Type::RIGHTWALL;
 	}
 	if (c1 == playerCenterCollider && c2->type == Collider::Type::WALL)
 	{
 		position.y -= speed;
 		canClimb = false;
+		lastCollider = Collider::Type::WALL;
 	}
-	if (c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL)
+	/*if (c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL)
 	{
+		//changeHeightUp= true;
 		position.y -= speed;
-	}
+	}*/
 
-	if (c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL && facingDirection == -1)
+	/*if (c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL && facingDirection == -1)
 	{
 		position.y -= speed;
-	}
-	if (c1 == playerCenterCollider && c2->type == Collider::Type::GODOWNWALL)
+	}*/
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::RAMP)
 	{
-		position.y += 10;
+		changeHeight = true;
+		aux = c2->GetRect();
+		//position.y += 10;
+		lastCollider = Collider::Type::RAMP;
 	}
 }
 

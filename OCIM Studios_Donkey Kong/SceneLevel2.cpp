@@ -175,19 +175,24 @@ Update_Status SceneLevel2::Update()
 	if (App->input->keys[SDL_SCANCODE_0] == Key_State::KEY_DOWN)
 	{
 		CleanUp();
-		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 10);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_1] == Key_State::KEY_DOWN)
 	{
 		CleanUp();
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel1, 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel1, 10);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_4] == Key_State::KEY_DOWN)
 	{
 		CleanUp();
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel4, 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel4, 10);
+	}
+	if (App->input->keys[SDL_SCANCODE_R] == Key_State::KEY_DOWN)
+	{
+		CleanUp();
+		App->fade->FadeToBlack(this, this, 10);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
