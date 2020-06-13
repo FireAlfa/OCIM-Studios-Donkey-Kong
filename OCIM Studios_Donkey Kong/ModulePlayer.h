@@ -148,7 +148,8 @@ public:
 	bool canClimb = false;
 	bool canGoDownStairs = false;
 	bool canGoUpStairs = false;
-	bool changeHeight = false;
+	bool rampRight = false;
+	bool rampLeft = false;
 
 
 

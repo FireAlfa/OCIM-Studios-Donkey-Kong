@@ -20,7 +20,8 @@ struct Collider
 
 		WALL,
 		GOUPWALL,
-		RAMP,
+		RAMP_RIGHT,
+		RAMP_LEFT,
 
 		PLAYER,
 		PLAYER_CENTER,

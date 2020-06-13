@@ -177,7 +177,8 @@ Update_Status ModulePlayer::Update()
 
 	canClimb = false;
 	canGoDownStairs = false;
-	changeHeight = false;
+	rampRight = false;
+	rampLeft = false;
 
 	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN)
 		debugGamepadInfo = !debugGamepadInfo;
@@ -390,15 +391,46 @@ void ModulePlayer::UpdateLogic()
 	}
 	case(RUNNING):
 	{
-		if (changeHeight == true)
+		if (rampRight == true)
 		{
 			//Right
 			if (facingDirection == 1)
 			{
-				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x == aux.x) //Go Up Looking Right//
+				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x == aux.x ) //Go Up Looking Right//
 				{
 					position.y -= speed;
 				}
+
+				//if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x == aux.x) //Go Down Looking Right
+				//{
+				//	position.y += speed;
+				//}
+			}
+
+			//Left
+			if (facingDirection == -1)
+			{
+				//if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x + 2 == aux.x) //Go Up Looking Left//
+				//{
+				//	position.y -= speed;
+				//}
+
+				if (playerCenterCollider->rect.y <= aux.y - 15 && playerCenterCollider->rect.x + 2 == aux.x) //Go Down Looking Left//
+				{
+					position.y += speed;
+				}
+			}
+		}
+
+		if (rampLeft == true)
+		{
+			//Right
+			if (facingDirection == 1)
+			{
+				//if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x == aux.x) //Go Up Looking Right//
+				//{
+				//	position.y -= speed;
+				//}
 
 				if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x == aux.x) //Go Down Looking Right
 				{
@@ -414,10 +446,10 @@ void ModulePlayer::UpdateLogic()
 					position.y -= speed;
 				}
 
-				if (playerCenterCollider->rect.y <= aux.y - 15 && playerCenterCollider->rect.x + 2 == aux.x) //Go Down Looking Left//
-				{
-					position.y += speed;
-				}
+				//if (playerCenterCollider->rect.y <= aux.y - 15 && playerCenterCollider->rect.x + 2 == aux.x) //Go Down Looking Left//
+				//{
+				//	position.y += speed;
+				//}
 			}
 		}
 
@@ -452,36 +484,36 @@ void ModulePlayer::UpdateLogic()
 
 	case(HAMMER_RUNNING):///////////////
 	{
-		if (changeHeight == true)
-		{
-			//Right
-			if (facingDirection == 1)
-			{
-				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x + 1 == aux.x) //Go Up Looking Right//
-				{
-					position.y -= speed;
-				}
+		//if (changeHeight == true)
+		//{
+		//	//Right
+		//	if (facingDirection == 1)
+		//	{
+		//		if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x + 1 == aux.x) //Go Up Looking Right//
+		//		{
+		//			position.y -= speed;
+		//		}
 
-				if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x == aux.x) //Go Down Looking Right
-				{
-					position.y += speed;
-				}
-			}
+		//		if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x == aux.x) //Go Down Looking Right
+		//		{
+		//			position.y += speed;
+		//		}
+		//	}
 
-			//Left
-			if (facingDirection == -1)
-			{
-				if (playerCenterCollider->rect.y >= aux.y - 14 && (playerCenterCollider->rect.x + 2 == aux.x || playerCenterCollider->rect.x + 1 == aux.x || playerCenterCollider->rect.x == aux.x)) //Go Up Looking Left//
-				{
-					position.y -= speed;
-				}
+		//	//Left
+		//	if (facingDirection == -1)
+		//	{
+		//		if (playerCenterCollider->rect.y >= aux.y - 14 && (playerCenterCollider->rect.x + 2 == aux.x || playerCenterCollider->rect.x + 1 == aux.x || playerCenterCollider->rect.x == aux.x)) //Go Up Looking Left//
+		//		{
+		//			position.y -= speed;
+		//		}
 
-				if (playerCenterCollider->rect.y <= aux.y - 14 && playerCenterCollider->rect.x + 1 == aux.x) //Go Down Looking Left
-				{
-					position.y += speed;
-				}
-			}
-		}
+		//		if (playerCenterCollider->rect.y <= aux.y - 14 && playerCenterCollider->rect.x + 1 == aux.x) //Go Down Looking Left
+		//		{
+		//			position.y += speed;
+		//		}
+		//	}
+		//}
 
 		position.x += speed * facingDirection;
 		currentAnimation->Update();
@@ -539,7 +571,8 @@ void ModulePlayer::UpdateLogic()
 		lastCollider = Collider::Type::NONE;
 		break;
 	case Collider::Type::GOUPWALL:
-	case Collider::Type::RAMP:
+	case Collider::Type::RAMP_RIGHT:
+	case Collider::Type::RAMP_LEFT:
 	case Collider::Type::PLAYER:
 	case Collider::Type::PLAYER_CENTER:
 	case Collider::Type::ENEMY:
@@ -754,11 +787,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		position.y -= speed;
 	}*/
-	if (c1 == playerFeetCollider && c2->type == Collider::Type::RAMP)
+	if (c1 == playerFeetCollider && c2->type == Collider::Type::RAMP_RIGHT)
 	{
-		changeHeight = true;
+		rampRight = true;
 		aux = c2->GetRect();
-		lastCollider = Collider::Type::RAMP;
+		lastCollider = Collider::Type::RAMP_RIGHT;
+	}
+
+	if (c1 == playerFeetCollider && c2->type == Collider::Type::RAMP_LEFT)
+	{
+		rampLeft = true;
+		aux = c2->GetRect();
+		lastCollider = Collider::Type::RAMP_LEFT;
 	}
 }
 
