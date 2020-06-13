@@ -17,6 +17,7 @@ enum Player_State
 	JUMPING,
 	HAMMER_IDLE,
 	HAMMER_RUNNING,
+	FALLING,
 	CLIMBING_IDLE,
 	CLIMBING_RUNNING,
 	CLIMBING_UP,
@@ -130,6 +131,9 @@ public:
 
 	Animation hammerRunAnim_Left;
 	Animation hammerRunAnim_Right;
+
+	Animation deadLeft;
+	Animation deadRight;
 	//////////////////////////////////////
 
 

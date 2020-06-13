@@ -105,6 +105,17 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	hammerRunAnim_Right.PushBack({ 0, 94, 29, 26 });
 	hammerRunAnim_Left.speed = hammerRunAnim_Right.speed = 0.1f;
 
+	//	Dead left
+	deadLeft.PushBack({ 51,51,16,16 });
+	deadLeft.PushBack({ 34,51,16,16 });
+	deadLeft.PushBack({ 17,51,16,16 });
+	deadLeft.PushBack({ 0,51,16,16 });
+
+	//dead right
+	deadRight.PushBack({ 68,51,16,16 });
+	deadRight.PushBack({ 85,51,16,16 });
+	deadRight.PushBack({ 102,51,16,16 });
+	deadRight.PushBack({ 118,51,16,16 });
 }
 
 ModulePlayer::~ModulePlayer()
@@ -745,8 +756,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		//changeHeightUp= true;
 		position.y += speed;
-	}
-	
+		ChangeState(state, FALLING);
+	}	
 
 	/*if (c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL && facingDirection == -1)
 	{
@@ -757,6 +768,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		changeHeight = true;
 		aux = c2->GetRect();
 		lastCollider = Collider::Type::RAMP;
+	}
+
+	if (state == FALLING)
+	{
+		currentAnimation = &(facingDirection == -1 ? deadLeft : deadRight);
 	}
 }
 
