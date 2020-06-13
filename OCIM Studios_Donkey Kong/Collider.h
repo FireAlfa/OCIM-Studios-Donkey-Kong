@@ -19,6 +19,7 @@ struct Collider
 
 
 		WALL,
+		GOUPWALL,
 		RAMP_RIGHT,
 		RAMP_LEFT,
 
@@ -32,6 +33,7 @@ struct Collider
 		STAIR,
 		TOP_STAIR,
 
+		STAIRBARREL,
 		BUTTON,
 
 		TOPWALL,

@@ -31,8 +31,8 @@ Debugging controls:
 - Show Colliders: F1 key
 - Show Memory Leaks: F2 key
 - Show Gamepad Display: F3 key
-- Instant Win: V key
-- Instant Lose: L key
+- Instant Win: F4 key
+- Instant Lose: F5 key
 - Activate God Mode: G key
 - Spawn Enemies: Left Mouse Button
 
