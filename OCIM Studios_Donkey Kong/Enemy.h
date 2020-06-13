@@ -3,9 +3,12 @@
 
 #include "p2Point.h"
 #include "Animation.h"
+#include "ModuleEnemies.h"
+#include <time.h>
 
 struct SDL_Texture;
 struct Collider;
+
 
 //Enemy base class
 class Enemy
@@ -14,7 +17,6 @@ public:
 	// Constructor
 	// Saves the spawn position for later movement calculations
 	Enemy(int x, int y);
-
 	// Destructor
 	virtual ~Enemy();
 
@@ -36,8 +38,17 @@ public:
 	virtual void SetToDelete();
 
 public:
-	// The current position in the world
+
+	//Position of the enemy in the map
 	iPoint position;
+
+	int speed = 1;
+
+	//Facing Diretion of the enemy
+	int facingDirection = 1;
+
+	//Rectangle of other collider
+	SDL_Rect aux;
 
 	// The enemy's texture
 	SDL_Texture* texture = nullptr;

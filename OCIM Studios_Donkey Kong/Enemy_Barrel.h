@@ -1,30 +1,39 @@
-
 #ifndef __ENEMY_BARREL_H__
 #define __ENEMY_BARREL_H__
 
 #include "Enemy.h"
-#include "Path.h"
+#include "Animation.h"
+
 
 class Enemy_Barrel : public Enemy
 {
 public:
-	// Constructor (x y coordinates in the world)
-	// Creates animation and movement data and the collider
-	Enemy_Barrel(int x, int y);
+	//Constructor
+	Enemy_Barrel(int x, int y, int direction);
 
-	// The enemy is going to follow the different steps in the path
-	// Position will be updated depending on the speed defined at each step
-	void Update() override;
+	// Checks for inputs (or timers) and changes the player state accordingly
+	void UpdateState();
+
+	// Updates the logic of the player depending on the current state
+	void UpdateLogic();
+
+	// Transition from one state to a new one. Changes animations, resets variables,...
+	void ChangeState(Enemy_State previousState, Enemy_State newState);
+
+	//State of the enemy
+	Enemy_State state = ENEMY_MOVING;
+
+	//
+	//Enemy Flags
+	//
+	bool rampRight = false;
+	bool rampLeft = false;
+
+
 
 private:
-	SDL_Texture* barrelTexture = nullptr;
 
-	// The path that will define the position in the world
-	Path LeftbarrelPath;
-	Path RightbarrelPath;
-	Path DownbarrelPath;
-	// Enemy animations
-	Animation BarrelRight, BarrelLeft, BarrelDown;
+	Animation BarrelAnim, BarrelFall;
 };
-
-#endif // __ENEMY_DONKEYKONG_H__
+	
+#endif // !__ENEMY_BARREL_H__

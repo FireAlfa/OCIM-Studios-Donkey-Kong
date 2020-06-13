@@ -5,66 +5,65 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 
-Enemy_Barrel::Enemy_Barrel(int x, int y) : Enemy(x, y)
+Enemy_Barrel::Enemy_Barrel(int x, int y, int direction) : Enemy(x, y)
 {
-	//	================ BarrelRight =============	//
-	BarrelRight.PushBack({ 32, 0, 12, 10 });
-	BarrelRight.PushBack({ 45, 0, 12, 10 });
-	BarrelRight.PushBack({ 58, 0, 12, 10 });
-	BarrelRight.PushBack({ 71, 0, 12, 10 });
+	BarrelAnim.PushBack({ 103, 136, 12, 10 });
+	BarrelAnim.PushBack({ 116, 136, 12, 10 });
+	BarrelAnim.PushBack({ 129, 136, 12, 10 });
+	BarrelAnim.PushBack({ 142, 136, 12, 10 });
+	BarrelAnim.loop = true;
+	BarrelAnim.speed = 0.1f;
 
-	BarrelRight.speed = 0.03f;
-	BarrelRight.loop = true;
-	currentAnim = &BarrelRight;
+	BarrelFall.PushBack({ 92, 153, 16, 11 });
+	BarrelFall.PushBack({ 92, 153, 16, 11 });
+	BarrelFall.loop = true;
+	BarrelFall.speed = 0.1f;
 
-	// ================ BarrelLeft ================== //
-	
-	BarrelLeft.PushBack({ 71, 0, 12, 10 });
-	BarrelLeft.PushBack({ 45, 0, 12, 10 });
-	BarrelLeft.PushBack({ 58, 0, 12, 10 });
-	BarrelLeft.PushBack({ 32, 0, 12, 10 });
-
-	BarrelLeft.speed = 0.03f;
-	BarrelLeft.loop = true;
-	currentAnim = &BarrelLeft;
-
-	// ================ BarrelDown ================== //	
-	BarrelDown.PushBack({ 21, 17, 16, 11 });
-	BarrelDown.PushBack({ 38, 17, 16, 10 });
-
-	BarrelLeft.speed = 0.01f;
-	BarrelDown.loop = true;
-	currentAnim = &BarrelDown;
-	
+	currentAnim = &BarrelAnim;
 
 
-
-
-
-	LeftbarrelPath.PushBack({ 0.3f, 0.0 }, 20, &BarrelLeft);
-	RightbarrelPath.PushBack({ -0.3f, 0.0 }, 20, &BarrelRight);
-	DownbarrelPath.PushBack({ -0.3f, 0.0 }, 20, &BarrelDown);
-	
-
-
-
-
-
-	collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::ENEMY, (Module*)App->enemies);
-
+	collider = App->collisions->AddCollider({ 0, 0, 8, 8 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
-void Enemy_Barrel::Update()
+// Call to the base class. It must be called at the end
+// It will update the collider depending on the position
+void Enemy_Barrel::UpdateState()
 {
-	// Call to the base class. It must be called at the end
-	// It will update the collider depending on the position
+	switch (state)
+		{
+		case ENEMY_MOVING:
 
-	
-	LeftbarrelPath.Update();
-	RightbarrelPath.Update();
-	DownbarrelPath.Update();
-	//LeftbarrelPathposition = spawnPos +
+			if (rampRight == true)
+			{
+				//Left
+				if (facingDirection == -1)
+				{
+					if (collider->rect.y <= aux.y - 8 && collider->rect.x + 4 == aux.x) //Go Down Looking Left//
+					{
+						position.y += speed;
+					}
+				}
+			}
 
+			if (rampLeft == true)
+			{
+				//Right
+				if (facingDirection == 1)
+				{
+					if (collider->rect.y <= aux.y - 8 && collider->rect.x + 5 == aux.x) //Go Down Looking Right
+					{
+						position.y += speed;
+					}
+				}
+			}
 
-	Enemy::Update();
+			position.x += speed * facingDirection;
+			currentAnim->Update();
+
+			break;
+
+		case ENEMY_FALLING:
+
+			break;
+	}
 }
