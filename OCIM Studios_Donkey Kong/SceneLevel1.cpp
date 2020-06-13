@@ -406,136 +406,130 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 179, 243, 16, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 191, 241, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 195, 242, 16, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 208, 240, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 207, 240, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 211, 241, 16, 1 }, Collider::Type::WALL);
 
 	//Floor 2 colliders
-	App->collisions->AddCollider({ 192, 220, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 192, 218, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 176, 219, 7, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 176, 217, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 160, 218, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 160, 216, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 144, 217, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 144, 215, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 128, 216, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 128, 214, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 112, 215, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 112, 213, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 96, 214, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 96, 212, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 80, 213, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 208, 219, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 0, 208, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 16, 207, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 16, 209, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 32, 208, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 32, 210, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 48, 209, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 48, 211, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 64, 210, 1, 1 }, Collider::Type::RAMP_LEFT);
 	App->collisions->AddCollider({ 64, 212, 13, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 80, 211, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 48, 211, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 48, 209, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 32, 210, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 32, 208, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 16, 209, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 16, 207, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 0, 208, 13, 1 }, Collider::Type::WALL);
-
+	App->collisions->AddCollider({ 80, 213, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 96, 212, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 96, 214, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 112, 213, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 112, 215, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 128, 214, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 128, 216, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 144, 215, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 144, 217, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 160, 216, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 160, 218, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 176, 217, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 176, 219, 7, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 192, 218, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 192, 220, 13, 1 }, Collider::Type::WALL);
 
 	//Floor 3 colliders
-	App->collisions->AddCollider({ 0, 248, 112, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 31, 186, 1, 1 }, Collider::Type::RAMP_RIGHT);
-	App->collisions->AddCollider({ 19, 187, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 16, 187, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 31, 185, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 40, 187, 8, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 47, 184, 1, 1 }, Collider::Type::RAMP_RIGHT);
-	App->collisions->AddCollider({ 40, 186, 8, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 51, 186, 13, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 63, 183, 1, 1 }, Collider::Type::RAMP_RIGHT);
-	App->collisions->AddCollider({ 51, 185, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 79, 182, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 67, 184, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 95, 181, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 79, 182, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 83, 183, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 95, 181, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 104, 182, 8, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 111, 180, 1, 1 }, Collider::Type::RAMP_RIGHT);
-	App->collisions->AddCollider({ 105, 182, 7, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 115, 181, 7, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 127, 179, 1, 1 }, Collider::Type::RAMP_RIGHT);
-	App->collisions->AddCollider({ 105, 182, 7, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 143, 178, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 131, 180, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 159, 177, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 143, 178, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 147, 179, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 175, 176, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 159, 177, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 163, 178, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 191, 175, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 175, 176, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 179, 177, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 207, 174, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 191, 175, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 195, 176, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 207, 174, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 211, 175, 13, 1 }, Collider::Type::WALL);
-
 
 	//Floor 4 colliders
-	App->collisions->AddCollider({ 192, 154, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 192, 152, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 176, 153, 8, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 176, 151, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 160, 152, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 160, 150, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 144, 151, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 144, 149, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 128, 150, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 128, 148, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 120, 149, 7, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 112, 147, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 96, 148, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 96, 146, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 80, 147, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 80, 145, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 64, 146, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 64, 144, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 48, 145, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 48, 143, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 32, 144, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 32, 142, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 16, 143, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 16, 141, 1, 1 }, Collider::Type::RAMP_LEFT);
 	App->collisions->AddCollider({ 0, 142, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 210, 109, 14, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 16, 141, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 16, 143, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 32, 142, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 32, 144, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 48, 143, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 48, 145, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 64, 144, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 64, 146, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 80, 145, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 80, 147, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 96, 146, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 96, 148, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 112, 147, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 120, 149, 5, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 128, 148, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 128, 150, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 144, 149, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 144, 151, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 160, 150, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 160, 152, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 176, 151, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 176, 153, 8, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 192, 152, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 192, 154, 13, 1 }, Collider::Type::WALL);
 
 	//Floor 5 colliders
-	App->collisions->AddCollider({ 31, 118, 1, 1 }, Collider::Type::RAMP_RIGHT);
-	App->collisions->AddCollider({ 19, 121, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 16, 121, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 31, 119, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 40, 120, 8, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 47, 118, 1, 1 }, Collider::Type::RAMP_RIGHT);
-	App->collisions->AddCollider({ 39, 120, 7, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 63, 117, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 51, 119, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 63, 117, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 67, 118, 8, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 79, 116, 1, 1 }, Collider::Type::RAMP_RIGHT);
-	App->collisions->AddCollider({ 64, 118, 8, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 83, 118, 13, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 95, 115, 1, 1 }, Collider::Type::RAMP_RIGHT);
-	App->collisions->AddCollider({ 112, 181, 16, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 111, 114, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 99, 116, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 127, 113, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 111, 114, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 115, 115, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 143, 112, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 127, 113, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 131, 114, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 159, 111, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 143, 112, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 147, 113, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 175, 110, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 159, 111, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 163, 112, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 191, 109, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 175, 110, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 179, 111, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 207, 108, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 191, 109, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 195, 110, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 211, 175, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 80, 117, 16, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 207, 108, 1, 1 }, Collider::Type::RAMP_RIGHT);
+	App->collisions->AddCollider({ 211, 109, 13, 1 }, Collider::Type::WALL);
 
 	//Floor 6 colliders
-	App->collisions->AddCollider({ 192, 86, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 192, 88, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 176, 85, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 177, 87, 7, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 160, 84, 1, 1 }, Collider::Type::RAMP_LEFT);
-	App->collisions->AddCollider({ 160, 86, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 84, 140, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 144, 83, 1, 1 }, Collider::Type::RAMP_LEFT);
 	App->collisions->AddCollider({ 144, 85, 13, 1 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 0, 84, 141, 1 }, Collider::Type::WALL);
-
-
+	App->collisions->AddCollider({ 160, 84, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 160, 86, 13, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 176, 85, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 177, 87, 8, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 192, 86, 1, 1 }, Collider::Type::RAMP_LEFT);
+	App->collisions->AddCollider({ 192, 88, 16, 1 }, Collider::Type::WALL);
+	
 	//Floor 7 colliders
-	App->collisions->AddCollider({ 88, 56, 40, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 88, 56, 39, 1 }, Collider::Type::WALL);
 
 
 
@@ -544,40 +538,43 @@ bool SceneLevel1::Start()
 	// ================== STAIR ================= //
 
 	// Stairs set 1
-	App->collisions->AddCollider({ 187, 231, 2, 6 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 187, 217, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 187, 228, 2, 1 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 187, 218, 2, 2 }, Collider::Type::TOP_STAIR);
 
 	// Stairs set 2
-	App->collisions->AddCollider({ 99, 195, 2, 10 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 35, 184, 2, 2 }, Collider::Type::TOP_STAIR);
-	App->collisions->AddCollider({ 35, 198, 2, 6 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 99, 180, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 35, 194, 2, 1 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 35, 185, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 99, 198, 2, 2 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 99, 181, 2, 2 }, Collider::Type::TOP_STAIR);
 	// Stairs set 3
 
-	App->collisions->AddCollider({ 115, 163, 2, 9 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 187, 151, 2, 2 }, Collider::Type::TOP_STAIR);
-	App->collisions->AddCollider({ 187, 165, 2, 6 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 115, 147, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 115, 165, 2, 1 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 187, 152, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 187, 161, 2, 1 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 115, 148, 2, 2 }, Collider::Type::TOP_STAIR);
 
 	// Stairs set 4
-	App->collisions->AddCollider({ 75,132, 2, 7 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 35, 118, 2, 2 }, Collider::Type::TOP_STAIR);
-	App->collisions->AddCollider({ 35, 133, 2, 5 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 75, 116, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 75, 131, 2, 1 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 35, 119, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 35, 129, 2, 1 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 75, 117, 2, 2 }, Collider::Type::TOP_STAIR);
 
 	// Stairs set 5
-	App->collisions->AddCollider({ 187, 100, 2, 6 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 187, 85, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 187, 95, 2, 1 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 187, 86, 2, 2 }, Collider::Type::TOP_STAIR);
 
 	// Stairs set 6
-	App->collisions->AddCollider({ 131,68, 2, 10 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 131, 54, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 131, 68, 2, 1 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 131, 55, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 67, 32, 2, 37 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 83, 32, 2, 37 }, Collider::Type::STAIR);
 	
+
+
 
 	// ===================== GRAVITY WALLS ==================== //
-
 	
-		//Gravity Walls 1
+	//Gravity Walls 1
 	App->collisions->AddCollider({ 211, 202, 14, 18 }, Collider::Type::GRAVITYWALLS);
 	App->collisions->AddCollider({ 209, 222, 6, 3 }, Collider::Type::GRAVITYWALLS);
 

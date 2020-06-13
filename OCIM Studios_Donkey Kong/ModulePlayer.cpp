@@ -545,6 +545,13 @@ void ModulePlayer::UpdateLogic()
 			position.y += speed * upDownDirection;
 			currentAnimation->Update();
 		}
+		break;
+	}
+
+	case FALLING:
+	{
+		position.y += speed;
+		break;
 	}
 
 	}
@@ -701,7 +708,8 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 	}
 
 	case FALLING:
-
+		
+		break;
 	}
 
 	lastCollider = Collider::Type::NONE;
