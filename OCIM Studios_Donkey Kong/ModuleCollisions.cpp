@@ -38,7 +38,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::WALL][Collider::Type::RAMP_LEFT] = false;
 
 
-	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_CENTER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_FEET] = false;

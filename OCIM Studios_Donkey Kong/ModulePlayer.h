@@ -153,6 +153,7 @@ public:
 	bool rampRight = false;
 	bool rampLeft = false;
 	bool eraseButton = false;
+	bool wideWallContact = false;
 
 	//Level finish flags
 	

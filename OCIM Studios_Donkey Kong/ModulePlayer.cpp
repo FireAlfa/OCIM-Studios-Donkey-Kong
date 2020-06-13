@@ -154,6 +154,7 @@ bool ModulePlayer::Start()
 	destroyed = false;
 	canClimb = false;
 	canGoDownStairs = false;
+	wideWallContact = false;
 	ChangeState(state, IDLE);
 
 
@@ -551,7 +552,10 @@ void ModulePlayer::UpdateLogic()
 
 	case FALLING:
 	{
-		position.y += speed;
+		if (lastCollider != Collider::Type::WALL || lastCollider != Collider::Type::RAMP_LEFT || lastCollider != Collider::Type::RAMP_LEFT)
+		{
+			position.y += speed;
+		}
 		break;
 	}
 
@@ -595,16 +599,20 @@ void ModulePlayer::UpdateLogic()
 		button = nullptr;
 	}
 
+
 	// Simply updating the collider position to match our current position
 	playerCollider->SetPos(position.x, position.y);
 	playerCenterCollider->SetPos(position.x + 5, position.y);
 	playerFeetCollider->SetPos(position.x + 5, position.y + 14);
 
 
+	//Flag update
 	canClimb = false;
 	canGoDownStairs = false;
 	rampRight = false;
 	rampLeft = false;
+	wideWallContact = false;
+
 
 	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN)
 		debugGamepadInfo = !debugGamepadInfo;
@@ -766,6 +774,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		canClimb = false;
 		lastCollider = Collider::Type::WALL;
+	}
+
+	if (c1 == playerCollider && c2->type == Collider::Type::WALL)
+	{
+		wideWallContact = true;
 	}
 
 
