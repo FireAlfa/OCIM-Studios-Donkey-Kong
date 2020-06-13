@@ -185,6 +185,7 @@ void ModulePlayer::UpdateState()
 {
 	switch (state)
 	{
+
 	case IDLE:
 	{
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
@@ -280,7 +281,6 @@ void ModulePlayer::UpdateState()
 		break;
 	}
 
-
 	case CLIMBING_IDLE:
 	{
 		if (canClimb == true &&
@@ -351,6 +351,7 @@ void ModulePlayer::UpdateState()
 
 		break;
 	}
+
 	case HAMMER_RUNNING:
 	{
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
@@ -377,12 +378,14 @@ void ModulePlayer::UpdateLogic()
 {
 	switch (state)
 	{
-	case(IDLE):
+
+	case IDLE:
 	{
 		// Nothing to do here :)
 		break;
 	}
-	case(RUNNING):
+
+	case RUNNING:
 	{
 		if (rampRight == true)
 		{
@@ -431,7 +434,8 @@ void ModulePlayer::UpdateLogic()
 
 		break;
 	}
-	case(JUMPING):
+
+	case JUMPING:
 	{
 		--jumpCountdown;
 		if (/*jumpCountdown > 0 &&*/ jumpCountdown < 15)
@@ -448,14 +452,14 @@ void ModulePlayer::UpdateLogic()
 		break;
 	}
 
-	case(HAMMER_IDLE):
+	case HAMMER_IDLE:
 	{
 		currentAnimation->Update();
 
 		break;
 	}
 
-	case(HAMMER_RUNNING):///////////////
+	case HAMMER_RUNNING:
 	{
 		if (rampRight == true)
 		{
@@ -505,7 +509,7 @@ void ModulePlayer::UpdateLogic()
 		break;
 	}
 
-	case(CLIMBING_DOWN):
+	case CLIMBING_DOWN:
 	{
 		if (canGoDownStairs == true)
 		{
@@ -516,7 +520,7 @@ void ModulePlayer::UpdateLogic()
 		break;
 	}
 
-	case(CLIMBING_UP):
+	case CLIMBING_UP:
 	{
 		if (canGoDownStairs == true)
 		{
@@ -527,14 +531,14 @@ void ModulePlayer::UpdateLogic()
 		break;
 	}
 
-	case(CLIMBING_IDLE):
+	case CLIMBING_IDLE:
 	{
 		currentAnimation->Update();
 
 		break;
 	}
 
-	case(CLIMBING_RUNNING):
+	case CLIMBING_RUNNING:
 	{
 		if (canClimb == true)
 		{
@@ -603,12 +607,14 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 {
 	switch (newState)
 	{
-	case(IDLE):
+
+	case IDLE:
 	{
 		currentAnimation = &(facingDirection == -1 ? idleAnim_Left : idleAnim_Right);
 		break;
 	}
-	case(RUNNING):
+
+	case RUNNING:
 	{
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
@@ -618,7 +624,8 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 		currentAnimation = &(facingDirection == -1 ? runningAnim_Left : runningAnim_Right);
 		break;
 	}
-	case(JUMPING):
+
+	case JUMPING:
 	{
 		App->audio->PlayFx(jumpFx);
 
@@ -630,12 +637,14 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 		currentAnimation = &(facingDirection == -1 ? jumpAnim_Left : jumpAnim_Right);
 		break;
 	}
-	case(HAMMER_IDLE):
+
+	case HAMMER_IDLE:
 	{
 		currentAnimation = &(facingDirection == -1 ? hammerIdleAnim_Left : hammerIdleAnim_Right);
 		break;
 	}
-	case(HAMMER_RUNNING):
+
+	case HAMMER_RUNNING:
 	{
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
@@ -647,7 +656,7 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 		break;
 	}
 
-	case(CLIMBING_DOWN):
+	case CLIMBING_DOWN:
 	{
 		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
@@ -659,7 +668,7 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 		break;
 	}
 
-	case(CLIMBING_UP):
+	case CLIMBING_UP:
 	{
 		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
@@ -671,11 +680,13 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 		break;
 	}
 
-	case(CLIMBING_IDLE):
+	case CLIMBING_IDLE:
 	{
+		//Nothing to do here
 		break;
 	}
-	case (CLIMBING_RUNNING):
+
+	case CLIMBING_RUNNING:
 	{
 		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
@@ -688,6 +699,9 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 		break;
 
 	}
+
+	case FALLING:
+
 	}
 
 	lastCollider = Collider::Type::NONE;
@@ -782,7 +796,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	//Fall to death collision
 	if (c1 == playerCenterCollider && c2->type == Collider::Type::GRAVITYWALLS)
 	{
-		position.y += speed;
+		ChangeState(state, FALLING);
 	}
 
 
