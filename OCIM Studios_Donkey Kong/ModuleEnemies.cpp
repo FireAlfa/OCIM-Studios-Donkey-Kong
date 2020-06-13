@@ -113,7 +113,7 @@ bool ModuleEnemies::CleanUp()
 }
 
 //Add an enemy to the queue
-bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
+bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y, int direction)
 {
 	bool ret = false;
 
@@ -124,6 +124,7 @@ bool ModuleEnemies::AddEnemy(Enemy_Type type, int x, int y)
 			spawnQueue[i].type = type;
 			spawnQueue[i].x = x;
 			spawnQueue[i].y = y;
+			spawnQueue[i].direction = direction;
 			ret = true;
 			break;
 		}

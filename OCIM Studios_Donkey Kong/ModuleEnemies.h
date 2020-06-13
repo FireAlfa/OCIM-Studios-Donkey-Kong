@@ -12,20 +12,17 @@ enum class Enemy_Type
 	NO_TYPE,
 
 	DONKEYKONG,
-	//
-	//
-	//
-	//Types of enemy
-	//
-	//
-	//
+	BARREL,
+	BLUEBARREL,
+	FIRE,
+	CEMENT
 };
 
 //struct that controls enemy spawn point
 struct EnemySpawnpoint
 {
 	Enemy_Type type = Enemy_Type::NO_TYPE;
-	int x, y;
+	int x, y, direction;
 };
 
 class Enemy;
