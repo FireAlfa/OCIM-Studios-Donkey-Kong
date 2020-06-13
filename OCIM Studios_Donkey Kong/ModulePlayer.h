@@ -134,6 +134,7 @@ public:
 	// Flag set when the player is near a ladder
 	bool canClimb = false;
 	bool canGoDownStairs = false;
+	bool canGoUpStairs = false;
 
 
 

@@ -264,8 +264,11 @@ void ModulePlayer::UpdateState()
 	case CLIMBING_UP:
 	{
 		if (canGoDownStairs == false)
-			position.y -= speed;
+		{
+			position.y += speed;
 			ChangeState(state, IDLE);
+		}
+			
 
 		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
 			ChangeState(state, CLIMBING_DOWN);
@@ -276,11 +279,26 @@ void ModulePlayer::UpdateState()
 
 	case CLIMBING_IDLE:
 	{
-		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
+		if (canClimb == true &&
+			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT ||
 			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
 			ChangeState(state, CLIMBING_RUNNING);
+
+		if (canGoDownStairs == true && upDownDirection == 1 &&
+			(App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT))
+			ChangeState(state, CLIMBING_DOWN);
+
+		if (canGoDownStairs == true && upDownDirection == -1 &&
+			(App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT))
+			ChangeState(state, CLIMBING_UP);
 
 
 		if (canClimb == false)
@@ -292,6 +310,18 @@ void ModulePlayer::UpdateState()
 
 	case CLIMBING_RUNNING:
 	{
+		if (canGoDownStairs == true)
+		{
+			if (upDownDirection == -1) {
+				ChangeState(state, CLIMBING_UP);
+			}
+			else
+			{
+				ChangeState(state, CLIMBING_DOWN);
+			}
+			break;
+		}
+
 		if (App->input->keys[SDL_SCANCODE_W] != Key_State::KEY_REPEAT &&
 			App->input->keys[SDL_SCANCODE_S] != Key_State::KEY_REPEAT)
 			ChangeState(state, CLIMBING_IDLE);
@@ -389,7 +419,7 @@ void ModulePlayer::UpdateLogic()
 
 	case(CLIMBING_DOWN):
 	{
-		if (canClimb == true)
+		if (canGoDownStairs == true)
 		{
 			position.y += speed * upDownDirection;
 			currentAnimation->Update();
@@ -400,7 +430,7 @@ void ModulePlayer::UpdateLogic()
 
 	case(CLIMBING_UP):
 	{
-		if (canClimb == true)
+		if (canGoDownStairs == true)
 		{
 			position.y += speed * upDownDirection;
 			currentAnimation->Update();
@@ -483,13 +513,30 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 
 	case(CLIMBING_DOWN):
 	{
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+			upDownDirection = 1;
+		else
+			facingDirection = -1;
+
 		currentAnimation = &climb_Down;
+		break;
+	}
+
+	case(CLIMBING_UP):
+	{
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+			upDownDirection = -1;
+		else
+			facingDirection = 1;
+
+		currentAnimation = &climb_Up;
 		break;
 	}
 
 	case(CLIMBING_IDLE):
 	{
-		currentAnimation = &climb_Up;
 		break;
 	}
 	case (CLIMBING_RUNNING):
@@ -557,12 +604,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		canClimb = true;
 	}
-	else {
-		canClimb = false;
-	}
 
 	if (c1 == playerCenterCollider && c2->type == Collider::Type::TOP_STAIR) {
 		canGoDownStairs = true;
+		canGoUpStairs = true;
 	}
 
     if (c1 == playerCollider && c2->type == Collider::Type::TOPWALL)
