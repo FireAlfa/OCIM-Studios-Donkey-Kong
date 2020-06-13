@@ -105,17 +105,6 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	hammerRunAnim_Right.PushBack({ 0, 94, 29, 26 });
 	hammerRunAnim_Left.speed = hammerRunAnim_Right.speed = 0.1f;
 
-	//	Dead left
-	deadLeft.PushBack({ 51,51,16,16 });
-	deadLeft.PushBack({ 34,51,16,16 });
-	deadLeft.PushBack({ 17,51,16,16 });
-	deadLeft.PushBack({ 0,51,16,16 });
-
-	//dead right
-	deadRight.PushBack({ 68,51,16,16 });
-	deadRight.PushBack({ 85,51,16,16 });
-	deadRight.PushBack({ 102,51,16,16 });
-	deadRight.PushBack({ 118,51,16,16 });
 }
 
 ModulePlayer::~ModulePlayer()
@@ -205,7 +194,9 @@ void ModulePlayer::UpdateState()
 	case IDLE:
 	{
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN)
+			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT ||
+			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN ||
+			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
 			ChangeState(state, RUNNING);
 
 		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
@@ -404,12 +395,12 @@ void ModulePlayer::UpdateLogic()
 			//Right
 			if (facingDirection == 1)
 			{
-				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x + 1 >= aux.x)
+				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x == aux.x) //Go Up Looking Right//
 				{
 					position.y -= speed;
 				}
 
-				if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x - 1 > aux.x)
+				if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x == aux.x) //Go Down Looking Right
 				{
 					position.y += speed;
 				}
@@ -418,12 +409,12 @@ void ModulePlayer::UpdateLogic()
 			//Left
 			if (facingDirection == -1)
 			{
-				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x - 1 >= aux.x)
+				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x + 2 == aux.x) //Go Up Looking Left//
 				{
 					position.y -= speed;
 				}
 
-				if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x + 1 > aux.x)
+				if (playerCenterCollider->rect.y <= aux.y - 15 && playerCenterCollider->rect.x + 2 == aux.x) //Go Down Looking Left//
 				{
 					position.y += speed;
 				}
@@ -459,19 +450,19 @@ void ModulePlayer::UpdateLogic()
 		break;
 	}
 
-	case(HAMMER_RUNNING):
+	case(HAMMER_RUNNING):///////////////
 	{
 		if (changeHeight == true)
 		{
 			//Right
 			if (facingDirection == 1)
 			{
-				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x + 1 >= aux.x)
+				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x + 1 == aux.x) //Go Up Looking Right//
 				{
 					position.y -= speed;
 				}
 
-				if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x - 1 > aux.x)
+				if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x == aux.x) //Go Down Looking Right
 				{
 					position.y += speed;
 				}
@@ -480,12 +471,12 @@ void ModulePlayer::UpdateLogic()
 			//Left
 			if (facingDirection == -1)
 			{
-				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x - 1 >= aux.x)
+				if (playerCenterCollider->rect.y >= aux.y - 14 && (playerCenterCollider->rect.x + 2 == aux.x || playerCenterCollider->rect.x + 1 == aux.x || playerCenterCollider->rect.x == aux.x)) //Go Up Looking Left//
 				{
 					position.y -= speed;
 				}
 
-				if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x + 1 > aux.x)
+				if (playerCenterCollider->rect.y <= aux.y - 14 && playerCenterCollider->rect.x + 1 == aux.x) //Go Down Looking Left
 				{
 					position.y += speed;
 				}
@@ -756,8 +747,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		//changeHeightUp= true;
 		position.y += speed;
-		ChangeState(state, FALLING);
-	}	
+	}
+	
 
 	/*if (c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL && facingDirection == -1)
 	{
@@ -768,11 +759,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		changeHeight = true;
 		aux = c2->GetRect();
 		lastCollider = Collider::Type::RAMP;
-	}
-
-	if (state == FALLING)
-	{
-		currentAnimation = &(facingDirection == -1 ? deadLeft : deadRight);
 	}
 }
 
