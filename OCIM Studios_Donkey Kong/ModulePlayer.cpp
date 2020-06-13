@@ -400,21 +400,11 @@ void ModulePlayer::UpdateLogic()
 				{
 					position.y -= speed;
 				}
-
-				//if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x == aux.x) //Go Down Looking Right
-				//{
-				//	position.y += speed;
-				//}
 			}
 
 			//Left
 			if (facingDirection == -1)
 			{
-				//if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x + 2 == aux.x) //Go Up Looking Left//
-				//{
-				//	position.y -= speed;
-				//}
-
 				if (playerCenterCollider->rect.y <= aux.y - 15 && playerCenterCollider->rect.x + 2 == aux.x) //Go Down Looking Left//
 				{
 					position.y += speed;
@@ -427,11 +417,6 @@ void ModulePlayer::UpdateLogic()
 			//Right
 			if (facingDirection == 1)
 			{
-				//if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x == aux.x) //Go Up Looking Right//
-				//{
-				//	position.y -= speed;
-				//}
-
 				if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x == aux.x) //Go Down Looking Right
 				{
 					position.y += speed;
@@ -445,11 +430,6 @@ void ModulePlayer::UpdateLogic()
 				{
 					position.y -= speed;
 				}
-
-				//if (playerCenterCollider->rect.y <= aux.y - 15 && playerCenterCollider->rect.x + 2 == aux.x) //Go Down Looking Left//
-				//{
-				//	position.y += speed;
-				//}
 			}
 		}
 
@@ -484,36 +464,47 @@ void ModulePlayer::UpdateLogic()
 
 	case(HAMMER_RUNNING):///////////////
 	{
-		//if (changeHeight == true)
-		//{
-		//	//Right
-		//	if (facingDirection == 1)
-		//	{
-		//		if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x + 1 == aux.x) //Go Up Looking Right//
-		//		{
-		//			position.y -= speed;
-		//		}
+		if (rampRight == true)
+		{
+			//Right
+			if (facingDirection == 1)
+			{
+				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x == aux.x) //Go Up Looking Right//
+				{
+					position.y -= speed;
+				}
+			}
 
-		//		if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x == aux.x) //Go Down Looking Right
-		//		{
-		//			position.y += speed;
-		//		}
-		//	}
+			//Left
+			if (facingDirection == -1)
+			{
+				if (playerCenterCollider->rect.y <= aux.y - 15 && playerCenterCollider->rect.x + 2 == aux.x) //Go Down Looking Left//
+				{
+					position.y += speed;
+				}
+			}
+		}
 
-		//	//Left
-		//	if (facingDirection == -1)
-		//	{
-		//		if (playerCenterCollider->rect.y >= aux.y - 14 && (playerCenterCollider->rect.x + 2 == aux.x || playerCenterCollider->rect.x + 1 == aux.x || playerCenterCollider->rect.x == aux.x)) //Go Up Looking Left//
-		//		{
-		//			position.y -= speed;
-		//		}
+		if (rampLeft == true)
+		{
+			//Right
+			if (facingDirection == 1)
+			{
+				if (playerCenterCollider->rect.y < aux.y - 14 && playerCenterCollider->rect.x == aux.x) //Go Down Looking Right
+				{
+					position.y += speed;
+				}
+			}
 
-		//		if (playerCenterCollider->rect.y <= aux.y - 14 && playerCenterCollider->rect.x + 1 == aux.x) //Go Down Looking Left
-		//		{
-		//			position.y += speed;
-		//		}
-		//	}
-		//}
+			//Left
+			if (facingDirection == -1)
+			{
+				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x + 2 == aux.x) //Go Up Looking Left//
+				{
+					position.y -= speed;
+				}
+			}
+		}
 
 		position.x += speed * facingDirection;
 		currentAnimation->Update();
