@@ -281,25 +281,39 @@ bool SceneLevel4::Start()
 	//App->collisions->AddCollider({ 11, 208, 2, 26 }, Collider::Type::STAIR);
 	App->collisions->AddCollider({ 11, 223, 2, 10 }, Collider::Type::STAIR);
 	App->collisions->AddCollider({ 11, 207, 2, 2 }, Collider::Type::TOP_STAIR);
-	App->collisions->AddCollider({ 107, 208, 2, 26 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 211, 208, 2, 26 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 107, 223, 2, 10 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 107, 207, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 211, 223, 2, 10 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 211, 207, 2, 2 }, Collider::Type::TOP_STAIR);
 
 	//Stairs Set 2
-	App->collisions->AddCollider({ 19, 168, 2, 26 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 75, 168, 2, 26 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 147, 168, 2, 26 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 203, 168, 2, 26 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 19, 183, 2, 10 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 19, 167, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 75, 183, 2, 10 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 75, 167, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 147, 183, 2, 10 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 147, 167, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 203, 183, 2, 10 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 203, 167, 2, 2 }, Collider::Type::TOP_STAIR);
 
 	//Stairs Set 3
-	App->collisions->AddCollider({ 27, 128, 2, 26 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 107, 128, 2, 26 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 195, 128, 2, 26 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 27, 143, 2, 10 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 27, 127, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 107, 143, 2, 10 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 107, 127, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 195, 143, 2, 10 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 195, 127, 2, 2 }, Collider::Type::TOP_STAIR);
 
 	//Stairs Set 4
-	App->collisions->AddCollider({ 35, 88, 2, 26 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 187, 88, 2, 26 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 67, 88, 2, 26 }, Collider::Type::STAIR);
-	App->collisions->AddCollider({ 155, 88, 2, 26 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 35, 103, 2, 10 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 35, 87, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 67, 103, 2, 10 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 67, 87, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 155, 103, 2, 10 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 155, 87, 2, 2 }, Collider::Type::TOP_STAIR);
+	App->collisions->AddCollider({ 187, 103, 2, 10 }, Collider::Type::STAIR);
+	App->collisions->AddCollider({ 187, 87, 2, 2 }, Collider::Type::TOP_STAIR);
+	
 
 
 
