@@ -61,7 +61,10 @@ public:
 	//SDL_Rect buttonRect;
 
 
-	//Button array
+	//
+	//Win condition
+	//
+	bool lvl1win = false;
 
 };
 

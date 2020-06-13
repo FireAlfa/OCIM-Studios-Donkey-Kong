@@ -45,22 +45,22 @@ Update_Status SceneVictory::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel4, 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 60);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_1] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel1, 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel1, 10);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_2] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel2, 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel2, 10);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_4] == Key_State::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel4, 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel4, 10);
 	}
 
 

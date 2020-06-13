@@ -24,6 +24,9 @@ SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 	Barrels = { 0,0, 21,32 };
 
 
+	//
+	//Scene 1 Animation pushbacks
+	//
 	fireBarrel.PushBack({ 84,67,16,31 });
 	fireBarrel.PushBack({ 84,67,16,31 });
 	fireBarrel.PushBack({ 84,67,16,31 });
@@ -343,13 +346,7 @@ SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 	DK.PushBack({ 126,0,43,32 });
 
 
-	//
-	//
-	//
-	//Scene 1 Animation pushbacks
-	//
-	//
-	//
+	
 }
 
 SceneLevel1::~SceneLevel1()
@@ -370,6 +367,13 @@ bool SceneLevel1::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->collisions->Enable();
+
+
+	//
+	//Flags reset
+	//
+	lvl1win = false;
+
 
 
 	//
@@ -628,28 +632,46 @@ Update_Status SceneLevel1::Update()
 	//
 	//Change Level
 	//
+	//Intro screen
 	if (App->input->keys[SDL_SCANCODE_0] == Key_State::KEY_DOWN)
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 10);
 	}
-
+	//Level 2 screen
 	if (App->input->keys[SDL_SCANCODE_2] == Key_State::KEY_DOWN)
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel2, 10);
 	}
-
+	//Level 4 screen
 	if (App->input->keys[SDL_SCANCODE_4] == Key_State::KEY_DOWN)
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel4, 10);
 	}
+	//Reload Level 1 screen
 	if (App->input->keys[SDL_SCANCODE_R] == Key_State::KEY_DOWN)
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, this, 10);
 	}
+
+	//Instant win
+	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN)
+	{
+		lvl1win = true;
+	}
+
+
+
+	//Win condition
+	if (lvl1win == true)
+	{
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel2, 60);
+	}
+
 
 	return Update_Status::UPDATE_CONTINUE;
 }

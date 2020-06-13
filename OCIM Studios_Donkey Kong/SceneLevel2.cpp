@@ -229,7 +229,7 @@ Update_Status SceneLevel2::Update()
 	}
 
 
-
+	//Instant win
 	if (lvl2win == true)
 	{
 		CleanUp();
