@@ -36,7 +36,7 @@ public:
 	//Texture variables
 	//
 		SDL_Texture* lvl1Texture = nullptr;
-
+		SDL_Texture* lvl1Barrels = nullptr;
 	//
 	//
 	//
@@ -53,6 +53,7 @@ public:
 	//Srite rectangles
 	//
 	SDL_Rect lvl1Rect;
+	SDL_Rect Barrels;
 	//SDL_Rect lvl1B;
 
 	//SDL_Rect buttonRect;

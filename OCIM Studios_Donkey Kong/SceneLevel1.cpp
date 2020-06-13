@@ -21,7 +21,8 @@ SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 	//Set position for textures
 	//
 	lvl1Rect = { 0, 0, 224, 256 };
-	
+	Barrels = { 0,0, 21,32 };
+
 	DK.PushBack({ 0,0,40,32 });
 	DK.PushBack({ 0,0,40,32 });
 	DK.PushBack({ 0,0,40,32 });
@@ -240,6 +241,7 @@ bool SceneLevel1::Start()
 	//
 	lvl1Texture = App->textures->Load("Assets/Maps/level1.png");
 	dkBarrels = App->textures->Load("Assets/Sprites/DonkeyKong_Sprites.png");
+	lvl1Barrels = App->textures->Load("Assets/Sprites/Barrells_Sprites.png");
 
 
 // ===================== WALLS ==================== //
@@ -525,8 +527,8 @@ Update_Status SceneLevel1::PostUpdate()
 	//
 	//App->render->Blit(lvl1Barrels, 2, 55, &lvl1B, NULL, false);
 	App->render->Blit(lvl1Texture, 0, 0, &lvl1Rect, NULL, false);
-	App->render->Blit(dkBarrels, 21, 51, &(DK.GetCurrentFrame()), 0.1f);
-
+	App->render->Blit(dkBarrels, 21, 52, &(DK.GetCurrentFrame()), 0.1f);
+	App->render->Blit(lvl1Barrels, 1, 51, &Barrels,NULL,false);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
