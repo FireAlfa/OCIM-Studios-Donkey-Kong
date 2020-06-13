@@ -582,7 +582,14 @@ void ModulePlayer::UpdateLogic()
 		break;
 	}
 
-	
+
+	//Erasing button if it collider
+	if (eraseButton == true)
+	{
+		App->sceneLevel4->eraseButton(button);
+		eraseButton = false;
+		button = nullptr;
+	}
 
 	// Simply updating the collider position to match our current position
 	playerCollider->SetPos(position.x, position.y);
@@ -730,66 +737,80 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	//Collision control
 	//
 
+	//Wall collision
+	if (c1 == playerFeetCollider && c2->type == Collider::Type::WALL)
+	{
+		canClimb = false;
+		lastCollider = Collider::Type::WALL;
+	}
+
+
+	//Mid stair collision
 	if (c1 == playerCenterCollider && c2->type == Collider::Type::STAIR)
 	{
 		canClimb = true;
 		lastCollider = Collider::Type::STAIR;
 	}
-
-	if (c1 == playerCenterCollider && c2->type == Collider::Type::TOP_STAIR) {
+	//Top stair collision
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::TOP_STAIR)
+	{
 		canClimb = true;
 		canGoDownStairs = true;
 		canGoUpStairs = true;
 		lastCollider = Collider::Type::TOP_STAIR;
 	}
 
-    if (c1 == playerCollider && c2->type == Collider::Type::TOPWALL)
-	{
-		position.y += speed;
-		lastCollider = Collider::Type::TOPWALL;
-	}
 
-	if (c1 == playerCollider && c2->type == Collider::Type::LEFTWALL)
-	{
-		position.x += speed;
-		lastCollider = Collider::Type::LEFTWALL;
-	}
 
-	if (c1 == playerCollider && c2->type == Collider::Type::RIGHTWALL)
-	{
-		position.x -= speed;
-		lastCollider = Collider::Type::RIGHTWALL;
-	}
-	if (c1 == playerFeetCollider && c2->type == Collider::Type::WALL)
-	{
- 		//position.y -= speed;
-		canClimb = false;
-		lastCollider = Collider::Type::WALL;
-	}
-	
-	if (c1 == playerCenterCollider && c2->type == Collider::Type::GRAVITYWALLS)
-	{
-		//changeHeightUp= true;
-		position.y += speed;
-	}
-	
-
-	/*if (c1 == playerCenterCollider && c2->type == Collider::Type::GOUPWALL && facingDirection == -1)
-	{
-		position.y -= speed;
-	}*/
+	//Ramp right collision
 	if (c1 == playerFeetCollider && c2->type == Collider::Type::RAMP_RIGHT)
 	{
 		rampRight = true;
 		aux = c2->GetRect();
 		lastCollider = Collider::Type::RAMP_RIGHT;
 	}
-
+	//Ramp left collision
 	if (c1 == playerFeetCollider && c2->type == Collider::Type::RAMP_LEFT)
 	{
 		rampLeft = true;
 		aux = c2->GetRect();
 		lastCollider = Collider::Type::RAMP_LEFT;
+	}
+
+
+	//Fall to death collision
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::GRAVITYWALLS)
+	{
+		position.y += speed;
+	}
+
+
+
+	//Top limit collison
+    if (c1 == playerCollider && c2->type == Collider::Type::TOPWALL)
+	{
+		position.y += speed;
+		lastCollider = Collider::Type::TOPWALL;
+	}
+	//Left limit collision
+	if (c1 == playerCollider && c2->type == Collider::Type::LEFTWALL)
+	{
+		position.x += speed;
+		lastCollider = Collider::Type::LEFTWALL;
+	}
+	//Right limit collision
+	if (c1 == playerCollider && c2->type == Collider::Type::RIGHTWALL)
+	{
+		position.x -= speed;
+		lastCollider = Collider::Type::RIGHTWALL;
+	}
+
+
+	//Button collision
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::BUTTON)
+	{
+		eraseButton = true;
+		button = c2;
 	}
 }
 

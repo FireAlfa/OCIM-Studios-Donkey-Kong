@@ -438,8 +438,11 @@ void ModuleCollisions::DebugDraw()
 		case Collider::Type::WALL: // blue
 			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
 			break;
-		case Collider::Type::GRAVITYWALLS: // blue
+		case Collider::Type::GRAVITYWALLS: // red
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
+			break;
+		case Collider::Type::BUTTON:
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
 			break;
 		case Collider::Type::PLAYER: // green
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
@@ -526,6 +529,18 @@ void ModuleCollisions::RemoveCollider(Collider* collider)
 			delete colliders[i];
 			colliders[i] = nullptr;
 			--colliderCount;
+			break;
+		}
+	}
+}
+
+
+//Get collider index
+int ModuleCollisions::GetColliderIndex(Collider* c1)
+{
+	for (int i = 0; i < MAX_COLLIDERS; i++) {
+		if (colliders[i] == c1) {
+			return i;
 		}
 	}
 }

@@ -30,6 +30,10 @@ public:
 	// Disables the player and the enemies
 	bool CleanUp();
 
+
+	//Erase button
+	void eraseButton(Collider* c);
+
 public:
 
 	//

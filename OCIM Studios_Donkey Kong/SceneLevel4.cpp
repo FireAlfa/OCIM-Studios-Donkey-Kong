@@ -485,3 +485,25 @@ bool SceneLevel4::CleanUp()
 	
 	return true;
 }
+
+
+//Erase button
+void SceneLevel4::eraseButton(Collider* c)
+{
+	int index = -1;
+
+	for (int i = 0; i < 8; ++i)
+	{
+		if (buttonColliders[i] == c)
+		{
+			index = i;
+			break;
+		}
+	}
+
+	if (index != -1)
+	{
+		App->collisions->RemoveCollider(buttonColliders[index]);
+		buttonDrawingArray[index] = false;
+	}
+}

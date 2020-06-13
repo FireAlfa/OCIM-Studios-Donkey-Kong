@@ -96,6 +96,8 @@ public:
 	SDL_Rect aux;
 	//Last collider
 	int lastCollider = Collider::Type::NONE;
+	//Auxiliar collider for buttons
+	Collider* button = nullptr;
 
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
@@ -150,6 +152,7 @@ public:
 	bool canGoUpStairs = false;
 	bool rampRight = false;
 	bool rampLeft = false;
+	bool eraseButton = false;
 
 
 
