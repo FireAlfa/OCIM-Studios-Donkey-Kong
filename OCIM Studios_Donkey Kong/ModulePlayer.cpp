@@ -384,6 +384,7 @@ void ModulePlayer::UpdateLogic()
 	{
 		if (changeHeight == true)
 		{
+			//Right
 			if (facingDirection == 1)
 			{
 				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x + 1 >= aux.x)
@@ -397,6 +398,7 @@ void ModulePlayer::UpdateLogic()
 				}
 			}
 
+			//Left
 			if (facingDirection == -1)
 			{
 				if (playerCenterCollider->rect.y >= aux.y - 14 && playerCenterCollider->rect.x - 1 >= aux.x)
