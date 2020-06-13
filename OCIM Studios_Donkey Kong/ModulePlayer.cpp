@@ -145,6 +145,7 @@ bool ModulePlayer::Start()
 	//
 	playerCollider = App->collisions->AddCollider({ position.x, position.y, 12, 16 }, Collider::Type::PLAYER, this);
 	playerCenterCollider = App->collisions->AddCollider({ position.x + 5, position.y, 3, 16 }, Collider::Type::PLAYER_CENTER, this);
+	playerFeetCollider = App->collisions->AddCollider({ position.x + 5, position.y + 15, 3, 1 }, Collider::Type::PLAYER_FEET, this);
 
 
 	//
@@ -238,15 +239,20 @@ void ModulePlayer::UpdateState()
 
 	case JUMPING:
 	{
-		if (jumpCountdown <= 0)
+		if (/*jumpCountdown <= 0*/ lastCollider == Collider::Type::WALL)
 		{
 			jumpCountdown = 30;
 			if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT ||
 				App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+			{
+				lastCollider = -2;
 				ChangeState(state, RUNNING);
+			}
 			else
+			{
 				lastCollider = -2;
 				ChangeState(state, IDLE);
+			}
 		}
 
 		break;
@@ -421,7 +427,7 @@ void ModulePlayer::UpdateLogic()
 	case(JUMPING):
 	{
 		--jumpCountdown;
-		if (jumpCountdown >= 0 && jumpCountdown < 15)
+		if (/*jumpCountdown > 0 &&*/ jumpCountdown < 15)
 		{
 			++position.y;
 		}
@@ -493,6 +499,7 @@ void ModulePlayer::UpdateLogic()
 
 	switch (lastCollider)
 	{
+	case Collider::Type::NONE:
 	case Collider::Type::WALL:
 	case Collider::Type::GOUPWALL:
 	case Collider::Type::RAMP:
@@ -514,9 +521,12 @@ void ModulePlayer::UpdateLogic()
 		break;
 	}
 
+	lastCollider = Collider::Type::NONE;
+
 	// Simply updating the collider position to match our current position
 	playerCollider->SetPos(position.x, position.y);
 	playerCenterCollider->SetPos(position.x + 5, position.y);
+	playerFeetCollider->SetPos(position.x + 5, position.y + 15);
 }
 
 //Change the State
@@ -531,6 +541,8 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 	}
 	case(RUNNING):
 	{
+		lastCollider = Collider::Type::NONE;
+
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
 			facingDirection = -1;
@@ -687,7 +699,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		position.x -= speed;
 		lastCollider = Collider::Type::RIGHTWALL;
 	}
-	if (c1 == playerCenterCollider && c2->type == Collider::Type::WALL)
+	if (c1 == playerFeetCollider && c2->type == Collider::Type::WALL)
 	{
 		position.y -= speed;
 		canClimb = false;
@@ -703,7 +715,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		position.y -= speed;
 	}*/
-	if (c1 == playerCenterCollider && c2->type == Collider::Type::RAMP)
+	if (c1 == playerFeetCollider && c2->type == Collider::Type::RAMP)
 	{
 		changeHeight = true;
 		aux = c2->GetRect();

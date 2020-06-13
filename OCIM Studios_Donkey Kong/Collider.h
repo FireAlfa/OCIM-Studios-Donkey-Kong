@@ -24,6 +24,7 @@ struct Collider
 
 		PLAYER,
 		PLAYER_CENTER,
+		PLAYER_FEET,
 
 		ENEMY,
 

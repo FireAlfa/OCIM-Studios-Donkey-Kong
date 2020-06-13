@@ -86,6 +86,7 @@ public:
 	//The Player's collider
 	Collider* playerCollider = nullptr;
 	Collider* playerCenterCollider = nullptr;
+	Collider* playerFeetCollider = nullptr;
 
 	//
 	//Auxiliar variables
@@ -105,7 +106,7 @@ public:
 	int upDownDirection = -1;
 
 	// Jump handlers
-	uint jumpCountdown = 30;
+	int jumpCountdown = 30;
 	int jumpDirection = 1;
 
 
