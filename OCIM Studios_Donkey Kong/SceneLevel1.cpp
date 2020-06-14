@@ -603,8 +603,8 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 223, 1, 1, 255 }, Collider::Type::RIGHTWALL);
 
 	//Hammer
-	App->collisions->AddCollider({ 167, 192, 8, 8 }, Collider::Type::HAMMER);
-	App->collisions->AddCollider({ 20, 97, 8, 8 }, Collider::Type::HAMMER);
+	hammerColliders[0] = App->collisions->AddCollider({ 167, 192, 8, 8 }, Collider::Type::HAMMER);
+	hammerColliders[1] = App->collisions->AddCollider({ 20, 97, 8, 8 }, Collider::Type::HAMMER);
 
 
 
@@ -686,6 +686,7 @@ Update_Status SceneLevel1::Update()
 	//Win condition
 	if (lvl1win == true)
 	{
+
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel2, 60);
 	}
@@ -729,6 +730,7 @@ Update_Status SceneLevel1::PostUpdate()
 //Disable modules related to the Scene
 bool SceneLevel1::CleanUp()
 {
+	score = score + bonus;
 	//Disable modules
 	App->player->Disable();
 	App->enemies->Disable();

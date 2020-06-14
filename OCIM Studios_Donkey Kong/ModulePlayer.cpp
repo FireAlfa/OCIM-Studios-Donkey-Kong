@@ -272,7 +272,6 @@ Update_Status ModulePlayer::Update()
 		time = TIME_PERIOD;
 		bonus -= 100;
 	}
-
 	//TODO Score Hurry up
 
 
@@ -360,6 +359,10 @@ void ModulePlayer::UpdateState()
 				ChangeState(state, IDLE);
 			}
 			feetTopStairs = false;
+		}
+		if (eraseHammer == true)
+		{  
+			ChangeState(state, HAMMER_RUNNING);
 		}
 
 		break;
@@ -820,6 +823,7 @@ void ModulePlayer::UpdateLogic()
 		eraseButton = false;
 		button = nullptr;
 		lastCollider = Collider::Type::NONE;
+		score += 100;
 	}
 
 	//Erasing hammer if i collide
