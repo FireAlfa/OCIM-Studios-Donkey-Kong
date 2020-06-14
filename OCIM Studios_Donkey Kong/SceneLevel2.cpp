@@ -268,48 +268,25 @@ bool SceneLevel2::Start()
 	lvl2win = false;
 
 	//
-	//Initialize Knob direction array
+	//Initialize Knob direction array for the colliders
 	//
 	for (int i = 0; i < 4; i++)
 	{
 		int random = rand() % 2;
 		knobDirectionArray[i] = random;
 	}
-	//First layer
-	if (knobDirectionArray[0] == 0)
+
+	//Animation for each knob
+	knobAnimationArray[0] = &leftKnob;
+	knobAnimationArray[1] = &rightKnob;
+	knobAnimationArray[2] = &rightKnob;
+	knobAnimationArray[3] = &leftKnob;
+	knobAnimationArray[4] = &leftKnob;
+	knobAnimationArray[5] = &rightKnob;
+
+	for (int i = 0; i < 6; ++i)
 	{
-		knobAnimationArray[0] = &leftKnob;
-		knobAnimationArray[1] = &leftKnob;
-	}
-	else {
-		knobAnimationArray[0] = &rightKnob;
-		knobAnimationArray[1] = &rightKnob;
-	}
-	//Second layer left
-	if (knobDirectionArray[1] == 0)
-	{
-		knobAnimationArray[2] = &leftKnob;
-	}
-	else {
-		knobAnimationArray[2] = &rightKnob;
-	}
-	//Second layer right
-	if (knobDirectionArray[2] == 0)
-	{
-		knobAnimationArray[3] = &leftKnob;
-	}
-	else {
-		knobAnimationArray[3] = &rightKnob;
-	}
-	//Third layer
-	if (knobDirectionArray[3] == 0)
-	{
-		knobAnimationArray[4] = &leftKnob;
-		knobAnimationArray[5] = &leftKnob;
-	}
-	else {
-		knobAnimationArray[4] = &rightKnob;
-		knobAnimationArray[5] = &rightKnob;
+		knobAnimationArray[i]->speed = 0.02f;
 	}
 
 
@@ -457,42 +434,8 @@ Update_Status SceneLevel2::Update()
 
 		
 	}
-	//First layer
-	if (knobDirectionArray[0] == 0)
-	{
-		knobAnimationArray[0] = &leftKnob;
-		knobAnimationArray[1] = &leftKnob;
-	}
-	else {
-		knobAnimationArray[0] = &rightKnob;
-		knobAnimationArray[1] = &rightKnob;
-	}
-	//Second layer left
-	if (knobDirectionArray[1] == 0)
-	{
-		knobAnimationArray[2] = &leftKnob;
-	}
-	else {
-		knobAnimationArray[2] = &rightKnob;
-	}
-	//Second layer right
-	if (knobDirectionArray[2] == 0)
-	{
-		knobAnimationArray[3] = &leftKnob;
-	}
-	else {
-		knobAnimationArray[3] = &rightKnob;
-	}
-	//Third layer
-	if (knobDirectionArray[3] == 0)
-	{
-		knobAnimationArray[4] = &leftKnob;
-		knobAnimationArray[5] = &leftKnob;
-	}
-	else {
-		knobAnimationArray[4] = &rightKnob;
-		knobAnimationArray[5] = &rightKnob;
-	}
+
+
 	
 	//Knobs animation array
 	for (int i = 0; i < 6; ++i)
@@ -563,10 +506,12 @@ Update_Status SceneLevel2::PostUpdate()
 	//
 	//Draw knobs animation
 	//
-	for (int i = 0; i < 6; ++i)
-	{
-
-	}
+	App->render->Blit(movingObjects, 2, 207, &(knobAnimationArray[0]->GetCurrentFrame()), NULL);
+	App->render->Blit(movingObjects, 211, 207, &(knobAnimationArray[1]->GetCurrentFrame()), NULL);
+	App->render->Blit(movingObjects, 94, 127, &(knobAnimationArray[2]->GetCurrentFrame()), NULL);
+	App->render->Blit(movingObjects, 119, 127, &(knobAnimationArray[3]->GetCurrentFrame()), NULL);
+	App->render->Blit(movingObjects, 2, 87, &(knobAnimationArray[4]->GetCurrentFrame()), NULL);
+	App->render->Blit(movingObjects, 211, 87, &(knobAnimationArray[5]->GetCurrentFrame()), NULL);
 
 
 	return Update_Status::UPDATE_CONTINUE;
