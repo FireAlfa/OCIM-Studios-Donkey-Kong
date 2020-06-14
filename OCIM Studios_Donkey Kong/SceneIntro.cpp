@@ -45,7 +45,10 @@ bool SceneIntro::Start()
 
 Update_Status SceneIntro::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+	//Gamepad support
+	GamePad& pad = App->input->pads[0];
+
+	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN || pad.a == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel1, 60);
 	}
@@ -65,7 +68,7 @@ Update_Status SceneIntro::Update()
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel4, 10);
 	}
 
-	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN || pad.l1 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 10);
 	}

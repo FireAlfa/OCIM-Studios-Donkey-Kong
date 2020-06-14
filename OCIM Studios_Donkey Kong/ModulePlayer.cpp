@@ -237,6 +237,7 @@ Update_Status ModulePlayer::Update()
 //Control input and states
 void ModulePlayer::UpdateState()
 {
+	//Gamepad support
 	GamePad& pad = App->input->pads[0];
 
 	switch (state)
@@ -250,19 +251,19 @@ void ModulePlayer::UpdateState()
 			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.0f)
 			ChangeState(state, RUNNING);
 
-		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN || pad.a == true)
 			ChangeState(state, JUMPING);
 
 		if (canClimb == true &&
-			(App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
-				App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN))
+			(App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN || pad.l_y < 0.0f ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN || pad.l_y < 0.0f))
 			ChangeState(state, CLIMBING_IDLE);
 
 		if (canGoDownStairs == true &&
-			(App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN))
+			(App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN || pad.l_y < 0.0f))
 			ChangeState(state, CLIMBING_DOWN);
 
-		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN || pad.x == true)
 			ChangeState(state, HAMMER_IDLE);
 
 		break;
@@ -277,19 +278,19 @@ void ModulePlayer::UpdateState()
 			ChangeState(state, IDLE);
 		}
 
-		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT ||
-			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < 0.0f ||
+			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.0f)
 			ChangeState(state, RUNNING);
 
-		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN || pad.a == true)
 			ChangeState(state, JUMPING);
 
 		if (canClimb == true &&
-			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
+			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN || pad.l_y < 0.0f ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN || pad.l_y > 0.0f)
 			ChangeState(state, CLIMBING_IDLE);
 
-		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN || pad.x == true)
 			ChangeState(state, HAMMER_RUNNING);
 
 		break;
@@ -297,11 +298,11 @@ void ModulePlayer::UpdateState()
 
 	case JUMPING:
 	{
-		if (/*jumpCountdown <= 0*/ lastCollider == Collider::Type::WALL)
+		if (lastCollider == Collider::Type::WALL)
 		{
 			jumpCountdown = 30;
-			if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT ||
-				App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+			if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < 0.0f ||
+				App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.0f)
 			{
 				lastCollider = -2;
 				ChangeState(state, RUNNING);
@@ -321,7 +322,7 @@ void ModulePlayer::UpdateState()
 		if (canGoDownStairs == false)
 			ChangeState(state, CLIMBING_IDLE);
 
-		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN || pad.l_y < 0.0f)
 			ChangeState(state, CLIMBING_UP);
 
 		break;
@@ -336,7 +337,7 @@ void ModulePlayer::UpdateState()
 		}
 
 
-		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN || pad.l_y > 0.0f)
 			ChangeState(state, CLIMBING_DOWN);
 
 		break;
@@ -348,21 +349,24 @@ void ModulePlayer::UpdateState()
 			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT ||
-			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT ||
+			pad.l_y < 0.0f || pad.l_y > 0.0f)
 			ChangeState(state, CLIMBING_RUNNING);
 
 		if (canGoDownStairs == true && upDownDirection == 1 &&
 			(App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
 				App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN ||
 				App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT ||
-				App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT))
+				App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT ||
+				pad.l_y < 0.0f || pad.l_y > 0.0f))
 			ChangeState(state, CLIMBING_DOWN);
 
 		if (canGoDownStairs == true && upDownDirection == -1 &&
 			(App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
 				App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN ||
 				App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT ||
-				App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT))
+				App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT ||
+				pad.l_y < 0.0f || pad.l_y > 0.0f))
 			ChangeState(state, CLIMBING_UP);
 
 
@@ -388,7 +392,7 @@ void ModulePlayer::UpdateState()
 		}
 
 		if (App->input->keys[SDL_SCANCODE_W] != Key_State::KEY_REPEAT &&
-			App->input->keys[SDL_SCANCODE_S] != Key_State::KEY_REPEAT)
+			App->input->keys[SDL_SCANCODE_S] != Key_State::KEY_REPEAT && pad.l_y == 0)
 			ChangeState(state, CLIMBING_IDLE);
 
 		if (canClimb == false)
@@ -399,12 +403,12 @@ void ModulePlayer::UpdateState()
 
 	case HAMMER_IDLE:
 	{
-		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN || pad.x == true)
 			ChangeState(state, IDLE);
 
 
-		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN || pad.l_x < 0.0f ||
+			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN || pad.l_x > 0.0f)
 		{
 			ChangeState(state, HAMMER_RUNNING);
 		}
@@ -415,15 +419,15 @@ void ModulePlayer::UpdateState()
 
 	case HAMMER_RUNNING:
 	{
-		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN || pad.x == true)
 			ChangeState(state, RUNNING);
 
-		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT ||
-			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < 0.0f ||
+			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.0f)
 			ChangeState(state, HAMMER_RUNNING);
 
 		if (App->input->keys[SDL_SCANCODE_A] != Key_State::KEY_REPEAT &&
-			App->input->keys[SDL_SCANCODE_D] != Key_State::KEY_REPEAT)
+			App->input->keys[SDL_SCANCODE_D] != Key_State::KEY_REPEAT && pad.l_x==0)
 		{
 			ChangeState(state, HAMMER_IDLE);
 		}
@@ -472,6 +476,7 @@ void ModulePlayer::UpdateState()
 //Control what each state does
 void ModulePlayer::UpdateLogic()
 {
+	//Gamepad support
 	GamePad& pad = App->input->pads[0];
 
 
@@ -779,16 +784,17 @@ void ModulePlayer::UpdateLogic()
 	substractLife = false;
 
 
-	if (App->input->keys[SDL_SCANCODE_L] == KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_L] == KEY_DOWN || pad.l2 == true)
 		ChangeState(state, DYING);
 
-	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN || pad.back == true)
 		debugGamepadInfo = !debugGamepadInfo;
 }
 
 //Change the State
 void ModulePlayer::ChangeState(Player_State previousState, Player_State newState)
 {
+	//Gamepad support
 	GamePad& pad = App->input->pads[0];
 
 	switch (newState)
@@ -833,7 +839,7 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 	case HAMMER_RUNNING:
 	{
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < 0.0f)
 			facingDirection = -1;
 		else
 			facingDirection = 1;
@@ -845,7 +851,7 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 	case CLIMBING_DOWN:
 	{
 		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || pad.l_y > 0.0f)
 			upDownDirection = 1;
 		else
 			upDownDirection = -1;
@@ -857,7 +863,7 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 	case CLIMBING_UP:
 	{
 		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || pad.l_y < 0.0f)
 			upDownDirection = -1;
 		else
 			upDownDirection = 1;
@@ -875,10 +881,10 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 	case CLIMBING_RUNNING:
 	{
 		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT)
+			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || pad.l_y < 0.0f)
 			upDownDirection = -1;
 		else if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT)
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || pad.l_y > 0.0f)
 			upDownDirection = 1;
 
 		currentAnimation = &(upDownDirection == -1 ? climb_Up : climb_Down);

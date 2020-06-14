@@ -27,324 +27,325 @@ SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 	//
 	//Scene 1 Animation pushbacks
 	//
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-	fireBarrel.PushBack({ 84,67,16,31 });
-
-	 
-
-
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
-	fireBarrel.PushBack({ 103,67,16,31 });
+	{
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
+		fireBarrel.PushBack({ 84,67,16,31 });
 
 
 
 
-
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-	fireBarrel.PushBack({ 122,67,16,31 });
-
-	fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
+		fireBarrel.PushBack({ 103,67,16,31 });
 
 
 
 
 
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
+		fireBarrel.PushBack({ 122,67,16,31 });
 
-
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-	fireBarrel.PushBack({ 141,67,16,31 });
-
-
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
-	DK.PushBack({ 0,0,40,32 });
+		fireBarrel.PushBack({ 122,67,16,31 });
 
 
 
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-	DK.PushBack({ 41,0,43,32 });
-
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
-	DK.PushBack({ 85,0,40,32 });
 
 
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
-	DK.PushBack({ 126,0,43,32 });
 
+
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+
+
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+		DK.PushBack({ 0,0,40,32 });
+
+
+
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+		DK.PushBack({ 41,0,43,32 });
+
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+		DK.PushBack({ 85,0,40,32 });
+
+
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+		DK.PushBack({ 126,0,43,32 });
+	}
 
 	
 }
@@ -613,6 +614,9 @@ bool SceneLevel1::Start()
 //Draw the animations
 Update_Status SceneLevel1::Update()
 {
+	//Gamepad support
+	GamePad& pad = App->input->pads[0];
+
 	//
 	//Update animations
 	//
@@ -647,14 +651,14 @@ Update_Status SceneLevel1::Update()
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel4, 10);
 	}
 	//Reload Level 1 screen
-	if (App->input->keys[SDL_SCANCODE_R] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_R] == Key_State::KEY_DOWN || pad.start == true)
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, this, 10);
 	}
 
 	//Instant win
-	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN || pad.l1 == true)
 	{
 		lvl1win = true;
 	}
