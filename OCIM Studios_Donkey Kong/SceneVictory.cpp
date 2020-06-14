@@ -18,6 +18,7 @@ SceneVictory::SceneVictory(bool startEnabled) : Module(startEnabled)
 	Mario = { 51,17,12,16 };
 	Peach = { 33,0,14,22 };
 	heart = { 0,17,15,13 };
+	deathcont = 0;
 
 
 
@@ -177,6 +178,12 @@ Update_Status SceneVictory::PostUpdate()
 		App->render->Blit(heartT, 85, 45, &heart, NULL, false);
 		App->render->Blit(peachT, 74, 66, &Peach, NULL, false);
 		App->render->Blit(marioT, 106, 72, &Mario, NULL, false);
+
+		deathcont++;
+		if (deathcont == 300)
+		{
+			App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 10);
+		}
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
