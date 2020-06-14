@@ -6,6 +6,9 @@
 #include "p2Point.h"
 #include "Collider.h"
 
+
+#define NUM_LIFES 3
+
 struct SDL_Texture;
 struct Collider;
 
@@ -19,6 +22,7 @@ enum Player_State
 	HAMMER_RUNNING,
 	FALLING,
 	DYING,
+	SUBSTRACT_LIFE,
 	CLIMBING_IDLE,
 	CLIMBING_RUNNING,
 	CLIMBING_UP,
@@ -80,6 +84,9 @@ public:
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* playerTexture = nullptr;
+	//Lifes texture
+	SDL_Texture* lifesTexture = nullptr;
+	bool lifesDrawingArray[NUM_LIFES] = { true, true, true };
 
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
@@ -99,6 +106,8 @@ public:
 	int lastCollider = Collider::Type::NONE;
 	//Auxiliar collider for buttons
 	Collider* button = nullptr;
+	//Current level
+	const char* currentLevel = "none";
 
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
@@ -124,7 +133,6 @@ public:
 	Animation jumpAnim_Left;
 	Animation jumpAnim_Right;
 
-	//Animation climbAnim;
 	Animation climb;
 	Animation climb_Up;
 	Animation climb_Down;
@@ -135,8 +143,7 @@ public:
 	Animation hammerRunAnim_Left;
 	Animation hammerRunAnim_Right;
 
-	Animation deadLeft;
-	Animation deadRight;
+	Animation dyingAnim;
 	//////////////////////////////////////
 
 
@@ -144,6 +151,9 @@ public:
 	//
 	//Player flags
 	//
+	//Lifes
+	int lifes = 3;
+
 	//A flag to detect when the player has been destroyed
 	bool destroyed = false;
 
@@ -155,8 +165,6 @@ public:
 	bool rampLeft = false;
 	bool eraseButton = false;
 	bool wideWallContact = false;
-
-	//Level finish flags
 	
 
 

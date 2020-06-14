@@ -65,6 +65,24 @@ public:
 
 		return frames[actualFrame];
 	}
+	
+	//Loop Count getter
+	int getLoopCount()
+	{
+		return loopCount;
+	}
+
+	bool animationEnded()
+	{
+		if((int)currentFrame == totalFrames)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 };
 
 #endif

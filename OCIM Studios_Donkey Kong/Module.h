@@ -44,6 +44,9 @@ public:
 	// Switches isEnabled and calls CleanUp() method
 	void Disable();
 
+	//Name getter
+	//const char* nameGetter() { return name; }
+
 	inline bool IsEnabled() const { return isEnabled; }
 
 public:

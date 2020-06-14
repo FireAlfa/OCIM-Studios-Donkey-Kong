@@ -10,8 +10,9 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 
-#include "SceneLevel4.h"
 #include "SceneLevel1.h"
+#include "SceneLevel2.h"
+#include "SceneLevel4.h"
 
 #include "ModuleRender.h"
 
@@ -105,6 +106,29 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	hammerRunAnim_Right.PushBack({ 0, 94, 29, 26 });
 	hammerRunAnim_Left.speed = hammerRunAnim_Right.speed = 0.1f;
 
+
+
+	//Dying
+	dyingAnim.PushBack({ 85, 51, 16, 16 });
+	dyingAnim.PushBack({ 102, 51, 16, 16 });
+	dyingAnim.PushBack({ 118, 51, 16, 16 });
+	dyingAnim.PushBack({ 68, 51, 16, 16 });
+	dyingAnim.PushBack({ 85, 51, 16, 16 });
+	dyingAnim.PushBack({ 102, 51, 16, 16 });
+	dyingAnim.PushBack({ 118, 51, 16, 16 });
+	dyingAnim.PushBack({ 68, 51, 16, 16 });
+	dyingAnim.PushBack({ 85, 51, 16, 16 });
+	dyingAnim.PushBack({ 102, 51, 16, 16 });
+	dyingAnim.PushBack({ 118, 51, 16, 16 });
+	dyingAnim.PushBack({ 68, 51, 16, 16 });
+	dyingAnim.PushBack({ 85, 51, 16, 16 });
+	dyingAnim.PushBack({ 0, 17, 16, 16 }); //Angel
+	dyingAnim.PushBack({ 0, 17, 16, 16 }); //Angel
+	dyingAnim.PushBack({ 0, 17, 16, 16 }); //Angel
+	dyingAnim.PushBack({ 0, 17, 16, 16 }); //Angel
+	dyingAnim.speed = 0.1f;
+
+
 }
 
 ModulePlayer::~ModulePlayer()
@@ -130,7 +154,9 @@ bool ModulePlayer::Start()
 	//
 	//Load Player textures files & set currentAnimation
 	//
+	
 	playerTexture = App->textures->Load("Assets/Sprites/Mario_Sprites.png");
+	lifesTexture = App->textures->Load("Assets/GUI/Scores + Mario.png");
 	currentAnimation = &idleAnim_Right;
 
 
@@ -151,11 +177,31 @@ bool ModulePlayer::Start()
 	//
 	//Player flags
 	//
+	if (lifes == 0)
+	{
+		lifes = 3;
+	}
 	facingDirection = 1;
 	destroyed = false;
 	canClimb = false;
 	canGoDownStairs = false;
 	ChangeState(state, IDLE);
+
+
+	if ((Module*)App->sceneLevel1->IsEnabled())
+	{
+		currentLevel = "level 1";
+	}
+
+	if ((Module*)App->sceneLevel2->IsEnabled())
+	{
+		currentLevel = "level 2";
+	}
+
+	if ((Module*)App->sceneLevel4->IsEnabled())
+	{
+		currentLevel = "level 4";
+	}
 
 
 	//Font
@@ -378,7 +424,7 @@ void ModulePlayer::UpdateState()
 
 	case FALLING:
 	{
-		if (lastCollider == Collider::Type::WALL && lastCollider == Collider::Type::RAMP_LEFT && lastCollider == Collider::Type::RAMP_RIGHT)
+		if ((lastCollider == Collider::Type::WALL) || (lastCollider == Collider::Type::RAMP_LEFT) || (lastCollider == Collider::Type::RAMP_RIGHT))
 		{
 			ChangeState(state, DYING);
 		}
@@ -387,7 +433,16 @@ void ModulePlayer::UpdateState()
 
 	case DYING:
 	{
+		if (currentAnimation->getLoopCount() != 0)
+		{
+			ChangeState(state, SUBSTRACT_LIFE);
+		}
+		break;
+	}
 
+	case SUBSTRACT_LIFE:
+	{
+		
 		break;
 	}
 
@@ -574,7 +629,7 @@ void ModulePlayer::UpdateLogic()
 
 	case FALLING:
 	{
-		if (lastCollider != Collider::Type::WALL && lastCollider != Collider::Type::RAMP_LEFT && lastCollider != Collider::Type::RAMP_RIGHT)
+		if ((lastCollider != Collider::Type::WALL) || (lastCollider != Collider::Type::RAMP_LEFT) || (lastCollider != Collider::Type::RAMP_RIGHT))
 		{
 			position.y += speed;
 		}
@@ -582,6 +637,45 @@ void ModulePlayer::UpdateLogic()
 		break;
 	}
 
+	case DYING:
+	{
+		if (currentAnimation->getLoopCount() == 0)
+		{
+			currentAnimation->Update();
+		}
+		
+		break;
+	}
+
+	case SUBSTRACT_LIFE:
+		//Reset level
+		--lifes;
+		lifesDrawingArray[lifes] = false;
+		currentAnimation->Reset();
+
+		if (lifes == 0) {
+			destroyed = true;
+		}
+
+		if (currentLevel == "level 1")
+		{
+			CleanUp();
+			App->fade->FadeToBlack((Module*)App->sceneLevel1, (Module*)App->sceneLevel1, 60);
+		}
+		if (currentLevel == "level 2")
+		{
+			CleanUp();
+			App->fade->FadeToBlack((Module*)App->sceneLevel2, (Module*)App->sceneLevel2, 60);
+		}
+		if (currentLevel == "level 4")
+		{
+			CleanUp();
+			App->fade->FadeToBlack((Module*)App->sceneLevel4, (Module*)App->sceneLevel4, 60);
+		}
+
+		
+
+		break;
 	}
 
 
@@ -740,8 +834,22 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 	}
 
 	case FALLING:
+	{
 
 		break;
+	}
+
+	case DYING:
+	{
+		currentAnimation = &dyingAnim;
+
+		break;
+	}
+	case SUBSTRACT_LIFE:
+	{
+
+		break;
+	}
 	}
 
 	lastCollider = Collider::Type::NONE;
@@ -774,6 +882,15 @@ Update_Status ModulePlayer::PostUpdate()
 		}
 	}
 
+
+	for (int i = 0; i < NUM_LIFES; ++i)
+	{
+		if (lifesDrawingArray[i] == true)
+		{
+			SDL_Rect rect = { 95, 0, 8, 8 };
+			App->render->Blit(lifesTexture, 8 * (i + 1), 24, &rect);
+		}
+	}
 
 
 	//Debug Gamepad
