@@ -320,6 +320,15 @@ void ModulePlayer::UpdateState()
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN || pad.x == true)
 			ChangeState(state, HAMMER_IDLE);
 
+		if (App->input->keys[SDL_SCANCODE_J] == KEY_DOWN || pad.y == true)
+		{
+
+			App->collisions->RemoveCollider(playerCollider);
+			App->collisions->RemoveCollider(playerCenterCollider);
+			App->collisions->RemoveCollider(playerFeetCollider);
+			App->collisions->RemoveCollider(playerWideFeetCollider);
+		}
+
 		break;
 	}
 
@@ -891,7 +900,7 @@ void ModulePlayer::UpdateLogic()
 
 	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN || pad.back == true)
 		debugGamepadInfo = !debugGamepadInfo;
-
+	
 }
 
 //Change the State
