@@ -144,6 +144,7 @@ public:
 	Animation hammerRunAnim_Right;
 
 	Animation dyingAnim;
+	Animation deadMario;
 	//////////////////////////////////////
 
 
@@ -165,6 +166,7 @@ public:
 	bool rampLeft = false;
 	bool eraseButton = false;
 	bool wideWallContact = false;
+	bool substractLife = false;
 	
 
 

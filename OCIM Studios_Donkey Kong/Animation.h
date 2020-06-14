@@ -34,6 +34,7 @@ public:
 	void Reset()
 	{
 		currentFrame = 0;
+		loopCount = 0;
 	}
 
 	//Controls whether a loop has finished or not

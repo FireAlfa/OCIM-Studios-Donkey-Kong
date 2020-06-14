@@ -128,7 +128,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	dyingAnim.PushBack({ 0, 17, 16, 16 }); //Angel
 	dyingAnim.speed = 0.1f;
 
-
+	deadMario.PushBack({ 0, 17, 16, 16 });
 }
 
 ModulePlayer::~ModulePlayer()
@@ -185,6 +185,7 @@ bool ModulePlayer::Start()
 	destroyed = false;
 	canClimb = false;
 	canGoDownStairs = false;
+	substractLife = false;
 	ChangeState(state, IDLE);
 
 
@@ -649,28 +650,32 @@ void ModulePlayer::UpdateLogic()
 
 	case SUBSTRACT_LIFE:
 		//Reset level
-		--lifes;
-		lifesDrawingArray[lifes] = false;
-		currentAnimation->Reset();
+		if (substractLife == true)
+		{
+			--lifes;
+			lifesDrawingArray[lifes] = false;
 
-		if (lifes == 0) {
-			destroyed = true;
-		}
+			if (lifes == 0) {
+				destroyed = true;
+			}
 
-		if (currentLevel == "level 1")
-		{
-			CleanUp();
-			App->fade->FadeToBlack((Module*)App->sceneLevel1, (Module*)App->sceneLevel1, 60);
-		}
-		if (currentLevel == "level 2")
-		{
-			CleanUp();
-			App->fade->FadeToBlack((Module*)App->sceneLevel2, (Module*)App->sceneLevel2, 60);
-		}
-		if (currentLevel == "level 4")
-		{
-			CleanUp();
-			App->fade->FadeToBlack((Module*)App->sceneLevel4, (Module*)App->sceneLevel4, 60);
+			if (currentLevel == "level 1")
+			{
+				CleanUp();
+				App->fade->FadeToBlack((Module*)App->sceneLevel1, (Module*)App->sceneLevel1, 60);
+			}
+			if (currentLevel == "level 2")
+			{
+				//substractLife = false;
+				CleanUp();
+				App->fade->FadeToBlack((Module*)App->sceneLevel2, (Module*)App->sceneLevel2, 60);
+			}
+			if (currentLevel == "level 4")
+			{
+				//substractLife = false;
+				CleanUp();
+				App->fade->FadeToBlack((Module*)App->sceneLevel4, (Module*)App->sceneLevel4, 60);
+			}
 		}
 
 		
@@ -729,6 +734,7 @@ void ModulePlayer::UpdateLogic()
 	rampRight = false;
 	rampLeft = false;
 	wideWallContact = false;
+	substractLife = false;
 
 
 	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN)
@@ -847,6 +853,11 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 	}
 	case SUBSTRACT_LIFE:
 	{
+		currentAnimation->Reset();
+		currentAnimation = &deadMario;
+		currentAnimation->Update();
+
+		substractLife = true;
 
 		break;
 	}
