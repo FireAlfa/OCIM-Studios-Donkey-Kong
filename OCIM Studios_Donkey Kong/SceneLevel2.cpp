@@ -438,12 +438,69 @@ Update_Status SceneLevel2::Update()
 	//
 	Princess.Update();
 
+	//
+	//Change Knob direction array
+	//
+	for (int i = 0; i < 4; i++)
+	{
+		int random = rand() % 10;
+		if (random == 1)
+		{
+			if (knobDirectionArray[i] == 0) {
+				knobDirectionArray[i] = 1;
+			}
+			else
+			{
+				knobDirectionArray[i] = 0;
+			}
+		}
+
+		
+	}
+	//First layer
+	if (knobDirectionArray[0] == 0)
+	{
+		knobAnimationArray[0] = &leftKnob;
+		knobAnimationArray[1] = &leftKnob;
+	}
+	else {
+		knobAnimationArray[0] = &rightKnob;
+		knobAnimationArray[1] = &rightKnob;
+	}
+	//Second layer left
+	if (knobDirectionArray[1] == 0)
+	{
+		knobAnimationArray[2] = &leftKnob;
+	}
+	else {
+		knobAnimationArray[2] = &rightKnob;
+	}
+	//Second layer right
+	if (knobDirectionArray[2] == 0)
+	{
+		knobAnimationArray[3] = &leftKnob;
+	}
+	else {
+		knobAnimationArray[3] = &rightKnob;
+	}
+	//Third layer
+	if (knobDirectionArray[3] == 0)
+	{
+		knobAnimationArray[4] = &leftKnob;
+		knobAnimationArray[5] = &leftKnob;
+	}
+	else {
+		knobAnimationArray[4] = &rightKnob;
+		knobAnimationArray[5] = &rightKnob;
+	}
+	
+	//Knobs animation array
 	for (int i = 0; i < 6; ++i)
 	{
 		knobAnimationArray[i]->Update();
 	}
 
-	
+
 	//
 	//Change Level
 	//
@@ -501,6 +558,15 @@ Update_Status SceneLevel2::PostUpdate()
 	//Draw Princess animation
 	//
 	App->render->Blit(princessTexture, 105, 34, &(Princess.GetCurrentFrame()), 0.1f);
+
+
+	//
+	//Draw knobs animation
+	//
+	for (int i = 0; i < 6; ++i)
+	{
+
+	}
 
 
 	return Update_Status::UPDATE_CONTINUE;

@@ -65,6 +65,7 @@ public:
 	//Srite rectangles
 	//
 	SDL_Rect lvl2Rect;
+	SDL_Rect knobRect;
 
 
 	//
