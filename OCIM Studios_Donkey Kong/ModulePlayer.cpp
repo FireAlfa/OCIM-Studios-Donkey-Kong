@@ -62,9 +62,9 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 
 	//Climb
-	climb.PushBack({51, 34, 13, 16});
-	climb_Up.PushBack({ 68, 34, 13, 16 });
-	climb_Up.speed = 0.1f;
+	climb.PushBack({ 51, 34, 13, 16 });
+	climb.PushBack({ 68, 34, 13, 16 });
+	climb.speed = 0.14f;
 
 	//ClimbUp
 	climb_Up.PushBack({ 85, 34, 14, 15 }); 
@@ -181,7 +181,7 @@ bool ModulePlayer::Start()
 	//
 	//Load Player FX files
 	//
-	jumpFx = App->audio->LoadFx("Assets/Fx/jump.ogg");
+	jumpFx = App->audio->LoadFx("Assets/Audio/Fx/jump.ogg");
 
 
 	//
@@ -190,6 +190,8 @@ bool ModulePlayer::Start()
 	playerCollider = App->collisions->AddCollider({ position.x, position.y, 12, 16 }, Collider::Type::PLAYER, this);
 	playerCenterCollider = App->collisions->AddCollider({ position.x + 5, position.y, 3, 16 }, Collider::Type::PLAYER_CENTER, this);
 	playerFeetCollider = App->collisions->AddCollider({ position.x + 5, position.y + 14, 3, 2 }, Collider::Type::PLAYER_FEET, this);
+	playerWideFeetCollider = App->collisions->AddCollider({ position.x + 2, position.y + 15, 8, 1 }, Collider::Type::PLAYER_WIDE_FEET, this);
+
 
 
 	//
@@ -209,6 +211,7 @@ bool ModulePlayer::Start()
 	canGoDownStairs = false;
 	feetTopStairs = false;
 	substractLife = false;
+	falling = false;
 	ChangeState(state, IDLE);
 
 
@@ -283,7 +286,8 @@ void ModulePlayer::UpdateState()
 			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.0f)
 			ChangeState(state, RUNNING);
 
-		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN || pad.a == true)
+		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN ||
+			/*App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_REPEAT ||*/ pad.a == true)
 			ChangeState(state, JUMPING);
 
 		if (canClimb == true &&
@@ -299,7 +303,7 @@ void ModulePlayer::UpdateState()
 
 	case JUMPING:
 	{
-		if (lastCollider == Collider::Type::WALL || feetTopStairs == true)
+		if (lastCollider == Collider::Type::WALL || feetTopStairs == true || wideWallContact == true)
 		{
 			jumpCountdown = 30;
 			if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < 0.0f ||
@@ -544,7 +548,7 @@ void ModulePlayer::UpdateLogic()
 	case JUMPING:
 	{
 		--jumpCountdown;
-		if (/*jumpCountdown > 0 &&*/ jumpCountdown < 15)
+		if (jumpCountdown < 15)
 		{
 			++position.y;
 		}
@@ -639,7 +643,7 @@ void ModulePlayer::UpdateLogic()
 
 	case CLIMBING_IDLE:
 	{
-		currentAnimation->Update();
+		//currentAnimation->Update();
 
 		break;
 	}
@@ -658,7 +662,7 @@ void ModulePlayer::UpdateLogic()
 	{
 		if ((lastCollider != Collider::Type::WALL) || (lastCollider != Collider::Type::RAMP_LEFT) || (lastCollider != Collider::Type::RAMP_RIGHT) || (lastCollider != Collider::Type::TOP_STAIR))
 		{
-			position.y += speed;
+			position.y += speed * 2;
 		}
 
 		break;
@@ -745,6 +749,7 @@ void ModulePlayer::UpdateLogic()
 	case Collider::Type::RAMP_LEFT:
 	case Collider::Type::PLAYER:
 	case Collider::Type::PLAYER_CENTER:
+	case Collider::Type::PLAYER_WIDE_FEET:
 	case Collider::Type::ENEMY:
 	case Collider::Type::STAIR:
 	case Collider::Type::TOP_STAIR:
@@ -768,6 +773,7 @@ void ModulePlayer::UpdateLogic()
 		App->sceneLevel4->eraseButton(button);
 		eraseButton = false;
 		button = nullptr;
+		lastCollider = Collider::Type::NONE;
 	}
 
 
@@ -775,11 +781,13 @@ void ModulePlayer::UpdateLogic()
 	playerCollider->SetPos(position.x, position.y);
 	playerCenterCollider->SetPos(position.x + 5, position.y);
 	playerFeetCollider->SetPos(position.x + 5, position.y + 14);
+	playerWideFeetCollider->SetPos(position.x + 2, position.y + 15);
 
 
 	//Flag update
 	canClimb = false;
 	canGoDownStairs = false;
+	feetTopStairs = false;
 	rampRight = false;
 	rampLeft = false;
 	wideWallContact = false;
@@ -810,6 +818,9 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 
 	case RUNNING:
 	{
+		if (lastCollider == Collider::Type::WALL)
+			position.y -= speed;
+
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < 0.0f)
 			facingDirection = -1;
@@ -852,6 +863,8 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 
 	case CLIMBING_DOWN:
 	{
+		position.x = topStairCollider.x - 5;
+
 		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || pad.l_y > 0.0f)
 			upDownDirection = 1;
@@ -864,6 +877,8 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 
 	case CLIMBING_UP:
 	{
+		position.x = topStairCollider.x - 5;
+
 		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || pad.l_y < 0.0f)
 			upDownDirection = -1;
@@ -882,6 +897,8 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 
 	case CLIMBING_RUNNING:
 	{
+		position.x = topStairCollider.x - 5;
+
 		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || pad.l_y < 0.0f)
 			upDownDirection = -1;
@@ -889,7 +906,7 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || pad.l_y > 0.0f)
 			upDownDirection = 1;
 
-		currentAnimation = &(upDownDirection == -1 ? climb_Up : climb_Down);
+		currentAnimation = &climb;
 		break;
 
 	}
@@ -992,6 +1009,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	//Collision control
 	//
 
+	//Fall to death collision
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::GRAVITYWALLS)
+	{
+		falling = true;
+		ChangeState(state, FALLING);
+	}
+
 	//Wall collision
 	if (c1 == playerFeetCollider && c2->type == Collider::Type::WALL)
 	{
@@ -999,9 +1023,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		lastCollider = Collider::Type::WALL;
 	}
 
-	if (c1 == playerCollider && c2->type == Collider::Type::WALL)
+	if (falling == false)
 	{
-		wideWallContact = true;
+		if (c1 == playerWideFeetCollider && c2->type == Collider::Type::WALL)
+		{
+			wideWallContact = true;
+			lastCollider = Collider::Type::WALL;
+		}
 	}
 
 
@@ -1009,6 +1037,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1 == playerCenterCollider && c2->type == Collider::Type::STAIR)
 	{
 		canClimb = true;
+		topStairCollider = c2->GetRect();
 		lastCollider = Collider::Type::STAIR;
 	}
 	//Top stair collision
@@ -1017,11 +1046,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		canClimb = true;
 		canGoDownStairs = true;
 		canGoUpStairs = true;
+		topStairCollider = c2->GetRect();
 		lastCollider = Collider::Type::TOP_STAIR;
 	}
 	if (c1 == playerFeetCollider && c2->type == Collider::Type::TOP_STAIR)
 	{
 		feetTopStairs = true;
+		
 	}
 
 
@@ -1041,12 +1072,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		lastCollider = Collider::Type::RAMP_LEFT;
 	}
 
-
-	//Fall to death collision
-	if (c1 == playerCenterCollider && c2->type == Collider::Type::GRAVITYWALLS)
-	{
-		ChangeState(state, FALLING);
-	}
 
 
 

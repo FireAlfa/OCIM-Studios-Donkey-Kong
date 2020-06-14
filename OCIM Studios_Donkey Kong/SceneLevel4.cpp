@@ -245,6 +245,8 @@ bool SceneLevel4::Start()
 	}
 	totalButtons = 8;
 	lvl4win = false;
+	spawnGravityWall = false;
+	spawnGravityWallCountdown = BUTTON_REPLACE_COUNTDOWN;
 
 
 
@@ -436,6 +438,20 @@ Update_Status SceneLevel4::Update()
 	}
 
 
+	//Gravity wall under button
+	if (spawnGravityWall == true)
+	{
+		--spawnGravityWallCountdown;
+		if (spawnGravityWallCountdown == 0)
+		{
+			App->collisions->AddCollider(aux, Collider::Type::GRAVITYWALLS);
+			spawnGravityWall = false;
+			spawnGravityWallCountdown = BUTTON_REPLACE_COUNTDOWN;
+		}
+	}
+
+
+
 	//
 	//Win condition
 	//
@@ -526,6 +542,11 @@ void SceneLevel4::eraseButton(Collider* c)
 {
 	int index = -1;
 
+	aux = c->GetRect();
+	aux.y += 14;
+	aux.h -= 13;
+	spawnGravityWall = true;
+
 	for (int i = 0; i < 8; ++i)
 	{
 		if (buttonColliders[i] == c)
@@ -541,6 +562,9 @@ void SceneLevel4::eraseButton(Collider* c)
 		buttonDrawingArray[index] = false;
 		--totalButtons;
 	}
+
+	
+
 
 	if (totalButtons == 0)
 	{
