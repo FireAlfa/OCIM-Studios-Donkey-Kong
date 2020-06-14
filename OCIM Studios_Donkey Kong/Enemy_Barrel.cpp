@@ -83,6 +83,13 @@ void Enemy_Barrel::UpdateLogic()
 	{
 	case BARREL_MOVING:
 
+		if (bounceWall == true)
+		{
+			direction *= -1;
+			bounceWall = false;
+		}
+
+
 		if (direction == 1)
 		{
 			position.x += speed;
@@ -110,6 +117,12 @@ void Enemy_Barrel::UpdateLogic()
 			{
 				position.y += speed;
 			}
+		}
+
+		if (touchedWall == false)
+		{
+			position.y += speed;
+			touchedWall = true;
 		}
 
 		currentAnim->Update();
@@ -225,4 +238,10 @@ void Enemy_Barrel::OnCollision(Collider* c1, Collider* c2)
 		touchedWall = true;
 	}
 
+
+
+	if (c1 == collider && c2->type == Collider::Type::RIGHTWALL || c1 == collider && c2->type == Collider::Type::LEFTWALL)
+	{
+		bounceWall = true;
+	}
 }

@@ -47,6 +47,7 @@ public:
 	bool rampLeft = false;
 	bool canGoDownStairs = false;
 	bool touchedWall = false;
+	bool bounceWall = false;
 
 	//
 	//Initial variables

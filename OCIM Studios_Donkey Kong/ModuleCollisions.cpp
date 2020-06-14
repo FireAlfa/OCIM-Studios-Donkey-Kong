@@ -225,7 +225,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ENEMY][Collider::Type::TOPWALL] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::LEFTWALL] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::RIGHTWALL] = true;
-	matrix[Collider::Type::ENEMY][Collider::Type::GRAVITYWALLS] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::GRAVITYWALLS] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::PEACH] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::DK] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::RAMP_RIGHT] = true;
@@ -376,7 +376,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::PLAYER_CENTER] = true;
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::PLAYER_FEET] = false;
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::PLAYER_WIDE_FEET] = false;
-	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::STAIR] = false;
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::TOP_STAIR] = false;
 	matrix[Collider::Type::GRAVITYWALLS][Collider::Type::BUTTON] = false;
