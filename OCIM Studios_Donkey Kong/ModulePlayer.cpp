@@ -606,6 +606,8 @@ void ModulePlayer::UpdateLogic()
 
 	case HAMMER_IDLE:
 	{
+
+		ishammerOn = true;
 		currentAnimation->Update();
 
 		break;
@@ -655,6 +657,7 @@ void ModulePlayer::UpdateLogic()
 			}
 		}
 
+		ishammerOn = true;
 		position.x += speed * facingDirection;
 		currentAnimation->Update();
 
@@ -842,6 +845,7 @@ void ModulePlayer::UpdateLogic()
 
 	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN || pad.back == true)
 		debugGamepadInfo = !debugGamepadInfo;
+
 }
 
 //Change the State
@@ -984,6 +988,15 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 		drawGameOver = true;
 		break;
 	}
+	}
+
+	if (ishammerOn)
+	{
+		App->audio->PlayFx(hammerFx);
+	}
+	else
+	{
+		App->audio->UnloadFx(hammerFx);
 	}
 
 	lastCollider = Collider::Type::NONE;
