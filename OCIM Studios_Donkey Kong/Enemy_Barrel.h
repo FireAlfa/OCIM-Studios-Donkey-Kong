@@ -63,6 +63,7 @@ public:
 
 	//Auxiliar collider rectangle
 	SDL_Rect aux;
+	Collider* auxCollider;
 
 	int lastCollider = Collider::Type::NONE;
 

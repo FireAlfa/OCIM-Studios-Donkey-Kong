@@ -137,10 +137,10 @@ void Enemy_Barrel::UpdateLogic()
 			}
 		}
 
-		/*if (destroy == true)
+		if (destroy == true)
 		{
-			App->enemies->HandleEnemiesDespawn();
-		}*/
+			App->collisions->RemoveCollider(auxCollider);
+		}
 
 
 
@@ -273,7 +273,7 @@ void Enemy_Barrel::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1 == collider && c2->type == Collider::Type::RIGHTWALL || c1 == collider && c2->type == Collider::Type::LEFTWALL)
 	{
-		SDL_Rect aux = c1->GetRect();
+		SDL_Rect auxrect = c1->GetRect();
 
 		if (aux.y - 10 < App->player->position.y)
 		{
@@ -281,6 +281,7 @@ void Enemy_Barrel::OnCollision(Collider* c1, Collider* c2)
 		}
 		else
 		{
+			auxCollider = c1;
 			destroy = true;
 		}
 	}
