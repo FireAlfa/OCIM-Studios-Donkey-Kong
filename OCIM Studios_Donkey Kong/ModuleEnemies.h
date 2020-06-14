@@ -44,7 +44,7 @@ public:
 
 	// Called when the module is activated
 	// Loads the necessary textures for the enemies
-	bool Start() override;
+	virtual bool Start();
 
 	// Called at the beginning of the application loop
 	// Removes all enemies pending to delete
@@ -60,7 +60,7 @@ public:
 
 	// Called on application exit
 	// Destroys all active enemies left in the array
-	bool CleanUp() override;
+	virtual bool CleanUp();
 
 public:
 	// Called when an enemi collider hits another collider
