@@ -38,6 +38,7 @@ struct Collider
 		TOP_STAIR,
 
 		BUTTON,
+		HAMMER,
 
 		TOPWALL,
 		LEFTWALL,
