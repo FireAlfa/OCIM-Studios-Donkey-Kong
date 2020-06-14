@@ -8,8 +8,6 @@ class Bag : public Object
 public:
 	Bag(int x, int y);
 
-	~Bag();
-
 	void Update() override;
 
 private:

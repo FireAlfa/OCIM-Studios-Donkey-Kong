@@ -58,7 +58,7 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 	// Add an enemy into the queue to be spawned later
-	bool AddObject(ObjectType type, int x, int y, int direction);
+	bool AddObject(ObjectType type, int x, int y);
 
 	// Iterates the queue and checks for camera position
 	void HandleObjectSpawn();
@@ -71,7 +71,7 @@ public:
 
 private:
 	// Spawns a new enemy using the data from the queue
-	void SpawnEnemy(const ObjectSpawnPoint& info);
+	void SpawnObject(const ObjectSpawnPoint& info);
 
 	// A queue with all spawn points information
 	ObjectSpawnPoint spawnQueue[MAX_OBJ];
@@ -81,6 +81,9 @@ private:
 
 	// The enemies sprite sheet
 	SDL_Texture* objTexture = nullptr;
+
+	//pickup FX
+	int objectPickedFx = 0;
 };
 #endif // !__MODULEOBJECT_H__
 

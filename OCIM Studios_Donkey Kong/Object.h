@@ -45,6 +45,9 @@ public:
 	// The enemy's texture
 	SDL_Texture* texture = nullptr;
 
+	//Pick Up Fx
+	int pickedFx = 0;
+
 	//FLags
 
 	// A flag for the enemy removal. Important! We do not delete objects instantly
