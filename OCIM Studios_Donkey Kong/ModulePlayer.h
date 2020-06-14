@@ -29,6 +29,7 @@ enum Player_State
 	CLIMBING_UP,
 	CLIMBING_DOWN,
 	NO_LIFES,
+	GOD_MODE
 };
 
 
