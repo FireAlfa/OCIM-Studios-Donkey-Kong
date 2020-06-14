@@ -6,6 +6,8 @@
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
+#include "ModulePlayer.h"
+
 
 SceneVictory::SceneVictory(bool startEnabled) : Module(startEnabled)
 {
@@ -21,7 +23,7 @@ SceneVictory::~SceneVictory()
 // Load assets
 bool SceneVictory::Start()
 {
-	LOG("Loading background assets");
+	LOG("Loading SceneVictory assets ---------\n");
 
 	bool ret = true;
 
@@ -34,6 +36,8 @@ bool SceneVictory::Start()
 	//
 	//
 	//
+
+
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;

@@ -22,7 +22,7 @@ SceneIntro::~SceneIntro()
 // Load assets
 bool SceneIntro::Start()
 {
-	LOG("Loading background assets");
+	LOG("Loading SceneIntro assets ---------\n");
 
 	bool ret = true;
 

@@ -147,29 +147,27 @@ bool SceneLevel2::Start()
 	//Gravity Walls 1
 	App->collisions->AddCollider({ 0, 207, 5, 5 }, Collider::Type::GRAVITYWALLS);
 	App->collisions->AddCollider({ 219, 207, 5, 5 }, Collider::Type::GRAVITYWALLS);
-
 	//Gravity Walls 2
 	App->collisions->AddCollider({ 0, 167, 5, 5 }, Collider::Type::GRAVITYWALLS);
 	App->collisions->AddCollider({ 51, 167, 10, 5 }, Collider::Type::GRAVITYWALLS);
 	App->collisions->AddCollider({ 155, 167, 10, 5 }, Collider::Type::GRAVITYWALLS);
 	App->collisions->AddCollider({ 219, 167, 5, 5 }, Collider::Type::GRAVITYWALLS);
-
-
 	//Gravity Walls 3
 	App->collisions->AddCollider({ 101, 113, 23, 18 }, Collider::Type::GRAVITYWALLS);
-
-
 	//Gravity Walls 4
 	App->collisions->AddCollider({ 0, 87, 5, 5 }, Collider::Type::GRAVITYWALLS);
 	App->collisions->AddCollider({ 219, 87, 5, 5 }, Collider::Type::GRAVITYWALLS);
 
 
+	//
+	//Limits
+	//
 	//Top Wall
 	App->collisions->AddCollider({ 0, 0, 254, 1 }, Collider::Type::TOPWALL);
 	//Left Wall
-	App->collisions->AddCollider({ 0, 208, 1, 48 }, Collider::Type::LEFTWALL);
+	App->collisions->AddCollider({ 0, 0, 1, 256 }, Collider::Type::LEFTWALL);
 	//RightWall
-	App->collisions->AddCollider({ 223, 208, 1, 48 }, Collider::Type::RIGHTWALL);
+	App->collisions->AddCollider({ 223, 0, 1, 256 }, Collider::Type::RIGHTWALL);
 
 
 
@@ -177,7 +175,7 @@ bool SceneLevel2::Start()
 	//
 	//Add enemies
 	//
-	App->enemies->AddEnemy(Enemy_Type::DONKEYKONG, 92, 56, 0);
+	App->enemies->AddEnemy(Enemy_Type::DONKEYKONG, 23, 51, 0);
 
 
 

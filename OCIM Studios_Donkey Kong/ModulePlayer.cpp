@@ -792,6 +792,7 @@ void ModulePlayer::UpdateLogic()
 	rampLeft = false;
 	wideWallContact = false;
 	substractLife = false;
+	eraseButton = false;
 
 
 	if (App->input->keys[SDL_SCANCODE_L] == KEY_DOWN || pad.l2 == true)

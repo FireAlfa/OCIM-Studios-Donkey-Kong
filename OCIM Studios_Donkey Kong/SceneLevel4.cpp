@@ -457,8 +457,13 @@ Update_Status SceneLevel4::Update()
 	//
 	if (lvl4win == true)
 	{
+		App->player->lifes = 3;
+		for (int i = 0; i < 3; ++i)
+		{
+			App->player->lifesDrawingArray[i] = true;
+		}
 		CleanUp();
-		App->fade->FadeToBlack(this, (Module*)App->sceneVictory, 60);
+		App->fade->FadeToBlack(this, (Module*)App->sceneVictory, 0);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
