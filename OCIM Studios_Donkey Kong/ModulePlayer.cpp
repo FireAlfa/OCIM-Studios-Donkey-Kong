@@ -151,6 +151,8 @@ bool ModulePlayer::Start()
 		currentLevel = "level 1";
 		position.x = 34;
 		position.y = 232;
+		char lookupTableB[] = { "0123456789" };
+		bonusFont = App->fonts->Load("Assets/Fonts/fontBlue.png", lookupTableB, 1);
 	}
 
 	if ((Module*)App->sceneLevel2->IsEnabled())
@@ -158,6 +160,8 @@ bool ModulePlayer::Start()
 		currentLevel = "level 2";
 		position.x = 41;
 		position.y = 232;
+		char lookupTableB[] = { "0123456789" };
+		bonusFont = App->fonts->Load("Assets/Fonts/fontWhite.png", lookupTableB, 1);
 	}
 
 	if ((Module*)App->sceneLevel4->IsEnabled())
@@ -165,6 +169,9 @@ bool ModulePlayer::Start()
 		currentLevel = "level 4";
 		position.x = 45;
 		position.y = 232;
+		//Bonus
+		char lookupTableB[] = { "0123456789" };
+		bonusFont = App->fonts->Load("Assets/Fonts/fontYellow.png", lookupTableB, 1);
 	}
 
 
@@ -228,9 +235,7 @@ bool ModulePlayer::Start()
 	//Score & Highscore
 	char lookupTableS[] = { "0123456789" };
 	scoreFont = App->fonts->Load("Assets/Fonts/fontWhite.png", lookupTableS, 1);
-	//Bonus
-	char lookupTableB[] = { "0123456789" };
-	bonusFont = App->fonts->Load("Assets/Fonts/fontBlue.png", lookupTableB, 1);
+
 
 
 	return ret;
@@ -268,6 +273,7 @@ Update_Status ModulePlayer::Update()
 		bonus -= 100;
 	}
 
+	//TODO Score Hurry up
 
 
 
