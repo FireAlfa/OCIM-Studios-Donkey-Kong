@@ -663,6 +663,12 @@ void ModuleCollisions::DebugDraw()
 		case Collider::Type::HAMMER:
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
 			break;
+		case Collider::Type::CONVEYER_LEFT:
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
+			break;
+		case Collider::Type::CONVEYER_RIGHT:
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
+			break;
 		}
 	
 

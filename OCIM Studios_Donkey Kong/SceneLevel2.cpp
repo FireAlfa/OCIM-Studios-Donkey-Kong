@@ -390,6 +390,50 @@ bool SceneLevel2::Start()
 	App->collisions->AddCollider({ 223, 0, 1, 256 }, Collider::Type::RIGHTWALL);
 
 
+	for (int i = 0; i < 4; ++i)
+	{
+		//
+		if (knobDirectionArray[0] == 1)
+		{
+			App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_RIGHT);
+		}
+		else if (knobDirectionArray[0] == 1)
+		{
+			App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_LEFT);
+		}
+		//
+		if (knobDirectionArray[1] == 1)
+		{
+			App->collisions->AddCollider({ 0, 127, 102, 1 }, Collider::Type::CONVEYER_RIGHT);
+			App->collisions->AddCollider({ 122, 127, 102, 1 }, Collider::Type::CONVEYER_RIGHT);
+		}
+		else if (knobDirectionArray[1] == 1)
+		{
+			App->collisions->AddCollider({ 0, 127, 102, 1 }, Collider::Type::CONVEYER_LEFT);
+			App->collisions->AddCollider({ 122, 127, 102, 1 }, Collider::Type::CONVEYER_LEFT);
+		}
+		//
+		if (knobDirectionArray[2] == 1)
+		{
+			App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_RIGHT);
+		}
+		else if (knobDirectionArray[2] == 1)
+		{
+			App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_LEFT);
+		}
+		//
+		if (knobDirectionArray[3] == 1)
+		{
+			App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_RIGHT);
+		}
+		else if (knobDirectionArray[3] == 1)
+		{
+			App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_LEFT);
+		}
+	}
+	
+
+
 
 
 	//
