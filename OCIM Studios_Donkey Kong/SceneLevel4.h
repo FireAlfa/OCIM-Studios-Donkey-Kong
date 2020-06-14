@@ -5,6 +5,9 @@
 #include "Animation.h"
 
 
+
+#define BUTTON_REPLACE_COUNTDOWN 25
+
 struct SDL_Texture;
 
 class SceneLevel4 : public Module
@@ -54,6 +57,7 @@ public:
 	//
 	SDL_Rect lvl4Rect;
 	SDL_Rect buttonRect;
+	SDL_Rect aux;
 
 	//
 	//Animations
@@ -69,6 +73,8 @@ public:
 	bool buttonDrawingArray[8] = { true, true, true, true, true, true, true, true };
 	uint totalButtons = 8;
 	bool lvl4win = false;
+	bool spawnGravityWall = false;
+	int spawnGravityWallCountdown = BUTTON_REPLACE_COUNTDOWN;
 
 };
 

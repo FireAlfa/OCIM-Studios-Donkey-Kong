@@ -62,9 +62,9 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 
 	//Climb
-	climb.PushBack({51, 34, 13, 16});
-	climb_Up.PushBack({ 68, 34, 13, 16 });
-	climb_Up.speed = 0.1f;
+	climb.PushBack({ 51, 34, 13, 16 });
+	climb.PushBack({ 68, 34, 13, 16 });
+	climb.speed = 0.14f;
 
 	//ClimbUp
 	climb_Up.PushBack({ 85, 34, 14, 15 }); 
@@ -643,7 +643,7 @@ void ModulePlayer::UpdateLogic()
 
 	case CLIMBING_IDLE:
 	{
-		currentAnimation->Update();
+		//currentAnimation->Update();
 
 		break;
 	}
@@ -662,7 +662,7 @@ void ModulePlayer::UpdateLogic()
 	{
 		if ((lastCollider != Collider::Type::WALL) || (lastCollider != Collider::Type::RAMP_LEFT) || (lastCollider != Collider::Type::RAMP_RIGHT) || (lastCollider != Collider::Type::TOP_STAIR))
 		{
-			position.y += speed;
+			position.y += speed * 2;
 		}
 
 		break;
@@ -773,6 +773,7 @@ void ModulePlayer::UpdateLogic()
 		App->sceneLevel4->eraseButton(button);
 		eraseButton = false;
 		button = nullptr;
+		lastCollider = Collider::Type::NONE;
 	}
 
 
@@ -905,7 +906,7 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || pad.l_y > 0.0f)
 			upDownDirection = 1;
 
-		currentAnimation = &(upDownDirection == -1 ? climb_Up : climb_Down);
+		currentAnimation = &climb;
 		break;
 
 	}
