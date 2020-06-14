@@ -27,6 +27,7 @@ enum Player_State
 	CLIMBING_RUNNING,
 	CLIMBING_UP,
 	CLIMBING_DOWN,
+	NO_LIFES,
 };
 
 
@@ -87,6 +88,8 @@ public:
 	//Lifes texture
 	SDL_Texture* lifesTexture = nullptr;
 	bool lifesDrawingArray[NUM_LIFES] = { true, true, true };
+	//Game Over texture
+	SDL_Texture* gameOverTexture = nullptr;
 
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
@@ -167,9 +170,13 @@ public:
 	bool eraseButton = false;
 	bool wideWallContact = false;
 	bool substractLife = false;
+	bool drawGameOver = false;
+
+
 	
-
-
+	//Countdown for the game over screen
+	int gameOverCountdown = 300;
+	
 
 
 	// Sound effects indices

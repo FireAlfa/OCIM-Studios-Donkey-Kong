@@ -156,28 +156,25 @@ bool ModulePlayer::Start()
 	if ((Module*)App->sceneLevel2->IsEnabled())
 	{
 		currentLevel = "level 2";
-		position.x = 34;
+		position.x = 41;
 		position.y = 232;
 	}
 
 	if ((Module*)App->sceneLevel4->IsEnabled())
 	{
 		currentLevel = "level 4";
-		position.x = 46;
+		position.x = 45;
 		position.y = 232;
 	}
 
-	//
-	//Set initial position
-	//
 
 
 	//
 	//Load Player textures files & set currentAnimation
 	//
-	
 	playerTexture = App->textures->Load("Assets/Sprites/Mario_Sprites.png");
 	lifesTexture = App->textures->Load("Assets/GUI/Scores + Mario.png");
+	gameOverTexture = App->textures->Load("Assets/GUI/GameOver.png");
 	currentAnimation = &idleAnim_Right;
 
 
@@ -201,6 +198,10 @@ bool ModulePlayer::Start()
 	if (lifes == 0)
 	{
 		lifes = 3;
+		for (int i = 0; i < 3; ++i)
+		{
+			lifesDrawingArray[i] = true;
+		}
 	}
 	facingDirection = 1;
 	destroyed = false;
@@ -451,7 +452,15 @@ void ModulePlayer::UpdateState()
 
 	case SUBSTRACT_LIFE:
 	{
-		
+		if (destroyed == true)
+		{
+			ChangeState(state, NO_LIFES);
+		}
+		break;
+	}
+
+	case NO_LIFES:
+	{
 		break;
 	}
 
@@ -665,6 +674,7 @@ void ModulePlayer::UpdateLogic()
 
 			if (lifes == 0) {
 				destroyed = true;
+				break;
 			}
 
 			if (currentLevel == "level 1")
@@ -674,21 +684,43 @@ void ModulePlayer::UpdateLogic()
 			}
 			if (currentLevel == "level 2")
 			{
-				//substractLife = false;
 				CleanUp();
 				App->fade->FadeToBlack((Module*)App->sceneLevel2, (Module*)App->sceneLevel2, 60);
 			}
 			if (currentLevel == "level 4")
 			{
-				//substractLife = false;
 				CleanUp();
 				App->fade->FadeToBlack((Module*)App->sceneLevel4, (Module*)App->sceneLevel4, 60);
 			}
 		}
+		break;
 
-		
+	case NO_LIFES:
+	{
+		--gameOverCountdown;
+		if (gameOverCountdown == 0)
+		{
+			drawGameOver = false;
+
+			if (currentLevel == "level 1")
+			{
+				CleanUp();
+				App->fade->FadeToBlack((Module*)App->sceneLevel1, (Module*)App->sceneIntro, 60);
+			}
+			if (currentLevel == "level 2")
+			{
+				CleanUp();
+				App->fade->FadeToBlack((Module*)App->sceneLevel2, (Module*)App->sceneIntro, 60);
+			}
+			if (currentLevel == "level 4")
+			{
+				CleanUp();
+				App->fade->FadeToBlack((Module*)App->sceneLevel4, (Module*)App->sceneIntro, 60);
+			}
+		}
 
 		break;
+	}
 	}
 
 
@@ -744,6 +776,9 @@ void ModulePlayer::UpdateLogic()
 	wideWallContact = false;
 	substractLife = false;
 
+
+	if (App->input->keys[SDL_SCANCODE_L] == KEY_DOWN)
+		ChangeState(state, DYING);
 
 	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN)
 		debugGamepadInfo = !debugGamepadInfo;
@@ -859,6 +894,7 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 
 		break;
 	}
+
 	case SUBSTRACT_LIFE:
 	{
 		currentAnimation->Reset();
@@ -867,6 +903,12 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 
 		substractLife = true;
 
+		break;
+	}
+
+	case NO_LIFES:
+	{
+		drawGameOver = true;
 		break;
 	}
 	}
@@ -901,7 +943,9 @@ Update_Status ModulePlayer::PostUpdate()
 		}
 	}
 
-
+	//
+	//Draw Lifes
+	//
 	for (int i = 0; i < NUM_LIFES; ++i)
 	{
 		if (lifesDrawingArray[i] == true)
@@ -909,6 +953,14 @@ Update_Status ModulePlayer::PostUpdate()
 			SDL_Rect rect = { 95, 0, 8, 8 };
 			App->render->Blit(lifesTexture, 8 * (i + 1), 24, &rect);
 		}
+	}
+
+	//
+	//Draw Game Over screen
+	//
+	if (drawGameOver == true)
+	{
+		App->render->Blit(gameOverTexture, 55, 161, nullptr);
 	}
 
 
