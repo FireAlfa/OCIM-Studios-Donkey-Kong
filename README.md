@@ -52,6 +52,5 @@ Donkey Kong is an arcade game from the platform genre released on July 9th, 1981
   - Code
   
 * [Maik Garcia](https://github.com/maikgarcia)
-  -
 * [Carles Garriga](https://github.com/FireAlfa) 
   - Code 
