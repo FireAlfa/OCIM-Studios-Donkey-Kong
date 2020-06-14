@@ -143,12 +143,33 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
+	//
+	//Know what level the player is in & Set initial position
+	//
+	if ((Module*)App->sceneLevel1->IsEnabled())
+	{
+		currentLevel = "level 1";
+		position.x = 34;
+		position.y = 232;
+	}
+
+	if ((Module*)App->sceneLevel2->IsEnabled())
+	{
+		currentLevel = "level 2";
+		position.x = 34;
+		position.y = 232;
+	}
+
+	if ((Module*)App->sceneLevel4->IsEnabled())
+	{
+		currentLevel = "level 4";
+		position.x = 46;
+		position.y = 232;
+	}
 
 	//
 	//Set initial position
 	//
-	position.x = 34;
-	position.y = 232;
 
 
 	//
@@ -189,20 +210,7 @@ bool ModulePlayer::Start()
 	ChangeState(state, IDLE);
 
 
-	if ((Module*)App->sceneLevel1->IsEnabled())
-	{
-		currentLevel = "level 1";
-	}
-
-	if ((Module*)App->sceneLevel2->IsEnabled())
-	{
-		currentLevel = "level 2";
-	}
-
-	if ((Module*)App->sceneLevel4->IsEnabled())
-	{
-		currentLevel = "level 4";
-	}
+	
 
 
 	//Font
