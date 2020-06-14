@@ -104,7 +104,7 @@ Debugging controls:
 ## More information
 
 ### For more information see our wiki page [HERE](https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/wiki)
-### Download the last version of the game [HERE](https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/releases/tag/v1.0)
+### Download the last version of the game [HERE](https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/releases/tag/v.1)
 ### Check our Github repository [HERE](https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong)
 <br>
 <details>
