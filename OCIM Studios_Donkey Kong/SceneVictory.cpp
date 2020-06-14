@@ -18,7 +18,15 @@ SceneVictory::SceneVictory(bool startEnabled) : Module(startEnabled)
 	Mario = { 51,17,12,16 };
 	Peach = { 33,0,14,22 };
 	heart = { 0,17,15,13 };
+	
+	counter2 = 0;
+	counter1 = 0;
 	deathcont = 0;
+	dead = false;
+	transition = false;
+	goDownCounter1 = 0;
+	goDownCounter2 = 0;
+	yDescent = 86;
 
 
 
@@ -156,7 +164,7 @@ Update_Status SceneVictory::PostUpdate()
 	}
 	if (counter2 >= 10)
 	{
-		lol = true;
+		transition = true;
 	}
 
 	if (counter2 >= 10 && yDescent <= 184)
