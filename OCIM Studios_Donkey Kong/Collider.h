@@ -3,7 +3,7 @@
 
 #include "SDL/include/SDL_Rect.h"
 
-#define MAX_LISTENERS 5
+#define MAX_LISTENERS 100
 
 class Module;
 
@@ -31,7 +31,7 @@ struct Collider
 		PLAYER_WIDE_FEET,
 
 		ENEMY,
-		TALL_ENEMY,
+		
 		OBJECT,
 
 		STAIR,
@@ -47,6 +47,7 @@ struct Collider
 		PEACH,
 		DK,
 
+		TALLENEMY,
 
 
 		MAX

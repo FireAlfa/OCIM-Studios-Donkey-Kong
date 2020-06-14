@@ -1,6 +1,7 @@
 #include "Enemy_Barrel.h"
 
 #include "Application.h"
+#include "Collider.h"
 #include "ModuleCollisions.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -27,7 +28,7 @@ Enemy_Barrel::Enemy_Barrel(int x, int y, int _direction) : Enemy(x, y)
 
 
 	collider = App->collisions->AddCollider({ position.x + 3, position.y + 4, 6, 6 }, Collider::Type::ENEMY, (Module*)App->enemies);
-	tallCollider = App->collisions->AddCollider({ position.x + 5, position.y - 8, 2, 2 }, Collider::Type::TALL_ENEMY, (Module*)App->enemies);
+	tallCollider = App->collisions->AddCollider({ position.x + 5, position.y - 8, 2, 2 }, Collider::Type::TALLENEMY, (Module*)App->enemies);
 }
 
 Enemy_Barrel::~Enemy_Barrel()
@@ -120,7 +121,7 @@ void Enemy_Barrel::UpdateLogic()
 			}
 		}
 
-		if (falling == true)
+		if (lastCollider != Collider::Type::WALL || lastCollider != Collider::Type::RAMP_LEFT || lastCollider != Collider::Type::RAMP_RIGHT || lastCollider != Collider::Type::TOP_STAIR)
 		{
 			position.y += speed;
 		}
@@ -148,6 +149,39 @@ void Enemy_Barrel::UpdateLogic()
 		position.y -= speed;
 		falling = false;
 	}
+
+
+	switch (lastCollider)
+	{
+	case Collider::Type::NONE:
+		break;
+	case Collider::Type::WALL:
+		position.y -= speed;
+		lastCollider = Collider::Type::NONE;
+		break;
+	case Collider::Type::RAMP_RIGHT:
+	case Collider::Type::RAMP_LEFT:
+	case Collider::Type::PLAYER:
+	case Collider::Type::PLAYER_CENTER:
+	case Collider::Type::PLAYER_WIDE_FEET:
+	case Collider::Type::ENEMY:
+	case Collider::Type::STAIR:
+	case Collider::Type::TOP_STAIR:
+	case Collider::Type::BUTTON:
+	case Collider::Type::TOPWALL:
+	case Collider::Type::LEFTWALL:
+	case Collider::Type::RIGHTWALL:
+	case Collider::Type::GRAVITYWALLS:
+	case Collider::Type::PEACH:
+	case Collider::Type::DK:
+		break;
+	default:
+		position.y += speed;
+		break;
+	}
+
+
+
 
 	rampRight = false;
 	rampLeft = false;
@@ -198,6 +232,11 @@ void Enemy_Barrel::ChangeState(Barrel_State prevState, Barrel_State newState)
 
 void Enemy_Barrel::OnCollision(Collider* c1, Collider* c2)
 {
+	if (c1 == tallCollider && c2->type == Collider::Type::GRAVITYWALLS)
+	{
+		falling = true;
+	}
+
 	//Rolling on the floor collisions
 	if (c1 == collider && c2->type == Collider::Type::RAMP_RIGHT)
 	{
@@ -235,19 +274,24 @@ void Enemy_Barrel::OnCollision(Collider* c1, Collider* c2)
 		
 	}
 
+	if (c1 == tallCollider && c2->type == Collider::Type::PLAYER)
+	{
+		falling = true;
+	}
+
 
 	if (c1 == collider && c2->type == Collider::Type::WALL)
 	{
 		touchedWall = true;
-	}
-
-	if (c1 == tallCollider && c2->type == Collider::Type::GRAVITYWALLS)
-	{
-		falling = true;
+		lastCollider = Collider::Type::WALL;
 	}
 
 	if (c1 == collider && c2->type == Collider::Type::RIGHTWALL || c1 == collider && c2->type == Collider::Type::LEFTWALL)
 	{
 		bounceWall = true;
 	}
+
+
+	
+
 }

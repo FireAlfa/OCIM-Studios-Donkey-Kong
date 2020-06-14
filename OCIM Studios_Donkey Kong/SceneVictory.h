@@ -62,7 +62,9 @@ public:
 
 	bool dead;
 	
-	bool lol;
+	bool transition;
+
+	int deathcont = 0;
 
 	int goDownCounter1 = 0;
 	int goDownCounter2 = 0;
