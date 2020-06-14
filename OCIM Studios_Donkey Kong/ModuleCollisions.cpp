@@ -580,7 +580,8 @@ Update_Status ModuleCollisions::PreUpdate()
 //Check if you want to Debug
 Update_Status ModuleCollisions::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN)
+	GamePad& pad = App->input->pads[0];
+	if (App->input->keys[SDL_SCANCODE_F1] == KEY_DOWN || pad.r1 == true)
 		debug = !debug;
 
 	return Update_Status::UPDATE_CONTINUE;
