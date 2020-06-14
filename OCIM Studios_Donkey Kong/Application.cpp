@@ -9,6 +9,7 @@
 
 #include "ModulePlayer.h"
 #include "SceneIntro.h"
+#include "SceneLevel1Intro.h"
 #include "SceneLevel1.h"
 #include "SceneLevel2.h"
 #include "SceneLevel4.h"
@@ -35,22 +36,23 @@ Application::Application()
 	modules[2] =	textures =		new ModuleTextures(true);
 	modules[3] =	audio =			new ModuleAudio(true);
 
-	modules[4] =	sceneIntro =	new SceneIntro(true);
-	modules[5] =	sceneLevel1 =	new SceneLevel1(false);
-	modules[6] =	sceneLevel2 =	new SceneLevel2(false);
-	modules[7] =	sceneLevel4 =	new SceneLevel4(false);
-	modules[8] =	sceneVictory =	new SceneVictory(false);
+	modules[4] =	sceneIntro		=	new SceneIntro(true);
+	modules[5] = scenelevel1Intro =	new SceneLevel1Intro(false);
+	modules[6] =	sceneLevel1 =	new SceneLevel1(false);
+	modules[7] =	sceneLevel2 =	new SceneLevel2(false);
+	modules[8] =	sceneLevel4 =	new SceneLevel4(false);
+	modules[9] =	sceneVictory =	new SceneVictory(false);
 
-	modules[9] =	player =		new ModulePlayer(false);
-	modules[10] =	particles =		new ModuleParticles(true);
-	modules[11] =	enemies =		new ModuleEnemies(false);
+	modules[10] =	player =		new ModulePlayer(false);
+	modules[11] =	particles =		new ModuleParticles(true);
+	modules[12] =	enemies =		new ModuleEnemies(false);
 
-	modules[12] =	collisions =	new ModuleCollisions(true);
-	modules[13] =	fade =			new ModuleFadeToBlack(true);
-	modules[14] =	fonts =			new ModuleFonts(true);
-	modules[15] =	debugInfo =		new ModuleDebugInfo(true);
+	modules[13] =	collisions =	new ModuleCollisions(true);
+	modules[14] =	fade =			new ModuleFadeToBlack(true);
+	modules[15] =	fonts =			new ModuleFonts(true);
+	modules[16] =	debugInfo =		new ModuleDebugInfo(true);
 
-	modules[16] =	render =		new ModuleRender(true);
+	modules[17] =	render =		new ModuleRender(true);
 }
 
 //Destructor, frees dynamic memory

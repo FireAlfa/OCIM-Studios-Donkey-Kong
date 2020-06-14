@@ -1,19 +1,24 @@
-#ifndef __SCENE_LVL1_H__
-#define __SCENE_LVL1_H__
+#ifndef __SCENE_LEVEL1INTRO_H__
+#define ___SCENE_LEVEL1INTRO_H__
 
 #include "Module.h"
 #include "Animation.h"
 
+
+
+#define SPACE_BLINK 40
+
 struct SDL_Texture;
 
-class SceneLevel1 : public Module
+//Class for the First screen of the game
+class SceneLevel1Intro : public Module
 {
 public:
 	//Constructor
-	SceneLevel1(bool startEnabled);
+	SceneLevel1Intro(bool startEnabled);
 
 	//Destructor
-	~SceneLevel1();
+	~SceneLevel1Intro();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the map background
@@ -21,37 +26,18 @@ public:
 
 	// Called at the middle of the application loop
 	// Updates the scene's background animations
-	Update_Status Update();
+	Update_Status Update() override;
 
 	// Called at the end of the application loop.
 	// Performs the render call of all the parts of the scene's background
-	Update_Status PostUpdate();
+	Update_Status PostUpdate() override;
 
-	// Disables the player and the enemies
+
 	bool CleanUp();
 
-	//Score functions
 
-	void score100() { score += 100; }
-
-	void score300() { score += 300; }
-
-	//
-	//Texture variables
-	//
-		SDL_Texture* lvl1Texture = nullptr;
-		SDL_Texture* lvl1Barrels = nullptr;
-		SDL_Texture* lvl1fireBarrels = nullptr;
-		SDL_Texture* lvl1dkAnimation = nullptr;
-
-	//
-	//
-	//
-	//Collider arrays
-	//
-	//
-	//
-	Collider* ladderColliders[4];
+	SDL_Texture* lvl1Texture = nullptr;
+	SDL_Texture* lvl1dkAnimation = nullptr;
 
 	SDL_Texture* dkBarrels;
 	SDL_Texture* lvl1LeftdkAnimation;
@@ -61,7 +47,7 @@ public:
 	Animation DK;
 	Animation fireBarrel;
 	Animation dkAnim;
-	
+
 	//
 	//Srite rectangles
 	//
@@ -70,12 +56,9 @@ public:
 	SDL_Rect lvl1B;
 	SDL_Rect dkLeftAnim;
 
-	//SDL_Rect buttonRect;
 
 
-	//
-	//Win condition
-	//
+
 	bool lvl1win = false;
 
 	int initialY = 217;
@@ -99,14 +82,16 @@ public:
 
 	int animController0 = 0;
 
-private:
-	uint score = 000000;
-	uint highscore = 000000;
-	uint bonus = 5000;
+public:
+	// The scene sprite sheet loaded into an SDL_Texture
+	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* spaceToStartTexture = nullptr;
 
-	char scoreText[7] = { "\0" };
-	char highscoreText[7] = { "\0" };
-	char bonusText[5] = { "\0" };
+	//Square for texture
+	SDL_Rect spaceToStartRect;
+
+	//Counter to know when to print the Space to Start text
+	int cont = 0;
 
 };
 
