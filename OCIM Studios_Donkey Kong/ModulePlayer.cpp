@@ -322,15 +322,42 @@ void ModulePlayer::UpdateState()
 
 		if (App->input->keys[SDL_SCANCODE_J] == KEY_DOWN || pad.y == true)
 		{
-
 			App->collisions->RemoveCollider(playerCollider);
 			App->collisions->RemoveCollider(playerCenterCollider);
 			App->collisions->RemoveCollider(playerFeetCollider);
 			App->collisions->RemoveCollider(playerWideFeetCollider);
+			
+			ChangeState(state, GOD_MODE);	
+
 		}
 
 		break;
 	}
+
+	case GOD_MODE:
+
+		if (App->input->keys[SDL_SCANCODE_J] == KEY_DOWN || pad.y == true)
+		{
+			float x, y;
+			x = position.x;
+			y = position.y;
+			playerCollider = App->collisions->AddCollider({ (int)x, (int)y, 12, 16 }, Collider::Type::PLAYER, this);
+			x = position.x + 5.0f;
+			playerCenterCollider = App->collisions->AddCollider({ (int)x ,(int)y, 3, 16 }, Collider::Type::PLAYER_CENTER, this);
+			y = position.y + 14.0f;
+			playerFeetCollider = App->collisions->AddCollider({ (int)x ,(int)y, 3, 2 }, Collider::Type::PLAYER_FEET, this);
+			x = position.x + 2.0f;
+			y = position.y + 15.0f;
+			playerWideFeetCollider = App->collisions->AddCollider({ (int)x, (int)y, 8, 1 }, Collider::Type::PLAYER_WIDE_FEET, this);
+
+
+
+			ChangeState(state, IDLE);
+
+		}
+
+		break;
+
 
 	case RUNNING:
 	{
@@ -567,6 +594,21 @@ void ModulePlayer::UpdateLogic()
 
 		break;
 	}
+
+	case GOD_MODE:
+		if (App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN || App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_REPEAT || pad.l_y < 0.0f)
+			position.y -= speed;
+
+		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN || App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x > 0.0f)
+			position.x -= speed;
+
+		if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN || App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_REPEAT || pad.l_y > 0.0f)
+			position.y += speed;
+
+		if (App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN || App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.0f)
+			position.x += speed;
+
+		break;
 
 	case RUNNING:
 	{
