@@ -4,6 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
+#include "ModuleCollisions.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 
@@ -101,7 +102,7 @@ bool SceneLevel1Intro::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Maps/startScreen_text.png");
+	bgTexture = App->textures->Load("Assets/Maps/level1.png");
 	lvl1dkAnimation = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
 
 
@@ -232,7 +233,11 @@ Update_Status SceneLevel1Intro::Update()
 			contX2++;
 		}
 	}
-
+	if (contX == 40)
+	{
+		CleanUp();
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel1, 30);
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }

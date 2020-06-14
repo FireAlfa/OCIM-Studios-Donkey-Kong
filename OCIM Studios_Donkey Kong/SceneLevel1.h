@@ -83,22 +83,6 @@ public:
 	int animCont1 = 0;
 
 
-	bool topReached = false;
-
-	int jumpY = 52;
-
-	int time1 = 0;
-
-	int contX1 = 0;
-
-	int contX2 = 0;
-
-	int contX = 90;
-
-	int totalJumps = 0;
-
-	int animController0 = 0;
-
 private:
 	uint score = 000000;
 	uint highscore = 000000;
