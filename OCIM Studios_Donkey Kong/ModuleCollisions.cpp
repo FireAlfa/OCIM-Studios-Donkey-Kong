@@ -102,7 +102,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER_FEET] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::STAIR] = false; //They should be able to move up and down stairs
-	matrix[Collider::Type::ENEMY][Collider::Type::TOP_STAIR] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::TOP_STAIR] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::BUTTON] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::TOPWALL] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::LEFTWALL] = false;

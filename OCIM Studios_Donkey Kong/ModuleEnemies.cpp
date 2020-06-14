@@ -11,6 +11,10 @@
 //
 #include "Enemy.h"
 #include "Enemy_DonkeyKong.h"
+#include "Enemy_Barrel.h"
+#include "Enemy_BlueBarrel.h"
+#include "Enemy_Cement.h"
+#include "Enemy_Fire.h"
 
 
 
@@ -189,9 +193,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 
 					break;
 			
-				//case Enemy_Type::BARREL:
-				//	enemies[i] = new Enemy_Barrel(info.x, info.y, info.direction);
-				//	break;
+					case Enemy_Type::BARREL:
+						enemies[i] = new Enemy_Barrel(info.x, info.y, info.direction);
+					break;
 
 				//case Enemy_Type::BLUEBARREL:
 				//	enemies[i] = new Enemy_BlueBarrel(info.x, info.y);
@@ -215,11 +219,12 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 //Control the collision between the enemies and other colliders
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
+
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
+			enemies[i]->OnCollision(c1, c2); //Notify the enemy of a collision
 
 			/*delete enemies[i];
 			enemies[i] = nullptr;*/

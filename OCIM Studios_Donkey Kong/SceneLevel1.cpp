@@ -7,7 +7,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
-
+#include "ModuleFonts.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 
@@ -375,7 +375,6 @@ bool SceneLevel1::Start()
 	lvl1win = false;
 
 
-
 	//
 	//Load the files of each texture & audio
 	//
@@ -383,6 +382,7 @@ bool SceneLevel1::Start()
 	dkBarrels = App->textures->Load("Assets/Sprites/DonkeyKong_Sprites.png");
 	lvl1Barrels = App->textures->Load("Assets/Sprites/Barrells_Sprites.png");
 	lvl1fireBarrels = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
+
 
 
 // ===================== WALLS ==================== //
@@ -603,6 +603,7 @@ bool SceneLevel1::Start()
 	//
 	//Add enemies
 	//
+	App->enemies->AddEnemy(Enemy_Type::BARREL, 62, 75, 1);
 
 	
 
@@ -618,6 +619,10 @@ Update_Status SceneLevel1::Update()
 	DK.Update();
 	fireBarrel.Update();
 
+	//
+	//Enemies
+	//
+	
 
 
 	//

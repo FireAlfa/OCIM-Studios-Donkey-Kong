@@ -30,7 +30,11 @@ public:
 	// Disables the player and the enemies
 	bool CleanUp();
 
-public:
+	//Score functions
+
+	void score100() { score += 100; }
+
+	void score300() { score += 300; }
 
 	//
 	//Texture variables
@@ -65,6 +69,15 @@ public:
 	//Win condition
 	//
 	bool lvl1win = false;
+
+private:
+	uint score = 000000;
+	uint highscore = 000000;
+	uint bonus = 5000;
+
+	char scoreText[7] = { "\0" };
+	char highscoreText[7] = { "\0" };
+	char bonusText[5] = { "\0" };
 
 };
 

@@ -32,7 +32,7 @@ public:
 
 	// Collision response
 	// Triggers an animation and a sound fx
-	virtual void OnCollision(Collider* collider);
+	virtual void OnCollision(Collider* c1, Collider* c2);
 
 	// Sets flag for deletion and for the collider aswell
 	virtual void SetToDelete();
@@ -58,6 +58,14 @@ public:
 
 	// A flag for the enemy removal. Important! We do not delete objects instantly
 	bool pendingToDelete = false;
+
+	//collision flag
+	bool enemyCanFall = false;
+	bool enemyHitRight = false;
+	bool enemyHitLeft = false;
+
+	//Var to allocate rand value
+	int randomValue;
 
 protected:
 	// A ptr to the current animation

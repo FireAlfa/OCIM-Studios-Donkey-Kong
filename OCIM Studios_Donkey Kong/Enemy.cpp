@@ -43,12 +43,20 @@ void Enemy::Draw()
 }
 
 //Control the collisions between the enemy and other colliders
-void Enemy::OnCollision(Collider* collider)
+void Enemy::OnCollision(Collider* c1, Collider* c2)
 {
-	/*App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	App->audio->PlayFx(destroyedFx);
+	if (c1 == collider && c2->type == Collider::Type::TOP_STAIR) {
+		enemyCanFall = true;
+	}
 
-	SetToDelete();*/
+	if (c1 == collider && c2->type == Collider::Type::RIGHTWALL)
+	{
+		enemyHitRight = true;
+	}
+	if (c1 == collider && c2->type == Collider::Type::LEFTWALL)
+	{
+		enemyHitLeft = true;
+	}
 }
 
 //Put the enemy in delete queue
