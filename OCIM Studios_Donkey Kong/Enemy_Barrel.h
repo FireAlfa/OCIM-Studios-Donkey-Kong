@@ -18,10 +18,10 @@ public:
 	void UpdateLogic();
 
 	// Transition from one state to a new one. Changes animations, resets variables,...
-	void ChangeState(Enemy_State previousState, Enemy_State newState);
+	//void ChangeState(Enemy_State previousState, Enemy_State newState);
 
 	//State of the enemy
-	Enemy_State state = ENEMY_MOVING;
+	//Enemy_State state = ENEMY_MOVING;
 
 	//
 	//Enemy Flags

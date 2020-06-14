@@ -18,10 +18,10 @@ enum TypeList
 
 enum StateList
 {
-	IDLE,
-	MOVING,
-	FALLING,
-	CLIMBING
+	IDLE_BAD,
+	MOVING2_BAD,
+	FALLING_BAD,
+	CLIMBING_BAD,
 };
 
 //Enemy base class
@@ -73,7 +73,7 @@ public:
 	SDL_Rect aux;
 
 	//Last collider
-	int lastCollider = Collider::Type::NONE;
+	//int lastCollider = Collider::Type::NONE;
 
 	// The enemy's texture
 	SDL_Texture* texture = nullptr;
