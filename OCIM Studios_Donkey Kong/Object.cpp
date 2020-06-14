@@ -33,10 +33,10 @@ void Object::Update()
 
 void Object::Draw()
 {
-	if (currentAnim != nullptr)
+	/*if (currentAnim != nullptr)
 	{
 		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame));
-	}
+	}*/
 }
 
 void Object::OnCollision(Collider* collider)

@@ -26,7 +26,7 @@ Enemy_Barrel::Enemy_Barrel(int x, int y, int _direction) : Enemy(x, y)
 	currentAnim = &BarrelAnim;
 
 
-	collider = App->collisions->AddCollider({ position.x + 1, position.y + 1, 8, 8 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({ position.x + 3, position.y + 4, 6, 6 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 Enemy_Barrel::~Enemy_Barrel()
@@ -132,7 +132,7 @@ void Enemy_Barrel::UpdateLogic()
 	rampLeft = false;
 	touchedWall = false;
 
-	collider->SetPos(position.x + 1, position.y + 2);
+	collider->SetPos(position.x + 3, position.y + 4);
 }
 
 void Enemy_Barrel::ChangeState(Barrel_State prevState, Barrel_State newState)
@@ -149,7 +149,7 @@ void Enemy_Barrel::ChangeState(Barrel_State prevState, Barrel_State newState)
 		break;
 
 	case BARREL_FALLING:
-		position.x = aux.x - 4;
+		position.x = aux.x - 3;
 		currentAnim = &BarrelFall;
 
 		break;

@@ -9,3 +9,14 @@ Bag::Bag(int x, int y) : Object(x, y)
 	currentAnim = &bagAnim;
 	//objcollider = App->collisions->AddCollider({112, 128, 8, 12}, Collider::Type::OBJECT, (Module*)App->Object);
 }
+
+Bag::~Bag()
+{
+
+}
+
+
+void Bag::Update()
+{
+
+}
