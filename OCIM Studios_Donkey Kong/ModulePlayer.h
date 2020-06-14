@@ -8,7 +8,7 @@
 
 
 #define NUM_LIFES 3
-#define TIME_PERIOD 10
+#define TIME_PERIOD 100
 
 struct SDL_Texture;
 struct Collider;

@@ -50,8 +50,7 @@ void Enemy_Barrel::UpdateState()
 	case BARREL_MOVING:
 		if (canGoDownStairs == true)
 		{
-			//random = rand() % 10 + 1;
-			random = 3;
+			random = rand() % 10 + 1;
 			if (random <= 3)
 			{
 				ChangeState(barrelState, BARREL_FALLING);
@@ -160,7 +159,15 @@ void Enemy_Barrel::ChangeState(Barrel_State prevState, Barrel_State newState)
 		break;
 
 	case BARREL_FALLING:
-		position.x = aux.x - 6; //179, 77  //187, 86
+		if (direction == 1)
+		{
+			position.x = aux.x - 6;
+		}
+		if (direction == -1)
+		{
+			position.x = aux.x - 5;
+		}
+		
 
 		currentAnim = &BarrelFall;
 
@@ -197,7 +204,17 @@ void Enemy_Barrel::OnCollision(Collider* c1, Collider* c2)
 		aux = c2->GetRect();
 
 		if (aux.y - 8 <= c1Rect.y) {
-			canGoDownStairs = true;
+			if (direction == 1 && aux.x - 5 == c1Rect.x) {
+				canGoDownStairs = true;
+			}
+			else if (direction == -1 && aux.x - 5 != c1Rect.x)
+			{
+				canGoDownStairs = true;
+			}
+			else {
+				canGoDownStairs = false;
+			}
+			
 		}
 
 		

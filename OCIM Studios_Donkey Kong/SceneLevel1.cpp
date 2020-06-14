@@ -495,7 +495,7 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 47, 118, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 50, 119, 14, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 63, 117, 1, 1 }, Collider::Type::RAMP_RIGHT);
-	App->collisions->AddCollider({ 66, 118, 8, 1 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 66, 118, 6, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 79, 116, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 82, 117, 14, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 95, 115, 1, 1 }, Collider::Type::RAMP_RIGHT);
