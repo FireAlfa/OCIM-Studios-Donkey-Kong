@@ -39,12 +39,26 @@ public:
 
 	SDL_Texture* lvl1Texture = nullptr;
 	SDL_Texture* deathanim = nullptr;
+	SDL_Texture* leftright = nullptr;
 
 
+	SDL_Texture* downAnim = nullptr;
 
-
+	SDL_Rect goDown;
 	Animation armS;
+	Animation dowN;
+	Animation landr;
 
+	int counter1 = 0;
+	int counter2 = 0;
+
+
+	int goDownCounter1 = 0;
+	int goDownCounter2 = 0;
+	int yDescent;
+
+	int lastAnim1 = 0;
+	int lastAnim2 = 0;
 
 	//
 	//Srite rectangles
@@ -56,7 +70,7 @@ public:
 	SDL_Texture* spaceToStartTexture = nullptr;
 
 	//Square for texture
-	SDL_Rect spaceToStartRect;
+	SDL_Rect vscreen;
 
 	//Counter to know when to print the Space to Start text
 	int cont = 0;
