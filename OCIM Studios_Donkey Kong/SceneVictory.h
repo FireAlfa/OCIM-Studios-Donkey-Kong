@@ -40,11 +40,19 @@ public:
 	SDL_Texture* lvl1Texture = nullptr;
 	SDL_Texture* deathanim = nullptr;
 	SDL_Texture* leftright = nullptr;
+	SDL_Texture* heartVicotry = nullptr;
 
 
 	SDL_Texture* downAnim = nullptr;
+	SDL_Texture* marioT = nullptr;
+	SDL_Texture* peachT = nullptr;
+	SDL_Texture* heartT = nullptr; 
 
+
+	SDL_Rect heart;
 	SDL_Rect goDown;
+	SDL_Rect Mario;
+	SDL_Rect Peach;
 	Animation armS;
 	Animation dowN;
 	Animation landr;
@@ -52,7 +60,8 @@ public:
 	int counter1 = 0;
 	int counter2 = 0;
 
-
+	bool dead;
+	
 	int goDownCounter1 = 0;
 	int goDownCounter2 = 0;
 	int yDescent;
@@ -71,6 +80,7 @@ public:
 
 	//Square for texture
 	SDL_Rect vscreen;
+	SDL_Rect wincond;
 
 	//Counter to know when to print the Space to Start text
 	int cont = 0;

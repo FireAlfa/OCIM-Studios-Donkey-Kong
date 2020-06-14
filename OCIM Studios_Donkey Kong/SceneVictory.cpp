@@ -13,7 +13,12 @@ SceneVictory::SceneVictory(bool startEnabled) : Module(startEnabled)
 {
 	name = "s_sceneVictory";
 	vscreen = { 0, 0, 224, 256 };
+	wincond = { 0, 0, 224, 256 };
 	goDown = { 94,103 ,40,32 };
+	Mario = { 51,17,12,16 };
+	Peach = { 33,0,14,22 };
+	heart = { 0,17,15,13 };
+
 
 
 
@@ -135,9 +140,13 @@ bool SceneVictory::Start()
 	bool ret = true;
 
 	lvl1Texture = App->textures->Load("Assets/Maps/victoryScreen.png");
+	peachT = App->textures->Load("Assets/Sprites/Peach_Sprites.png");
+	marioT = App->textures->Load("Assets/Sprites/Mario_Sprites.png");
+	heartVicotry = App->textures->Load("Assets/Maps/victoryScreen2.png");
 	deathanim = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
 	downAnim = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
 	leftright = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
+	heartT = App->textures->Load("Assets/GUI/Particles.png");
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -201,9 +210,16 @@ Update_Status SceneVictory::Update()
 // Update: draw background
 Update_Status SceneVictory::PostUpdate()
 {
-
+	if (yDescent < 184)
+	{
+		dead = false;
+	}
 	// Draw everything --------------------------------------
-	App->render->Blit(lvl1Texture, 0, 0, NULL);
+	if (dead == false)
+	{
+		App->render->Blit(lvl1Texture, 0, 0, NULL);
+	}
+
 
 	if (counter2 <= 30)
 	{
@@ -213,11 +229,17 @@ Update_Status SceneVictory::PostUpdate()
 	{
 		App->render->Blit(downAnim, 93, yDescent, &goDown, NULL, false);
 	}
-
 	if (yDescent == 184)
 	{
-		CleanUp();
-		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 40);
+		dead = true;
+	}
+	if (dead)
+	{
+
+		App->render->Blit(heartVicotry, 0, 0, NULL);
+		App->render->Blit(heartT, 85, 45, &heart, NULL, false);
+		App->render->Blit(peachT, 74, 66, &Peach, NULL, false);
+		App->render->Blit(marioT, 106, 72, &Mario, NULL, false);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
