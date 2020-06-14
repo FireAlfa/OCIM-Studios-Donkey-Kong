@@ -17,6 +17,7 @@
 
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
+#include "ModuleObject.h"
 
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
@@ -46,13 +47,14 @@ Application::Application()
 	modules[10] =	player =		new ModulePlayer(false);
 	modules[11] =	particles =		new ModuleParticles(true);
 	modules[12] =	enemies =		new ModuleEnemies(false);
+	modules[13] =	objects =		new ModuleObject(false);
 
-	modules[13] =	collisions =	new ModuleCollisions(true);
-	modules[14] =	fade =			new ModuleFadeToBlack(true);
-	modules[15] =	fonts =			new ModuleFonts(true);
-	modules[16] =	debugInfo =		new ModuleDebugInfo(true);
+	modules[14] =	collisions =	new ModuleCollisions(true);
+	modules[15] =	fade =			new ModuleFadeToBlack(true);
+	modules[16] =	fonts =			new ModuleFonts(true);
+	modules[17] =	debugInfo =		new ModuleDebugInfo(true);
 
-	modules[17] =	render =		new ModuleRender(true);
+	modules[18] =	render =		new ModuleRender(true);
 }
 
 //Destructor, frees dynamic memory
