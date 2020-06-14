@@ -99,12 +99,14 @@ public:
 	Collider* playerCollider = nullptr;
 	Collider* playerCenterCollider = nullptr;
 	Collider* playerFeetCollider = nullptr;
+	Collider* playerWideFeetCollider = nullptr;
 
 	//
 	//Auxiliar variables
 	//
 	//Rectangle of the other collider
 	SDL_Rect aux;
+	SDL_Rect topStairCollider;
 	//Last collider
 	int lastCollider = Collider::Type::NONE;
 	//Auxiliar collider for buttons

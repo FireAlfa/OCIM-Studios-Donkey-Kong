@@ -19,7 +19,6 @@ struct Collider
 
 
 		WALL,
-		GOUPWALL,
 		RAMP_RIGHT,
 		RAMP_LEFT,
 
@@ -27,6 +26,7 @@ struct Collider
 		PLAYER,
 		PLAYER_CENTER,
 		PLAYER_FEET,
+		PLAYER_WIDE_FEET,
 
 		ENEMY,
 
