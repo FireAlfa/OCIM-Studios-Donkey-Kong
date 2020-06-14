@@ -128,7 +128,7 @@
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="ModuleObject.cpp">
-      <Filter>Source Files\Modules\Core</Filter>
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -238,7 +238,7 @@
       <Filter>Source Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="ModuleObject.h">
-      <Filter>Source Files\Modules\Core</Filter>
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

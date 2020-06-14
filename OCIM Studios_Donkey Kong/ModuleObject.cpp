@@ -6,7 +6,10 @@
 
 ModuleObject::ModuleObject(bool startEnabled) : Module(startEnabled)
 {
+	name = "objects";
 
+	for (uint i = 0; i < MAX_OBJ; ++i)
+		objects[i] = nullptr;
 }
 
 ModuleObject::~ModuleObject()
@@ -15,14 +18,6 @@ ModuleObject::~ModuleObject()
 }
 
 
-
-//Called at the beginning of the application execution
-bool ModuleObject::Init()
-{
-
-
-	return true;
-}
 
 //Called when the module is activated
 //By now we will consider all modules to be permanently active
@@ -64,4 +59,19 @@ bool ModuleObject::CleanUp()
 {
 
 	return true;
+}
+
+void ModuleObject::OnCollision(Collider* c1, Collider* c2)
+{
+	for (uint i = 0; i < MAX_OBJ; ++i)
+	{
+		if (objects[i] != nullptr && objects[i]->GetCollider() == c1)
+		{
+			objects[i]->OnCollision(c1); //Notify the object of a collision
+
+			//delete [i];
+			//enemies[i] = nullptr;
+			break;
+		}
+	}
 }
