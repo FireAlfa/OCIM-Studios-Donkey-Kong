@@ -66,7 +66,42 @@ Debugging controls:
 [IsaacPort]: https://raw.githubusercontent.com/FireAlfa/OCIM-Studios-Donkey-Kong/master/docs/IsaacPortrait.png
 [MaikPort]: https://raw.githubusercontent.com/FireAlfa/OCIM-Studios-Donkey-Kong/master/docs/MaikPortrait.png
 [CarlesPort]: https://raw.githubusercontent.com/FireAlfa/OCIM-Studios-Donkey-Kong/master/docs/CarlesPortrait.png
+<br>
+<details> 
+  <summary> Òscar Canales - Individual Work </summary>
+- Implementation of Level 2 and colliders<br>
+- Enemies implementation<br>
+- Added Score, Highscore and Bonus<br>
+- Web Design
+</details><br>
 
+
+<details> 
+  <summary> Isaac Colomer - Individual Work </summary>
+- Level 1 and colliders implementation<br>
+- 
+</details><br>
+
+<details> 
+  <summary> Maik Garcia - Individual Work </summary>
+- 
+</details><br>
+
+<details> 
+  <summary> Carles Garriga - Individual Work </summary>
+- Level 4 and colliders implementation<br>
+- Implemented Mario movement and collisions<br>
+- Added Staris colliders<br>
+- Level 4 button functionality
+- Implemented main animations (DK, Mario and Pauline)<br>
+- Physics implementation<br>
+- Win/Lose Condition<br>
+- Lives system implementation
+</details><br>
+
+
+
+## More information
 
 ### For more information see our wiki page [HERE](https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/wiki)
 ### Download the last version of the game [HERE](https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/releases/tag/v1.0)
