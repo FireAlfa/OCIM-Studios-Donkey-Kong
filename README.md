@@ -9,7 +9,7 @@ Donkey Kong is an arcade game from the platform genre released on July 9th, 1981
 
 
 ## How to install it
-* Download the last version of the game [HERE](https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/releases/tag/v1.0). 
+* Download the last version of the game [HERE](https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/releases/download/v.1/OCIM.Studios_Donkey.Kong_v.1.zip). 
 * Right click on the .zip file and click on "Extract here". 
 * Open the folder and execute the .exe.
 
