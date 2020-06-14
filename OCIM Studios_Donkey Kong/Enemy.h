@@ -5,24 +5,10 @@
 #include "Animation.h"
 #include <time.h>
 
+
+
 struct SDL_Texture;
 struct Collider;
-
-enum TypeList
-{
-	BARREL,
-	BLUEBARREL,
-	FIRE,
-	CEMENT
-};
-
-enum StateList
-{
-	IDLE_BAD,
-	MOVING2_BAD,
-	FALLING_BAD,
-	CLIMBING_BAD,
-};
 
 //Enemy base class
 class Enemy
@@ -34,8 +20,7 @@ public:
 	// Destructor
 	virtual ~Enemy();
 
-	// Returns the enemy's collider
-	const Collider* GetCollider() const;
+	
 
 	// Called from inhering enemies' Udpate
 	// Updates animation and collider position
@@ -51,11 +36,14 @@ public:
 	// Sets flag for deletion and for the collider aswell
 	virtual void SetToDelete();
 	
+	// Returns the enemy's collider
+	const Collider* GetCollider() const;
+
+public:
 
 	//
 	// Variables
 	//
-
 	//Position of the enemy in the map
 	iPoint position;
 
@@ -64,10 +52,6 @@ public:
 
 	//Facing Diretion of the enemy
 	int facingDirection = 1;
-
-	//Enums
-	TypeList enemType;
-	StateList enemState;
 
 	//Rectangle of other collider
 	SDL_Rect aux;

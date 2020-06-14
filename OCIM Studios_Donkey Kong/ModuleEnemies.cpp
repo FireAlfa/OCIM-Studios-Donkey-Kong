@@ -39,17 +39,15 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	//
-	//Load texture files
+	//Load texture files used by ALL enemies
 	//
 	texture = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
 
+
 	//
+	//Load FX files used by ALL enemies
 	//
-	//
-	//Load FX files
-	//
-	//
-	//
+	enemyDestroyedFx = App->audio->LoadFx("Assets/Audio/FX/Kill.ogg"); //General enemy death sound
 
 
 	return true;

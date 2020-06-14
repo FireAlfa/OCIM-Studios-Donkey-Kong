@@ -32,92 +32,15 @@ Enemy_Barrel::Enemy_Barrel(int x, int y, int direction) : Enemy(x, y)
 // It will update the collider depending on the position
 void Enemy_Barrel::UpdateState()
 {
-	/*srand(time(NULL));
-	if (enemyCanFall == true)
-	{
-
-
-	randomValue = rand() % 3;
-
-		if (randomValue == 0)
-		{
-		ChangeState(ENEMY_MOVING, ENEMY_FALLING);
-		}
-	}
-
-	if (enemyHitRight == true)
-	{
-		randomValue = rand() % 3;
-
-		if (randomValue == 0)
-		{
-			facingDirection *= -1;
-		}
-	}
-
-	if (enemyHitLeft == true)
-	{
-		randomValue = rand() % 3;
-
-		if (randomValue == 0)
-		{
-			facingDirection *= -1;
-		}
-	}*/
 
 }
-
-//void Enemy_Barrel::ChangeState(Enemy_State prevState, Enemy_State newState)
-//{
-//	switch (newState)
-//	{
-//	case ENEMY_MOVING:
-//		currentAnim = &BarrelAnim;
-//		break;
-//	case ENEMY_FALLING:
-//		currentAnim = &BarrelFall;
-//		break;
-//	}
-//}
 
 void Enemy_Barrel::UpdateLogic()
 {
-	//switch (state)
-	//{
-	//case ENEMY_MOVING:
-	//	if (rampRight == true)
-	//	{
-	//		//Left
-	//		if (facingDirection == -1)
-	//		{
-	//			if (collider->rect.y <= aux.y - 8 && collider->rect.x + 4 == aux.x) //Go Down Looking Left//
-	//			{
-	//				position.y += speed;
-	//			}
-	//		}
-	//	}
-
-	//	if (rampLeft == true)
-	//	{
-	//		//Right
-	//		if (facingDirection == 1)
-	//		{
-	//			if (collider->rect.y <= aux.y - 8 && collider->rect.x + 5 == aux.x) //Go Down Looking Right
-	//			{
-	//				position.y += speed;
-	//			}
-	//		}
-	//	}
-
-	//	position.x += speed * facingDirection;
-	//	currentAnim->Update();
-
-	//	break;
-
-	//case ENEMY_FALLING:
-	//	position.y += speed;
-	//	 
-	//	break;
-	//}
+	
 }
 
+void Enemy_Barrel::ChangeState(Enemy_State prevState, Enemy_State newState)
+{
+
+}
