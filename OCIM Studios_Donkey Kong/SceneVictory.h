@@ -1,6 +1,7 @@
 #ifndef __SCENE_VICTORY_H__
 #define __SCENE_VICTORY_H__
 
+
 #include "Module.h"
 #include "Animation.h"
 
@@ -33,9 +34,33 @@ public:
 	Update_Status PostUpdate() override;
 
 
+	bool CleanUp();
+
+
+	SDL_Texture* lvl1Texture = nullptr;
+	SDL_Texture* deathanim = nullptr;
+
+
+
+
+	Animation armS;
+
+
+	//
+	//Srite rectangles
+	//
+
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* spaceToStartTexture = nullptr;
+
+	//Square for texture
+	SDL_Rect spaceToStartRect;
+
+	//Counter to know when to print the Space to Start text
+	int cont = 0;
+
 };
 
 #endif
