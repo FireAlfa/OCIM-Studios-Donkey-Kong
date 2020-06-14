@@ -211,7 +211,10 @@ bool ModulePlayer::Start()
 	canGoDownStairs = false;
 	feetTopStairs = false;
 	substractLife = false;
+	died = false;
 	falling = false;
+	bonus = 5000;
+	time = TIME_PERIOD;
 	ChangeState(state, IDLE);
 
 
@@ -219,8 +222,16 @@ bool ModulePlayer::Start()
 
 
 	//Font
-	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
-	scoreFont = App->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 2); //change file
+	//Debugging
+	char lookupTableD[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
+	debuggingFont = App->fonts->Load("Assets/Fonts/rtype_font.png", lookupTableD, 2); 
+	//Score & Highscore
+	char lookupTableS[] = { "0123456789" };
+	scoreFont = App->fonts->Load("Assets/Fonts/fontWhite.png", lookupTableS, 1);
+	//Bonus
+	char lookupTableB[] = { "0123456789" };
+	bonusFont = App->fonts->Load("Assets/Fonts/fontBlue.png", lookupTableB, 1);
+
 
 	return ret;
 }
@@ -228,11 +239,36 @@ bool ModulePlayer::Start()
 //Main player Update
 Update_Status ModulePlayer::Update()
 {
+	time--;
+
 	//
 	//State updates
 	//
 	UpdateState();
 	UpdateLogic();
+
+	//
+	//Score system
+	//
+
+	//Update Highscore
+	if (score >= highscore) { highscore = score; }
+	
+	//Only allow Positive Bonus
+	if (bonus <= 0 && died == false)
+	{
+		bonus = 0;
+		ChangeState(state, DYING);
+		died = true;
+	}
+	
+	//Reduce Bonus by time
+		if (time == 0 && bonus > 0) {
+		time = TIME_PERIOD;
+		bonus -= 100;
+	}
+
+
 
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -992,13 +1028,26 @@ Update_Status ModulePlayer::PostUpdate()
 	{
 		App->render->Blit(gameOverTexture, 55, 161, nullptr);
 	}
+	
+	//
+	//Draw Score
+	//
+	sprintf_s(scoreText, 8, "%6d", score);
+	sprintf_s(highscoreText, 8, "%6d", score);
+	sprintf_s(bonusText, 5, "%4d", bonus);
+
+	//Score Blits
+	App->fonts->BlitText(8, 8, scoreFont, scoreText);
+	App->fonts->BlitText(88, 8, scoreFont, highscoreText);
+	App->fonts->BlitText(175, 47, bonusFont, bonusText);
+
 
 
 	//Debug Gamepad
 	if (debugGamepadInfo == true)
 		DebugDrawGamepadInfo();
 	else
-		App->fonts->BlitText(5, 10, scoreFont, "press g to display gamepad debug info");
+		App->fonts->BlitText(5, 10, debuggingFont, "press g to display gamepad debug info");
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -1109,10 +1158,10 @@ void ModulePlayer::DebugDrawGamepadInfo()
 {
 	GamePad& pad = App->input->pads[0];
 
-	sprintf_s(scoreText, 150, "pad 0 %s, press 1/2/3 for rumble", (pad.enabled) ? "plugged" : "not detected");
-	App->fonts->BlitText(5, 10, scoreFont, scoreText);
+	sprintf_s(debuggingText, 150, "pad 0 %s, press 1/2/3 for rumble", (pad.enabled) ? "plugged" : "not detected");
+	App->fonts->BlitText(5, 10, debuggingFont, debuggingText);
 
-	sprintf_s(scoreText, 150, "buttons %s %s %s %s %s %s %s %s %s %s %s",
+	sprintf_s(debuggingText, 150, "buttons %s %s %s %s %s %s %s %s %s %s %s",
 		(pad.a) ? "a" : "",
 		(pad.b) ? "b" : "",
 		(pad.x) ? "x" : "",
@@ -1125,30 +1174,30 @@ void ModulePlayer::DebugDrawGamepadInfo()
 		(pad.l3) ? "l3" : "",
 		(pad.r3) ? "r3" : ""
 	);
-	App->fonts->BlitText(5, 20, scoreFont, scoreText);
+	App->fonts->BlitText(5, 20, debuggingFont, debuggingText);
 
-	sprintf_s(scoreText, 150, "dpad %s %s %s %s",
+	sprintf_s(debuggingText, 150, "dpad %s %s %s %s",
 		(pad.up) ? "up" : "",
 		(pad.down) ? "down" : "",
 		(pad.left) ? "left" : "",
 		(pad.right) ? "right" : ""
 	);
-	App->fonts->BlitText(5, 30, scoreFont, scoreText);
+	App->fonts->BlitText(5, 30, debuggingFont, debuggingText);
 
-	sprintf_s(scoreText, 150, "left trigger  %0.2f", pad.l2);
-	App->fonts->BlitText(5, 40, scoreFont, scoreText);
-	sprintf_s(scoreText, 150, "right trigger %0.2f", pad.r2);
-	App->fonts->BlitText(5, 50, scoreFont, scoreText);
+	sprintf_s(debuggingText, 150, "left trigger  %0.2f", pad.l2);
+	App->fonts->BlitText(5, 40, debuggingFont, debuggingText);
+	sprintf_s(debuggingText, 150, "right trigger %0.2f", pad.r2);
+	App->fonts->BlitText(5, 50, debuggingFont, debuggingText);
 
-	sprintf_s(scoreText, 150, "left thumb    %.2fx, %0.2fy", pad.l_x, pad.l_y);
-	App->fonts->BlitText(5, 60, scoreFont, scoreText);
+	sprintf_s(debuggingText, 150, "left thumb    %.2fx, %0.2fy", pad.l_x, pad.l_y);
+	App->fonts->BlitText(5, 60, debuggingFont, debuggingText);
 
-	sprintf_s(scoreText, 150, "   deadzone   %0.2f", pad.l_dz);
-	App->fonts->BlitText(5, 70, scoreFont, scoreText);
+	sprintf_s(debuggingText, 150, "   deadzone   %0.2f", pad.l_dz);
+	App->fonts->BlitText(5, 70, debuggingFont, debuggingText);
 
-	sprintf_s(scoreText, 150, "right thumb   %.2fx, %0.2fy", pad.r_x, pad.r_y);
-	App->fonts->BlitText(5, 80, scoreFont, scoreText);
+	sprintf_s(debuggingText, 150, "right thumb   %.2fx, %0.2fy", pad.r_x, pad.r_y);
+	App->fonts->BlitText(5, 80, debuggingFont, debuggingText);
 
-	sprintf_s(scoreText, 150, "   deadzone   %0.2f", pad.r_dz);
-	App->fonts->BlitText(5, 90, scoreFont, scoreText);
+	sprintf_s(debuggingText, 150, "   deadzone   %0.2f", pad.r_dz);
+	App->fonts->BlitText(5, 90, debuggingFont, debuggingText);
 }

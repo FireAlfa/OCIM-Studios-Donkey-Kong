@@ -8,6 +8,7 @@
 
 
 #define NUM_LIFES 3
+#define TIME_PERIOD 10
 
 struct SDL_Texture;
 struct Collider;
@@ -172,6 +173,7 @@ public:
 	bool eraseButton = false;
 	bool wideWallContact = false;
 	bool substractLife = false;
+	bool died = false;
 	bool drawGameOver = false;
 	bool feetTopStairs = false;
 	bool falling = false;
@@ -187,12 +189,22 @@ public:
 	uint jumpFx = 0;
 
 	// Font score index
-	uint score = 000;
+	uint score = 000000;
+	uint highscore = 000000;
+	uint bonus = 5000;
+
+	int debuggingFont = -1;
 	int scoreFont = -1;
-	char scoreText[200] = { "\0" };
+	int bonusFont = -1;
+	char debuggingText[200] = { "\0" };
+	char scoreText[7];
+	char highscoreText[7];
+	char bonusText[5];
 
 	// Debug flag for gamepad data drawing
 	bool debugGamepadInfo = false;
+
+	int time = TIME_PERIOD;
 };
 
 #endif //!__MODULE_PLAYER_H__
