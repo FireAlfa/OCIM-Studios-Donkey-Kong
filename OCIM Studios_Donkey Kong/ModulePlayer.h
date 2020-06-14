@@ -8,7 +8,7 @@
 
 
 #define NUM_LIFES 3
-#define TIME_PERIOD 50
+#define TIME_PERIOD 10
 
 struct SDL_Texture;
 struct Collider;
@@ -173,6 +173,7 @@ public:
 	bool eraseButton = false;
 	bool wideWallContact = false;
 	bool substractLife = false;
+	bool died = false;
 	bool drawGameOver = false;
 	bool feetTopStairs = false;
 	bool falling = false;

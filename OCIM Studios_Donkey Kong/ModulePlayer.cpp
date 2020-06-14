@@ -211,7 +211,10 @@ bool ModulePlayer::Start()
 	canGoDownStairs = false;
 	feetTopStairs = false;
 	substractLife = false;
+	died = false;
 	falling = false;
+	bonus = 5000;
+	time = TIME_PERIOD;
 	ChangeState(state, IDLE);
 
 
@@ -252,14 +255,15 @@ Update_Status ModulePlayer::Update()
 	if (score >= highscore) { highscore = score; }
 	
 	//Only allow Positive Bonus
-	if (bonus <= 0)
+	if (bonus <= 0 && died == false)
 	{
 		bonus = 0;
 		ChangeState(state, DYING);
+		died = true;
 	}
 	
 	//Reduce Bonus by time
-	if (time == 0 && bonus > 0) {
+		if (time == 0 && bonus > 0) {
 		time = TIME_PERIOD;
 		bonus -= 100;
 	}

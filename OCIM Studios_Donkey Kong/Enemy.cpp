@@ -8,7 +8,6 @@
 //Constructor sets the initial position of enemy
 Enemy::Enemy(int x, int y) : position(x, y)
 {
-	//enemState = MOVING;
 	spawnPos = position;
 	srand(time(NULL));
 }
