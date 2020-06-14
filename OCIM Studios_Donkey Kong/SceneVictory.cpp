@@ -88,6 +88,17 @@ bool SceneVictory::Start()
 	leftright = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
 	heartT = App->textures->Load("Assets/GUI/Particles.png");
 
+
+	counter2 = 0;
+	counter1 = 0;
+	deathcont = 0;
+	dead = false;
+	transition = false;
+	goDownCounter1 = 0;
+	goDownCounter2 = 0;
+	yDescent = 86;
+
+
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 

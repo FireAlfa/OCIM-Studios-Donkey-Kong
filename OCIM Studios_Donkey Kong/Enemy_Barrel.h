@@ -3,6 +3,8 @@
 
 #include "Enemy.h"
 #include "Animation.h"
+#include "Collider.h"
+#include "ModuleCollisions.h"
 #include <stdlib.h>
 #include <time.h>
 
@@ -60,6 +62,8 @@ public:
 
 	//Auxiliar collider rectangle
 	SDL_Rect aux;
+
+	int lastCollider = Collider::Type::NONE;
 
 
 private:

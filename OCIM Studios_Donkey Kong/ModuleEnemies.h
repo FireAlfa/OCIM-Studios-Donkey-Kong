@@ -7,7 +7,7 @@
 #include "Collider.h"
 
 //Ammount of enemies
-#define MAX_ENEMIES 10
+#define MAX_ENEMIES 40
 
 
 enum class Enemy_Type
