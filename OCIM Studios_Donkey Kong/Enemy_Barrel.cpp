@@ -27,6 +27,7 @@ Enemy_Barrel::Enemy_Barrel(int x, int y, int _direction) : Enemy(x, y)
 
 
 	collider = App->collisions->AddCollider({ position.x + 3, position.y + 4, 6, 6 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	tallCollider = App->collisions->AddCollider({ position.x + 5, position.y - 8, 2, 2 }, Collider::Type::TALL_ENEMY, (Module*)App->enemies);
 }
 
 Enemy_Barrel::~Enemy_Barrel()
@@ -119,10 +120,9 @@ void Enemy_Barrel::UpdateLogic()
 			}
 		}
 
-		if (touchedWall == false)
+		if (falling == true)
 		{
 			position.y += speed;
-			touchedWall = true;
 		}
 
 		currentAnim->Update();
@@ -146,6 +146,7 @@ void Enemy_Barrel::UpdateLogic()
 	if (touchedWall == true)
 	{
 		position.y -= speed;
+		falling = false;
 	}
 
 	rampRight = false;
@@ -154,6 +155,7 @@ void Enemy_Barrel::UpdateLogic()
 	canGoDownStairs = false;
 
 	collider->SetPos(position.x + 3, position.y + 4);
+	tallCollider->SetPos(position.x + 5, position.y - 8);
 }
 
 void Enemy_Barrel::ChangeState(Barrel_State prevState, Barrel_State newState)
@@ -233,12 +235,16 @@ void Enemy_Barrel::OnCollision(Collider* c1, Collider* c2)
 		
 	}
 
+
 	if (c1 == collider && c2->type == Collider::Type::WALL)
 	{
 		touchedWall = true;
 	}
 
-
+	if (c1 == tallCollider && c2->type == Collider::Type::GRAVITYWALLS)
+	{
+		falling = true;
+	}
 
 	if (c1 == collider && c2->type == Collider::Type::RIGHTWALL || c1 == collider && c2->type == Collider::Type::LEFTWALL)
 	{

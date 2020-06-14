@@ -31,6 +31,7 @@ struct Collider
 		PLAYER_WIDE_FEET,
 
 		ENEMY,
+		TALL_ENEMY,
 		OBJECT,
 
 		STAIR,
