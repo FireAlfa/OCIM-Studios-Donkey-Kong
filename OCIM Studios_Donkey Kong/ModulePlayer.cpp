@@ -149,8 +149,8 @@ bool ModulePlayer::Start()
 	if ((Module*)App->sceneLevel1->IsEnabled())
 	{
 		currentLevel = "level 1";
-		position.x = 34;
-		position.y = 232;
+		position.x = 34.0f;
+		position.y = 232.0f;
 		char lookupTableB[] = { "0123456789" };
 		bonusFont = App->fonts->Load("Assets/Fonts/fontBlue.png", lookupTableB, 1);
 	}
@@ -158,8 +158,8 @@ bool ModulePlayer::Start()
 	if ((Module*)App->sceneLevel2->IsEnabled())
 	{
 		currentLevel = "level 2";
-		position.x = 41;
-		position.y = 232;
+		position.x = 41.0f;
+		position.y = 232.0f;
 		char lookupTableB[] = { "0123456789" };
 		bonusFont = App->fonts->Load("Assets/Fonts/fontWhite.png", lookupTableB, 1);
 	}
@@ -167,8 +167,8 @@ bool ModulePlayer::Start()
 	if ((Module*)App->sceneLevel4->IsEnabled())
 	{
 		currentLevel = "level 4";
-		position.x = 45;
-		position.y = 232;
+		position.x = 45.0f;
+		position.y = 232.0f;
 		//Bonus
 		char lookupTableB[] = { "0123456789" };
 		bonusFont = App->fonts->Load("Assets/Fonts/fontYellow.png", lookupTableB, 1);
@@ -194,10 +194,17 @@ bool ModulePlayer::Start()
 	//
 	//Create Player collider
 	//
-	playerCollider = App->collisions->AddCollider({ position.x, position.y, 12, 16 }, Collider::Type::PLAYER, this);
-	playerCenterCollider = App->collisions->AddCollider({ position.x + 5, position.y, 3, 16 }, Collider::Type::PLAYER_CENTER, this);
-	playerFeetCollider = App->collisions->AddCollider({ position.x + 5, position.y + 14, 3, 2 }, Collider::Type::PLAYER_FEET, this);
-	playerWideFeetCollider = App->collisions->AddCollider({ position.x + 2, position.y + 15, 8, 1 }, Collider::Type::PLAYER_WIDE_FEET, this);
+	float x, y;
+	x = position.x;
+	y = position.y;
+	playerCollider = App->collisions->AddCollider({ (int)x, (int)y, 12, 16 }, Collider::Type::PLAYER, this);
+	x = position.x + 5.0f;
+	playerCenterCollider = App->collisions->AddCollider({ (int)x ,(int)y, 3, 16 }, Collider::Type::PLAYER_CENTER, this);
+	y = position.y + 14.0f;
+	playerFeetCollider = App->collisions->AddCollider({ (int)x ,(int)y, 3, 2 }, Collider::Type::PLAYER_FEET, this);
+	x = position.x + 2.0f;
+	y = position.y + 15.0f;
+	playerWideFeetCollider = App->collisions->AddCollider({ (int)x, (int)y, 8, 1 }, Collider::Type::PLAYER_WIDE_FEET, this);
 
 
 
@@ -598,12 +605,12 @@ void ModulePlayer::UpdateLogic()
 
 		if (conveyerRight == true)
 		{
-			position.x += speed;
+			position.x += 0.5f;
 		}
 
 		if (conveyerLeft == true)
 		{
-			position.x -= speed;
+			position.x -= 0.5f;
 		}
 
 		position.x += speed * facingDirection;

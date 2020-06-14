@@ -79,7 +79,7 @@ public:
 	//
 
 	// Position of the player in the map
-	iPoint position;
+	fPoint position;
 	
 	// The state of the player
 	Player_State state = IDLE;
@@ -118,7 +118,7 @@ public:
 	const char* currentLevel = "none";
 
 	// The speed in which we move the player (pixels per frame)
-	int speed = 1;
+	float speed = 1.0f;
 
 	// The direction where the player is facing -> -1 for Left // 1 for Right
 	int facingDirection = 1;
