@@ -886,7 +886,7 @@ void ModulePlayer::UpdateLogic()
 	conveyerLeft = false;
 
 
-	if (App->input->keys[SDL_SCANCODE_L] == KEY_DOWN || pad.l2 == true)
+	if (App->input->keys[SDL_SCANCODE_L] == KEY_DOWN || pad.l1 == true)
 		ChangeState(state, DYING);
 
 	if (App->input->keys[SDL_SCANCODE_G] == KEY_DOWN || pad.back == true)
