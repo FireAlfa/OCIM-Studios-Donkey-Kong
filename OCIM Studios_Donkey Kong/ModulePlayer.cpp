@@ -224,15 +224,11 @@ bool ModulePlayer::Start()
 //Main player Update
 Update_Status ModulePlayer::Update()
 {
-	GamePad& pad = App->input->pads[0];
-
-
 	//
 	//State updates
 	//
 	UpdateState();
 	UpdateLogic();
-
 
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -241,15 +237,17 @@ Update_Status ModulePlayer::Update()
 //Control input and states
 void ModulePlayer::UpdateState()
 {
+	GamePad& pad = App->input->pads[0];
+
 	switch (state)
 	{
 
 	case IDLE:
 	{
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT ||
+			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < 0.0f ||
 			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT)
+			App->input->keys[SDL_SCANCODE_D] == Key_State::KEY_REPEAT || pad.l_x > 0.0f)
 			ChangeState(state, RUNNING);
 
 		if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
@@ -273,7 +271,8 @@ void ModulePlayer::UpdateState()
 	case RUNNING:
 	{
 		if (App->input->keys[SDL_SCANCODE_A] != Key_State::KEY_REPEAT &&
-			App->input->keys[SDL_SCANCODE_D] != Key_State::KEY_REPEAT)
+			App->input->keys[SDL_SCANCODE_D] != Key_State::KEY_REPEAT &&
+			pad.l_x == 0.0f)
 		{
 			ChangeState(state, IDLE);
 		}
@@ -473,6 +472,9 @@ void ModulePlayer::UpdateState()
 //Control what each state does
 void ModulePlayer::UpdateLogic()
 {
+	GamePad& pad = App->input->pads[0];
+
+
 	switch (state)
 	{
 
@@ -787,6 +789,8 @@ void ModulePlayer::UpdateLogic()
 //Change the State
 void ModulePlayer::ChangeState(Player_State previousState, Player_State newState)
 {
+	GamePad& pad = App->input->pads[0];
+
 	switch (newState)
 	{
 
@@ -799,7 +803,7 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 	case RUNNING:
 	{
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
-			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT)
+			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < 0.0f)
 			facingDirection = -1;
 		else
 			facingDirection = 1;
