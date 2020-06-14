@@ -730,7 +730,7 @@ Update_Status SceneLevel1::PostUpdate()
 //Disable modules related to the Scene
 bool SceneLevel1::CleanUp()
 {
-	score = score + bonus;
+
 	//Disable modules
 	App->player->Disable();
 	App->enemies->Disable();
