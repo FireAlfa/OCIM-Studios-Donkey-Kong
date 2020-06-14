@@ -51,6 +51,7 @@ public:
 	bool touchedWall = false;
 	bool bounceWall = false;
 	bool falling = false;
+	bool destroy = false;
 
 	//
 	//Initial variables

@@ -7,6 +7,8 @@
 #include "ModuleRender.h"
 #include "ModuleEnemies.h"
 #include "Enemy.h"
+#include "ModulePlayer.h"
+
 
 Enemy_Barrel::Enemy_Barrel(int x, int y, int _direction) : Enemy(x, y)
 {
@@ -25,6 +27,15 @@ Enemy_Barrel::Enemy_Barrel(int x, int y, int _direction) : Enemy(x, y)
 	BarrelFall.speed = 0.1f;
 
 	currentAnim = &BarrelAnim;
+
+
+
+	rampRight = false;
+	rampLeft = false;
+	touchedWall = false;
+	canGoDownStairs = false;
+	bounceWall = false;
+	destroy = false;
 
 
 	collider = App->collisions->AddCollider({ position.x + 3, position.y + 4, 6, 6 }, Collider::Type::ENEMY, (Module*)App->enemies);
@@ -85,6 +96,11 @@ void Enemy_Barrel::UpdateLogic()
 	{
 	case BARREL_MOVING:
 
+		if (falling == true)
+		{
+			position.y += speed;
+		}
+
 		if (bounceWall == true)
 		{
 			direction *= -1;
@@ -121,10 +137,12 @@ void Enemy_Barrel::UpdateLogic()
 			}
 		}
 
-		if (lastCollider != Collider::Type::WALL && lastCollider != Collider::Type::RAMP_LEFT && lastCollider != Collider::Type::RAMP_RIGHT && lastCollider != Collider::Type::TOP_STAIR)
+		/*if (destroy == true)
 		{
-			position.y += speed;
-		}
+			App->enemies->HandleEnemiesDespawn();
+		}*/
+
+
 
 		currentAnim->Update();
 
@@ -157,6 +175,9 @@ void Enemy_Barrel::UpdateLogic()
 	rampLeft = false;
 	touchedWall = false;
 	canGoDownStairs = false;
+	bounceWall = false;
+	destroy = false;
+
 
 	collider->SetPos(position.x + 3, position.y + 4);
 	tallCollider->SetPos(position.x + 5, position.y - 8);
@@ -252,6 +273,23 @@ void Enemy_Barrel::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1 == collider && c2->type == Collider::Type::RIGHTWALL || c1 == collider && c2->type == Collider::Type::LEFTWALL)
 	{
-		bounceWall = true;
+		SDL_Rect aux = c1->GetRect();
+
+		if (aux.y - 10 < App->player->position.y)
+		{
+			bounceWall = true;
+		}
+		else
+		{
+			destroy = true;
+		}
 	}
+
+
+	if (c1 == collider && c2->type == Collider::Type::PLAYER_FEET) //Fall
+	{
+		falling = true;
+	}
+
+
 }

@@ -18,7 +18,7 @@
 
 
 
-#define SPAWN_MARGIN 50
+#define SPAWN_MARGIN 5
 
 
 //Constructor inits enemy array to nullptr

@@ -38,9 +38,7 @@ public:
 	SDL_Texture* lvl2Texture = nullptr;
 	SDL_Texture* princessTexture = nullptr;
 	SDL_Texture* oilTexture = nullptr;
-	SDL_Texture* rightKnobTexture = nullptr;
-	SDL_Texture* leftKnobTexture = nullptr;
-	SDL_Texture* ladderTexture = nullptr;
+	SDL_Texture* movingObjects = nullptr;
 	SDL_Texture* cementTexture = nullptr;
 	SDL_Texture* hatTexture = nullptr;
 	SDL_Texture* bagTexture = nullptr;
@@ -53,17 +51,28 @@ public:
 	//
 
 
+
+	//
+	//Grind animation array	
+	// 0 means left  and 1 means right
+	// [0]=bottom bair  [1]=mid left  [2]=mid right  [3]=top pair
+	//
+	bool knobDirectionArray[4] = { 0 };
+	Animation* knobAnimationArray[6] = { nullptr };
+
+
 	//
 	//Srite rectangles
 	//
 	SDL_Rect lvl2Rect;
-	SDL_Rect buttonRect;
+
 
 	//
 	//Animations
 	//
-	Animation DonkeyKong;
 	Animation Princess;
+	Animation leftKnob;
+	Animation rightKnob;
 
 
 
