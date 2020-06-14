@@ -190,6 +190,10 @@ bool SceneLevel2::Start()
 //Draw the animations
 Update_Status SceneLevel2::Update()
 {
+	//Gamepad support
+	GamePad& pad = App->input->pads[0];
+
+
 	//
 	//
 	//
@@ -218,12 +222,12 @@ Update_Status SceneLevel2::Update()
 		CleanUp();
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel4, 10);
 	}
-	if (App->input->keys[SDL_SCANCODE_R] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_R] == Key_State::KEY_DOWN || pad.start == true)
 	{
 		CleanUp();
 		App->fade->FadeToBlack(this, this, 10);
 	}
-	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_V] == Key_State::KEY_DOWN || pad.l2 == true)
 	{
 		lvl2win = true;
 	}

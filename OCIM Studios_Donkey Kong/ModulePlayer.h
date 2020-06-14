@@ -171,6 +171,7 @@ public:
 	bool wideWallContact = false;
 	bool substractLife = false;
 	bool drawGameOver = false;
+	bool feetTopStairs = false;
 
 
 	

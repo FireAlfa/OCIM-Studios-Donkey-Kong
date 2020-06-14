@@ -207,6 +207,7 @@ bool ModulePlayer::Start()
 	destroyed = false;
 	canClimb = false;
 	canGoDownStairs = false;
+	feetTopStairs = false;
 	substractLife = false;
 	ChangeState(state, IDLE);
 
@@ -256,11 +257,11 @@ void ModulePlayer::UpdateState()
 
 		if (canClimb == true &&
 			(App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN || pad.l_y < 0.0f ||
-			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN || pad.l_y < 0.0f))
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN || pad.l_y > 0.0f))
 			ChangeState(state, CLIMBING_IDLE);
 
 		if (canGoDownStairs == true &&
-			(App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN || pad.l_y < 0.0f))
+			(App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN || pad.l_y > 0.0f))
 			ChangeState(state, CLIMBING_DOWN);
 
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN || pad.x == true)
@@ -298,7 +299,7 @@ void ModulePlayer::UpdateState()
 
 	case JUMPING:
 	{
-		if (lastCollider == Collider::Type::WALL)
+		if (lastCollider == Collider::Type::WALL || feetTopStairs == true)
 		{
 			jumpCountdown = 30;
 			if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < 0.0f ||
@@ -312,6 +313,7 @@ void ModulePlayer::UpdateState()
 				lastCollider = -2;
 				ChangeState(state, IDLE);
 			}
+			feetTopStairs = false;
 		}
 
 		break;
@@ -654,7 +656,7 @@ void ModulePlayer::UpdateLogic()
 
 	case FALLING:
 	{
-		if ((lastCollider != Collider::Type::WALL) || (lastCollider != Collider::Type::RAMP_LEFT) || (lastCollider != Collider::Type::RAMP_RIGHT))
+		if ((lastCollider != Collider::Type::WALL) || (lastCollider != Collider::Type::RAMP_LEFT) || (lastCollider != Collider::Type::RAMP_RIGHT) || (lastCollider != Collider::Type::TOP_STAIR))
 		{
 			position.y += speed;
 		}
@@ -1016,6 +1018,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		canGoDownStairs = true;
 		canGoUpStairs = true;
 		lastCollider = Collider::Type::TOP_STAIR;
+	}
+	if (c1 == playerFeetCollider && c2->type == Collider::Type::TOP_STAIR)
+	{
+		feetTopStairs = true;
 	}
 
 
