@@ -18,7 +18,14 @@ Donkey Kong is an arcade game from the platform genre released on July 9th, 1981
 ~~~~~~~~~~~~~~~
 Gamepad controls:
 - MOVEMENT: Joystick / D-Pad
-- JUMP: X / A
+- JUMP: A / X
+- RELOAD LEVEL: START
+- HAMMER MODE: X / SQUARE
+- GOD MODE: Y / TRIANGLE
+- INSTANT WIN: LB / L1
+- LOSE LIFE: LT / L2
+- GAMEPAD DEBUGGING: BACK / SELECT
+
 
 Keyboard controls:
 - UP: W key
@@ -27,12 +34,15 @@ Keyboard controls:
 - DOWN: S key
 - JUMP: SPACE key
 
+
 Debugging controls:
 - Show Colliders: F1 key
 - Show Memory Leaks: F2 key
 - Show Gamepad Display: F3 key
-- Instant Win: F4 key
-- Instant Lose: F5 key
+- Reload Level: R key
+- Instant Win: V key
+- Lose Life: L key
+- Activate Hammer Mode: H key
 - Activate God Mode: G key
 - Spawn Enemies: Left Mouse Button
 
