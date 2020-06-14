@@ -222,6 +222,8 @@ bool ModulePlayer::Start()
 	falling = false;
 	bonus = 5000;
 	time = TIME_PERIOD;
+	conveyerRight = false;
+	conveyerLeft = false;
 	ChangeState(state, IDLE);
 
 
@@ -537,6 +539,16 @@ void ModulePlayer::UpdateLogic()
 	case IDLE:
 	{
 		// Nothing to do here :)
+		if (conveyerRight == true)
+		{
+			position.x += speed;
+		}
+
+		if (conveyerLeft == true)
+		{
+			position.x -= speed;
+		}
+
 		break;
 	}
 
@@ -582,6 +594,16 @@ void ModulePlayer::UpdateLogic()
 					position.y -= speed;
 				}
 			}
+		}
+
+		if (conveyerRight == true)
+		{
+			position.x += speed;
+		}
+
+		if (conveyerLeft == true)
+		{
+			position.x -= speed;
 		}
 
 		position.x += speed * facingDirection;
@@ -853,6 +875,8 @@ void ModulePlayer::UpdateLogic()
 	substractLife = false;
 	eraseButton = false;
 	eraseHammer = false;
+	conveyerRight = false;
+	conveyerLeft = false;
 
 
 	if (App->input->keys[SDL_SCANCODE_L] == KEY_DOWN || pad.l2 == true)
@@ -1192,6 +1216,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		eraseHammer = true;
 		hammer = c2;
 	}
+
+
+	if (c1 == playerFeetCollider && c2->type == Collider::Type::CONVEYER_RIGHT)
+	{
+		conveyerRight = true;
+	}
+	if (c1 == playerFeetCollider && c2->type == Collider::Type::CONVEYER_LEFT)
+	{
+		conveyerLeft = true;
+	}
+
+
 }
 
 //Draw GamePad Debug

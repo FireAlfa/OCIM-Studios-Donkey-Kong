@@ -395,40 +395,38 @@ bool SceneLevel2::Start()
 		//
 		if (knobDirectionArray[0] == 1)
 		{
-			App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_RIGHT);
+			conveyerColliders[0] =  App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_RIGHT);
 		}
 		else if (knobDirectionArray[0] == 1)
 		{
-			App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_LEFT);
+			conveyerColliders[0] =  App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_LEFT);
 		}
 		//
 		if (knobDirectionArray[1] == 1)
 		{
-			App->collisions->AddCollider({ 0, 127, 102, 1 }, Collider::Type::CONVEYER_RIGHT);
-			App->collisions->AddCollider({ 122, 127, 102, 1 }, Collider::Type::CONVEYER_RIGHT);
+			conveyerColliders[1] = App->collisions->AddCollider({ 0, 127, 102, 1 }, Collider::Type::CONVEYER_RIGHT);
 		}
 		else if (knobDirectionArray[1] == 1)
 		{
-			App->collisions->AddCollider({ 0, 127, 102, 1 }, Collider::Type::CONVEYER_LEFT);
-			App->collisions->AddCollider({ 122, 127, 102, 1 }, Collider::Type::CONVEYER_LEFT);
+			conveyerColliders[1] = App->collisions->AddCollider({ 0, 127, 102, 1 }, Collider::Type::CONVEYER_LEFT);
 		}
 		//
 		if (knobDirectionArray[2] == 1)
 		{
-			App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_RIGHT);
+			conveyerColliders[2] = App->collisions->AddCollider({ 122, 127, 102, 1 }, Collider::Type::CONVEYER_RIGHT);
 		}
 		else if (knobDirectionArray[2] == 1)
 		{
-			App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_LEFT);
+			conveyerColliders[2] = App->collisions->AddCollider({ 122, 127, 102, 1 }, Collider::Type::CONVEYER_LEFT);
 		}
 		//
 		if (knobDirectionArray[3] == 1)
 		{
-			App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_RIGHT);
+			conveyerColliders[3] = App->collisions->AddCollider({ 8, 87, 208, 1 }, Collider::Type::CONVEYER_RIGHT);
 		}
 		else if (knobDirectionArray[3] == 1)
 		{
-			App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_LEFT);
+			conveyerColliders[3] = App->collisions->AddCollider({ 8, 87, 208, 1 }, Collider::Type::CONVEYER_LEFT);
 		}
 	}
 	
@@ -460,12 +458,12 @@ Update_Status SceneLevel2::Update()
 	Princess.Update();
 
 	//
-	//Change Knob direction array
+	//Change Knob conveyer direction array
 	//
 	for (int i = 0; i < 4; i++)
 	{
 		int random = rand() % 10;
-		if (random == 1)
+		if (random <= 2)
 		{
 			if (knobDirectionArray[i] == 0) {
 				knobDirectionArray[i] = 1;
@@ -475,10 +473,54 @@ Update_Status SceneLevel2::Update()
 				knobDirectionArray[i] = 0;
 			}
 		}
-
-		
 	}
-
+	for (int i = 0; i < 4; ++i)
+	{
+		//
+		if (knobDirectionArray[0] == 1)
+		{
+			App->collisions->RemoveCollider(conveyerColliders[0]);
+			conveyerColliders[0] = App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_RIGHT);
+		}
+		else if (knobDirectionArray[0] == 1)
+		{
+			App->collisions->RemoveCollider(conveyerColliders[0]);
+			conveyerColliders[0] = App->collisions->AddCollider({ 8, 207, 208, 1 }, Collider::Type::CONVEYER_LEFT);
+		}
+		//
+		if (knobDirectionArray[1] == 1)
+		{
+			App->collisions->RemoveCollider(conveyerColliders[1]);
+			conveyerColliders[1] = App->collisions->AddCollider({ 0, 127, 102, 1 }, Collider::Type::CONVEYER_RIGHT);
+		}
+		else if (knobDirectionArray[1] == 1)
+		{
+			App->collisions->RemoveCollider(conveyerColliders[1]);
+			conveyerColliders[1] = App->collisions->AddCollider({ 0, 127, 102, 1 }, Collider::Type::CONVEYER_LEFT);
+		}
+		//
+		if (knobDirectionArray[2] == 1)
+		{
+			App->collisions->RemoveCollider(conveyerColliders[2]);
+			conveyerColliders[2] = App->collisions->AddCollider({ 122, 127, 102, 1 }, Collider::Type::CONVEYER_RIGHT);
+		}
+		else if (knobDirectionArray[2] == 1)
+		{
+			App->collisions->RemoveCollider(conveyerColliders[2]);
+			conveyerColliders[2] = App->collisions->AddCollider({ 122, 127, 102, 1 }, Collider::Type::CONVEYER_LEFT);
+		}
+		//
+		if (knobDirectionArray[3] == 1)
+		{
+			App->collisions->RemoveCollider(conveyerColliders[3]);
+			conveyerColliders[3] = App->collisions->AddCollider({ 8, 87, 208, 1 }, Collider::Type::CONVEYER_RIGHT);
+		}
+		else if (knobDirectionArray[3] == 1)
+		{
+			App->collisions->RemoveCollider(conveyerColliders[3]);
+			conveyerColliders[3] = App->collisions->AddCollider({ 8, 87, 208, 1 }, Collider::Type::CONVEYER_LEFT);
+		}
+	}
 
 	
 	//Knobs animation array

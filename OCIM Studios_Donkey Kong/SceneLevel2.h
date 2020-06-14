@@ -49,7 +49,7 @@ public:
 	//
 	//Collider arrays
 	//
-
+	Collider* conveyerColliders[4] = { nullptr };
 
 
 	//
@@ -74,6 +74,7 @@ public:
 	Animation Princess;
 	Animation leftKnob;
 	Animation rightKnob;
+
 
 
 

@@ -180,6 +180,8 @@ public:
 	bool drawGameOver = false;
 	bool feetTopStairs = false;
 	bool falling = false;
+	bool conveyerRight = false;
+	bool conveyerLeft = false;
 
 
 	
