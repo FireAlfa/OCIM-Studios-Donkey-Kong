@@ -189,7 +189,7 @@ bool ModulePlayer::Start()
 	//Load Player FX files
 	//
 	jumpFx = App->audio->LoadFx("Assets/Audio/Fx/jump.ogg");
-
+	hammerFx = App->audio->LoadFx("Assets/Audio/Fx/Hammer.ogg");
 
 	//
 	//Create Player collider
@@ -894,6 +894,7 @@ void ModulePlayer::ChangeState(Player_State previousState, Player_State newState
 
 	case HAMMER_RUNNING:
 	{
+//		App->audio->PlayFx(hammerFx);
 		if (App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_DOWN ||
 			App->input->keys[SDL_SCANCODE_A] == Key_State::KEY_REPEAT || pad.l_x < 0.0f)
 			facingDirection = -1;

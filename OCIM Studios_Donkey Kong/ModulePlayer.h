@@ -187,6 +187,7 @@ public:
 
 	// Sound effects indices
 	uint jumpFx = 0;
+	uint hammerFx = 0;
 
 	// Font score index
 	uint score = 000000;

@@ -54,76 +54,7 @@ SceneVictory::SceneVictory(bool startEnabled) : Module(startEnabled)
 	armS.PushBack({ 217,0,46,32 });
 	armS.PushBack({ 217,0,46,32 });
 
-	landr.PushBack({ 134,103,47,27 });
-	landr.PushBack({ 134,103,47,27 });
-	landr.PushBack({ 134,103,47,27 });
-	landr.PushBack({ 134,103,47,27 });
-	landr.PushBack({ 134,103,47,27 });
-	landr.PushBack({ 134,103,47,27 });
-	landr.PushBack({ 134,103,47,27 });
-	landr.PushBack({ 134,103,47,27 });
-	landr.PushBack({ 134,103,47,27 });
-	landr.PushBack({ 134,103,47,27 });
-	landr.PushBack({ 134,103,47,27 });
-	landr.PushBack({ 134,103,47,27 });
-	landr.PushBack({ 134,103,47,27 });
-	landr.PushBack({ 134,103,47,27 });
 
-
-	landr.PushBack({ 182,103,46,29 });
-	landr.PushBack({ 182,103,46,29 });
-	landr.PushBack({ 182,103,46,29 });
-	landr.PushBack({ 182,103,46,29 });
-	landr.PushBack({ 182,103,46,29 });
-	landr.PushBack({ 182,103,46,29 });
-	landr.PushBack({ 182,103,46,29 });
-	landr.PushBack({ 182,103,46,29 });
-	landr.PushBack({ 182,103,46,29 });
-	landr.PushBack({ 182,103,46,29 });
-	landr.PushBack({ 182,103,46,29 });
-	landr.PushBack({ 182,103,46,29 });
-	landr.PushBack({ 182,103,46,29 });
-	landr.PushBack({ 182,103,46,29 });
-	landr.PushBack({ 182,103,46,29 });
-	landr.PushBack({ 182,103,46,29 });
-
-
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-	landr.PushBack({ 47,103,47,27 });
-
-
-	landr.PushBack({ 0,103,46,29 });
-	landr.PushBack({ 0,103,46,29 });
-	landr.PushBack({ 0,103,46,29 });
-	landr.PushBack({ 0,103,46,29 });
-	landr.PushBack({ 0,103,46,29 });
-	landr.PushBack({ 0,103,46,29 });
-	landr.PushBack({ 0,103,46,29 });
-	landr.PushBack({ 0,103,46,29 });
-	landr.PushBack({ 0,103,46,29 });
-	landr.PushBack({ 0,103,46,29 });
-	landr.PushBack({ 0,103,46,29 });
-	landr.PushBack({ 0,103,46,29 });
-	landr.PushBack({ 0,103,46,29 });
-	landr.PushBack({ 0,103,46,29 });
-	landr.PushBack({ 0,103,46,29 });
-	landr.PushBack({ 0,103,46,29 });
 
 }
 
@@ -191,16 +122,14 @@ Update_Status SceneVictory::Update()
 
 	if (counter2 >= 30)
 	{
-		if (goDownCounter1 % 10 == 0)
-		{
 			goDownCounter2++;
-		}
+		
 	}
 
 
 
 
-	yDescent = 86 + goDownCounter2 + 10;
+	yDescent = 86+ goDownCounter2;
 
 
 
@@ -220,14 +149,22 @@ Update_Status SceneVictory::PostUpdate()
 		App->render->Blit(lvl1Texture, 0, 0, NULL);
 	}
 
-
-	if (counter2 <= 30)
+	if (counter2 <= 10)
 	{
 		App->render->Blit(deathanim, 89, 58, &(armS.GetCurrentFrame()), 0.1f);
 	}
-	if (counter2 >= 30 && yDescent <= 184)
+	if (counter2 >= 10)
+	{
+		lol = true;
+	}
+
+	if (counter2 >= 10 && yDescent <= 184)
 	{
 		App->render->Blit(downAnim, 93, yDescent, &goDown, NULL, false);
+	}
+	if (counter2 >= 10)
+	{
+		goDownCounter2++;
 	}
 	if (yDescent == 184)
 	{
@@ -246,8 +183,5 @@ Update_Status SceneVictory::PostUpdate()
 }
 bool SceneVictory::CleanUp()
 {
-
-
-
 	return true;
 }

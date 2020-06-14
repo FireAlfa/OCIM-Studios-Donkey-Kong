@@ -102,7 +102,7 @@ bool SceneLevel1Intro::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Maps/level1.png");
+	bgTexture = App->textures->Load("Assets/Maps/lvl1Cinematic.png");
 	lvl1dkAnimation = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
 
 
@@ -259,7 +259,7 @@ Update_Status SceneLevel1Intro::PostUpdate()
 
 	if (topReached == false)
 	{
-		App->render->Blit(lvl1dkAnimation, 91, animController0, &(dkAnim.GetCurrentFrame()), 0.1f);
+		App->render->Blit(lvl1dkAnimation, 105, animController0, &(dkAnim.GetCurrentFrame()), 0.4f);
 	}
 
 	if (topReached && contX >= 40)

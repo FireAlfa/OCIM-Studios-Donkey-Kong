@@ -62,6 +62,8 @@ public:
 
 	bool dead;
 	
+	bool lol;
+
 	int goDownCounter1 = 0;
 	int goDownCounter2 = 0;
 	int yDescent;
