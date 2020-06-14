@@ -46,8 +46,8 @@ void Enemy::Draw()
 //Control the collisions between the enemy and other colliders
 void Enemy::OnCollision(Collider* c1, Collider* c2)
 {
-	
-
+	App->particles->AddParticle(App->particles->enemyDeath, position.x, position.y);
+	App->audio->PlayFx(destroyedFx);
 }
 
 //Put the enemy in delete queue

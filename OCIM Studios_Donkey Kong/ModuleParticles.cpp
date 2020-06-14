@@ -30,12 +30,14 @@ bool ModuleParticles::Start()
 	texture = App->textures->Load("Assets/GUI/Particles.png");
 
 	//
-	//
-	//
 	// Load particles files
 	//
-	//
-	//
+	enemyDeath.anim.PushBack({ 0, 0, 16, 14 });
+	enemyDeath.anim.PushBack({ 16, 0, 16, 14 });
+	enemyDeath.anim.PushBack({ 32, 0, 16, 14 });
+	enemyDeath.anim.PushBack({ 48, 0, 16, 14 });
+	enemyDeath.anim.loop = false;
+
 
 	//
 	//

@@ -191,9 +191,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 
 					break;
 			
-					case Enemy_Type::BARREL:
+				case Enemy_Type::BARREL:
 						enemies[i] = new Enemy_Barrel(info.x, info.y, info.direction);
-					break;
+						break;
 
 				//case Enemy_Type::BLUEBARREL:
 				//	enemies[i] = new Enemy_BlueBarrel(info.x, info.y);

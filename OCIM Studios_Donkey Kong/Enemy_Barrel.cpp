@@ -40,7 +40,7 @@ void Enemy_Barrel::UpdateLogic()
 	
 }
 
-void Enemy_Barrel::ChangeState(Enemy_State prevState, Enemy_State newState)
-{
-
-}
+//void Enemy_Barrel::ChangeState(Enemy_State prevState, Enemy_State newState)
+//{
+//
+//}

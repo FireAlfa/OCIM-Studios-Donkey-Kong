@@ -69,12 +69,9 @@ private:
 public:
 
 	//
-	//
-	//
 	//Particle variables
 	//
-	//
-	//
+	Particle enemyDeath;
 };
 
 #endif // !__MODULEPARTICLES_H__

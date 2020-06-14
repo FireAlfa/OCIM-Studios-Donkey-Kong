@@ -84,3 +84,8 @@ Update_Status SceneVictory::PostUpdate()
 
 	return Update_Status::UPDATE_CONTINUE;
 }
+
+bool SceneVictory::CleanUp()
+{
+	return true;
+}

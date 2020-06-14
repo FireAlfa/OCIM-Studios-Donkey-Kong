@@ -47,18 +47,6 @@ public:
 	//Position of the enemy in the map
 	iPoint position;
 
-	//Speed of the enemy
-	int speed = 1;
-
-	//Facing Diretion of the enemy
-	int facingDirection = 1;
-
-	//Rectangle of other collider
-	SDL_Rect aux;
-
-	//Last collider
-	//int lastCollider = Collider::Type::NONE;
-
 	// The enemy's texture
 	SDL_Texture* texture = nullptr;
 
