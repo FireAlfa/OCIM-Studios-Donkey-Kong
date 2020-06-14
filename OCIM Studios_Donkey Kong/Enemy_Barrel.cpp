@@ -121,7 +121,7 @@ void Enemy_Barrel::UpdateLogic()
 			}
 		}
 
-		if (lastCollider != Collider::Type::WALL || lastCollider != Collider::Type::RAMP_LEFT || lastCollider != Collider::Type::RAMP_RIGHT || lastCollider != Collider::Type::TOP_STAIR)
+		if (lastCollider != Collider::Type::WALL && lastCollider != Collider::Type::RAMP_LEFT && lastCollider != Collider::Type::RAMP_RIGHT && lastCollider != Collider::Type::TOP_STAIR)
 		{
 			position.y += speed;
 		}
@@ -148,36 +148,6 @@ void Enemy_Barrel::UpdateLogic()
 	{
 		position.y -= speed;
 		falling = false;
-	}
-
-
-	switch (lastCollider)
-	{
-	case Collider::Type::NONE:
-		break;
-	case Collider::Type::WALL:
-		position.y -= speed;
-		lastCollider = Collider::Type::NONE;
-		break;
-	case Collider::Type::RAMP_RIGHT:
-	case Collider::Type::RAMP_LEFT:
-	case Collider::Type::PLAYER:
-	case Collider::Type::PLAYER_CENTER:
-	case Collider::Type::PLAYER_WIDE_FEET:
-	case Collider::Type::ENEMY:
-	case Collider::Type::STAIR:
-	case Collider::Type::TOP_STAIR:
-	case Collider::Type::BUTTON:
-	case Collider::Type::TOPWALL:
-	case Collider::Type::LEFTWALL:
-	case Collider::Type::RIGHTWALL:
-	case Collider::Type::GRAVITYWALLS:
-	case Collider::Type::PEACH:
-	case Collider::Type::DK:
-		break;
-	default:
-		position.y += speed;
-		break;
 	}
 
 
@@ -274,12 +244,6 @@ void Enemy_Barrel::OnCollision(Collider* c1, Collider* c2)
 		
 	}
 
-	if (c1 == tallCollider && c2->type == Collider::Type::PLAYER)
-	{
-		falling = true;
-	}
-
-
 	if (c1 == collider && c2->type == Collider::Type::WALL)
 	{
 		touchedWall = true;
@@ -290,8 +254,4 @@ void Enemy_Barrel::OnCollision(Collider* c1, Collider* c2)
 	{
 		bounceWall = true;
 	}
-
-
-	
-
 }

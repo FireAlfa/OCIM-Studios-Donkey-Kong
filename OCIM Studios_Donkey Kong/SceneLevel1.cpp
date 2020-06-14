@@ -598,6 +598,17 @@ bool SceneLevel1::Start()
 
 
 
+
+	//Test
+	App->collisions->AddCollider({ 211, 86, 13, 5 }, Collider::Type::PLAYER_FEET);
+	App->collisions->AddCollider({ 211, 152, 13, 5 }, Collider::Type::PLAYER_FEET);
+	App->collisions->AddCollider({ 0, 119, 13, 5 }, Collider::Type::PLAYER_FEET);
+	App->collisions->AddCollider({ 0, 185, 13, 5 }, Collider::Type::PLAYER_FEET);
+
+
+
+
+
 	//
 	//Add enemies
 	//
