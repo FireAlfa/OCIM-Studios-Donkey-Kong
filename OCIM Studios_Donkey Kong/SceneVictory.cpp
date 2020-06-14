@@ -1,18 +1,37 @@
 #include "SceneVictory.h"
 
+
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
+#include "ModuleCollisions.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
-#include "ModulePlayer.h"
-
 
 SceneVictory::SceneVictory(bool startEnabled) : Module(startEnabled)
 {
-	name = "s_victory";
+	name = "s_sceneVictory";
 
+
+	armS.PushBack({ 170,0,46,32 });
+	armS.PushBack({ 170,0,46,32 });
+	armS.PushBack({ 170,0,46,32 });
+	armS.PushBack({ 170,0,46,32 });
+	armS.PushBack({ 170,0,46,32 });
+	armS.PushBack({ 170,0,46,32 });
+	armS.PushBack({ 170,0,46,32 });
+	armS.PushBack({ 170,0,46,32 });
+	armS.PushBack({ 170,0,46,32 });
+
+	armS.PushBack({ 217,0,46,32 });
+	armS.PushBack({ 217,0,46,32 });
+	armS.PushBack({ 217,0,46,32 });
+	armS.PushBack({ 217,0,46,32 });
+	armS.PushBack({ 217,0,46,32 });
+	armS.PushBack({ 217,0,46,32 });
+	armS.PushBack({ 217,0,46,32 });
+	armS.PushBack({ 217,0,46,32 });
 }
 
 SceneVictory::~SceneVictory()
@@ -23,11 +42,11 @@ SceneVictory::~SceneVictory()
 // Load assets
 bool SceneVictory::Start()
 {
-	LOG("Loading SceneVictory assets ---------\n");
+	LOG("Loading background assets");
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Maps/victoryScreen.png");
+
 
 	//
 	//
@@ -39,6 +58,16 @@ bool SceneVictory::Start()
 
 
 
+
+	//
+	deathanim = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
+
+	lvl1Texture = App->textures->Load("Assets/Sprites/victoryScreen.png");
+
+
+
+
+
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
@@ -47,7 +76,7 @@ bool SceneVictory::Start()
 
 Update_Status SceneVictory::Update()
 {
-	//Gamepad support
+
 	GamePad& pad = App->input->pads[0];
 
 
@@ -72,15 +101,26 @@ Update_Status SceneVictory::Update()
 	}
 
 
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 // Update: draw background
 Update_Status SceneVictory::PostUpdate()
 {
+
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
+	App->render->Blit(deathanim, 89, 58, &(armS.GetCurrentFrame()), 0.1f);
+
 
 
 	return Update_Status::UPDATE_CONTINUE;
+}
+bool SceneVictory::CleanUp()
+{
+
+
+
+	return true;
 }
