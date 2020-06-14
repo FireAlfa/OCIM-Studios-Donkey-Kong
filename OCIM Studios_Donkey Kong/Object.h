@@ -3,23 +3,23 @@
 
 #include "p2Point.h"
 #include "Animation.h"
+#include "Collider.h"
+
+
+
 
 struct SDL_Texture;
 struct Collider;
 
+
 class Object
 {
 public:
-
-	// Constructor
-	// Saves the spawn position for later movement calculations
+	//Constructor
 	Object(int x, int y);
-
-	// Destructor
+	//Destructor
 	virtual ~Object();
 
-	// Returns the enemy's collider
-	const Collider* GetCollider() const;
 
 	// Called from inhering enemies' Udpate
 	// Updates animation and collider position
@@ -30,10 +30,17 @@ public:
 
 	// Collision response
 	// Triggers an animation and a sound fx
-	virtual void OnCollision(Collider* collider);
+	virtual void OnCollision(Collider* c1, Collider* c2);
+
+
 
 	// Sets flag for deletion and for the collider aswell
 	virtual void SetToDelete();
+
+	// Returns the enemy's collider
+	const Collider* GetCollider() const;
+
+public:
 
 	//
 	// Variables
@@ -65,8 +72,6 @@ protected:
 	iPoint spawnPos;
 
 };
-
-
 
 
 #endif // !__OBJECT_H__

@@ -11,7 +11,7 @@
 //Include objts.h
 //
 #include "Object.h"
-#include "Bag.h"
+#include "Object_Bag.h"
 
 
 ModuleObject::ModuleObject(bool startEnabled) : Module(startEnabled)
@@ -173,7 +173,7 @@ void ModuleObject::SpawnObject(const ObjectSpawnPoint& info)
 			switch (info.Type)
 			{
 			case ObjectType::BAG:
-				objects[i] = new Bag(info.x, info.y);
+				objects[i] = new Object_Bag(info.x, info.y);
 
 				break;
 			
@@ -195,7 +195,7 @@ void ModuleObject::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (objects[i] != nullptr && objects[i]->GetCollider() == c1)
 		{
-			objects[i]->OnCollision(c1); //Notify the object of a collision
+			objects[i]->OnCollision(c1, c2); //Notify the object of a collision
 
 			//delete [i];
 			//enemies[i] = nullptr;

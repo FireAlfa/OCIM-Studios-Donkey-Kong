@@ -4,9 +4,11 @@
 #include "Module.h"
 #include "Object.h"
 
+
+
 #define MAX_OBJ 15
 
-struct SDL_Texture;
+
 
 enum class ObjectType
 {
@@ -22,7 +24,8 @@ struct ObjectSpawnPoint
 	
 };
 
-
+class Object;
+struct SDL_Texture;
 
 class ModuleObject : public Module
 {
@@ -52,6 +55,7 @@ public:
 
 	//Called at the end of the application
 	virtual bool CleanUp();
+
 
 	// Called when an enemi collider hits another collider
 	// The enemy is destroyed and an explosion particle is fired
@@ -84,6 +88,7 @@ private:
 
 	//pickup FX
 	int objectPickedFx = 0;
+
 };
 #endif // !__MODULEOBJECT_H__
 

@@ -1,15 +1,17 @@
+#include "Object.h"
+
 #include "Application.h"
 #include "ModuleCollisions.h"
 #include "ModuleAudio.h"
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
-#include "Object.h"
+
 
 
 Object::Object(int x, int y) : position(x, y)
 {
-	spawnPos - position;
+	spawnPos = position;
 }
 
 Object::~Object()
@@ -39,8 +41,9 @@ void Object::Draw()
 	}*/
 }
 
-void Object::OnCollision(Collider* collider)
+void Object::OnCollision(Collider* c1, Collider* c2)
 {
+
 	SetToDelete();
 }
 
