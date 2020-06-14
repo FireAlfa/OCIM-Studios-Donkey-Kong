@@ -606,6 +606,14 @@ Update_Status SceneLevel2::PostUpdate()
 //Disable modules related to the Scene
 bool SceneLevel2::CleanUp()
 {
+	for (int i = 0; i < 4; ++i)
+	{
+		App->collisions->RemoveCollider(conveyerColliders[i]);
+	}
+
+
+
+
 	//Disable modules
 	App->player->Disable();
 	App->enemies->Disable();
