@@ -290,9 +290,9 @@ void ModulePlayer::UpdateState()
 			/*App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_REPEAT ||*/ pad.a == true)
 			ChangeState(state, JUMPING);
 
-		if (canClimb == true &&
-			App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN || pad.l_y < 0.0f ||
-			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN || pad.l_y > 0.0f)
+		if (canClimb == true && 
+			(App->input->keys[SDL_SCANCODE_W] == Key_State::KEY_DOWN || pad.l_y < 0.0f ||
+			App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN || pad.l_y > 0.0f))
 			ChangeState(state, CLIMBING_IDLE);
 
 		if (App->input->keys[SDL_SCANCODE_H] == Key_State::KEY_DOWN || pad.x == true)
