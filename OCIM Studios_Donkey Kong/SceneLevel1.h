@@ -42,6 +42,8 @@ public:
 		SDL_Texture* lvl1Texture = nullptr;
 		SDL_Texture* lvl1Barrels = nullptr;
 		SDL_Texture* lvl1fireBarrels = nullptr;
+		SDL_Texture* lvl1dkAnimation = nullptr;
+
 	//
 	//
 	//
@@ -52,8 +54,13 @@ public:
 	Collider* ladderColliders[4];
 
 	SDL_Texture* dkBarrels;
+	SDL_Texture* lvl1LeftdkAnimation;
+
+
+
 	Animation DK;
 	Animation fireBarrel;
+	Animation dkAnim;
 	
 	//
 	//Srite rectangles
@@ -61,6 +68,7 @@ public:
 	SDL_Rect lvl1Rect;
 	SDL_Rect Barrels;
 	SDL_Rect lvl1B;
+	SDL_Rect dkLeftAnim;
 
 	//SDL_Rect buttonRect;
 
@@ -70,6 +78,30 @@ public:
 	//
 	bool lvl1win = false;
 
+	int initialY = 217;
+	int animCont0 = 0;
+	int animCont1 = 0;
+
+	int animController0;
+
+	bool topReached = false;
+
+	int jumpY = 52;
+
+	int time1 = 0;
+
+	int contY1 = 52;
+
+	int contX1 = 0;
+
+	int contX2 = 0;
+
+	int contX = 90;
+
+	int totalJumps = 0;
+	bool topjumpReached = false;
+	bool onTheGround = true;
+	bool onAir = false;
 private:
 	uint score = 000000;
 	uint highscore = 000000;

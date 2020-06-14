@@ -22,6 +22,7 @@ SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 	//
 	lvl1Rect = { 0, 0, 224, 256 };
 	Barrels = { 0,0, 21,32 };
+	dkLeftAnim = { 0, 0,41,32 };
 
 
 	//
@@ -128,39 +129,110 @@ SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 		fireBarrel.PushBack({ 122,67,16,31 });
 		fireBarrel.PushBack({ 122,67,16,31 });
 
-		fireBarrel.PushBack({ 122,67,16,31 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 });
+		dkAnim.PushBack({ 0,70,38,32 }); 
+
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
+		dkAnim.PushBack({ 39,70,43,32 });
 
 
 
 
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
+		fireBarrel.PushBack({ 141,67,16,31 });
 
 
-
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
-		fireBarrel.PushBack({ 141,67,16,31 });
 
 
 		DK.PushBack({ 0,0,40,32 });
@@ -383,6 +455,8 @@ bool SceneLevel1::Start()
 	dkBarrels = App->textures->Load("Assets/Sprites/DonkeyKong_Sprites.png");
 	lvl1Barrels = App->textures->Load("Assets/Sprites/Barrells_Sprites.png");
 	lvl1fireBarrels = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
+	lvl1dkAnimation = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
+	lvl1LeftdkAnimation = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
 
 
 
@@ -622,6 +696,74 @@ Update_Status SceneLevel1::Update()
 	//
 	DK.Update();
 	fireBarrel.Update();
+	dkAnim.Update();
+	if (animCont1 <= 165)
+	{
+		animCont0++;
+	}
+
+	if (animCont0 == 4)
+	{
+		animCont1++;
+		animCont0 = 0;
+	}
+
+
+
+	if (topReached)
+	{
+		if (contX == 90 )
+		{
+			jumpY--;
+		}
+		if (contX == 85)
+		{
+			jumpY++;
+		}
+		if (contX == 80)
+		{
+			jumpY--;
+
+		}
+		if (contX == 75)
+		{
+			jumpY++;
+		}
+		if (contX == 70)
+		{
+			jumpY--;
+		}
+		if (contX == 65)
+		{
+			jumpY++;
+		}
+		if (contX == 60)
+		{
+			jumpY--;
+		}
+		if (contX == 55)
+		{
+			jumpY++;
+		}
+		if (contX == 50)
+		{
+			jumpY--; 
+		}
+		if (contX == 45)
+		{
+			jumpY++;
+		}	
+	}
+
+	if (topReached)
+	{
+		contX1++;
+		if (contX1 % 10 == 0)
+		{
+			contX2++;
+		}
+	}
+
 
 	//
 	//Enemies
@@ -686,10 +828,28 @@ Update_Status SceneLevel1::PostUpdate()
 	//Draw the background
 	//
 	//App->render->Blit(lvl1Barrels, 2, 55, &lvl1B, NULL, false);
+
+	animController0 = 217 - animCont1;
+	contX = 90 - contX2;
+	if (animController0 == 52)
+	{
+		topReached = true;
+	}
+
 	App->render->Blit(lvl1Texture, 0, 0, &lvl1Rect, NULL, false);
 	App->render->Blit(dkBarrels, 21, 52, &(DK.GetCurrentFrame()), 0.1f);
 	App->render->Blit(lvl1Barrels, 1, 51, &Barrels,NULL,false);
 	App->render->Blit(lvl1fireBarrels, 10, 217, &(fireBarrel.GetCurrentFrame()), 0.1f);
+	if (topReached == false)
+	{
+		App->render->Blit(lvl1dkAnimation, 91, animController0, &(dkAnim.GetCurrentFrame()), 0.1f);
+	}
+
+
+	if (topReached && contX >= 40)
+	{
+		App->render->Blit(lvl1dkAnimation, contX, jumpY, &dkLeftAnim, NULL, false);
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
