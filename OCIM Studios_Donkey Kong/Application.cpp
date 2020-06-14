@@ -36,8 +36,8 @@ Application::Application()
 	modules[2] =	textures =		new ModuleTextures(true);
 	modules[3] =	audio =			new ModuleAudio(true);
 
-	modules[4] =	sceneIntro		=	new SceneIntro(true);
-	modules[5] = scenelevel1Intro =	new SceneLevel1Intro(false);
+	modules[4] =	sceneIntro	=	new SceneIntro(true);
+	modules[5] = sceneLevel1Intro =	new SceneLevel1Intro(false);
 	modules[6] =	sceneLevel1 =	new SceneLevel1(false);
 	modules[7] =	sceneLevel2 =	new SceneLevel2(false);
 	modules[8] =	sceneLevel4 =	new SceneLevel4(false);

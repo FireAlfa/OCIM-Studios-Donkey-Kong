@@ -17,6 +17,7 @@ class ModuleAudio;
 
 class ModulePlayer;
 class SceneIntro;
+class SceneLevel1Intro;
 class SceneLevel1;
 class SceneLevel2;
 class SceneLevel4;
@@ -74,7 +75,7 @@ public:
 	ModulePlayer* player = nullptr;
 
 	SceneIntro* sceneIntro = nullptr;
-	SceneIntro* scenelevel1Intro = nullptr;
+	SceneLevel1Intro* sceneLevel1Intro = nullptr;
 	SceneLevel1* sceneLevel1 = nullptr;
 	SceneLevel2* sceneLevel2 = nullptr;
 	SceneLevel4* sceneLevel4 = nullptr;
