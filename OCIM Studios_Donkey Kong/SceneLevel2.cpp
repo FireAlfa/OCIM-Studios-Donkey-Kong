@@ -10,7 +10,6 @@
 #include "ModuleFonts.h"
 
 #include "ModuleEnemies.h"
-#include "ModuleObject.h"
 #include "Enemy_DonkeyKong.h"
 #include "ModulePlayer.h"
 
@@ -58,7 +57,6 @@ bool SceneLevel2::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->collisions->Enable();
-	App->objects->Enable();
 
 
 	//
@@ -180,11 +178,6 @@ bool SceneLevel2::Start()
 	App->enemies->AddEnemy(Enemy_Type::DONKEYKONG, 23, 51, 0);
 
 
-	//
-	//Add pickups
-	//
-
-	App->objects->AddObject(ObjectType::BAG, 121, 236);
 
 
 	return ret;
