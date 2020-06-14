@@ -388,15 +388,15 @@ bool SceneLevel1::Start()
 	lvl1LeftdkAnimation = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
 	hammerTexture = App->textures->Load("Assets/Sprites/Mario_Sprites.png");
 
+	{
+	// ===================== WALLS ==================== //
 
-// ===================== WALLS ==================== //
 
+		//
+		//Walls with ramps
+		//
 
-	//
-	//Walls with ramps
-	//
-
-	//Floor 1 colliders
+		//Floor 1 colliders
 	App->collisions->AddCollider({ 0, 248, 112, 1 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 111, 246, 1, 1 }, Collider::Type::RAMP_RIGHT);
 	App->collisions->AddCollider({ 114, 247, 14, 1 }, Collider::Type::WALL);
@@ -614,7 +614,7 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 211, 152, 13, 5 }, Collider::Type::PLAYER_FEET);
 	App->collisions->AddCollider({ 0, 119, 13, 5 }, Collider::Type::PLAYER_FEET);
 	App->collisions->AddCollider({ 0, 185, 13, 5 }, Collider::Type::PLAYER_FEET);
-
+	}
 
 
 
@@ -645,6 +645,12 @@ Update_Status SceneLevel1::Update()
 	//Enemies
 	//
 	
+
+
+
+
+
+
 
 
 	//
@@ -683,7 +689,18 @@ Update_Status SceneLevel1::Update()
 
 
 
+
+
+
+
+	//
 	//Win condition
+	//
+	if (App->player->position.y <= 41)
+	{
+		lvl1win = true;
+	}
+
 	if (lvl1win == true)
 	{
 
