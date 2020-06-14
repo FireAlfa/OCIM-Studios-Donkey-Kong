@@ -46,6 +46,7 @@
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="SceneIntro.cpp" />
     <ClCompile Include="SceneLevel1.cpp" />
+    <ClCompile Include="SceneLevel1Intro.cpp" />
     <ClCompile Include="SceneLevel2.cpp" />
     <ClCompile Include="SceneLevel4.cpp" />
     <ClCompile Include="SceneVictory.cpp" />
@@ -80,6 +81,7 @@
     <ClInclude Include="Path.h" />
     <ClInclude Include="SceneIntro.h" />
     <ClInclude Include="SceneLevel1.h" />
+    <ClInclude Include="SceneLevel1Intro.h" />
     <ClInclude Include="SceneLevel2.h" />
     <ClInclude Include="SceneLevel4.h" />
     <ClInclude Include="SceneVictory.h" />
