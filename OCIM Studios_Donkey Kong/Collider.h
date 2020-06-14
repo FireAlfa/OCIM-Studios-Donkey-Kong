@@ -21,6 +21,8 @@ struct Collider
 		WALL,
 		RAMP_RIGHT,
 		RAMP_LEFT,
+		CONVEYER_RIGHT,
+		CONVEYER_LEFT,
 
 
 		PLAYER,
@@ -33,7 +35,6 @@ struct Collider
 		STAIR,
 		TOP_STAIR,
 
-		STAIRBARREL,
 		BUTTON,
 
 		TOPWALL,
