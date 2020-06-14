@@ -112,6 +112,8 @@ public:
 	int lastCollider = Collider::Type::NONE;
 	//Auxiliar collider for buttons
 	Collider* button = nullptr;
+	//Auxiliar collider for hammers
+	Collider* hammer = nullptr;
 	//Current level
 	const char* currentLevel = "none";
 
@@ -171,6 +173,7 @@ public:
 	bool rampRight = false;
 	bool rampLeft = false;
 	bool eraseButton = false;
+	bool eraseHammer = false;
 	bool wideWallContact = false;
 	bool substractLife = false;
 	bool died = false;

@@ -805,6 +805,7 @@ void ModulePlayer::UpdateLogic()
 	case Collider::Type::GRAVITYWALLS:
 	case Collider::Type::PEACH:
 	case Collider::Type::DK:
+	case Collider::HAMMER:
 		break;
 	default:
 		position.y += speed;
@@ -818,6 +819,15 @@ void ModulePlayer::UpdateLogic()
 		App->sceneLevel4->eraseButton(button);
 		eraseButton = false;
 		button = nullptr;
+		lastCollider = Collider::Type::NONE;
+	}
+
+	//Erasing hammer if i collide
+	if (eraseHammer == true)
+	{
+		App->sceneLevel1->eraseHammer(hammer);
+		eraseHammer = false;
+		hammer = nullptr;
 		lastCollider = Collider::Type::NONE;
 	}
 
@@ -838,6 +848,7 @@ void ModulePlayer::UpdateLogic()
 	wideWallContact = false;
 	substractLife = false;
 	eraseButton = false;
+	eraseHammer = false;
 
 
 	if (App->input->keys[SDL_SCANCODE_L] == KEY_DOWN || pad.l2 == true)
@@ -1170,6 +1181,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		eraseButton = true;
 		button = c2;
+	}
+	//Hammer collision
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::HAMMER)
+	{
+		eraseHammer = true;
+		hammer = c2;
 	}
 }
 

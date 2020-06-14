@@ -23,6 +23,7 @@ SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 	lvl1Rect = { 0, 0, 224, 256 };
 	Barrels = { 0,0, 21,32 };
 	dkLeftAnim = { 0, 0,41,32 };
+	hammerRect = { 157,0,9,10 };
 
 
 	//
@@ -369,6 +370,11 @@ bool SceneLevel1::Start()
 	//
 	//Flags reset
 	//
+	for (int i = 0; i < 2; ++i)
+	{
+		hammerDrawingArray[i] = true;
+	}
+
 	lvl1win = false;
 
 
@@ -380,7 +386,7 @@ bool SceneLevel1::Start()
 	lvl1Barrels = App->textures->Load("Assets/Sprites/Barrells_Sprites.png");
 	lvl1fireBarrels = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
 	lvl1LeftdkAnimation = App->textures->Load("Assets/Sprites/Enemies_Sprites.png");
-
+	hammerTexture = App->textures->Load("Assets/Sprites/Mario_Sprites.png");
 
 
 // ===================== WALLS ==================== //
@@ -596,6 +602,10 @@ bool SceneLevel1::Start()
 	//RIGHT WALL
 	App->collisions->AddCollider({ 223, 1, 1, 255 }, Collider::Type::RIGHTWALL);
 
+	//Hammer
+	App->collisions->AddCollider({ 167, 192, 8, 8 }, Collider::Type::HAMMER);
+	App->collisions->AddCollider({ 20, 97, 8, 8 }, Collider::Type::HAMMER);
+
 
 
 
@@ -700,6 +710,18 @@ Update_Status SceneLevel1::PostUpdate()
 	App->render->Blit(lvl1Barrels, 1, 51, &Barrels,NULL,false);
 	App->render->Blit(lvl1fireBarrels, 10, 217, &(fireBarrel.GetCurrentFrame()), 0.1f);
 
+	for (int i = 0; i < 2; ++i)
+	{
+		if (hammerDrawingArray[0] == true)
+		{
+			App->render->Blit(hammerTexture, 167, 190, &hammerRect, NULL, false);
+		}
+		if (hammerDrawingArray[1] == true)
+		{
+			App->render->Blit(hammerTexture, 20, 95, &hammerRect, NULL, false);
+		}
+	}
+
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -714,4 +736,22 @@ bool SceneLevel1::CleanUp()
 
 
 	return true;
+}
+
+void SceneLevel1::eraseHammer(Collider* c)
+{
+	int index = -1;
+	for (int i = 0; i < 2; ++i)
+	{
+		if (hammerColliders[i] == c)
+		{
+			index = i;
+			break;
+		}
+	}
+	if (index != -1)
+	{
+		App->collisions->RemoveCollider(hammerColliders[index]);
+		hammerDrawingArray[index] = false;
+	}
 }

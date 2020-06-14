@@ -30,6 +30,9 @@ public:
 	// Disables the player and the enemies
 	bool CleanUp();
 
+	//erase hammer
+	void eraseHammer(Collider* c);
+
 	//Score functions
 
 	void score100() { score += 100; }
@@ -43,6 +46,8 @@ public:
 		SDL_Texture* lvl1Barrels = nullptr;
 		SDL_Texture* lvl1fireBarrels = nullptr;
 		SDL_Texture* lvl1dkAnimation = nullptr;
+		SDL_Texture* hammerTexture = nullptr;
+
 
 	//
 	//
@@ -53,8 +58,10 @@ public:
 	//
 	Collider* ladderColliders[4];
 
-	SDL_Texture* dkBarrels;
-	SDL_Texture* lvl1LeftdkAnimation;
+	Collider* hammerColliders[2];
+
+	SDL_Texture* dkBarrels = nullptr;
+	SDL_Texture* lvl1LeftdkAnimation = nullptr;
 
 
 
@@ -69,9 +76,12 @@ public:
 	SDL_Rect Barrels;
 	SDL_Rect lvl1B;
 	SDL_Rect dkLeftAnim;
+	SDL_Rect hammerRect;
 
 	//SDL_Rect buttonRect;
 
+	//Hammer array
+	bool hammerDrawingArray[2] = { true, true };
 
 	//
 	//Win condition
