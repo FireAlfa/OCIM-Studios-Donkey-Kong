@@ -212,8 +212,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 			
 
 	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = true;
-	matrix[Collider::Type::ENEMY][Collider::Type::CONVEYER_RIGHT] = false;
-	matrix[Collider::Type::ENEMY][Collider::Type::CONVEYER_LEFT] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::CONVEYER_RIGHT] = true;
+	matrix[Collider::Type::ENEMY][Collider::Type::CONVEYER_LEFT] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER_CENTER] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER_FEET] = false;

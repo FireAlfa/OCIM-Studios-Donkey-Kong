@@ -21,12 +21,6 @@ enum class Enemy_Type
 	CEMENT
 };
 
-enum Enemy_State
-{
-	ENEMY_MOVING,
-	ENEMY_FALLING
-};
-
 //struct that controls enemy spawn point
 struct EnemySpawnpoint
 {

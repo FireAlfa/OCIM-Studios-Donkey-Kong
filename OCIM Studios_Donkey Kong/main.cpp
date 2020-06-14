@@ -2,6 +2,9 @@
 #include "MemLeaks.h"
 #include "Application.h"
 
+#include <stdlib.h>
+#include <time.h>
+
 
 #include "SDL/include/SDL.h"
 #include "SDL_image/include/SDL_image.h"
@@ -34,6 +37,9 @@ int main(int argc, char** argv)
 
 	//Calls to see if there are any memory leaks
 	ReportMemoryLeaks();
+
+	/* initialize random seed: */
+	srand(time(NULL));
 
 	//Variable to know if the programm has ended
 	int main_return = EXIT_FAILURE;

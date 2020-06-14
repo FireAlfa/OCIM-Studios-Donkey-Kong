@@ -3,13 +3,27 @@
 
 #include "Enemy.h"
 #include "Animation.h"
+#include <stdlib.h>
+#include <time.h>
+
+enum Barrel_State
+{
+	BARREL_MOVING,
+	BARREL_FALLING,
+};
 
 
 class Enemy_Barrel : public Enemy
 {
 public:
 	//Constructor
-	Enemy_Barrel(int x, int y, int direction);
+	Enemy_Barrel(int x, int y, int _direction);
+
+	//Destructor
+	~Enemy_Barrel();
+
+
+	void Update() override;
 
 	// Checks for inputs (or timers) and changes the player state accordingly
 	void UpdateState();
@@ -18,17 +32,32 @@ public:
 	void UpdateLogic();
 
 	// Transition from one state to a new one. Changes animations, resets variables,...
-	//void ChangeState(Enemy_State previousState, Enemy_State newState);
+	void ChangeState(Barrel_State previousState, Barrel_State newState);
 
-	//State of the enemy
-	//Enemy_State state = ENEMY_MOVING;
+
+	//Control barrel collisions
+	void OnCollision(Collider* c1, Collider* c2) override;
+
+
 
 	//
-	//Enemy Flags
+	//Barrel Flags
 	//
 	bool rampRight = false;
 	bool rampLeft = false;
+	bool canGoDownStairs = false;
+	bool touchedWall = false;
 
+	//
+	//Initial variables
+	//
+	Barrel_State barrelState = BARREL_MOVING;
+	int random = 0;
+	int direction = 1;
+	int speed = 1;
+
+	//Auxiliar collider rectangle
+	SDL_Rect aux;
 
 
 private:
