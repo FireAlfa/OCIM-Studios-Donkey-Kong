@@ -211,6 +211,7 @@ bool ModulePlayer::Start()
 	canGoDownStairs = false;
 	feetTopStairs = false;
 	substractLife = false;
+	falling = false;
 	ChangeState(state, IDLE);
 
 
@@ -1007,6 +1008,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	//Collision control
 	//
 
+	//Fall to death collision
+	if (c1 == playerCenterCollider && c2->type == Collider::Type::GRAVITYWALLS)
+	{
+		falling = true;
+		ChangeState(state, FALLING);
+	}
+
 	//Wall collision
 	if (c1 == playerFeetCollider && c2->type == Collider::Type::WALL)
 	{
@@ -1014,10 +1022,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		lastCollider = Collider::Type::WALL;
 	}
 
-	if (c1 == playerWideFeetCollider && c2->type == Collider::Type::WALL)
+	if (falling == false)
 	{
-		wideWallContact = true;
-		lastCollider = Collider::Type::WALL;
+		if (c1 == playerWideFeetCollider && c2->type == Collider::Type::WALL)
+		{
+			wideWallContact = true;
+			lastCollider = Collider::Type::WALL;
+		}
 	}
 
 
@@ -1060,12 +1071,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		lastCollider = Collider::Type::RAMP_LEFT;
 	}
 
-
-	//Fall to death collision
-	if (c1 == playerCenterCollider && c2->type == Collider::Type::GRAVITYWALLS)
-	{
-		ChangeState(state, FALLING);
-	}
 
 
 

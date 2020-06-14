@@ -174,6 +174,7 @@ public:
 	bool substractLife = false;
 	bool drawGameOver = false;
 	bool feetTopStairs = false;
+	bool falling = false;
 
 
 	
