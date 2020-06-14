@@ -50,8 +50,7 @@ void Enemy_Barrel::UpdateState()
 	case BARREL_MOVING:
 		if (canGoDownStairs == true)
 		{
-			//random = rand() % 10 + 1;
-			random = 3;
+			random = rand() % 10 + 1;
 			if (random <= 3)
 			{
 				ChangeState(barrelState, BARREL_FALLING);
@@ -64,7 +63,10 @@ void Enemy_Barrel::UpdateState()
 		if (touchedWall == true)
 		{
 			position.y -= speed;
+			position.x += speed * direction;
+			touchedWall = false;
 			ChangeState(barrelState, BARREL_MOVING);
+			
 		}
 		break;
 
@@ -128,9 +130,15 @@ void Enemy_Barrel::UpdateLogic()
 		break;
 	}
 
+	if (touchedWall == true)
+	{
+		position.y -= speed;
+	}
+
 	rampRight = false;
 	rampLeft = false;
 	touchedWall = false;
+	canGoDownStairs = false;
 
 	collider->SetPos(position.x + 3, position.y + 4);
 }
@@ -142,14 +150,25 @@ void Enemy_Barrel::ChangeState(Barrel_State prevState, Barrel_State newState)
 	case BARREL_MOVING:
 		if (prevState == BARREL_FALLING)
 		{
+			touchedWall = false;
 			direction *= -1;
+			prevState = BARREL_MOVING;
 		}
 		currentAnim = &BarrelAnim;
 
 		break;
 
 	case BARREL_FALLING:
-		position.x = aux.x - 3;
+		if (direction == 1)
+		{
+			position.x = aux.x - 6;
+		}
+		if (direction == -1)
+		{
+			position.x = aux.x - 5;
+		}
+		
+
 		currentAnim = &BarrelFall;
 
 		break;
@@ -157,6 +176,9 @@ void Enemy_Barrel::ChangeState(Barrel_State prevState, Barrel_State newState)
 	default:
 		break;
 	}
+
+
+	barrelState = newState;
 }
 
 void Enemy_Barrel::OnCollision(Collider* c1, Collider* c2)
@@ -178,8 +200,24 @@ void Enemy_Barrel::OnCollision(Collider* c1, Collider* c2)
 	//Going down stairs collisions
 	if (c1 == collider && c2->type == Collider::Type::TOP_STAIR)
 	{
-		canGoDownStairs = true;
+		SDL_Rect c1Rect = c1->GetRect();
 		aux = c2->GetRect();
+
+		if (aux.y - 8 <= c1Rect.y) {
+			if (direction == 1 && aux.x - 5 == c1Rect.x) {
+				canGoDownStairs = true;
+			}
+			else if (direction == -1 && aux.x - 5 != c1Rect.x)
+			{
+				canGoDownStairs = true;
+			}
+			else {
+				canGoDownStairs = false;
+			}
+			
+		}
+
+		
 	}
 
 	if (c1 == collider && c2->type == Collider::Type::WALL)
