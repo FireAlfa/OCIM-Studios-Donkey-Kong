@@ -12,7 +12,7 @@ Donkey Kong is an arcade game from the platform genre released on July 9th, 1981
 
 ## Gameplay
 
-![](https://github.com/FireAlfa/OCIM-Studios-Donkey-Kong/blob/master/docs/gameexpo.mp4)
+<iframe src="https://drive.google.com/file/d/1JRKMqIr8B3c8S6UDMQlZk_CFfiiRA1d5/preview" width="640" height="480"></iframe>
 
 
 ## Controls
